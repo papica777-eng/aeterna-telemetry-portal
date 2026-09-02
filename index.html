@@ -628,6 +628,18 @@
         }
       });
 
+      // If ordinary viewer with a locked device link, show ONLY that single device and hide selector controls
+      if (currentUserRole === 'VIEWER' && selectedDeviceId && selectedDeviceId !== 'ALL') {
+        const myDev = devices.find(d => d.deviceId === selectedDeviceId || d.device === selectedDeviceId) || { name: 'Моето Устройство', model: 'Android Phone', number: '' };
+        sel.innerHTML = `<option value="${selectedDeviceId}" selected>🟢 ${myDev.name || myDev.model} ${myDev.number ? '(' + myDev.number + ')' : ''}</option>`;
+        sel.disabled = true;
+        const copyBtn = document.getElementById('btn-copy-session');
+        if (copyBtn) copyBtn.style.display = 'none';
+        const fleetPill = document.getElementById('fleet-count-pill');
+        if (fleetPill) fleetPill.style.display = 'none';
+        return;
+      }
+
       let html = `<option value="ALL" ${currentVal === 'ALL' ? 'selected' : ''}>🌐 ALL DEVICES (Unified Fleet - ${uniqueDevices.length})</option>`;
       uniqueDevices.forEach(d => {
         const isOnline = d.status === 'ONLINE';
@@ -636,6 +648,11 @@
         html += `<option value="${d.deviceId}" ${isSel}>${icon} ${d.name || d.model} (${d.number || 'No SIM'})</option>`;
       });
       sel.innerHTML = html;
+      sel.disabled = false;
+      const copyBtn = document.getElementById('btn-copy-session');
+      if (copyBtn) copyBtn.style.display = 'inline-block';
+      const fleetPill = document.getElementById('fleet-count-pill');
+      if (fleetPill) fleetPill.style.display = 'flex';
 
       const onlineCount = uniqueDevices.filter(d => d.status === 'ONLINE').length;
       document.getElementById('fleet-count').textContent = `${onlineCount} Online / ${uniqueDevices.length} Total Devices`;
