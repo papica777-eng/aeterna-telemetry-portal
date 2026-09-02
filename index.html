@@ -2247,6 +2247,11 @@
             <span data-i18n="sim_btn_block">Тест Anti-Delete</span>
           </button>
         </div>
+
+        <!-- Live Interception Feedback Banner for Mobile & Instant Visibility -->
+        <div id="sim-live-ticker" style="display: none; background: rgba(0, 240, 255, 0.08); border: 1px solid var(--cyan); border-radius: 10px; padding: 8px 12px; margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #fff; text-align: center; width: 100%; max-width: 360px; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);">
+          <span style="color: var(--gold); font-weight: 800;">[LIVE INTERCEPT]:</span> <span id="sim-live-ticker-text"></span>
+        </div>
       </div>
 
       <!-- THE OBSERVER DECK (RIGHT PANEL TELEMETRY) -->
@@ -2254,11 +2259,11 @@
         <div class="observer-tabs-nav">
           <button class="obs-tab-btn active" onclick="switchObsTab('obs-keys')">
             <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="16" x2="17" y2="16"/></svg>
-            Keylogger (Unmasked)
+            Keylogger
           </button>
           <button class="obs-tab-btn" onclick="switchObsTab('obs-stream')">
             <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            Raw Packet Stream
+            Packet Stream
           </button>
           <button class="obs-tab-btn" onclick="switchObsTab('obs-hardware')">
             <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="11" x2="23" y2="13"/></svg>
@@ -2268,9 +2273,9 @@
 
         <!-- 1. KEYLOGGER LOG -->
         <div id="obs-keys" class="obs-tab-pane active">
-          <div style="background: rgba(0, 240, 255, 0.04); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--cyan);">DECRYPTED KEYBOARD INGESTION</span>
-            <span style="font-size: 10px; color: var(--green); font-weight: 800; display: flex; align-items: center; gap: 6px;">
+          <div style="background: rgba(0, 240, 255, 0.04); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+            <span style="font-size: 10.5px; font-family: 'JetBrains Mono', monospace; color: var(--cyan); font-weight: 700;">KEYLOGGER INGESTION</span>
+            <span style="font-size: 9.5px; color: var(--green); font-weight: 800; display: flex; align-items: center; gap: 5px; flex-shrink: 0;">
               <span class="pulse-dot" style="width: 6px; height: 6px;"></span> LIVE ACTIVE
             </span>
           </div>
@@ -3205,6 +3210,12 @@
         row.innerHTML = `<span style="color:var(--muted);">[${time}]</span> ${html}`;
         box.prepend(row);
       }
+      const ticker = document.getElementById('sim-live-ticker');
+      const tickerText = document.getElementById('sim-live-ticker-text');
+      if (ticker && tickerText) {
+        ticker.style.display = 'block';
+        tickerText.innerHTML = html;
+      }
     }
 
     function appendPacket(text) {
@@ -3217,11 +3228,15 @@
       }
     }
 
-    function switchObsTab(tabId) {
+    function switchObsTab(tabId, ev) {
       document.querySelectorAll('.obs-tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.obs-tab-pane').forEach(p => p.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      const targetPane = document.getElementById(tabId);
+      if (targetPane) targetPane.classList.add('active');
+      const currentEv = ev || window.event;
+      if (currentEv && currentEv.currentTarget) {
+        currentEv.currentTarget.classList.add('active');
+      }
     }
 
     // Terminal Replay Sequence
@@ -3825,7 +3840,6 @@
     // ══════════════════════════════════════════════════════════════
     // INITIALIZATION & URL QUERY RESOLUTION
     // ══════════════════════════════════════════════════════════════
-    const urlParams = new URLSearchParams(window.location.search);
     const passQuery = (urlParams.get('pass') || urlParams.get('p') || urlParams.get('key') || '').toLowerCase();
     const targetDeviceParam = urlParams.get('device') || urlParams.get('d');
     
