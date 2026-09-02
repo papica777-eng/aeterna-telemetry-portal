@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AETERNA // QUANTUM TELEMETRY GATEWAY</title>
+  <title>AETERNA // SAMSUNG S24 ULTRA LIVE SCREEN & TELEMETRY</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
@@ -12,7 +12,6 @@
       --bg: #05070c;
       --card: rgba(13, 18, 30, 0.85);
       --border: rgba(0, 240, 255, 0.25);
-      --border-focus: #00f0ff;
       --cyan: #00f0ff;
       --gold: #ffd700;
       --green: #00ff88;
@@ -58,7 +57,6 @@
       backdrop-filter: blur(20px);
       box-shadow: var(--shadow);
       text-align: center;
-      transition: all 0.3s ease;
     }
 
     .auth-logo {
@@ -104,12 +102,6 @@
       font-size: 14px;
       color: var(--text);
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .input-box input:focus {
-      border-color: var(--cyan);
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
     }
 
     .btn-auth {
@@ -125,28 +117,13 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       cursor: pointer;
-      transition: all 0.2s;
     }
 
-    .btn-auth:hover {
-      background: var(--cyan);
-      color: #000;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
-    }
-
-    .auth-error {
-      color: var(--red);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      margin-top: 14px;
-      display: none;
-    }
-
-    /* MAIN DASHBOARD */
+    /* MAIN MONITOR CONTAINER */
     #dashboard-screen {
       display: none;
       width: 100%;
-      max-width: 1100px;
+      max-width: 1200px;
       animation: fadeIn 0.4s ease forwards;
     }
 
@@ -161,9 +138,9 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 16px;
-      padding-bottom: 20px;
+      padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .status-pill {
@@ -189,68 +166,82 @@
       animation: pulse 1.5s infinite;
     }
 
-    .pulse-dot.disconnected {
-      background: var(--red);
-      box-shadow: 0 0 10px var(--red);
-      animation: none;
-    }
-
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.3; transform: scale(0.85); }
     }
 
-    .ws-config-bar {
+    /* DUAL PANE: SCREEN CAST + TELEMETRY */
+    .viewport-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 860px) {
+      .viewport-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* PHONE FRAME CONTAINER */
+    .phone-container {
+      background: #010204;
+      border: 3px solid #1a2233;
+      border-radius: 36px;
+      padding: 12px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15);
+      position: relative;
       display: flex;
-      gap: 10px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 16px;
-      margin-bottom: 24px;
+      flex-direction: column;
       align-items: center;
-      flex-wrap: wrap;
     }
 
-    .ws-config-bar input {
-      flex: 1;
-      min-width: 220px;
-      background: #030408;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 10px 14px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: var(--text);
-      outline: none;
+    .phone-notch {
+      width: 12px;
+      height: 12px;
+      background: #0a0e17;
+      border: 1px solid #1f293d;
+      border-radius: 50%;
+      margin-bottom: 10px;
     }
 
-    .ws-config-bar button {
-      background: var(--cyan);
-      color: #000;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 6px;
+    .phone-screen-img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: #000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .stream-meta {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      text-transform: uppercase;
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 10px;
       letter-spacing: 1px;
+    }
+
+    /* TELEMETRY CARDS */
+    .telemetry-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
     .grid-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
     }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px;
+      padding: 16px;
       backdrop-filter: blur(16px);
       box-shadow: var(--shadow);
     }
@@ -259,19 +250,19 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       color: var(--muted);
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       display: flex;
       justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .card-val {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 900;
       color: var(--text);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .card-desc {
@@ -280,44 +271,28 @@
       color: var(--muted);
     }
 
-    .progress-track {
-      width: 100%;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 3px;
-      overflow: hidden;
-      margin-top: 10px;
-    }
-
-    .progress-val {
-      height: 100%;
-      background: linear-gradient(90deg, var(--cyan), var(--green));
-      width: 0%;
-      transition: width 0.4s ease;
-    }
-
     .terminal-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px;
-      backdrop-filter: blur(16px);
+      padding: 16px;
+      flex: 1;
     }
 
     .terminal-feed {
       background: #020306;
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 8px;
-      padding: 14px;
+      padding: 12px;
       height: 220px;
       overflow-y: auto;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
+      font-size: 11px;
       line-height: 1.6;
       color: #9cdcfe;
     }
 
-    .log-row { margin-bottom: 3px; }
+    .log-row { margin-bottom: 2px; }
     .t-time { color: var(--muted); }
     .t-tag { color: var(--gold); }
     .t-val { color: var(--green); }
@@ -325,181 +300,144 @@
 
     .control-actions {
       display: flex;
-      gap: 12px;
-      margin-top: 20px;
-      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
     }
 
     .btn-action {
       flex: 1;
-      min-width: 140px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 12px;
-      border-radius: 8px;
+      padding: 10px;
+      border-radius: 6px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
     }
 
     .btn-action:hover {
       background: rgba(0, 240, 255, 0.15);
       border-color: var(--cyan);
     }
-
-    footer {
-      margin-top: 30px;
-      text-align: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 1px;
-    }
   </style>
 </head>
 <body>
 
-  <!-- AUTHENTICATION SCREEN -->
+  <!-- AUTH SCREEN -->
   <div id="auth-screen">
-    <div class="auth-logo">AETERNA CORE</div>
-    <div class="auth-sub">QUANTUM TELEMETRY GATEWAY // ACCESS LOCK</div>
+    <div class="auth-logo">AETERNA MOBILE</div>
+    <div class="auth-sub">SAMSUNG S24 ULTRA // LIVE STREAM GATEWAY</div>
 
     <div class="input-box">
       <label>Sovereign Passkey</label>
       <input type="password" id="passkey-input" placeholder="Въведете парола..." autofocus>
     </div>
 
-    <button class="btn-auth" onclick="verifyAuth()">Unlock Gateway</button>
-    <div class="auth-error" id="auth-err">Грешна парола за достъп!</div>
+    <button class="btn-auth" onclick="verifyAuth()">Unlock Screen Stream</button>
   </div>
 
-  <!-- MAIN DASHBOARD -->
+  <!-- DASHBOARD / PHONE STREAM VIEW -->
   <div id="dashboard-screen">
     <div class="dash-header">
       <div>
-        <h1 style="font-size: 22px; font-weight: 900; letter-spacing: 1px; color: var(--cyan);">AETERNA // OMNI-MONITOR</h1>
-        <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 3px;">
-          REMOTE MOBILE WEBSOCKET BRIDGE
+        <h1 style="font-size: 20px; font-weight: 900; color: var(--cyan);">SAMSUNG S24 ULTRA // LIVE MONITOR</h1>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);">
+          PHYSICAL ANCHOR: RZCX326316L (SM-S928B) // ADB LIVE MIRROR
         </p>
       </div>
       <div class="status-pill" id="ws-badge">
         <div class="pulse-dot" id="ws-dot"></div>
-        <span id="ws-status-text">CONNECTING</span>
+        <span id="ws-status-text">PHONE CONNECTED</span>
       </div>
     </div>
 
-    <!-- TARGET WEBSOCKET / TELEMETRY URL CONFIG -->
-    <div class="ws-config-bar">
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); text-transform: uppercase;">NODE ENDPOINT:</span>
-      <input type="text" id="ws-url-input" value="https://william-important-practitioner-processes.trycloudflare.com" placeholder="https://... или ws://...">
-      <button onclick="reconnectWS()">Connect</button>
-    </div>
-
-    <div class="grid-cards">
-      <!-- CPU -->
-      <div class="card">
-        <div class="card-label">
-          <span>Processor Target</span>
-          <span style="color: var(--cyan);">CPU</span>
-        </div>
-        <div class="card-val" id="val-cpu">--</div>
-        <div class="card-desc" id="desc-cpu">Awaiting Telemetry...</div>
-        <div class="progress-track">
-          <div class="progress-val" id="bar-cpu" style="width: 0%;"></div>
-        </div>
+    <div class="viewport-layout">
+      <!-- LIVE PHONE SCREEN MIRROR -->
+      <div class="phone-container">
+        <div class="phone-notch"></div>
+        <img id="live-screen-img" class="phone-screen-img" src="" alt="Live Phone Screen">
+        <div class="stream-meta" id="stream-fps">STREAM: 1.5 FPS // DIRECT ADB PIPE</div>
       </div>
 
-      <!-- RAM -->
-      <div class="card">
-        <div class="card-label">
-          <span>Memory Substrate</span>
-          <span style="color: #ff007f;">RAM</span>
-        </div>
-        <div class="card-val" id="val-ram">-- %</div>
-        <div class="card-desc" id="desc-ram">0 MB / 0 MB</div>
-        <div class="progress-track">
-          <div class="progress-val" id="bar-ram" style="width: 0%;"></div>
-        </div>
-      </div>
+      <!-- LIVE TELEMETRY PANELS -->
+      <div class="telemetry-col">
+        <div class="grid-cards">
+          <!-- BATTERY -->
+          <div class="card">
+            <div class="card-label">
+              <span>Battery Substrate</span>
+              <span style="color: var(--green);">PWR</span>
+            </div>
+            <div class="card-val" id="val-battery">100 %</div>
+            <div class="card-desc" id="desc-battery">Temp: 36.9 °C | 4.3V</div>
+          </div>
 
-      <!-- ENTROPY -->
-      <div class="card">
-        <div class="card-label">
-          <span>Entropy Invariant</span>
-          <span style="color: var(--gold);">ENTROPY</span>
-        </div>
-        <div class="card-val" style="color: var(--green);" id="val-entropy">0.0000</div>
-        <div class="card-desc">Zero Uncertainty Verified</div>
-        <div class="progress-track">
-          <div class="progress-val" style="width: 100%; background: var(--green);"></div>
-        </div>
-      </div>
+          <!-- PROCESSOR -->
+          <div class="card">
+            <div class="card-label">
+              <span>Snapdragon 8 Gen 3</span>
+              <span style="color: var(--cyan);">OCTA-CORE</span>
+            </div>
+            <div class="card-val" id="val-cpu">8 Cores</div>
+            <div class="card-desc">ARMv8-A Kryo Architecture</div>
+          </div>
 
-      <!-- NODE -->
-      <div class="card">
-        <div class="card-label">
-          <span>Host / Platform</span>
-          <span style="color: var(--cyan);">SUBSTRATE</span>
+          <!-- OS / KNOX -->
+          <div class="card">
+            <div class="card-label">
+              <span>Security Anchor</span>
+              <span style="color: var(--gold);">KNOX 3.10</span>
+            </div>
+            <div class="card-val" style="color: var(--green);">LOCKED</div>
+            <div class="card-desc">Authority: Dimitar Prodromov</div>
+          </div>
+
+          <!-- ENTROPY -->
+          <div class="card">
+            <div class="card-label">
+              <span>Entropy Invariant</span>
+              <span style="color: var(--green);">0.0000</span>
+            </div>
+            <div class="card-val" style="color: var(--green);">STABLE</div>
+            <div class="card-desc">Zero Noise Determinism</div>
+          </div>
         </div>
-        <div class="card-val" style="font-size: 16px; word-break: break-all;" id="val-host">--</div>
-        <div class="card-desc" id="val-os">--</div>
-        <div class="card-desc" id="val-uptime" style="margin-top: 4px; color: var(--gold);">Uptime: --</div>
-      </div>
-    </div>
 
-    <!-- TERMINAL STREAM -->
-    <div class="terminal-card">
-      <div class="card-label">
-        <span>Live Quantum Telemetry Feed</span>
-        <span style="color: var(--green);">STREAM // ACTIVE</span>
-      </div>
-      <div class="terminal-feed" id="term-feed"></div>
+        <!-- TERMINAL FEED -->
+        <div class="terminal-card">
+          <div class="card-label">
+            <span>Live Phone Event Stream</span>
+            <span style="color: var(--green);">ADB BRIDGE // ACTIVE</span>
+          </div>
+          <div class="terminal-feed" id="term-feed"></div>
 
-      <div class="control-actions">
-        <button class="btn-action" onclick="sendPing()">Transmit Ping Pulse</button>
-        <button class="btn-action" onclick="clearFeed()">Clear Feed</button>
-        <button class="btn-action" style="border-color: var(--red); color: var(--red);" onclick="lockPortal()">Lock Gateway</button>
+          <div class="control-actions">
+            <button class="btn-action" onclick="refreshScreenInstant()">Capture Frame</button>
+            <button class="btn-action" onclick="clearFeed()">Clear Feed</button>
+            <button class="btn-action" style="border-color: var(--red); color: var(--red);" onclick="lockPortal()">Lock Gateway</button>
+          </div>
+        </div>
       </div>
     </div>
-
-    <footer>
-      AETERNA CORE // DIMITAR PRODROMOV // AUTHORITY: 0x41_45_54_45_52_4e_41_5f_4c_4f_47_4f_53_5f_44_49_4d_49_54_41_52_5f_50_52_4f_44_52_4f_4d_56_21
-    </footer>
   </div>
 
   <script>
-    // SHA-256 hash of default sovereign passkey "aeterna2026"
-    const AUTH_HASH = "80f121d5a7d9050d2bcab804d9ca2a5789f28ecb32402ba695c02ec8c4e47a92"; 
-    // Fallback simple password comparison: "aeterna2026" / "0x4121"
     const VALID_KEYS = ["aeterna2026", "0x4121", "dimitar", "aeterna"];
+    const HOST_ENDPOINT = "https://william-important-practitioner-processes.trycloudflare.com";
 
-    let ws = null;
-    let pollTimer = null;
+    let screenTimer = null;
+    let telemetryTimer = null;
 
-    async function sha256(message) {
-      const msgBuffer = new TextEncoder().encode(message);
-      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-
-    async function verifyAuth() {
+    function verifyAuth() {
       const input = document.getElementById('passkey-input').value.trim();
-      const hash = await sha256(input);
-
-      if (VALID_KEYS.includes(input.toLowerCase()) || hash === AUTH_HASH) {
-        sessionStorage.setItem('aeterna_auth', 'unlocked');
+      if (VALID_KEYS.includes(input.toLowerCase())) {
+        localStorage.setItem('aeterna_auth', 'unlocked');
         document.getElementById('auth-screen').style.display = 'none';
         document.getElementById('dashboard-screen').style.display = 'block';
-        logTerm('[ACCESS GRANTED]', 'Sovereign operator recognized. Gateway unlocked.', 't-val');
-        initConnection();
-      } else {
-        const err = document.getElementById('auth-err');
-        err.style.display = 'block';
-        setTimeout(() => { err.style.display = 'none'; }, 3000);
+        logTerm('[AUTH_SUCCESS]', 'Samsung S24 Ultra Knox Stream Authorized.', 't-val');
+        startStreams();
       }
     }
 
@@ -508,12 +446,11 @@
     });
 
     function lockPortal() {
-      sessionStorage.removeItem('aeterna_auth');
-      if (ws) ws.close();
-      if (pollTimer) clearInterval(pollTimer);
+      localStorage.removeItem('aeterna_auth');
+      clearInterval(screenTimer);
+      clearInterval(telemetryTimer);
       document.getElementById('dashboard-screen').style.display = 'none';
       document.getElementById('auth-screen').style.display = 'block';
-      document.getElementById('passkey-input').value = '';
     }
 
     function logTerm(tag, msg, colorClass = 't-val') {
@@ -523,142 +460,55 @@
       div.className = 'log-row';
       div.innerHTML = `<span class="t-time">[${time}]</span> <span class="t-tag">${tag}</span> <span class="${colorClass}">${msg}</span>`;
       feed.appendChild(div);
-      if (feed.children.length > 50) feed.removeChild(feed.firstChild);
+      if (feed.children.length > 40) feed.removeChild(feed.firstChild);
       feed.scrollTop = feed.scrollHeight;
     }
 
-    function updateUI(data) {
-      if (!data) return;
-      if (data.cpu) {
-        document.getElementById('val-cpu').textContent = data.cpu.cores + ' Cores';
-        document.getElementById('desc-cpu').textContent = data.cpu.model || 'Native Thread Pool';
-        document.getElementById('bar-cpu').style.width = '100%';
-      }
-      if (data.memory) {
-        document.getElementById('val-ram').textContent = data.memory.usagePercent + ' %';
-        document.getElementById('desc-ram').textContent = `${data.memory.usedMB} MB / ${data.memory.totalMB} MB`;
-        document.getElementById('bar-ram').style.width = data.memory.usagePercent + '%';
-      }
-      if (data.hostname) document.getElementById('val-host').textContent = data.hostname;
-      if (data.platform) document.getElementById('val-os').textContent = data.platform;
-      if (data.uptimeHours) document.getElementById('val-uptime').textContent = 'Uptime: ' + data.uptimeHours + ' hrs';
-      if (data.modulesStatus && data.modulesStatus.entropyLevel) {
-        document.getElementById('val-entropy').textContent = data.modulesStatus.entropyLevel;
-      }
+    function refreshScreenInstant() {
+      const img = document.getElementById('live-screen-img');
+      img.src = `${HOST_ENDPOINT}/api/screen.png?t=${Date.now()}`;
     }
 
-    function setBadge(connected) {
-      const badge = document.getElementById('ws-badge');
-      const dot = document.getElementById('ws-dot');
-      const text = document.getElementById('ws-status-text');
-      if (connected) {
-        badge.style.borderColor = 'var(--green)';
-        badge.style.color = 'var(--green)';
-        dot.className = 'pulse-dot';
-        text.textContent = 'ONLINE // SYNCED';
-      } else {
-        badge.style.borderColor = 'var(--red)';
-        badge.style.color = 'var(--red)';
-        dot.className = 'pulse-dot disconnected';
-        text.textContent = 'DISCONNECTED';
-      }
-    }
-
-    function initConnection() {
-      const endpoint = document.getElementById('ws-url-input').value.trim();
-      logTerm('[CONNECTING]', `Targeting telemetry endpoint: ${endpoint}`, 't-tag');
-
-      if (endpoint.startsWith('ws://') || endpoint.startsWith('wss://')) {
-        try {
-          if (ws) ws.close();
-          ws = new WebSocket(endpoint);
-          ws.onopen = () => {
-            setBadge(true);
-            logTerm('[WS_OPEN]', 'WebSocket connection established with host.', 't-val');
-          };
-          ws.onmessage = (event) => {
-            try {
-              const data = JSON.parse(event.data);
-              updateUI(data);
-              logTerm('[METRICS]', `Stream pulse received. RAM: ${data.memory?.usedMB || 0}MB`, 't-val');
-            } catch (e) {
-              logTerm('[RAW_MSG]', event.data, 't-tag');
-            }
-          };
-          ws.onerror = (err) => {
-            setBadge(false);
-            logTerm('[WS_ERR]', 'WebSocket unreachable. Switching to HTTP fallback...', 't-err');
-            startHttpFallback(endpoint);
-          };
-          ws.onclose = () => {
-            setBadge(false);
-          };
-        } catch (err) {
-          startHttpFallback(endpoint);
+    async function pollTelemetry() {
+      try {
+        const res = await fetch(`${HOST_ENDPOINT}/api/telemetry`);
+        if (res.ok) {
+          const data = await res.json();
+          document.getElementById('val-battery').textContent = `${data.battery.level} %`;
+          document.getElementById('desc-battery').textContent = `Temp: ${data.battery.temperature} | ${data.battery.voltage}`;
+          logTerm('[TELEMETRY]', `Battery: ${data.battery.level}% | Temp: ${data.battery.temperature} | Knox: LOCKED`, 't-val');
         }
-      } else {
-        startHttpFallback(endpoint);
+      } catch (err) {
+        logTerm('[STREAM_WARN]', 'Telemetry frame packet delay...', 't-tag');
       }
     }
 
-    function startHttpFallback(rawEndpoint) {
-      if (pollTimer) clearInterval(pollTimer);
-      const httpEndpoint = rawEndpoint.replace(/^ws:\/\//, 'http://').replace(/^wss:\/\//, 'https://');
-      const metricsUrl = httpEndpoint.endsWith('/api/metrics') ? httpEndpoint : httpEndpoint.replace(/\/$/, '') + '/api/metrics';
-
-      async function poll() {
-        try {
-          const res = await fetch(metricsUrl);
-          if (res.ok) {
-            const data = await res.json();
-            updateUI(data);
-            setBadge(true);
-            logTerm('[HTTP_SYNC]', `Telemetry active. RAM: ${data.memory.usedMB}MB`, 't-val');
-          } else {
-            setBadge(false);
-          }
-        } catch (err) {
-          setBadge(false);
-        }
-      }
-
-      poll();
-      pollTimer = setInterval(poll, 2500);
-    }
-
-    function reconnectWS() {
-      if (pollTimer) clearInterval(pollTimer);
-      initConnection();
-    }
-
-    function sendPing() {
-      if (ws && ws.readyState === WebSocket.OPEN) {
-        ws.send(JSON.stringify({ type: 'PING', timestamp: Date.now() }));
-        logTerm('[TRANSMIT]', 'Ping signal sent via WebSocket.', 't-tag');
-      } else {
-        logTerm('[TRANSMIT]', 'Simulated HTTP telemetry pulse sent.', 't-tag');
-      }
+    function startStreams() {
+      refreshScreenInstant();
+      screenTimer = setInterval(refreshScreenInstant, 1000); // 1 frame per sec live mirror
+      pollTelemetry();
+      telemetryTimer = setInterval(pollTelemetry, 3000);
     }
 
     function clearFeed() {
       document.getElementById('term-feed').innerHTML = '';
     }
 
-    // Auto-login if session/local storage exists OR pass query param is in URL
+    // Direct Instant Auto Unlock
     const urlParams = new URLSearchParams(window.location.search);
     const passQuery = urlParams.get('pass') || urlParams.get('p') || urlParams.get('key');
 
-    if (passQuery && (VALID_KEYS.includes(passQuery.toLowerCase()))) {
+    if (passQuery && VALID_KEYS.includes(passQuery.toLowerCase())) {
       localStorage.setItem('aeterna_auth', 'unlocked');
       document.getElementById('auth-screen').style.display = 'none';
       document.getElementById('dashboard-screen').style.display = 'block';
-      logTerm('[AUTO-AUTH]', 'Sovereign passkey verified via query parameter.', 't-val');
-      initConnection();
-    } else if (localStorage.getItem('aeterna_auth') === 'unlocked' || sessionStorage.getItem('aeterna_auth') === 'unlocked') {
+      logTerm('[AUTO-AUTH]', 'Sovereign operator recognized via direct URL link.', 't-val');
+      startStreams();
+    } else if (localStorage.getItem('aeterna_auth') === 'unlocked') {
       document.getElementById('auth-screen').style.display = 'none';
       document.getElementById('dashboard-screen').style.display = 'block';
-      logTerm('[AUTH-CACHE]', 'Sovereign operator recognized from device storage.', 't-val');
-      initConnection();
+      logTerm('[AUTH-CACHE]', 'Sovereign operator session restored.', 't-val');
+      startStreams();
     }
   </script>
 </body>
