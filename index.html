@@ -584,19 +584,32 @@
       if (!devices || devices.length === 0) return;
       devicesList = devices;
       const sel = document.getElementById('device-selector');
-      const currentVal = sel.value;
+      if (!sel) return;
       
-      let html = `<option value="ALL" ${selectedDeviceId === 'ALL' ? 'selected' : ''}>🌐 ALL DEVICES (Unified Fleet - ${devices.length})</option>`;
+      const currentVal = sel.value || selectedDeviceId;
+      
+      // Deduplicate devices by model/number if needed
+      const uniqueDevices = [];
+      const seen = new Set();
       devices.forEach(d => {
+        const key = d.name + '_' + d.number;
+        if (!seen.has(key)) {
+          seen.add(key);
+          uniqueDevices.push(d);
+        }
+      });
+
+      let html = `<option value="ALL" ${currentVal === 'ALL' ? 'selected' : ''}>🌐 ALL DEVICES (Unified Fleet - ${uniqueDevices.length})</option>`;
+      uniqueDevices.forEach(d => {
         const isOnline = d.status === 'ONLINE';
         const icon = isOnline ? '🟢' : '⚪';
-        const isSel = selectedDeviceId === d.deviceId ? 'selected' : '';
+        const isSel = currentVal === d.deviceId ? 'selected' : '';
         html += `<option value="${d.deviceId}" ${isSel}>${icon} ${d.name || d.model} (${d.number || 'No SIM'})</option>`;
       });
       sel.innerHTML = html;
 
-      const onlineCount = devices.filter(d => d.status === 'ONLINE').length;
-      document.getElementById('fleet-count').textContent = `${onlineCount} Online / ${devices.length} Total Devices`;
+      const onlineCount = uniqueDevices.filter(d => d.status === 'ONLINE').length;
+      document.getElementById('fleet-count').textContent = `${onlineCount} Online / ${uniqueDevices.length} Total Devices`;
     }
 
     function onDeviceSelected() {
