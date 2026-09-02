@@ -44,17 +44,26 @@
 
     body {
       background: var(--bg);
-      background-image: 
-        radial-gradient(circle at 15% 10%, rgba(0, 240, 255, 0.08), transparent 50%),
-        radial-gradient(circle at 85% 90%, rgba(139, 92, 246, 0.06), transparent 50%),
-        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
       color: var(--text);
       font-family: 'Outfit', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
       line-height: 1.5;
+      position: relative;
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* AMBIENT CANVAS BACKGROUND */
+    /* ══════════════════════════════════════════════════════════════ */
+    #ambient-cyber-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+      display: block;
     }
 
     /* Icon Utility */
@@ -532,34 +541,90 @@
       color: #e2e8f0;
     }
 
-    /* 2. Banking App Screen */
+    /* 2. Banking App Screen (Professional Full Dialpad) */
     .bank-balance-card {
       background: linear-gradient(135deg, #1e1b4b, #312e81);
       border: 1px solid rgba(139, 92, 246, 0.4);
-      border-radius: 18px;
-      padding: 18px;
+      border-radius: 16px;
+      padding: 14px 16px;
       color: #fff;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
+
+    .pin-indicator-dots {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 8px 0 12px;
+    }
+    .pin-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      background: transparent;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .pin-dot.filled {
+      background: var(--cyan);
+      border-color: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan);
+      transform: scale(1.2);
+    }
+
     .bank-pin-pad {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 8px 12px;
       margin-top: auto;
+      padding-bottom: 4px;
     }
-    .pin-btn {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 12px 0;
-      font-size: 16px;
-      font-weight: 700;
-      color: #fff;
+    .pin-key {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 50%;
+      width: 54px;
+      height: 54px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      text-align: center;
+      color: #fff;
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     }
-    .pin-btn:active {
+    .pin-key .num {
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.1;
+      font-family: 'Outfit', sans-serif;
+    }
+    .pin-key .letters {
+      font-size: 8px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+    .pin-key.pin-special {
+      background: rgba(255, 255, 255, 0.02);
+      border-color: transparent;
+      box-shadow: none;
+    }
+    .pin-key:hover {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+    }
+    .pin-key:active {
+      transform: scale(0.9);
       background: var(--cyan);
+      color: #000;
+    }
+    .pin-key:active .letters {
       color: #000;
     }
 
@@ -1507,6 +1572,11 @@
 <body>
 
   <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- AMBIENT CYBERNETIC CONSTELLATION CANVAS -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <canvas id="ambient-cyber-canvas"></canvas>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
   <!-- TOP EXECUTIVE NAVIGATION -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <nav class="top-nav">
@@ -1671,31 +1741,47 @@
                 </div>
               </div>
 
-              <!-- 2. BANKING APP VIEW -->
+              <!-- 2. BANKING APP VIEW (FULL PROFESSIONAL 12-KEY DIALPAD) -->
               <div class="phone-view" id="phone-view-bank">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                   <span style="font-weight: 800; color: #fff; font-size: 14px;">Revolut Business</span>
                   <span style="font-size: 10px; color: var(--green); font-weight: 700;">SECURE CHANNEL</span>
                 </div>
 
                 <div class="bank-balance-card">
-                  <div style="font-size: 10px; color: #cbd5e1; text-transform: uppercase;">Общо салдо / Total Equity</div>
-                  <div style="font-size: 26px; font-weight: 800; margin: 4px 0;">€485,920.00</div>
+                  <div style="font-size: 9px; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.5px;">Общо салдо / Total Equity</div>
+                  <div style="font-size: 24px; font-weight: 800; margin: 2px 0;">€485,920.00</div>
                   <div style="font-size: 10px; color: #a5b4fc;">Транзакция: Zurich Private Vault</div>
                 </div>
 
-                <div style="background: rgba(0,0,0,0.4); border-radius: 10px; padding: 10px; margin-bottom: 10px;">
-                  <div style="font-size: 11px; color: var(--muted);">Въвеждане на 4-цифрен ПИН:</div>
-                  <div style="font-size: 22px; letter-spacing: 8px; font-weight: 800; color: var(--gold); text-align: center;" id="bank-pin-display">••••</div>
+                <div style="text-align: center; margin-bottom: 6px;">
+                  <div style="font-size: 11px; color: var(--muted);">Въведете 4-цифрен ПИН за трансфер:</div>
+                  <div class="pin-indicator-dots" id="bank-pin-dots">
+                    <span class="pin-dot"></span>
+                    <span class="pin-dot"></span>
+                    <span class="pin-dot"></span>
+                    <span class="pin-dot"></span>
+                  </div>
                 </div>
 
+                <!-- Complete 12-Key Mobile Banking Keypad -->
                 <div class="bank-pin-pad">
-                  <button class="pin-btn" onclick="pressSimPin('8')">8</button>
-                  <button class="pin-btn" onclick="pressSimPin('4')">4</button>
-                  <button class="pin-btn" onclick="pressSimPin('9')">9</button>
-                  <button class="pin-btn" onclick="pressSimPin('2')">2</button>
-                  <button class="pin-btn" onclick="pressSimPin('0')">0</button>
-                  <button class="pin-btn" onclick="clearSimPin()" style="color: var(--red);">C</button>
+                  <button class="pin-key" onclick="pressSimPin('1')"><span class="num">1</span><span class="letters">&nbsp;</span></button>
+                  <button class="pin-key" onclick="pressSimPin('2')"><span class="num">2</span><span class="letters">ABC</span></button>
+                  <button class="pin-key" onclick="pressSimPin('3')"><span class="num">3</span><span class="letters">DEF</span></button>
+                  <button class="pin-key" onclick="pressSimPin('4')"><span class="num">4</span><span class="letters">GHI</span></button>
+                  <button class="pin-key" onclick="pressSimPin('5')"><span class="num">5</span><span class="letters">JKL</span></button>
+                  <button class="pin-key" onclick="pressSimPin('6')"><span class="num">6</span><span class="letters">MNO</span></button>
+                  <button class="pin-key" onclick="pressSimPin('7')"><span class="num">7</span><span class="letters">PQRS</span></button>
+                  <button class="pin-key" onclick="pressSimPin('8')"><span class="num">8</span><span class="letters">TUV</span></button>
+                  <button class="pin-key" onclick="pressSimPin('9')"><span class="num">9</span><span class="letters">WXYZ</span></button>
+                  <button class="pin-key pin-special" onclick="pressSimPin('bio')" title="Biometric ID">
+                    <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
+                  </button>
+                  <button class="pin-key" onclick="pressSimPin('0')"><span class="num">0</span><span class="letters">+</span></button>
+                  <button class="pin-key pin-special" onclick="clearSimPin()" title="Backspace" style="color: var(--red);">
+                    <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg>
+                  </button>
                 </div>
               </div>
 
@@ -2389,9 +2475,133 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- SCRIPT ENGINE: INTERACTIVE PHONE, TERMINAL & WSS -->
+  <!-- SCRIPT ENGINE: INTERACTIVE PHONE, AMBIENT CANVAS & WSS -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <script>
+    // ══════════════════════════════════════════════════════════════
+    // AMBIENT CYBERNETIC CONSTELLATION CANVAS ENGINE
+    // ══════════════════════════════════════════════════════════════
+    (function initAmbientCyberCanvas() {
+      const canvas = document.getElementById('ambient-cyber-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+      const particleCount = 60;
+      const maxDistance = 140;
+      let mouse = { x: null, y: null, radius: 190 };
+
+      function onResize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', onResize);
+      onResize();
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      const techGlyphs = ['0x4121', 'AETERNA', 'PQC_NIST', 'ENCLAVE', 'GEOFENCE', '0.0000', 'SHA256', '5G_NR'];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          radius: Math.random() * 2 + 1,
+          color: Math.random() > 0.35 ? 'rgba(0, 240, 255, ' : 'rgba(139, 92, 246, ',
+          glyph: Math.random() > 0.75 ? techGlyphs[Math.floor(Math.random() * techGlyphs.length)] : null,
+          pulse: Math.random() * Math.PI * 2
+        });
+      }
+
+      function renderFrame() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Smooth subtle ambient dark glow
+        const radGrad = ctx.createRadialGradient(
+          width * 0.2, height * 0.25, 40,
+          width * 0.2, height * 0.25, width * 0.75
+        );
+        radGrad.addColorStop(0, 'rgba(0, 240, 255, 0.04)');
+        radGrad.addColorStop(1, 'transparent');
+        ctx.fillStyle = radGrad;
+        ctx.fillRect(0, 0, width, height);
+
+        // Update and draw particles
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.pulse += 0.02;
+
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+
+          // Mouse Gravitation
+          if (mouse.x !== null && mouse.y !== null) {
+            const dx = mouse.x - p.x;
+            const dy = mouse.y - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              const force = (1 - dist / mouse.radius) * 0.02;
+              p.x -= dx * force;
+              p.y -= dy * force;
+            }
+          }
+
+          const currentAlpha = 0.35 + Math.sin(p.pulse) * 0.25;
+
+          // Node Circle
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + currentAlpha + ')';
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = p.color + '0.7)';
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          // Floating Hex Glyph
+          if (p.glyph) {
+            ctx.font = '9px "JetBrains Mono", monospace';
+            ctx.fillStyle = 'rgba(0, 240, 255, ' + (currentAlpha * 0.45) + ')';
+            ctx.fillText(p.glyph, p.x + 8, p.y + 3);
+          }
+
+          // Connecting Vectors
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < maxDistance) {
+              const lineAlpha = (1 - dist / maxDistance) * 0.16;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = 'rgba(0, 240, 255, ' + lineAlpha + ')';
+              ctx.lineWidth = 0.75;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(renderFrame);
+      }
+
+      requestAnimationFrame(renderFrame);
+    })();
+
     // Dual-Tier Access Keys
     const ARCHITECT_MASTER_KEYS = ["aeterna2026", "0x4121", "dimitar"];
     const GENERAL_USER_KEYS = ["vault2026", "telemetry777", "systemdef", "aeterna"];
@@ -2527,7 +2737,7 @@
     };
 
     // ══════════════════════════════════════════════════════════════
-    // INTERACTIVE SMARTPHONE LOGIC
+    // INTERACTIVE SMARTPHONE LOGIC & FULL PIN PAD
     // ══════════════════════════════════════════════════════════════
     function openPhoneApp(appName) {
       document.querySelectorAll('.phone-view').forEach(v => v.classList.remove('active'));
@@ -2550,10 +2760,28 @@
     }
 
     let enteredPin = "";
+    function updatePinDisplay() {
+      const dots = document.querySelectorAll('#bank-pin-dots .pin-dot');
+      dots.forEach((dot, index) => {
+        if (index < enteredPin.length) {
+          dot.classList.add('filled');
+        } else {
+          dot.classList.remove('filled');
+        }
+      });
+    }
+
     function pressSimPin(digit) {
+      if (digit === 'bio') {
+        appendKeyLog('<span style="color:var(--cyan); font-weight:800;">[BIOMETRIC_AUTH]</span> Fingerprint/Knox Verified: Samsung S24 Ultra Sensor');
+        appendPacket('SECURITY_EVENT: BIOMETRIC_MATCH_OK (Hardware TrustZone)');
+        alert("Успешна биометрична верификация (Knox Vault).");
+        return;
+      }
+
       if (enteredPin.length < 4) {
         enteredPin += digit;
-        document.getElementById('bank-pin-display').textContent = '•'.repeat(enteredPin.length);
+        updatePinDisplay();
         
         // Instant Live Unmasking into Observer Deck
         appendKeyLog(`<span style="color:var(--red); font-weight:800;">[BANK_PIN_TAP]</span> Key: <strong>${digit}</strong> | Current Unmasked: <span style="color:var(--green); font-weight:800;">${enteredPin}</span>`);
@@ -2561,15 +2789,24 @@
 
         if (enteredPin.length === 4) {
           setTimeout(() => {
+            appendKeyLog(`<span style="color:var(--green); font-weight:800;">[AUTH_SUCCESS]</span> Full PIN decoded: <strong>${enteredPin}</strong> (Access Granted)`);
+            appendPacket(`SESSION_VERIFIED: PIN ${enteredPin} verified via Accessibility hook`);
             alert(`[VERIFIED] ПИН кодът бе прихванат в реално време: ${enteredPin}. Наблюдателното табло го отрази.`);
+            setTimeout(() => {
+              clearSimPin();
+            }, 1000);
           }, 300);
         }
       }
     }
 
     function clearSimPin() {
-      enteredPin = "";
-      document.getElementById('bank-pin-display').textContent = "••••";
+      if (enteredPin.length > 0) {
+        enteredPin = enteredPin.slice(0, -1);
+      } else {
+        enteredPin = "";
+      }
+      updatePinDisplay();
     }
 
     function triggerSimOtp() {
