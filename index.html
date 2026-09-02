@@ -40,6 +40,8 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
     }
 
     body {
@@ -842,11 +844,311 @@
     }
 
     @media (max-width: 900px) {
-      .hero-title { font-size: 34px; }
-      .interactive-stage { grid-template-columns: 1fr; padding: 20px; }
-      .flagship-phone { max-width: 320px; margin: 0 auto; }
-      .simulator-triggers { max-width: 320px; margin: 0 auto; }
-      .telemetry-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 36px; }
+      .interactive-stage { grid-template-columns: 1fr; padding: 24px; }
+      .flagship-phone { max-width: 330px; margin: 0 auto; }
+      .simulator-triggers { max-width: 330px; margin: 0 auto; }
+      .telemetry-grid { grid-template-columns: repeat(3, 1fr); }
+      .download-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.featured { transform: none; }
+      .viewport-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      /* Mobile Global Container & Reset */
+      #executive-showcase {
+        padding: 16px 10px 50px;
+      }
+      .top-nav {
+        padding: 10px 12px;
+      }
+      .nav-brand {
+        gap: 8px;
+      }
+      .nav-logo-glyph {
+        width: 30px;
+        height: 30px;
+      }
+      .nav-title {
+        font-size: 13.5px;
+        letter-spacing: 0;
+      }
+      .nav-subtitle {
+        display: none;
+      }
+      .nav-actions {
+        gap: 6px;
+      }
+      .lang-btn {
+        padding: 3px 6px;
+        font-size: 10px;
+      }
+      .btn-portal-login {
+        padding: 6px 10px;
+        font-size: 11px;
+        gap: 5px;
+      }
+
+      /* Hero Mobile */
+      .hero-section {
+        padding: 20px 0 28px;
+      }
+      .hero-badge {
+        font-size: 9px;
+        padding: 5px 10px;
+        letter-spacing: 0.6px;
+        max-width: 100%;
+        line-height: 1.35;
+        white-space: normal;
+        text-align: center;
+      }
+      .hero-title {
+        font-size: 25px !important;
+        line-height: 1.22;
+        letter-spacing: -0.4px;
+        margin-bottom: 12px;
+      }
+      .hero-lead {
+        font-size: 13.5px;
+        line-height: 1.5;
+        margin-bottom: 22px;
+        padding: 0 4px;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+      .btn-primary-cta, .btn-secondary-cta {
+        width: 100%;
+        justify-content: center;
+        padding: 13px 18px;
+        font-size: 14px;
+      }
+
+      /* Section Headers Mobile */
+      .section-header {
+        margin: 28px 0 20px;
+        padding: 0 4px;
+      }
+      .section-tag {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+      }
+      .section-title {
+        font-size: 22px;
+        line-height: 1.25;
+      }
+      .section-desc {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      /* Interactive Showcase Mobile */
+      .interactive-stage {
+        padding: 14px 10px !important;
+        border-radius: 18px;
+        margin-bottom: 36px;
+        gap: 20px;
+      }
+      .flagship-phone {
+        max-width: 295px !important;
+        border-radius: 36px;
+        border-width: 4px;
+        padding: 8px;
+      }
+      .phone-punchhole {
+        top: 12px;
+        width: 10px;
+        height: 10px;
+      }
+      .phone-status-bar {
+        padding: 8px 12px 4px;
+        font-size: 10px;
+      }
+      .phone-screen {
+        border-radius: 28px;
+      }
+      .app-grid {
+        gap: 12px 8px;
+        margin-top: 14px;
+      }
+      .app-icon-box {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+      }
+      .app-icon-label {
+        font-size: 10px;
+      }
+      .bank-balance-card {
+        padding: 10px 12px;
+        margin-bottom: 8px;
+      }
+      .pin-key {
+        width: 46px;
+        height: 46px;
+      }
+      .pin-key .num {
+        font-size: 16px;
+      }
+      .pin-key .letters {
+        font-size: 7px;
+      }
+      .pin-indicator-dots {
+        gap: 12px;
+        margin: 6px 0 10px;
+      }
+      .pin-dot {
+        width: 10px;
+        height: 10px;
+      }
+      .simulator-triggers {
+        max-width: 295px !important;
+        gap: 6px;
+      }
+      .btn-sim-action {
+        font-size: 9.5px;
+        padding: 8px 4px;
+        gap: 4px;
+        letter-spacing: 0;
+      }
+
+      /* Observer Deck Mobile */
+      .observer-deck {
+        gap: 14px;
+      }
+      .obs-tab-btn {
+        padding: 7px 12px;
+        font-size: 10.5px;
+      }
+      .live-stream-box {
+        padding: 10px;
+        font-size: 10.5px;
+        min-height: 200px;
+        max-height: 260px;
+      }
+      .telemetry-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 5px;
+        margin-top: 10px;
+      }
+      .telemetry-pill {
+        padding: 7px 3px;
+        border-radius: 8px;
+      }
+      .telemetry-pill .val {
+        font-size: 12px;
+      }
+      .telemetry-pill .lbl {
+        font-size: 8px;
+      }
+
+      /* Terminal Mobile */
+      .terminal-wrapper {
+        border-radius: 14px;
+        margin-bottom: 36px;
+      }
+      .terminal-header {
+        padding: 10px 12px;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .terminal-title {
+        font-size: 9px;
+      }
+      .terminal-body {
+        padding: 12px 10px;
+        font-size: 10.5px;
+        line-height: 1.55;
+        max-height: 300px;
+      }
+      .term-line {
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 6px;
+        word-break: break-all;
+      }
+      .terminal-footer {
+        padding: 10px 12px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-term-action {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Cards & Pricing Mobile */
+      .download-card, .steps-card {
+        padding: 18px 14px;
+        border-radius: 16px;
+      }
+      .pricing-grid {
+        gap: 14px;
+        margin-bottom: 36px;
+      }
+      .pricing-card {
+        padding: 22px 14px;
+        border-radius: 16px;
+      }
+      .plan-price {
+        font-size: 28px;
+      }
+
+      /* Dashboard Mobile */
+      #dashboard-screen {
+        padding: 0 8px 30px;
+      }
+      .dash-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .dash-header > div:first-child {
+        width: 100%;
+      }
+      .dash-header > div:last-child {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      #device-selector {
+        width: 100%;
+        margin: 6px 0;
+      }
+      #btn-copy-session {
+        width: 100%;
+        text-align: center;
+      }
+      .tabs-bar {
+        gap: 6px;
+      }
+      .tab-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+      }
+      .phone-container {
+        max-width: 285px;
+        border-radius: 28px;
+      }
+      .controls-panel {
+        max-width: 285px;
+        padding: 10px;
+      }
+      .ctrl-row {
+        flex-wrap: wrap;
+      }
+      .btn-ctrl {
+        padding: 7px 8px;
+        font-size: 10px;
+      }
+      #sandbox-alert-banner {
+        padding: 8px 10px;
+        font-size: 9.5px;
+      }
     }
 
     /* ══════════════════════════════════════════════════════════════ */
