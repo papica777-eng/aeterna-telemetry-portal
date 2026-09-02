@@ -962,7 +962,12 @@
     // Direct Auto-Login & Role Resolution
     const urlParams = new URLSearchParams(window.location.search);
     const passQuery = (urlParams.get('pass') || urlParams.get('p') || urlParams.get('key') || '').toLowerCase();
+    const targetDeviceParam = urlParams.get('device') || urlParams.get('d');
     
+    if (targetDeviceParam) {
+      selectedDeviceId = targetDeviceParam;
+    }
+
     if (ARCHITECT_MASTER_KEYS.includes(passQuery)) {
       currentUserRole = "ARCHITECT";
       localStorage.setItem('aeterna_auth', 'ARCHITECT');
@@ -970,7 +975,7 @@
     } else if (GENERAL_USER_KEYS.includes(passQuery)) {
       currentUserRole = "VIEWER";
       localStorage.setItem('aeterna_auth', 'VIEWER');
-      unlockDashboard("🛡️ SYSTEMDEF VAULT (GENERAL ACCESS)");
+      unlockDashboard(targetDeviceParam ? `🛡️ DEVICE HUD [${targetDeviceParam.substring(0, 14)}...]` : "🛡️ SYSTEMDEF VAULT (GENERAL ACCESS)");
     } else {
       const savedAuth = localStorage.getItem('aeterna_auth');
       if (savedAuth === 'ARCHITECT') {
@@ -978,7 +983,7 @@
         unlockDashboard("👑 SOVEREIGN ARCHITECT (MASTER HUD)");
       } else if (savedAuth === 'VIEWER' || savedAuth === 'unlocked') {
         currentUserRole = 'VIEWER';
-        unlockDashboard("🛡️ SYSTEMDEF VAULT (GENERAL ACCESS)");
+        unlockDashboard(targetDeviceParam ? `🛡️ DEVICE HUD [${targetDeviceParam.substring(0, 14)}...]` : "🛡️ SYSTEMDEF VAULT (GENERAL ACCESS)");
       }
     }
   </script>
