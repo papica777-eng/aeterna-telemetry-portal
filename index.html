@@ -436,10 +436,14 @@
           
           <div class="phone-controls-panel">
             <div style="display: flex; gap: 8px; width: 100%;">
+              <button class="btn-ctrl" style="background: rgba(0, 240, 255, 0.15); border-color: var(--cyan); color: var(--cyan); font-weight: 800;" onclick="unlockPhone()">🔓 Unlock Phone</button>
+              <button class="btn-ctrl" onclick="sendDeviceKey('POWER')">🔒 Power</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; width: 100%;">
               <button class="btn-ctrl" onclick="sendDeviceKey('BACK')">◀ Back</button>
               <button class="btn-ctrl" onclick="sendDeviceKey('HOME')">● Home</button>
               <button class="btn-ctrl" onclick="sendDeviceKey('RECENTS')">■ Recents</button>
-              <button class="btn-ctrl" onclick="sendDeviceKey('POWER')">🔒 Power</button>
             </div>
 
             <div style="display: flex; gap: 8px; width: 100%;">
@@ -448,7 +452,7 @@
             </div>
 
             <div style="display: flex; gap: 6px; width: 100%;">
-              <input type="text" id="type-text-input" placeholder="Въведете текст за телефона..." style="flex: 1; background: #020306; border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-family: 'JetBrains Mono'; font-size: 11px; color: #fff; outline: none;">
+              <input type="text" id="type-text-input" placeholder="Въведете текст / PIN..." style="flex: 1; background: #020306; border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-family: 'JetBrains Mono'; font-size: 11px; color: #fff; outline: none;">
               <button class="btn-ctrl" style="background: var(--cyan); color: #000; font-weight: 800;" onclick="sendTypeText()">Send</button>
             </div>
           </div>
@@ -785,6 +789,15 @@
           }));
         }
       });
+    }
+
+    function unlockPhone() {
+      const input = document.getElementById('type-text-input');
+      const pin = input.value.trim();
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({ action: 'unlock', pin: pin }));
+      }
+      setTimeout(refreshScreenFallback, 600);
     }
 
     function sendDeviceKey(key) {
