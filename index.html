@@ -644,10 +644,20 @@
       document.getElementById('term-feed').innerHTML = '';
     }
 
-    // Auto-login if session exists
-    if (sessionStorage.getItem('aeterna_auth') === 'unlocked') {
+    // Auto-login if session/local storage exists OR pass query param is in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const passQuery = urlParams.get('pass') || urlParams.get('p') || urlParams.get('key');
+
+    if (passQuery && (VALID_KEYS.includes(passQuery.toLowerCase()))) {
+      localStorage.setItem('aeterna_auth', 'unlocked');
       document.getElementById('auth-screen').style.display = 'none';
       document.getElementById('dashboard-screen').style.display = 'block';
+      logTerm('[AUTO-AUTH]', 'Sovereign passkey verified via query parameter.', 't-val');
+      initConnection();
+    } else if (localStorage.getItem('aeterna_auth') === 'unlocked' || sessionStorage.getItem('aeterna_auth') === 'unlocked') {
+      document.getElementById('auth-screen').style.display = 'none';
+      document.getElementById('dashboard-screen').style.display = 'block';
+      logTerm('[AUTH-CACHE]', 'Sovereign operator recognized from device storage.', 't-val');
       initConnection();
     }
   </script>
