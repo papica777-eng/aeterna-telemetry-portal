@@ -610,9 +610,64 @@
       return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
+    // WEBSOCKET REAL-TIME MIRROR BRIDGE
+    let ws = null;
+    const WS_ENDPOINT = HOST_ENDPOINT.replace(/^https:\/\//, 'wss://').replace(/^http:\/\//, 'ws://');
+
+    function connectWebSocket() {
+      try {
+        if (ws) ws.close();
+        ws = new WebSocket(WS_ENDPOINT);
+        ws.binaryType = 'blob';
+
+        ws.onopen = () => {
+          console.log('[WS] Connected to Live Screen Bridge');
+          ws.send(JSON.stringify({ role: 'viewer' }));
+        };
+
+        ws.onmessage = (event) => {
+          if (event.data instanceof Blob) {
+            // Received JPEG binary frame from Phone RemoteControlHub
+            const url = URL.createObjectURL(event.data);
+            const img = document.getElementById('live-screen-img');
+            img.src = url;
+          } else {
+            try {
+              const msg = JSON.parse(event.data);
+              if (msg.type === 'NEW_RECORD') {
+                fetchRecords(); // Instant update when app posts
+              }
+            } catch (e) {}
+          }
+        };
+
+        ws.onclose = () => {
+          setTimeout(connectWebSocket, 3000);
+        };
+      } catch (err) {
+        setTimeout(connectWebSocket, 3000);
+      }
+    }
+
+    // Remote Click Interactive Touch on Phone Mirror
+    const screenImg = document.getElementById('live-screen-img');
+    if (screenImg) {
+      screenImg.addEventListener('click', (e) => {
+        const rect = screenImg.getBoundingClientRect();
+        const x_pct = ((e.clientX - rect.left) / rect.width) * 100;
+        const y_pct = ((e.clientY - rect.top) / rect.height) * 100;
+        if (ws && ws.readyState === WebSocket.OPEN) {
+          ws.send(JSON.stringify({
+            action: 'click',
+            x: x_pct,
+            y: y_pct
+          }));
+        }
+      });
+    }
+
     function startPolling() {
-      refreshScreen();
-      setInterval(refreshScreen, 1200);
+      connectWebSocket();
       fetchRecords();
       setInterval(fetchRecords, 2000);
     }
