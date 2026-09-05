@@ -2374,9 +2374,11 @@
     /* 3. GLOBAL TELEMETRY NODE MAP */
     /* ══════════════════════════════════════════════════════════════ */
     .world-map-card {
-      max-width: 1200px;
+      max-width: 1260px;
       margin: 0 auto 60px;
-      padding: 0 24px;
+      padding: 0 20px;
+      box-sizing: border-box;
+      width: 100%;
     }
     .world-map-inner {
       background: rgba(8, 14, 26, 0.85);
@@ -2386,15 +2388,19 @@
       backdrop-filter: blur(20px);
       box-shadow: 0 16px 40px rgba(0,0,0,0.6);
       position: relative;
+      box-sizing: border-box;
+      width: 100%;
     }
     .world-map-svg-wrap {
       position: relative;
       width: 100%;
-      height: 380px;
+      height: 420px;
       border-radius: 14px;
       background: radial-gradient(circle at 50% 50%, #0a1529 0%, #030712 100%);
       border: 1px solid var(--border);
       overflow: hidden;
+      margin: 0 auto;
+      box-sizing: border-box;
     }
     .map-canvas-layer {
       width: 100%;
@@ -4254,8 +4260,8 @@
     </div>
 
     <!-- VIEW 7: GLOBAL FLEET & TELEMETRY NODE MAP -->
-    <div id="tab-global-map" class="view-content">
-      <div style="background: rgba(8, 14, 26, 0.85); border: 1px solid var(--border-strong); border-radius: 16px; padding: 24px;">
+    <div id="tab-global-map" class="view-content" style="width: 100%; margin: 0 auto; box-sizing: border-box;">
+      <div style="background: rgba(8, 14, 26, 0.85); border: 1px solid var(--border-strong); border-radius: 16px; padding: 28px; width: 100%; box-sizing: border-box;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
           <div>
             <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin: 0;">GLOBAL SATELLITE & ENCLAVE TOPOLOGY</h3>
@@ -4268,7 +4274,7 @@
           </div>
         </div>
 
-        <div class="world-map-svg-wrap" style="height: 440px;" id="hud-world-map-container">
+        <div class="world-map-svg-wrap" style="height: 440px; width: 100%; box-sizing: border-box; margin: 0 auto;" id="hud-world-map-container">
           <canvas id="hud-mesh-canvas" class="map-canvas-layer"></canvas>
           <div class="map-log-feed">
             <span class="pulse-dot" style="width: 6px; height: 6px; background: var(--green); flex-shrink: 0;"></span>
@@ -5043,42 +5049,126 @@
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
 
-      const nodes = [
-        { name: "Zurich Core", x: 0.51, y: 0.32, ping: "1.14ms", color: "#10b981", radius: 5 },
-        { name: "Geneva HQ", x: 0.50, y: 0.33, ping: "1.28ms", color: "#10b981", radius: 5 },
-        { name: "London Relay", x: 0.48, y: 0.28, ping: "14.1ms", color: "#00f0ff", radius: 4 },
-        { name: "Frankfurt Mesh", x: 0.52, y: 0.30, ping: "8.2ms", color: "#00f0ff", radius: 4 },
-        { name: "Sofia Edge", x: 0.56, y: 0.35, ping: "5.8ms", color: "#10b981", radius: 4 },
-        { name: "New York Hub", x: 0.28, y: 0.34, ping: "31.4ms", color: "#f59e0b", radius: 4.5 },
-        { name: "Singapore Gateway", x: 0.79, y: 0.58, ping: "38.7ms", color: "#f59e0b", radius: 4 },
-        { name: "Tokyo Enclave", x: 0.88, y: 0.36, ping: "42.0ms", color: "#f59e0b", radius: 4.5 }
+      // High-Tech Cybernetic Vector Continents (Normalized 0..1)
+      const continents = [
+        // North America
+        [
+          [0.10, 0.22], [0.14, 0.18], [0.22, 0.16], [0.30, 0.18],
+          [0.32, 0.25], [0.28, 0.32], [0.255, 0.345], [0.24, 0.42],
+          [0.21, 0.43], [0.18, 0.50], [0.15, 0.44], [0.13, 0.34],
+          [0.10, 0.28]
+        ],
+        // Greenland
+        [
+          [0.32, 0.10], [0.38, 0.09], [0.36, 0.16], [0.31, 0.14]
+        ],
+        // South America
+        [
+          [0.23, 0.50], [0.28, 0.51], [0.33, 0.56], [0.32, 0.65],
+          [0.29, 0.75], [0.26, 0.84], [0.24, 0.74], [0.21, 0.60],
+          [0.22, 0.52]
+        ],
+        // British Isles
+        [
+          [0.45, 0.24], [0.475, 0.23], [0.475, 0.28], [0.45, 0.29]
+        ],
+        // Mainland Europe
+        [
+          [0.46, 0.33], [0.44, 0.37], [0.48, 0.38], [0.49, 0.34],
+          [0.512, 0.315], [0.518, 0.255], [0.50, 0.18], [0.53, 0.16],
+          [0.55, 0.22], [0.58, 0.26], [0.578, 0.355], [0.56, 0.38],
+          [0.53, 0.36], [0.495, 0.345]
+        ],
+        // Africa
+        [
+          [0.46, 0.41], [0.54, 0.41], [0.60, 0.48], [0.57, 0.62],
+          [0.53, 0.76], [0.48, 0.66], [0.44, 0.54], [0.43, 0.46]
+        ],
+        // Madagascar
+        [
+          [0.60, 0.68], [0.62, 0.73], [0.60, 0.75], [0.59, 0.70]
+        ],
+        // Asia
+        [
+          [0.58, 0.26], [0.72, 0.18], [0.86, 0.20], [0.85, 0.28],
+          [0.80, 0.32], [0.78, 0.45], [0.77, 0.56], [0.770, 0.615],
+          [0.72, 0.52], [0.68, 0.57], [0.64, 0.48], [0.61, 0.44],
+          [0.58, 0.40], [0.56, 0.34]
+        ],
+        // Japan
+        [
+          [0.85, 0.30], [0.875, 0.34], [0.85, 0.38], [0.84, 0.32]
+        ],
+        // Australia
+        [
+          [0.79, 0.72], [0.87, 0.70], [0.89, 0.80], [0.84, 0.85],
+          [0.78, 0.81], [0.77, 0.74]
+        ],
+        // New Zealand
+        [
+          [0.92, 0.83], [0.94, 0.88], [0.92, 0.89]
+        ]
       ];
 
+      // Geographically accurate nodes with dedicated anti-overlap offsets
+      const nodes = [
+        { name: "Zurich Core", x: 0.512, y: 0.315, ping: "1.14ms", color: "#10b981", radius: 5, align: "left", dx: 10, dy: -4 },
+        { name: "Geneva HQ", x: 0.495, y: 0.345, ping: "1.28ms", color: "#10b981", radius: 5, align: "right", dx: -10, dy: 14 },
+        { name: "London Relay", x: 0.465, y: 0.265, ping: "14.1ms", color: "#00f0ff", radius: 4, align: "right", dx: -10, dy: -8 },
+        { name: "Frankfurt Mesh", x: 0.518, y: 0.255, ping: "8.2ms", color: "#00f0ff", radius: 4, align: "left", dx: 10, dy: -14 },
+        { name: "Sofia Edge", x: 0.578, y: 0.355, ping: "5.8ms", color: "#10b981", radius: 4, align: "left", dx: 10, dy: 14 },
+        { name: "New York Hub", x: 0.255, y: 0.345, ping: "31.4ms", color: "#f59e0b", radius: 4.5, align: "right", dx: -10, dy: -4 },
+        { name: "Singapore Gateway", x: 0.770, y: 0.615, ping: "38.7ms", color: "#f59e0b", radius: 4, align: "left", dx: 10, dy: 12 },
+        { name: "Tokyo Enclave", x: 0.865, y: 0.345, ping: "42.0ms", color: "#f59e0b", radius: 4.5, align: "left", dx: 10, dy: -4 }
+      ];
+
+      // Geographically authentic undersea & terrestrial fiber backbone connections
       const connections = [
-        [0, 1], [0, 2], [0, 3], [0, 4], [0, 5],
-        [3, 2], [1, 5], [4, 6], [6, 7], [5, 7]
+        [5, 2], // New York Hub <-> London Relay (Transatlantic)
+        [5, 0], // New York Hub <-> Zurich Core (Direct Swiss-US Tunnel)
+        [2, 3], // London Relay <-> Frankfurt Mesh
+        [2, 1], // London Relay <-> Geneva HQ
+        [3, 0], // Frankfurt Mesh <-> Zurich Core
+        [0, 1], // Zurich Core <-> Geneva HQ
+        [3, 4], // Frankfurt Mesh <-> Sofia Edge
+        [0, 4], // Zurich Core <-> Sofia Edge
+        [4, 6], // Sofia Edge <-> Singapore Gateway (Eurasian Link)
+        [0, 6], // Zurich Core <-> Singapore Gateway
+        [6, 7]  // Singapore Gateway <-> Tokyo Enclave
       ];
 
       let t = 0;
 
       function resize() {
         if (!canvas.parentElement) return;
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
+        const rect = canvas.parentElement.getBoundingClientRect();
+        if (rect.width > 0 && rect.height > 0) {
+          canvas.width = rect.width;
+          canvas.height = rect.height;
+        }
       }
       window.addEventListener('resize', resize);
       resize();
 
       function render() {
-        if (!canvas.width || !canvas.height) {
-          resize();
+        if (!canvas.parentElement) return;
+        const pWidth = canvas.parentElement.clientWidth;
+        const pHeight = canvas.parentElement.clientHeight;
+        if (pWidth > 0 && pHeight > 0 && (canvas.width !== pWidth || canvas.height !== pHeight)) {
+          canvas.width = pWidth;
+          canvas.height = pHeight;
         }
+        if (!canvas.width || !canvas.height) {
+          requestAnimationFrame(render);
+          return;
+        }
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Grid Matrix
-        ctx.strokeStyle = 'rgba(0, 240, 255, 0.04)';
+        // Cybernetic Coordinate Matrix
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.035)';
         ctx.lineWidth = 1;
-        const step = 28;
+        const step = 32;
         for (let x = 0; x < canvas.width; x += step) {
           ctx.beginPath();
           ctx.moveTo(x, 0);
@@ -5091,6 +5181,39 @@
           ctx.lineTo(canvas.width, y);
           ctx.stroke();
         }
+
+        // Equator & Prime Meridian Guide Lines
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.08)';
+        ctx.setLineDash([4, 6]);
+        // Equator
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height * 0.52);
+        ctx.lineTo(canvas.width, canvas.height * 0.52);
+        ctx.stroke();
+        // Prime Meridian (Greenwich / London)
+        ctx.beginPath();
+        ctx.moveTo(canvas.width * 0.465, 0);
+        ctx.lineTo(canvas.width * 0.465, canvas.height);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Cybernetic Vector Continents Landmasses
+        ctx.fillStyle = 'rgba(0, 240, 255, 0.035)';
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.2)';
+        ctx.lineWidth = 1.1;
+
+        continents.forEach(poly => {
+          ctx.beginPath();
+          poly.forEach(([px, py], i) => {
+            const cx = px * canvas.width;
+            const cy = py * canvas.height;
+            if (i === 0) ctx.moveTo(cx, cy);
+            else ctx.lineTo(cx, cy);
+          });
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+        });
 
         // Connections Arcs
         connections.forEach(([i1, i2]) => {
@@ -5105,19 +5228,19 @@
           ctx.moveTo(x1, y1);
           // Curved Arc
           const cx = (x1 + x2) / 2;
-          const cy = (y1 + y2) / 2 - 25;
+          const cy = (y1 + y2) / 2 - 22;
           ctx.quadraticCurveTo(cx, cy, x2, y2);
-          ctx.strokeStyle = 'rgba(0, 240, 255, 0.16)';
+          ctx.strokeStyle = 'rgba(0, 240, 255, 0.18)';
           ctx.lineWidth = 1.2;
           ctx.stroke();
 
           // Packet tracer moving along arc
-          const progress = ((t * 0.4 + i1 * 0.2) % 1);
+          const progress = ((t * 0.35 + i1 * 0.18) % 1);
           const px = (1 - progress) * (1 - progress) * x1 + 2 * (1 - progress) * progress * cx + progress * progress * x2;
           const py = (1 - progress) * (1 - progress) * y1 + 2 * (1 - progress) * progress * cy + progress * progress * y2;
 
           ctx.beginPath();
-          ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+          ctx.arc(px, py, 2.2, 0, Math.PI * 2);
           ctx.fillStyle = '#00f0ff';
           ctx.shadowBlur = 6;
           ctx.shadowColor = '#00f0ff';
@@ -5125,21 +5248,21 @@
           ctx.shadowBlur = 0;
         });
 
-        // Nodes
+        // Nodes & Anti-Overlap Labels
         nodes.forEach((n, idx) => {
           const nx = n.x * canvas.width;
           const ny = n.y * canvas.height;
-          const pulse = (Math.sin(t * 2 + idx) + 1) / 2;
+          const pulse = (Math.sin(t * 2.2 + idx) + 1) / 2;
 
           // Outer Ripple
           ctx.beginPath();
           ctx.arc(nx, ny, n.radius + pulse * 10, 0, Math.PI * 2);
           ctx.strokeStyle = n.color;
-          ctx.globalAlpha = 0.4 - pulse * 0.35;
+          ctx.globalAlpha = 0.45 - pulse * 0.4;
           ctx.stroke();
           ctx.globalAlpha = 1;
 
-          // Core Dot
+          // Core Node Dot
           ctx.beginPath();
           ctx.arc(nx, ny, n.radius, 0, Math.PI * 2);
           ctx.fillStyle = n.color;
@@ -5148,12 +5271,31 @@
           ctx.fill();
           ctx.shadowBlur = 0;
 
-          // Label
-          ctx.font = '10px "JetBrains Mono", monospace';
+          // Text Label with Pill Backdrop to prevent any clipping/overlap
+          const lx = nx + n.dx;
+          const ly = ny + n.dy;
+
+          ctx.font = '700 9.5px "JetBrains Mono", monospace';
+          const textW = ctx.measureText(n.name).width;
+          const pillW = textW + 10;
+          const pillH = 19;
+          let pillX = lx - 5;
+          if (n.align === 'right') pillX = lx - pillW + 5;
+          else if (n.align === 'center') pillX = lx - pillW / 2;
+
+          ctx.fillStyle = 'rgba(4, 8, 20, 0.85)';
+          ctx.fillRect(pillX, ly - 8, pillW, pillH);
+          ctx.strokeStyle = 'rgba(0, 240, 255, 0.2)';
+          ctx.lineWidth = 0.8;
+          ctx.strokeRect(pillX, ly - 8, pillW, pillH);
+
+          ctx.textAlign = n.align || 'left';
           ctx.fillStyle = '#ffffff';
-          ctx.fillText(n.name, nx + 8, ny - 6);
+          ctx.fillText(n.name, lx, ly);
+
+          ctx.font = '600 8.5px "JetBrains Mono", monospace';
           ctx.fillStyle = n.color;
-          ctx.fillText(n.ping, nx + 8, ny + 7);
+          ctx.fillText(n.ping, lx, ly + 8);
         });
 
         t += 0.02;
@@ -5318,8 +5460,16 @@
     function switchTab(tabId) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.view-content').forEach(v => v.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      const targetView = document.getElementById(tabId);
+      if (targetView) targetView.classList.add('active');
+      if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active');
+      }
+      if (tabId === 'tab-global-map') {
+        setTimeout(() => {
+          window.dispatchEvent(new Event('resize'));
+        }, 50);
+      }
     }
 
     function refreshScreen() {
