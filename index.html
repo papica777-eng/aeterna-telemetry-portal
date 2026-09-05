@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     :root {
       --bg: #03060c;
@@ -2428,6 +2429,145 @@
       gap: 8px;
     }
 
+    /* Leaflet Cybernetic Stealth Theme */
+    .leaflet-container {
+      background: #060c18 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+    }
+    .leaflet-tile {
+      filter: brightness(0.92) contrast(1.18) saturate(0.85);
+    }
+    .leaflet-control-zoom {
+      border: 1px solid var(--border-strong) !important;
+      border-radius: 8px !important;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6) !important;
+    }
+    .leaflet-control-zoom a {
+      background: rgba(10, 18, 32, 0.9) !important;
+      color: var(--cyan) !important;
+      border-bottom: 1px solid var(--border) !important;
+      backdrop-filter: blur(10px);
+    }
+    .leaflet-control-zoom a:hover {
+      background: rgba(0, 240, 255, 0.2) !important;
+      color: #fff !important;
+    }
+    .leaflet-control-attribution {
+      background: rgba(4, 8, 20, 0.85) !important;
+      color: var(--muted) !important;
+      font-size: 9px !important;
+      border-radius: 4px;
+      margin: 4px !important;
+      border: 1px solid var(--border);
+    }
+    .leaflet-control-attribution a {
+      color: var(--cyan) !important;
+      text-decoration: none;
+    }
+    .leaflet-popup-content-wrapper {
+      background: rgba(6, 12, 24, 0.96) !important;
+      border: 1px solid var(--border-strong) !important;
+      border-radius: 10px !important;
+      color: #fff !important;
+      backdrop-filter: blur(14px) !important;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.8), 0 0 15px var(--cyan-glow) !important;
+      padding: 4px;
+    }
+    .leaflet-popup-content {
+      margin: 10px 12px !important;
+      line-height: 1.4 !important;
+    }
+    .leaflet-popup-tip {
+      background: rgba(6, 12, 24, 0.96) !important;
+      border: 1px solid var(--border-strong) !important;
+    }
+
+    /* Cyber Server Node Marker */
+    .cyber-marker-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .cyber-marker-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      position: relative;
+      z-index: 2;
+    }
+    .cyber-marker-pulse {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cyan);
+      animation: cyberPulse 2s infinite ease-out;
+      pointer-events: none;
+    }
+    .cyber-marker-label {
+      position: absolute;
+      top: -26px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(4, 8, 20, 0.94);
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cyber-marker-ping {
+      font-size: 9px;
+      font-weight: 600;
+    }
+    @keyframes cyberPulse {
+      0% { transform: scale(0.35); opacity: 1; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    /* GPS Target Marker for Phone Tracking */
+    .gps-target-marker {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .gps-target-core {
+      width: 16px;
+      height: 16px;
+      background: #f43f5e;
+      border: 2.5px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 16px rgba(244, 63, 94, 1);
+      position: relative;
+      z-index: 3;
+    }
+    .gps-target-ring {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border: 2px solid rgba(244, 63, 94, 0.85);
+      border-radius: 50%;
+      animation: gpsRadar 1.8s infinite cubic-bezier(0.2, 0.8, 0.4, 1);
+    }
+    @keyframes gpsRadar {
+      0% { transform: scale(0.3); opacity: 1; }
+      100% { transform: scale(2.6); opacity: 0; }
+    }
+
     /* ══════════════════════════════════════════════════════════════ */
     /* 4. POLYMORPHIC COMPATIBILITY VERIFICATION */
     /* ══════════════════════════════════════════════════════════════ */
@@ -3075,9 +3215,9 @@
           </div>
         </div>
 
-        <div class="world-map-svg-wrap" id="world-map-container">
-          <canvas id="world-mesh-canvas" class="map-canvas-layer"></canvas>
-          <div class="map-log-feed">
+        <div class="world-map-svg-wrap" id="world-map-container" style="height: 480px; position: relative;">
+          <div id="world-leaflet-map" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1;"></div>
+          <div class="map-log-feed" style="z-index: 1000;">
             <span class="pulse-dot" style="width: 6px; height: 6px; background: var(--green); flex-shrink: 0;"></span>
             <span id="map-live-ticker">[09:24:11] Node #4092 secure tunnel stabilized (Zurich Server)</span>
           </div>
@@ -3923,9 +4063,9 @@
         <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="16" x2="17" y2="16"/></svg>
         Keylogs <span class="tab-badge" id="badge-keylogs">0</span>
       </button>
-      <button class="tab-btn" onclick="switchTab('tab-global-map')">
-        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        Global Nodes <span class="tab-badge" style="background: var(--green); color: #000;">8</span>
+      <button class="tab-btn" onclick="switchTab('tab-gps-track')">
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        GPS Tracker <span class="tab-badge" style="background: var(--green); color: #000;">LIVE</span>
       </button>
     </div>
 
@@ -4259,26 +4399,51 @@
       <div class="data-grid" id="grid-keylogs"></div>
     </div>
 
-    <!-- VIEW 7: GLOBAL FLEET & TELEMETRY NODE MAP -->
-    <div id="tab-global-map" class="view-content" style="width: 100%; margin: 0 auto; box-sizing: border-box;">
-      <div style="background: rgba(8, 14, 26, 0.85); border: 1px solid var(--border-strong); border-radius: 16px; padding: 28px; width: 100%; box-sizing: border-box;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+    <!-- VIEW 7: DEVICE LIVE GPS TRACKING & GEOFENCE -->
+    <div id="tab-gps-track" class="view-content" style="width: 100%; margin: 0 auto; box-sizing: border-box;">
+      <div style="background: rgba(8, 14, 26, 0.85); border: 1px solid var(--border-strong); border-radius: 16px; padding: 24px; width: 100%; box-sizing: border-box;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
           <div>
-            <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin: 0;">GLOBAL SATELLITE & ENCLAVE TOPOLOGY</h3>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); margin-top: 2px;">ACTIVE FLEET ASSET TRACKING & REAL-TIME PROXY NODES</div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="pulse-dot" style="background: var(--red); box-shadow: 0 0 10px var(--red); width: 8px; height: 8px;"></span>
+              <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin: 0;">МОБИЛНО GPS ПРОСЛЕДЯВАНЕ В РЕАЛНО ВРЕМЕ</h3>
+            </div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); margin-top: 3px;">
+              АКТИВНО УСТРОЙСТВО: <strong style="color: #fff;">Pixel 8 Pro (Asset #01)</strong> // GNSS МУЛТИБАНД ФИКС (GPS / GLONASS / GALILEO)
+            </div>
           </div>
-          <div style="display: flex; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; flex-wrap: wrap;">
-            <span style="color: var(--green);">● ZURICH CORE: 1.14ms</span>
-            <span style="color: var(--cyan);">● GENEVA HQ: 1.28ms</span>
-            <span style="color: var(--gold);">● LONDON RELAY: 14.1ms</span>
+          <div style="display: flex; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; flex-wrap: wrap;">
+            <span style="background: rgba(0, 240, 255, 0.08); border: 1px solid var(--border); padding: 5px 10px; border-radius: 6px; color: var(--cyan);">
+              📍 42.69342° N, 23.32185° E
+            </span>
+            <span style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); padding: 5px 10px; border-radius: 6px; color: var(--green);">
+              🎯 ТОЧНОСТ: ±4.2 m
+            </span>
+            <span style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); padding: 5px 10px; border-radius: 6px; color: var(--gold);">
+              🛰️ 14 САТЕЛИТА
+            </span>
+            <span style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.3); padding: 5px 10px; border-radius: 6px; color: var(--red);">
+              ⚡ СКОРОСТ: 0 km/h (В покой)
+            </span>
           </div>
         </div>
 
-        <div class="world-map-svg-wrap" style="height: 440px; width: 100%; box-sizing: border-box; margin: 0 auto;" id="hud-world-map-container">
-          <canvas id="hud-mesh-canvas" class="map-canvas-layer"></canvas>
-          <div class="map-log-feed">
+        <div style="position: relative; width: 100%; height: 460px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: #070d18;">
+          <div id="device-gps-leaflet-map" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1;"></div>
+          
+          <div style="position: absolute; top: 12px; right: 12px; z-index: 1000; display: flex; gap: 8px;">
+            <button onclick="centerGpsOnTarget()" style="background: rgba(6, 12, 24, 0.92); border: 1px solid var(--cyan); color: var(--cyan); padding: 7px 12px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; cursor: pointer; backdrop-filter: blur(8px); display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+              Центрирай върху телефона
+            </button>
+            <button onclick="toggleGpsRouteHistory()" style="background: rgba(6, 12, 24, 0.92); border: 1px solid var(--border); color: #fff; padding: 7px 12px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; cursor: pointer; backdrop-filter: blur(8px); box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
+              Маршрутна следа (24ч)
+            </button>
+          </div>
+
+          <div class="map-log-feed" style="z-index: 1000;">
             <span class="pulse-dot" style="width: 6px; height: 6px; background: var(--green); flex-shrink: 0;"></span>
-            <span id="hud-map-live-ticker">[09:24:11] Asset #4092 encrypted tunnel stabilized (Zurich Node)</span>
+            <span id="hud-gps-live-ticker">[10:14:22] GNSS Fix OK: гр. София, бул. "Витоша" 42. Точност: ±4.2m. Батерия: 84%</span>
           </div>
         </div>
       </div>
@@ -4288,6 +4453,7 @@
   <!-- ══════════════════════════════════════════════════════════════ -->
   <!-- SCRIPT ENGINE: INTERACTIVE PHONE, AMBIENT CANVAS & WSS -->
   <!-- ══════════════════════════════════════════════════════════════ -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     // ══════════════════════════════════════════════════════════════
     // AMBIENT CYBERNETIC CONSTELLATION CANVAS ENGINE
@@ -5042,276 +5208,215 @@
     }
 
     // ══════════════════════════════════════════════════════════════
-    // 3. GLOBAL TELEMETRY NODE MAP CANVAS ENGINE
+    // 3. GLOBAL TELEMETRY LEAFLET MAP & DEVICE GPS TRACKER
     // ══════════════════════════════════════════════════════════════
-    function initGlobalNodeMap(canvasId) {
-      const canvas = document.getElementById(canvasId);
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+    let worldMap = null;
+    let gpsMap = null;
+    let gpsTargetMarker = null;
+    let gpsTargetCircle = null;
+    let gpsBreadcrumbsLine = null;
+    const targetCoords = [42.69342, 23.32185]; // Sofia, bul. Vitosha 42
 
-      // High-Tech Cybernetic Vector Continents (Normalized 0..1)
-      const continents = [
-        // North America
-        [
-          [0.10, 0.22], [0.14, 0.18], [0.22, 0.16], [0.30, 0.18],
-          [0.32, 0.25], [0.28, 0.32], [0.255, 0.345], [0.24, 0.42],
-          [0.21, 0.43], [0.18, 0.50], [0.15, 0.44], [0.13, 0.34],
-          [0.10, 0.28]
-        ],
-        // Greenland
-        [
-          [0.32, 0.10], [0.38, 0.09], [0.36, 0.16], [0.31, 0.14]
-        ],
-        // South America
-        [
-          [0.23, 0.50], [0.28, 0.51], [0.33, 0.56], [0.32, 0.65],
-          [0.29, 0.75], [0.26, 0.84], [0.24, 0.74], [0.21, 0.60],
-          [0.22, 0.52]
-        ],
-        // British Isles
-        [
-          [0.45, 0.24], [0.475, 0.23], [0.475, 0.28], [0.45, 0.29]
-        ],
-        // Mainland Europe
-        [
-          [0.46, 0.33], [0.44, 0.37], [0.48, 0.38], [0.49, 0.34],
-          [0.512, 0.315], [0.518, 0.255], [0.50, 0.18], [0.53, 0.16],
-          [0.55, 0.22], [0.58, 0.26], [0.578, 0.355], [0.56, 0.38],
-          [0.53, 0.36], [0.495, 0.345]
-        ],
-        // Africa
-        [
-          [0.46, 0.41], [0.54, 0.41], [0.60, 0.48], [0.57, 0.62],
-          [0.53, 0.76], [0.48, 0.66], [0.44, 0.54], [0.43, 0.46]
-        ],
-        // Madagascar
-        [
-          [0.60, 0.68], [0.62, 0.73], [0.60, 0.75], [0.59, 0.70]
-        ],
-        // Asia
-        [
-          [0.58, 0.26], [0.72, 0.18], [0.86, 0.20], [0.85, 0.28],
-          [0.80, 0.32], [0.78, 0.45], [0.77, 0.56], [0.770, 0.615],
-          [0.72, 0.52], [0.68, 0.57], [0.64, 0.48], [0.61, 0.44],
-          [0.58, 0.40], [0.56, 0.34]
-        ],
-        // Japan
-        [
-          [0.85, 0.30], [0.875, 0.34], [0.85, 0.38], [0.84, 0.32]
-        ],
-        // Australia
-        [
-          [0.79, 0.72], [0.87, 0.70], [0.89, 0.80], [0.84, 0.85],
-          [0.78, 0.81], [0.77, 0.74]
-        ],
-        // New Zealand
-        [
-          [0.92, 0.83], [0.94, 0.88], [0.92, 0.89]
-        ]
+    function initWorldInfrastructureMap() {
+      const container = document.getElementById('world-leaflet-map');
+      if (!container || worldMap || typeof L === 'undefined') return;
+
+      worldMap = L.map('world-leaflet-map', {
+        center: [28, 12],
+        zoom: 2,
+        minZoom: 2,
+        maxZoom: 7,
+        zoomControl: true,
+        attributionControl: true,
+        scrollWheelZoom: false
+      });
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd',
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap'
+      }).addTo(worldMap);
+
+      const serverNodes = [
+        { name: "Sofia Edge", coords: [42.6977, 23.3219], ping: "1.14ms", color: "#10b981", role: "Active Sovereign Edge Gateway #04" },
+        { name: "Zurich Core", coords: [47.3769, 8.5417], ping: "1.14ms", color: "#10b981", role: "Primary Zero-Entropy Core Vault" },
+        { name: "Geneva HQ", coords: [46.2044, 6.1432], ping: "1.28ms", color: "#10b981", role: "Executive Communications Gateway" },
+        { name: "Frankfurt Mesh", coords: [50.1109, 8.6821], ping: "8.2ms", color: "#00f0ff", role: "DE-CIX High-Speed Mesh Switch" },
+        { name: "London Relay", coords: [51.5074, -0.1278], ping: "14.1ms", color: "#00f0ff", role: "LINX Transatlantic Transit Relay" },
+        { name: "New York Hub", coords: [40.7128, -74.0060], ping: "31.4ms", color: "#f59e0b", role: "US East Coast Defense Enclave" },
+        { name: "Singapore Gateway", coords: [1.3521, 103.8198], ping: "38.7ms", color: "#f59e0b", role: "APAC Sovereign Corridor" },
+        { name: "Tokyo Enclave", coords: [35.6762, 139.6503], ping: "42.0ms", color: "#f59e0b", role: "East Asia Telemetry Vault" }
       ];
 
-      // Geographically accurate nodes with dedicated anti-overlap offsets
-      const nodes = [
-        { name: "Zurich Core", x: 0.512, y: 0.315, ping: "1.14ms", color: "#10b981", radius: 5, align: "left", dx: 10, dy: -4 },
-        { name: "Geneva HQ", x: 0.495, y: 0.345, ping: "1.28ms", color: "#10b981", radius: 5, align: "right", dx: -10, dy: 14 },
-        { name: "London Relay", x: 0.465, y: 0.265, ping: "14.1ms", color: "#00f0ff", radius: 4, align: "right", dx: -10, dy: -8 },
-        { name: "Frankfurt Mesh", x: 0.518, y: 0.255, ping: "8.2ms", color: "#00f0ff", radius: 4, align: "left", dx: 10, dy: -14 },
-        { name: "Sofia Edge", x: 0.578, y: 0.355, ping: "5.8ms", color: "#10b981", radius: 4, align: "left", dx: 10, dy: 14 },
-        { name: "New York Hub", x: 0.255, y: 0.345, ping: "31.4ms", color: "#f59e0b", radius: 4.5, align: "right", dx: -10, dy: -4 },
-        { name: "Singapore Gateway", x: 0.770, y: 0.615, ping: "38.7ms", color: "#f59e0b", radius: 4, align: "left", dx: 10, dy: 12 },
-        { name: "Tokyo Enclave", x: 0.865, y: 0.345, ping: "42.0ms", color: "#f59e0b", radius: 4.5, align: "left", dx: 10, dy: -4 }
+      // Geodesic fiber backbone routes with authentic curved arcs
+      const fiberBackbones = [
+        [[40.7128, -74.0060], [51.5074, -0.1278]], // New York - London (Transatlantic)
+        [[40.7128, -74.0060], [47.3769, 8.5417]],  // New York - Zurich (Swiss Direct)
+        [[51.5074, -0.1278], [50.1109, 8.6821]],   // London - Frankfurt
+        [[51.5074, -0.1278], [46.2044, 6.1432]],   // London - Geneva
+        [[50.1109, 8.6821], [47.3769, 8.5417]],    // Frankfurt - Zurich
+        [[47.3769, 8.5417], [46.2044, 6.1432]],    // Zurich - Geneva
+        [[50.1109, 8.6821], [42.6977, 23.3219]],   // Frankfurt - Sofia
+        [[47.3769, 8.5417], [42.6977, 23.3219]],   // Zurich - Sofia
+        [[42.6977, 23.3219], [1.3521, 103.8198]],  // Sofia - Singapore (Eurasian Link)
+        [[47.3769, 8.5417], [1.3521, 103.8198]],   // Zurich - Singapore
+        [[1.3521, 103.8198], [35.6762, 139.6503]]  // Singapore - Tokyo
       ];
 
-      // Geographically authentic undersea & terrestrial fiber backbone connections
-      const connections = [
-        [5, 2], // New York Hub <-> London Relay (Transatlantic)
-        [5, 0], // New York Hub <-> Zurich Core (Direct Swiss-US Tunnel)
-        [2, 3], // London Relay <-> Frankfurt Mesh
-        [2, 1], // London Relay <-> Geneva HQ
-        [3, 0], // Frankfurt Mesh <-> Zurich Core
-        [0, 1], // Zurich Core <-> Geneva HQ
-        [3, 4], // Frankfurt Mesh <-> Sofia Edge
-        [0, 4], // Zurich Core <-> Sofia Edge
-        [4, 6], // Sofia Edge <-> Singapore Gateway (Eurasian Link)
-        [0, 6], // Zurich Core <-> Singapore Gateway
-        [6, 7]  // Singapore Gateway <-> Tokyo Enclave
-      ];
-
-      let t = 0;
-
-      function resize() {
-        if (!canvas.parentElement) return;
-        const rect = canvas.parentElement.getBoundingClientRect();
-        if (rect.width > 0 && rect.height > 0) {
-          canvas.width = rect.width;
-          canvas.height = rect.height;
+      fiberBackbones.forEach(pts => {
+        const lat1 = pts[0][0], lon1 = pts[0][1];
+        const lat2 = pts[1][0], lon2 = pts[1][1];
+        const curvePoints = [];
+        const numPoints = 25;
+        for (let i = 0; i <= numPoints; i++) {
+          const f = i / numPoints;
+          const lat = lat1 + (lat2 - lat1) * f + Math.sin(f * Math.PI) * (Math.abs(lon2 - lon1) > 50 ? 9 : 2.5);
+          const lon = lon1 + (lon2 - lon1) * f;
+          curvePoints.push([lat, lon]);
         }
-      }
-      window.addEventListener('resize', resize);
-      resize();
+        L.polyline(curvePoints, {
+          color: '#00f0ff',
+          weight: 1.8,
+          opacity: 0.45,
+          dashArray: '5, 8'
+        }).addTo(worldMap);
+      });
 
-      function render() {
-        if (!canvas.parentElement) return;
-        const pWidth = canvas.parentElement.clientWidth;
-        const pHeight = canvas.parentElement.clientHeight;
-        if (pWidth > 0 && pHeight > 0 && (canvas.width !== pWidth || canvas.height !== pHeight)) {
-          canvas.width = pWidth;
-          canvas.height = pHeight;
-        }
-        if (!canvas.width || !canvas.height) {
-          requestAnimationFrame(render);
-          return;
-        }
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Cybernetic Coordinate Matrix
-        ctx.strokeStyle = 'rgba(0, 240, 255, 0.035)';
-        ctx.lineWidth = 1;
-        const step = 32;
-        for (let x = 0; x < canvas.width; x += step) {
-          ctx.beginPath();
-          ctx.moveTo(x, 0);
-          ctx.lineTo(x, canvas.height);
-          ctx.stroke();
-        }
-        for (let y = 0; y < canvas.height; y += step) {
-          ctx.beginPath();
-          ctx.moveTo(0, y);
-          ctx.lineTo(canvas.width, y);
-          ctx.stroke();
-        }
-
-        // Equator & Prime Meridian Guide Lines
-        ctx.strokeStyle = 'rgba(0, 240, 255, 0.08)';
-        ctx.setLineDash([4, 6]);
-        // Equator
-        ctx.beginPath();
-        ctx.moveTo(0, canvas.height * 0.52);
-        ctx.lineTo(canvas.width, canvas.height * 0.52);
-        ctx.stroke();
-        // Prime Meridian (Greenwich / London)
-        ctx.beginPath();
-        ctx.moveTo(canvas.width * 0.465, 0);
-        ctx.lineTo(canvas.width * 0.465, canvas.height);
-        ctx.stroke();
-        ctx.setLineDash([]);
-
-        // Cybernetic Vector Continents Landmasses
-        ctx.fillStyle = 'rgba(0, 240, 255, 0.035)';
-        ctx.strokeStyle = 'rgba(0, 240, 255, 0.2)';
-        ctx.lineWidth = 1.1;
-
-        continents.forEach(poly => {
-          ctx.beginPath();
-          poly.forEach(([px, py], i) => {
-            const cx = px * canvas.width;
-            const cy = py * canvas.height;
-            if (i === 0) ctx.moveTo(cx, cy);
-            else ctx.lineTo(cx, cy);
-          });
-          ctx.closePath();
-          ctx.fill();
-          ctx.stroke();
+      serverNodes.forEach(node => {
+        const icon = L.divIcon({
+          className: 'cyber-marker-wrapper',
+          html: `
+            <div class="cyber-marker-pulse" style="border-color: ${node.color}"></div>
+            <div class="cyber-marker-dot" style="background: ${node.color}; box-shadow: 0 0 10px ${node.color}"></div>
+            <div class="cyber-marker-label">
+              <span>${node.name}</span>
+              <span class="cyber-marker-ping" style="color: ${node.color}">${node.ping}</span>
+            </div>
+          `,
+          iconSize: [20, 20],
+          iconAnchor: [10, 10]
         });
 
-        // Connections Arcs
-        connections.forEach(([i1, i2]) => {
-          const n1 = nodes[i1];
-          const n2 = nodes[i2];
-          const x1 = n1.x * canvas.width;
-          const y1 = n1.y * canvas.height;
-          const x2 = n2.x * canvas.width;
-          const y2 = n2.y * canvas.height;
-
-          ctx.beginPath();
-          ctx.moveTo(x1, y1);
-          // Curved Arc
-          const cx = (x1 + x2) / 2;
-          const cy = (y1 + y2) / 2 - 22;
-          ctx.quadraticCurveTo(cx, cy, x2, y2);
-          ctx.strokeStyle = 'rgba(0, 240, 255, 0.18)';
-          ctx.lineWidth = 1.2;
-          ctx.stroke();
-
-          // Packet tracer moving along arc
-          const progress = ((t * 0.35 + i1 * 0.18) % 1);
-          const px = (1 - progress) * (1 - progress) * x1 + 2 * (1 - progress) * progress * cx + progress * progress * x2;
-          const py = (1 - progress) * (1 - progress) * y1 + 2 * (1 - progress) * progress * cy + progress * progress * y2;
-
-          ctx.beginPath();
-          ctx.arc(px, py, 2.2, 0, Math.PI * 2);
-          ctx.fillStyle = '#00f0ff';
-          ctx.shadowBlur = 6;
-          ctx.shadowColor = '#00f0ff';
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        });
-
-        // Nodes & Anti-Overlap Labels
-        nodes.forEach((n, idx) => {
-          const nx = n.x * canvas.width;
-          const ny = n.y * canvas.height;
-          const pulse = (Math.sin(t * 2.2 + idx) + 1) / 2;
-
-          // Outer Ripple
-          ctx.beginPath();
-          ctx.arc(nx, ny, n.radius + pulse * 10, 0, Math.PI * 2);
-          ctx.strokeStyle = n.color;
-          ctx.globalAlpha = 0.45 - pulse * 0.4;
-          ctx.stroke();
-          ctx.globalAlpha = 1;
-
-          // Core Node Dot
-          ctx.beginPath();
-          ctx.arc(nx, ny, n.radius, 0, Math.PI * 2);
-          ctx.fillStyle = n.color;
-          ctx.shadowBlur = 10;
-          ctx.shadowColor = n.color;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-
-          // Text Label with Pill Backdrop to prevent any clipping/overlap
-          const lx = nx + n.dx;
-          const ly = ny + n.dy;
-
-          ctx.font = '700 9.5px "JetBrains Mono", monospace';
-          const textW = ctx.measureText(n.name).width;
-          const pillW = textW + 10;
-          const pillH = 19;
-          let pillX = lx - 5;
-          if (n.align === 'right') pillX = lx - pillW + 5;
-          else if (n.align === 'center') pillX = lx - pillW / 2;
-
-          ctx.fillStyle = 'rgba(4, 8, 20, 0.85)';
-          ctx.fillRect(pillX, ly - 8, pillW, pillH);
-          ctx.strokeStyle = 'rgba(0, 240, 255, 0.2)';
-          ctx.lineWidth = 0.8;
-          ctx.strokeRect(pillX, ly - 8, pillW, pillH);
-
-          ctx.textAlign = n.align || 'left';
-          ctx.fillStyle = '#ffffff';
-          ctx.fillText(n.name, lx, ly);
-
-          ctx.font = '600 8.5px "JetBrains Mono", monospace';
-          ctx.fillStyle = n.color;
-          ctx.fillText(n.ping, lx, ly + 8);
-        });
-
-        t += 0.02;
-        requestAnimationFrame(render);
-      }
-
-      requestAnimationFrame(render);
+        const marker = L.marker(node.coords, { icon }).addTo(worldMap);
+        marker.bindPopup(`
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px;">
+            <div style="color: ${node.color}; font-weight: 800; font-size: 12px; margin-bottom: 4px;">${node.name}</div>
+            <div style="color: #cbd5e1; margin-bottom: 6px;">${node.role}</div>
+            <div style="display: flex; justify-content: space-between; gap: 8px; border-top: 1px solid var(--border); padding-top: 4px;">
+              <span style="color: var(--muted);">PING LATENCY:</span>
+              <span style="color: ${node.color}; font-weight: 700;">${node.ping}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; gap: 8px;">
+              <span style="color: var(--muted);">SECURITY:</span>
+              <span style="color: var(--green);">NIST-PQC ML-DSA-87</span>
+            </div>
+          </div>
+        `);
+      });
     }
 
-    // Initialize both world maps on startup
-    setTimeout(() => {
-      initGlobalNodeMap('world-mesh-canvas');
-      initGlobalNodeMap('hud-mesh-canvas');
-    }, 400);
+    function initDeviceGpsMap() {
+      const container = document.getElementById('device-gps-leaflet-map');
+      if (!container || gpsMap || typeof L === 'undefined') return;
 
-    // Rotating live node telemetry feed
+      gpsMap = L.map('device-gps-leaflet-map', {
+        center: targetCoords,
+        zoom: 16,
+        maxZoom: 19,
+        minZoom: 11,
+        zoomControl: true,
+        scrollWheelZoom: true
+      });
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd',
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap'
+      }).addTo(gpsMap);
+
+      // Accuracy radius circle (±4.2m)
+      gpsTargetCircle = L.circle(targetCoords, {
+        radius: 24,
+        color: '#00f0ff',
+        fillColor: '#00f0ff',
+        fillOpacity: 0.15,
+        weight: 1.5,
+        dashArray: '4, 4'
+      }).addTo(gpsMap);
+
+      // Breadcrumbs trail along bul. Vitosha
+      const routeHistory = [
+        [42.68810, 23.31950],
+        [42.68960, 23.32020],
+        [42.69120, 23.32090],
+        [42.69240, 23.32140],
+        [42.69342, 23.32185]
+      ];
+
+      gpsBreadcrumbsLine = L.polyline(routeHistory, {
+        color: '#f59e0b',
+        weight: 3.5,
+        opacity: 0.8,
+        lineCap: 'round',
+        dashArray: '6, 6'
+      }).addTo(gpsMap);
+
+      const gpsIcon = L.divIcon({
+        className: 'gps-target-marker',
+        html: `
+          <div class="gps-target-ring"></div>
+          <div class="gps-target-core"></div>
+        `,
+        iconSize: [24, 24],
+        iconAnchor: [12, 12]
+      });
+
+      gpsTargetMarker = L.marker(targetCoords, { icon: gpsIcon }).addTo(gpsMap);
+      gpsTargetMarker.bindPopup(`
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px;">
+          <div style="color: #f43f5e; font-weight: 800; font-size: 12px; margin-bottom: 3px;">📍 ЦЕЛЕВО УСТРОЙСТВО #01</div>
+          <div style="color: #fff; font-weight: 600; margin-bottom: 6px;">Pixel 8 Pro (Enterprise Sandbox)</div>
+          <div style="color: var(--cyan); margin-bottom: 2px;">гр. София, бул. "Витоша" 42</div>
+          <div style="color: var(--text-dim); font-size: 10px;">42.69342° N, 23.32185° E</div>
+          <div style="border-top: 1px solid var(--border); margin-top: 6px; padding-top: 4px; display: flex; justify-content: space-between;">
+            <span style="color: var(--muted);">ТОЧНОСТ:</span>
+            <span style="color: var(--green);">±4.2 метра</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--muted);">СКОРОСТ:</span>
+            <span style="color: #fff;">0.0 km/h (Спрял)</span>
+          </div>
+        </div>
+      `).openPopup();
+    }
+
+    function centerGpsOnTarget() {
+      if (gpsMap) {
+        gpsMap.setView(targetCoords, 17, { animate: true });
+        if (gpsTargetMarker) gpsTargetMarker.openPopup();
+      }
+    }
+
+    function toggleGpsRouteHistory() {
+      if (gpsBreadcrumbsLine && gpsMap) {
+        if (gpsMap.hasLayer(gpsBreadcrumbsLine)) {
+          gpsMap.removeLayer(gpsBreadcrumbsLine);
+        } else {
+          gpsMap.addLayer(gpsBreadcrumbsLine);
+        }
+      }
+    }
+
+    function tryInitWorldMap() {
+      if (typeof L !== 'undefined') {
+        initWorldInfrastructureMap();
+      } else {
+        setTimeout(tryInitWorldMap, 100);
+      }
+    }
+    setTimeout(tryInitWorldMap, 200);
+
+    // Rotating live node telemetry feed for landing page
     const mapLogEvents = [
       "[09:24:11] Node #4092 secure tunnel stabilized (Zurich Server)",
       "[09:24:15] Asset #1082 encrypted telemetry packet ingested (London Relay)",
@@ -5324,10 +5429,23 @@
     setInterval(() => {
       mapLogIdx = (mapLogIdx + 1) % mapLogEvents.length;
       const el1 = document.getElementById('map-live-ticker');
-      const el2 = document.getElementById('hud-map-live-ticker');
       if (el1) el1.textContent = mapLogEvents[mapLogIdx];
-      if (el2) el2.textContent = mapLogEvents[mapLogIdx];
     }, 3200);
+
+    // Rotating live GPS telemetry feed for HUD dashboard
+    const gpsLogEvents = [
+      "[10:14:02] GNSS Fix OK: 14 satellites locked (GPS/Galileo). Address: бул. 'Витоша' 42, София",
+      "[10:14:15] Cell Tower Triangulation verified: Cell ID 43902 (A1 Bulgaria 5G NR)",
+      "[10:14:28] Geofence Alert: Device remains inside authorized zone (Sofia Central HQ)",
+      "[10:14:40] Accelerometer stationary: 0.00G drift. Battery 84%. Altitude: 552m AMSL",
+      "[10:14:55] High-Precision GNSS carrier-phase RTK lock active (Accuracy: ±4.2m)"
+    ];
+    let gpsLogIdx = 0;
+    setInterval(() => {
+      gpsLogIdx = (gpsLogIdx + 1) % gpsLogEvents.length;
+      const el = document.getElementById('hud-gps-live-ticker');
+      if (el) el.textContent = gpsLogEvents[gpsLogIdx];
+    }, 3800);
 
     // Dynamic Live Ping Latency Jitter in Header
     setInterval(() => {
@@ -5465,10 +5583,15 @@
       if (window.event && window.event.currentTarget) {
         window.event.currentTarget.classList.add('active');
       }
-      if (tabId === 'tab-global-map') {
+      if (tabId === 'tab-gps-track') {
         setTimeout(() => {
-          window.dispatchEvent(new Event('resize'));
-        }, 50);
+          if (!gpsMap) {
+            initDeviceGpsMap();
+          } else {
+            gpsMap.invalidateSize();
+            gpsMap.setView(targetCoords, 16);
+          }
+        }, 80);
       }
     }
 
