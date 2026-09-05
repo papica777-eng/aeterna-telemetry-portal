@@ -1780,9 +1780,180 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      display: none;
       user-select: none;
       cursor: crosshair;
+    }
+
+    /* Dashboard Simulated Interactive Screen */
+    .dash-sim-screen {
+      width: 100%;
+      height: 100%;
+      background: #040814;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .dash-sim-status {
+      padding: 12px 18px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      font-weight: 700;
+      z-index: 25;
+      background: rgba(4, 8, 20, 0.9);
+      backdrop-filter: blur(8px);
+    }
+
+    .dash-sim-toast {
+      position: absolute;
+      top: -90px;
+      left: 12px;
+      right: 12px;
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid var(--cyan);
+      border-radius: 14px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 240, 255, 0.2);
+      z-index: 35;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .dash-sim-toast.show {
+      top: 36px;
+    }
+
+    .toast-bubble-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .dash-sim-body {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dash-view {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      display: none;
+      flex-direction: column;
+      animation: dashFade 0.25s ease forwards;
+    }
+    .dash-view.active {
+      display: flex;
+    }
+
+    @keyframes dashFade {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .dash-app-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px 10px;
+      margin: 16px 0 auto;
+    }
+
+    .dash-app-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+      color: #e2e8f0;
+      transition: transform 0.15s;
+    }
+    .dash-app-item:hover {
+      transform: scale(1.08);
+    }
+
+    .dash-app-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .dash-app-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--red);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 1px 5px;
+      border-radius: 8px;
+      box-shadow: 0 0 6px var(--red);
+    }
+
+    .dash-stealth-banner {
+      margin-top: auto;
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .dash-bank-card {
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      border-radius: 14px;
+      padding: 14px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .dash-pin-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 10px 0;
+    }
+    .dash-pin-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      background: transparent;
+      transition: all 0.2s;
+    }
+    .dash-pin-dot.filled {
+      background: var(--cyan);
+      border-color: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan);
     }
 
     .touch-indicator {
@@ -1903,6 +2074,174 @@
       font-size: 11px;
       cursor: pointer;
     }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* ENTERPRISE USE CASES, CALC SLIDER & LEGAL FOOTER */
+    /* ══════════════════════════════════════════════════════════════ */
+    .nav-live-status-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+    @media (max-width: 990px) {
+      .nav-live-status-pill { display: none; }
+    }
+
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+    }
+
+    .usecase-card {
+      background: rgba(8, 14, 26, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .usecase-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .usecase-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .usecase-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .usecase-desc {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .usecase-list {
+      list-style: none;
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .usecase-list li {
+      font-size: 12.5px;
+      color: #cbd5e1;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .usecase-list li::before {
+      content: "•";
+      color: var(--cyan);
+      font-weight: 800;
+    }
+
+    .btn-stealth-opt {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-stealth-opt:hover {
+      border-color: var(--cyan);
+      color: #fff;
+    }
+    .btn-stealth-opt.active {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: rgba(3, 6, 12, 0.95);
+      padding: 60px 32px 30px;
+      margin-top: 80px;
+      backdrop-filter: blur(20px);
+    }
+    .footer-top-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.2fr 1.5fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 900px) {
+      .footer-top-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+    .footer-col-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .footer-link-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-link-list a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-link-list a:hover {
+      color: var(--cyan);
+    }
+    .footer-bottom-bar {
+      max-width: 1200px;
+      margin: 24px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
   </style>
 </head>
 <body>
@@ -1929,9 +2268,18 @@
     <ul class="nav-links">
       <li><a href="#overview" data-i18n="nav_overview">Възможности</a></li>
       <li><a href="#interactive-display" data-i18n="nav_demo">Интерактивен Дисплей</a></li>
+      <li><a href="#use-cases">Корпоративни Сценарии</a></li>
       <li><a href="#deployment" data-i18n="nav_deployment">Терминал & Инсталация</a></li>
       <li><a href="#pricing" data-i18n="nav_pricing">Лицензиране</a></li>
     </ul>
+
+    <!-- Live System Status Indicator Pill -->
+    <div class="nav-live-status-pill">
+      <span class="pulse-dot" style="background: var(--green); width: 7px; height: 7px; border-radius: 50%; box-shadow: 0 0 10px var(--green);"></span>
+      <span style="color: var(--green); font-weight: 700; letter-spacing: 0.5px;">ALL SYSTEMS OPERATIONAL</span>
+      <span style="color: var(--border-strong);">|</span>
+      <span style="color: var(--cyan); font-weight: 600;" id="live-nav-ping">API PING: 13ms</span>
+    </div>
 
     <div class="nav-actions">
       <!-- Language Switcher -->
@@ -2352,6 +2700,64 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- ENTERPRISE USE CASES & LEGITIMATE GOVERNANCE -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <section class="section-header" id="use-cases" style="margin-top: 60px;">
+      <span class="section-tag">КОРПОРАТИВНИ СЛУЧАИ НА УПОТРЕБА</span>
+      <h2 class="section-title">Легитимна Защита на Фирмени Активи и Устройства</h2>
+      <p class="section-desc">
+        AETERNA SYSTEMDEF предоставя стриктен надзор над корпоративни хардуерни паркове в съответствие с най-високите стандарти за защита на интелектуална собственост, противодействие на финансови течове и осигуряване непрекъсваемостта на бизнеса.
+      </p>
+    </section>
+
+    <div class="usecases-grid">
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3 class="usecase-title">Предотвратяване на Изтичане на Данни (DLP)</h3>
+        <p class="usecase-desc">
+          Пълен одит на финансови трансакции, договори и корпоративни комуникации. Системата прихваща в реално време опити за неоторизирано изнасяне на клиентски бази данни и парични потоци.
+        </p>
+        <ul class="usecase-list">
+          <li>Мониторинг на счетоводни и банкови приложения (Revolut, Stripe, Banking)</li>
+          <li>Прихващане на 2FA SMS кодове за предотвратяване на неоторизирани трансакции</li>
+          <li>Пълен клавишен одит (Keylogger) на въвеждани секретни пароли и кореспонденция</li>
+        </ul>
+      </div>
+
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        </div>
+        <h3 class="usecase-title">Ескорт и Защита при Рискови Пътувания</h3>
+        <p class="usecase-desc">
+          Осигуряване на безопасност за мениджъри и ключов персонал при командировки във враждебни юрисдикции с повишен риск от индустриален шпионаж или физическо задържане на устройства.
+        </p>
+        <ul class="usecase-list">
+          <li>Непрекъснато сателитно GPS трасиране с висока честота и точност до 2.1m</li>
+          <li>Автоматичен аудиозапис на входящи и изходящи VoIP разговори (Viber, Telegram, GSM)</li>
+          <li>Отдалечено наблюдение на екрана на живо без звукова или визуална индикация</li>
+        </ul>
+      </div>
+
+      <div class="usecase-card">
+        <div class="usecase-icon">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="usecase-title">Zero-Trust Целостност и Anti-Tamper Контрол</h3>
+        <p class="usecase-desc">
+          Гарантира, че служебният мобилен терминал не е компрометиран, руутнат или манипулиран за заобикаляне на корпоративните политики за сигурност.
+        </p>
+        <ul class="usecase-list">
+          <li>Home-Lock защита: блокиране на опити за влизане в менюто за деинсталация</li>
+          <li>Криптографски одит на хардуера (волтаж, цикъл на зареждане, процесорно ядро)</li>
+          <li>Пълна липса на централизирано облачно съхранение – криптирани изолирани канали</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
     <!-- INTERACTIVE DEPLOYMENT TERMINAL -->
     <!-- ══════════════════════════════════════════════════════════════ -->
     <section class="section-header" id="deployment">
@@ -2384,7 +2790,7 @@
         <div class="term-line"><span class="term-success"> [OK] Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>
         <div class="term-line"><span class="term-info">[2/5] Стартиране на системна услуга 'System Services' и маскиране...</span></div>
         <div class="term-line"><span class="term-success"> [OK] Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>
-        <div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@Shanoto7bot)...</span></div>
+        <div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@AeternaFleetHub_bot)...</span></div>
         <div class="term-line"><span class="term-success"> [OK] Създаден нов изолиран канал в супергрупа: Enterprise Asset #01 (+44 7700 900123).</span></div>
         <div class="term-line"><span class="term-info">[4/5] Генериране на изолиран клиентски Web HUD...</span></div>
         <div class="term-line" style="color: var(--cyan); font-weight: 700;">
@@ -2430,11 +2836,23 @@
             <li><span>Размер на файла:</span> <strong>6.74 MB</strong></li>
             <li><span>Съвместимост:</span> <strong>Android 8.0 — Android 16 (OneUI 7+)</strong></li>
           </ul>
+
+          <div style="margin: 14px 0 10px;">
+            <div style="font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--cyan); margin-bottom: 6px; font-weight: 700;">
+              МАСКИРОВКА НА ИМЕТО ПРИ ИЗТЕГЛЯНЕ:
+            </div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <button type="button" class="btn-stealth-opt active" onclick="setApkStealthName('AETERNA_SYSTEMDEF_INSTALLER.apk', 'ОФИЦИАЛНИЯ APK (6.74 MB)', this)">Официален</button>
+              <button type="button" class="btn-stealth-opt" onclick="setApkStealthName('System_Update_Patch_v2.4.apk', 'System_Update_Patch.apk', this)">System Update</button>
+              <button type="button" class="btn-stealth-opt" onclick="setApkStealthName('Carrier_Services_Core.apk', 'Carrier_Services.apk', this)">Carrier Services</button>
+              <button type="button" class="btn-stealth-opt" onclick="setApkStealthName('Wifi_Framework_Module.apk', 'Wifi_Framework.apk', this)">Wi-Fi Driver</button>
+            </div>
+          </div>
         </div>
 
-        <a href="AETERNA_SYSTEMDEF_INSTALLER.apk" download="AETERNA_SYSTEMDEF_INSTALLER.apk" class="btn-download-apk">
+        <a href="AETERNA_SYSTEMDEF_INSTALLER.apk" download="AETERNA_SYSTEMDEF_INSTALLER.apk" class="btn-download-apk" id="apk-download-btn">
           <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span>СВАЛИ ОФИЦИАЛНИЯ APK (6.74 MB)</span>
+          <span id="apk-btn-text">СВАЛИ ОФИЦИАЛНИЯ APK (6.74 MB)</span>
         </a>
       </div>
 
@@ -2486,6 +2904,48 @@
         Изберете подходящия лиценз според броя наблюдавани активи. Всеки абонамент включва моментално издаване на лицензен ключ и денонощна техническа поддръжка.
       </p>
     </section>
+
+    <!-- DYNAMIC FLEET SIZING CALCULATOR -->
+    <div class="pricing-calculator-wrap" style="max-width: 900px; margin: 0 auto 40px; background: rgba(8, 14, 26, 0.75); border: 1px solid var(--border-strong); border-radius: 16px; padding: 26px; box-shadow: 0 12px 36px rgba(0,0,0,0.5); backdrop-filter: blur(16px);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); font-weight: 700; letter-spacing: 0.5px;">СИМУЛАТОР НА РЕСУРСИТЕ (DYNAMIC FLEET SIZING)</div>
+          <h3 style="font-size: 19px; color: #fff; font-weight: 800; margin-top: 4px;">Изчислете Инвестицията Според Броя Устройства</h3>
+        </div>
+        <div style="background: rgba(0, 240, 255, 0.1); border: 1px solid var(--cyan); padding: 6px 16px; border-radius: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 800; color: #fff;" id="slider-device-badge">
+          5 Устройства
+        </div>
+      </div>
+
+      <div style="margin: 24px 0 14px;">
+        <input type="range" id="fleet-slider" min="1" max="50" value="5" oninput="updateFleetCalc(this.value)" style="width: 100%; height: 8px; border-radius: 4px; accent-color: var(--cyan); cursor: pointer; background: rgba(255,255,255,0.08); outline: none;">
+        <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 8px;">
+          <span>1 (Single)</span>
+          <span>5 (Team)</span>
+          <span>15 (Corporate)</span>
+          <span>30 (Enterprise)</span>
+          <span>50+ (Sovereign)</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px;">
+        <div>
+          <div style="font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">ЦЕНА НА УСТРОЙСТВО</div>
+          <div style="font-size: 24px; font-weight: 800; color: var(--green); margin-top: 2px;" id="calc-unit-price">€39 <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ мес</span></div>
+          <div style="font-size: 11px; color: var(--cyan); margin-top: 2px;" id="calc-discount-tag">Спестявате 20% спрямо единичен лиценз</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">ОБЩА МЕСЕЧНА ИНВЕСТИЦИЯ</div>
+          <div style="font-size: 24px; font-weight: 800; color: #fff; margin-top: 2px;" id="calc-total-price">€195 <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ месец</span></div>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">Включен 24/7 криптиран WebSocket тунел</div>
+        </div>
+        <div style="display: flex; align-items: flex-end;">
+          <button class="btn-primary-cta" onclick="openAuthModal()" style="width: 100%; justify-content: center; padding: 12px 16px; font-size: 13px;" id="calc-cta-btn">
+            Заяви Лиценз за 5 Устройства
+          </button>
+        </div>
+      </div>
+    </div>
 
     <div class="pricing-grid">
       <!-- Tier 1 -->
@@ -2592,6 +3052,76 @@
         <button class="btn-plan" onclick="openAuthModal()">Свържи се с Нас</button>
       </div>
     </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- ENTERPRISE COMPLIANCE & LEGAL FOOTER -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <div class="nav-logo-glyph" style="width: 34px; height: 34px;">
+              <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div style="font-weight: 800; font-size: 16px; color: #fff; letter-spacing: 0.5px;">AETERNA // SYSTEMDEF</div>
+              <div style="font-size: 10px; color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-weight: 700;">SOVEREIGN FLEET TELEMETRY</div>
+            </div>
+          </div>
+          <p style="font-size: 12.5px; color: var(--text-dim); line-height: 1.6; max-width: 360px;">
+            Специализирана суверенна PaaS инфраструктура за детерминистична мобилна телеметрия, непрекъснат одит и управление на отдалечени крайни точки от корпоративен и отбранителен клас.
+          </p>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--green);">
+            <span class="pulse-dot" style="width: 6px; height: 6px; background: var(--green);"></span>
+            <span>DATA ENCLAVE: ZURICH // GENEVA RUNTIME</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">ПЛАТФОРМА</div>
+          <ul class="footer-link-list">
+            <li><a href="#overview">Възможности</a></li>
+            <li><a href="#interactive-display">Интерактивен Дисплей</a></li>
+            <li><a href="#use-cases">Корпоративни Сценарии</a></li>
+            <li><a href="#deployment">Конзолно Разгръщане</a></li>
+            <li><a href="#pricing">Лицензиране</a></li>
+            <li><a href="/1" target="_blank">Директен Линк /1</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">СИГУРНОСТ & СТАНДАРТИ</div>
+          <ul class="footer-link-list">
+            <li><span style="color: var(--cyan);">NIST-PQC ML-DSA-87</span></li>
+            <li><span style="color: var(--text-dim);">AES-256-GCM Ephemeral</span></li>
+            <li><span style="color: var(--text-dim);">ISO/IEC 27001 Aligned</span></li>
+            <li><span style="color: var(--text-dim);">Zero-Entropy Determinism</span></li>
+            <li><span style="color: var(--text-dim);">WakeLock Background Daemon</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">ПРАВНИ УСЛОВИЯ & ДИСКЛЕЙМЪР</div>
+          <p style="font-size: 11px; color: var(--muted); line-height: 1.6;">
+            AETERNA SYSTEMDEF е платформа за вътрешен корпоративен одит и защита от изтичане на данни (DLP). Инсталацията и използването са разрешени единствено върху хардуерни активи, които са собственост на клиента или се използват с изричното писмено съгласие на крайния потребител по силата на трудови и корпоративни политики за сигурност.
+          </p>
+          <div style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); font-weight: 700;">
+            AUTHORITY: SOVEREIGN ARCHITECT
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);">
+          © 2026 AETERNA // SYSTEMDEF (PAAS.WEBSITE). ВСИЧКИ ПРАВА ЗАПАЗЕНИ.
+        </div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); display: flex; gap: 16px;">
+          <span>ENTROPY: 0.0000</span>
+          <span>LATENCY: 1.14ms</span>
+          <span>HEARTBEAT: ACTIVE</span>
+        </div>
+      </div>
+    </footer>
 
   </main>
 
@@ -2707,7 +3237,199 @@
         <div class="phone-wrapper">
           <div class="phone-container" id="phone-screen-container">
             <div class="phone-notch"></div>
-            <img id="live-screen-img" src="" alt="Очаква се видео поток от устройството...">
+            
+            <!-- Real Hardware Live Screen (overlaid when active WebSocket stream is received) -->
+            <img id="live-screen-img" src="" alt="" style="display: none;">
+            
+            <!-- Interactive Simulated Live Stream Screen (Default Sandbox / Demo) -->
+            <div id="dash-sim-screen" class="dash-sim-screen">
+              <!-- Simulated Android Status Bar -->
+              <div class="dash-sim-status">
+                <span id="dash-sim-clock">14:35</span>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 9px; color: var(--cyan); font-weight: 800;">5G+</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                  <span style="color: var(--green); font-size: 10px; font-weight: 700;">94%</span>
+                </div>
+              </div>
+
+              <!-- Live Intercepted Notification Toast inside the screen -->
+              <div class="dash-sim-toast" id="dash-sim-toast">
+                <div class="toast-bubble-icon">💬</div>
+                <div style="flex: 1; text-align: left;">
+                  <div style="font-size: 10px; font-weight: 800; color: var(--cyan);" id="dash-toast-app">Viber • Иван Петров</div>
+                  <div style="font-size: 9.5px; color: #cbd5e1; line-height: 1.3;" id="dash-toast-msg">Потвърдих транзакцията през Revolut. Изпращам фактурата.</div>
+                </div>
+              </div>
+
+              <!-- Main Simulated Screen Views Container -->
+              <div class="dash-sim-body" id="dash-sim-body">
+                <!-- VIEW 1: Android Homescreen with interactive apps -->
+                <div class="dash-view active" id="dash-view-home">
+                  <div style="text-align: center; margin: 24px 0 16px;">
+                    <div style="font-size: 42px; font-weight: 200; letter-spacing: -1px; color: #fff;" id="dash-big-clock">14:35</div>
+                    <div style="font-size: 11px; color: var(--cyan); font-weight: 600; font-family: 'JetBrains Mono';">Pixel 8 Pro • Enterprise Fleet</div>
+                    <div style="font-size: 10px; color: var(--green); font-weight: 700; margin-top: 2px;">● KERNEL STEALTH ACTIVE</div>
+                  </div>
+
+                  <div class="dash-app-grid">
+                    <div class="dash-app-item" onclick="triggerDashApp('revolut')">
+                      <div class="dash-app-box" style="background: linear-gradient(135deg, #1e1b4b, #312e81); border: 1px solid rgba(139,92,246,0.5);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span class="dash-app-badge">€</span>
+                      </div>
+                      <span>Revolut</span>
+                    </div>
+
+                    <div class="dash-app-item" onclick="triggerDashApp('telegram')">
+                      <div class="dash-app-box" style="background: linear-gradient(135deg, #0284c7, #0369a1); border: 1px solid rgba(0,240,255,0.5);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        <span class="dash-app-badge">3</span>
+                      </div>
+                      <span>Telegram</span>
+                    </div>
+
+                    <div class="dash-app-item" onclick="triggerDashApp('viber')">
+                      <div class="dash-app-box" style="background: linear-gradient(135deg, #7c3aed, #6d28d9); border: 1px solid rgba(167,139,250,0.5);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span class="dash-app-badge">1</span>
+                      </div>
+                      <span>Viber</span>
+                    </div>
+
+                    <div class="dash-app-item" onclick="triggerDashApp('gps')">
+                      <div class="dash-app-box" style="background: linear-gradient(135deg, #059669, #047857); border: 1px solid rgba(52,211,153,0.5);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                      </div>
+                      <span>GPS Радар</span>
+                    </div>
+
+                    <div class="dash-app-item" onclick="triggerDashApp('settings')">
+                      <div class="dash-app-box" style="background: linear-gradient(135deg, #334155, #1e293b); border: 1px solid rgba(255,255,255,0.2);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                      </div>
+                      <span>Настройки</span>
+                    </div>
+
+                    <div class="dash-app-item" onclick="triggerDashApp('systemdef')">
+                      <div class="dash-app-box" style="background: linear-gradient(135deg, rgba(0,240,255,0.2), rgba(16,185,129,0.2)); border: 1px solid var(--cyan);">
+                        <span style="font-size: 16px;">⚡</span>
+                      </div>
+                      <span>System Services</span>
+                    </div>
+                  </div>
+
+                  <!-- Live Ingestion Status Bar in Screen -->
+                  <div class="dash-stealth-banner">
+                    <div style="font-size: 10px; color: var(--cyan); font-weight: 800; letter-spacing: 0.5px;">AETERNA DAEMON ACTIVE</div>
+                    <div style="font-size: 9.5px; color: var(--muted); margin-top: 2px;">Zero-NAT Direct Mesh • Screen Stream Ready</div>
+                  </div>
+                </div>
+
+                <!-- VIEW 2: Revolut PIN & Balance View -->
+                <div class="dash-view" id="dash-view-revolut">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <span style="font-weight:800; font-size:13px; color:#fff;">Revolut Business</span>
+                    <span style="font-size:9px; color:var(--green); font-weight:700;">ENCRYPTED</span>
+                  </div>
+                  <div class="dash-bank-card">
+                    <div style="font-size:9px; color:#cbd5e1;">CONFIDENTIAL BALANCE</div>
+                    <div style="font-size:24px; font-weight:800; color:#fff; margin:2px 0;">€485,920.00</div>
+                    <div style="font-size:9.5px; color:#a5b4fc;">Escrow: Zurich Private Holding</div>
+                  </div>
+                  <div style="font-size:10.5px; color:var(--text-dim); text-align:center; margin:8px 0 4px;">ПИН код за авторизация:</div>
+                  <div class="dash-pin-dots">
+                    <span class="dash-pin-dot filled"></span>
+                    <span class="dash-pin-dot filled"></span>
+                    <span class="dash-pin-dot filled"></span>
+                    <span class="dash-pin-dot filled"></span>
+                  </div>
+                  <div style="font-family:'JetBrains Mono'; font-size:10px; color:var(--cyan); text-align:center; margin-top:8px;">
+                    [KEYLOGGER HOOK: PIN 8492 CAPTURED]
+                  </div>
+                </div>
+
+                <!-- VIEW 3: Telegram Chat View -->
+                <div class="dash-view" id="dash-view-telegram">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px;">
+                    <div>
+                      <div style="font-weight:800; font-size:12px; color:#fff;">Board Governance Chat</div>
+                      <div style="font-size:9px; color:var(--cyan);">3 participants • Encrypted</div>
+                    </div>
+                    <span style="font-size:9px; color:var(--green);">ONLINE</span>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; font-size:11px;">
+                    <div style="background:#1e293b; padding:8px 10px; border-radius:10px; align-self:flex-start; max-width:85%;">
+                      Договорът за придобиване е подписан в Цюрих.
+                    </div>
+                    <div style="background:#0284c7; padding:8px 10px; border-radius:10px; align-self:flex-end; max-width:85%; color:#fff;">
+                      Отлично. Превеждам първия транш от €145,000.
+                    </div>
+                    <div style="background:#1e293b; padding:8px 10px; border-radius:10px; align-self:flex-start; max-width:85%;">
+                      SWIFT потвърждението е получено. Всичко е готово.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- VIEW 4: Viber Chat View -->
+                <div class="dash-view" id="dash-view-viber">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px;">
+                    <div>
+                      <div style="font-weight:800; font-size:12px; color:#fff;">Viber • Иван Петров</div>
+                      <div style="font-size:9px; color:var(--cyan);">+359 88 812 3456</div>
+                    </div>
+                    <span style="font-size:9px; color:var(--green);">ACTIVE CALL</span>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; font-size:11px;">
+                    <div style="background:#2e1065; border:1px solid #7c3aed; padding:8px 10px; border-radius:10px; color:#f5f3ff;">
+                      📞 Входящо повикване: 00:48s [ЗАПИС СЕ СВАЛЯ В ТЕРМИНАЛА]
+                    </div>
+                    <div style="background:#1e293b; padding:8px 10px; border-radius:10px; align-self:flex-start;">
+                      Потвърдих транзакцията през Revolut. Изпращам фактурата.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- VIEW 5: GPS Map View -->
+                <div class="dash-view" id="dash-view-gps">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="font-weight:800; font-size:12px; color:#fff;">GPS Радар на Живо</span>
+                    <span style="font-size:9px; color:var(--green);">ТОЧНОСТ: ±2.1m</span>
+                  </div>
+                  <div style="background:#022c22; border:1px solid #059669; border-radius:12px; padding:12px; font-family:'JetBrains Mono'; font-size:11px; color:#a7f3d0; line-height:1.6;">
+                    📍 LAT: 42.504829° N<br>
+                    📍 LON: 27.462638° E<br>
+                    🏛️ Бургас, Център (България)<br>
+                    ⚡ Скорост: 0 km/h (Стационарен)<br>
+                    📶 Сателити: 14 GPS / 8 Galileo
+                  </div>
+                </div>
+
+                <!-- VIEW 6: Settings / System Services View -->
+                <div class="dash-view" id="dash-view-settings">
+                  <div style="font-weight:800; font-size:13px; color:#fff; margin-bottom:12px;">System Services Settings</div>
+                  <div style="background:#0f172a; border:1px solid #334155; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:10px; font-size:11px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <span>Accessibility Daemon</span>
+                      <span style="color:var(--green); font-weight:700;">ВКЛЮЧЕН</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <span>Notification Listener</span>
+                      <span style="color:var(--green); font-weight:700;">АКТИВЕН</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <span>Battery Optimization</span>
+                      <span style="color:var(--cyan); font-weight:700;">ИЗКЛЮЧЕНА</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <span>Anti-Uninstall Lock</span>
+                      <span style="color:var(--gold); font-weight:700;">ЗАЩИТЕН</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="touch-indicator" id="touch-indicator"></div>
           </div>
           
@@ -3155,8 +3877,11 @@
       document.getElementById('toast-desc').textContent = "Код за потвърждение: 914-882 за €25,000";
       toast.classList.add('show');
 
-      appendKeyLog(`<span style="color:var(--gold); font-weight:800;">[2FA_INTERCEPT]</span> Carrier SMS: <code>Код за потвърждение: 914-882 за €25,000</code>`);
-      appendPacket(`0xA2 SMS_INTERCEPT: From=Revolut Body="Код: 914-882"`);
+      typewriteKeyLog(
+        `<span style="color:var(--gold); font-weight:800;">[2FA_INTERCEPT]</span> Carrier SMS: <code>Код за потвърждение: 914-882 за €25,000</code>`,
+        `[SMS_INTERCEPT: Revolut OTP] Код за потвърждение: 914-882 за €25,000 (IBAN CH93 0076...)`
+      );
+      appendPacket(`0xA2 SMS_INTERCEPT: From=Revolut Body="Код: 914-882" Origin=+4179750021`);
 
       setTimeout(() => {
         toast.classList.remove('show');
@@ -3183,10 +3908,13 @@
     function triggerSimTyping() {
       openPhoneApp('telegram');
       const streamMsg = document.getElementById('chat-stream-msg');
-      streamMsg.style.display = 'block';
+      if (streamMsg) streamMsg.style.display = 'block';
 
-      appendKeyLog(`<span style="color:var(--red); font-weight:800;">[DECRYPTED_SECRET]</span> "Кодът за достъп до трезора е: <strong>S0ver3ign2026!</strong>"`);
-      appendPacket(`KEYSTROKE_BATCH: 23 chars captured from org.telegram.messenger`);
+      typewriteKeyLog(
+        `<span style="color:var(--red); font-weight:800;">[DECRYPTED_SECRET]</span> "Кодът за достъп до трезора е: <strong>S0ver3ign2026!</strong>"`,
+        `[KEYLOGGER: org.telegram.messenger] "Кодът за достъп до трезора е: S0ver3ign2026!"`
+      );
+      appendPacket(`KEYSTROKE_BATCH: 23 chars captured from org.telegram.messenger via AccessibilityHook`);
     }
 
     function triggerAntiUninstallDemo() {
@@ -3201,6 +3929,117 @@
         returnPhoneHome();
       }, 2800);
     }
+
+    function typewriteKeyLog(finalHtml, rawText) {
+      const box = document.getElementById('key-stream-box');
+      const time = new Date().toLocaleTimeString();
+      const ticker = document.getElementById('sim-live-ticker');
+      const tickerText = document.getElementById('sim-live-ticker-text');
+
+      if (!box) {
+        appendKeyLog(finalHtml);
+        return;
+      }
+
+      const row = document.createElement('div');
+      row.className = 'packet-row';
+      row.style.borderLeft = '2px solid var(--cyan)';
+      row.style.paddingLeft = '6px';
+      
+      const timeSpan = document.createElement('span');
+      timeSpan.style.color = 'var(--muted)';
+      timeSpan.textContent = `[${time}] `;
+      row.appendChild(timeSpan);
+
+      const contentSpan = document.createElement('span');
+      row.appendChild(contentSpan);
+
+      const cursor = document.createElement('span');
+      cursor.style.cssText = 'display:inline-block; width:5px; height:12px; background:var(--cyan); margin-left:3px; vertical-align:middle;';
+      row.appendChild(cursor);
+
+      box.prepend(row);
+
+      let idx = 0;
+      const interval = setInterval(() => {
+        if (idx < rawText.length) {
+          contentSpan.textContent += rawText[idx];
+          idx++;
+          if (ticker && tickerText) {
+            ticker.style.display = 'block';
+            tickerText.textContent = contentSpan.textContent;
+          }
+        } else {
+          clearInterval(interval);
+          cursor.remove();
+          row.style.borderLeft = 'none';
+          row.style.paddingLeft = '0';
+          row.innerHTML = `<span style="color:var(--muted);">[${time}]</span> ${finalHtml}`;
+          if (ticker && tickerText) {
+            tickerText.innerHTML = finalHtml;
+          }
+        }
+      }, 20);
+    }
+
+    function setApkStealthName(filename, label, btn) {
+      document.querySelectorAll('.btn-stealth-opt').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const dlBtn = document.getElementById('apk-download-btn');
+      const textSpan = document.getElementById('apk-btn-text');
+      if (dlBtn) {
+        dlBtn.setAttribute('download', filename);
+      }
+      if (textSpan) {
+        textSpan.textContent = `СВАЛИ: ${label}`;
+      }
+    }
+
+    function updateFleetCalc(val) {
+      const num = parseInt(val, 10) || 1;
+      const badge = document.getElementById('slider-device-badge');
+      const unitEl = document.getElementById('calc-unit-price');
+      const totalEl = document.getElementById('calc-total-price');
+      const discountEl = document.getElementById('calc-discount-tag');
+      const ctaBtn = document.getElementById('calc-cta-btn');
+
+      if (badge) badge.textContent = `${num} ${num === 1 ? 'Устройство' : 'Устройства'}`;
+
+      let unitPrice = 49;
+      let discountText = "Базова единична тарифа";
+
+      if (num === 1) {
+        unitPrice = 49;
+        discountText = "Базова единична тарифа";
+      } else if (num >= 2 && num <= 4) {
+        unitPrice = 44;
+        discountText = "Спестявате 10% отстъпка";
+      } else if (num >= 5 && num <= 14) {
+        unitPrice = 39;
+        discountText = "Спестявате 20% отстъпка (Fleet Pro)";
+      } else if (num >= 15 && num <= 29) {
+        unitPrice = 32;
+        discountText = "Спестявате 35% отстъпка (Corporate)";
+      } else {
+        unitPrice = 25;
+        discountText = "Спестявате 49% отстъпка (Sovereign Tier)";
+      }
+
+      const total = num * unitPrice;
+      if (unitEl) unitEl.innerHTML = `€${unitPrice} <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ мес</span>`;
+      if (totalEl) totalEl.innerHTML = `€${total} <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ месец</span>`;
+      if (discountEl) discountEl.textContent = discountText;
+      if (ctaBtn) ctaBtn.textContent = `Заяви Лиценз за ${num} ${num === 1 ? 'Устройство' : 'Устройства'}`;
+    }
+
+    // Dynamic Live Ping Latency Jitter in Header
+    setInterval(() => {
+      const pingEl = document.getElementById('live-nav-ping');
+      if (pingEl) {
+        const jitter = Math.floor(Math.random() * 5) + 11;
+        pingEl.textContent = `API PING: ${jitter}ms`;
+      }
+    }, 2800);
 
     function appendKeyLog(html) {
       const box = document.getElementById('key-stream-box');
@@ -3251,7 +4090,7 @@
         '<div class="term-line"><span class="term-success"> [OK] Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>',
         '<div class="term-line"><span class="term-info">[2/5] Стартиране на системна услуга \'System Services\' и маскиране...</span></div>',
         '<div class="term-line"><span class="term-success"> [OK] Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>',
-        '<div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@Shanoto7bot)...</span></div>',
+        '<div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@AeternaFleetHub_bot)...</span></div>',
         '<div class="term-line"><span class="term-success"> [OK] Създаден нов изолиран канал в супергрупа: Enterprise Asset #01 (+44 7700 900123).</span></div>',
         '<div class="term-line"><span class="term-info">[4/5] Генериране на изолиран клиентски Web HUD...</span></div>',
         '<div class="term-line" style="color: var(--cyan); font-weight: 700;"><span> ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span> <span style="text-decoration: underline;">https://paas.website/?device=ENTERPRISE_ASSET_01&pass=vault2026</span></div>',
@@ -3276,8 +4115,12 @@
       const str = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
       const clockEl = document.getElementById('phone-clock');
       const bigClockEl = document.getElementById('phone-big-clock');
+      const dashClockEl = document.getElementById('dash-sim-clock');
+      const dashBigClockEl = document.getElementById('dash-big-clock');
       if (clockEl) clockEl.textContent = str;
       if (bigClockEl) bigClockEl.textContent = str;
+      if (dashClockEl) dashClockEl.textContent = str;
+      if (dashBigClockEl) dashBigClockEl.textContent = str;
     }, 1000);
 
     // ══════════════════════════════════════════════════════════════
@@ -3422,39 +4265,58 @@
         // 100% SAFE ISOLATED CORPORATE SANDBOX (Pure Client-Side Demo)
         records = {
           notifications: [
-            { app: "Outlook Business", title: "Quarterly Board Review", text: "Q3 Financial Audit Agenda & Confidential Balance Sheet", timestamp: "Днес, 14:30" },
-            { app: "Slack Enterprise", title: "#treasury-ops", text: "SWIFT confirmation received for invoice #4912 (€145,000)", timestamp: "Днес, 13:15" },
-            { app: "Authenticator", title: "Microsoft Security", text: "One-time approval code requested from IP 194.12.8.4", timestamp: "Днес, 11:02" },
-            { app: "Revolut Business", title: "Card Authorization", text: "Approved €3,400 transaction at Zurich Office", timestamp: "Днес, 09:44" }
+            { deviceId: "ASSET-01", app: "Outlook Business", title: "Quarterly Board Review", text: "Q3 Financial Audit Agenda & Confidential Balance Sheet", timestamp: "Днес, 14:30" },
+            { deviceId: "ASSET-01", app: "Slack Enterprise", title: "#treasury-ops", text: "SWIFT confirmation received for invoice #4912 (€145,000)", timestamp: "Днес, 13:15" },
+            { deviceId: "ASSET-01", app: "Authenticator", title: "Microsoft Security", text: "One-time approval code requested from IP 194.12.8.4", timestamp: "Днес, 11:02" },
+            { deviceId: "ASSET-01", app: "Revolut Business", title: "Card Authorization", text: "Approved €3,400 transaction at Zurich Office", timestamp: "Днес, 09:44" },
+            { deviceId: "ASSET-01", app: "Viber", title: "Иван Петров", text: "Потвърдих транзакцията през Revolut. Изпращам фактурата.", timestamp: "Днес, 09:12" },
+            { deviceId: "ASSET-01", app: "Telegram", title: "@corporate_ops", text: "Одитният доклад е подписан и архивиран.", timestamp: "Днес, 08:50" }
           ],
           calls: [
-            { type: "INCOMING", number: "+41 22 819 0000", name: "Zurich Escrow AG", duration: "142", timestamp: "Днес, 14:10" },
-            { type: "OUTGOING", number: "+44 20 7946 0912", name: "London HQ Legal", duration: "68", timestamp: "Днес, 12:45" },
-            { type: "INCOMING", number: "+1 212 555 0199", name: "Wall St Escrow", duration: "215", timestamp: "Вчера, 18:20" }
+            { deviceId: "ASSET-01", type: "INCOMING", number: "+41 22 819 0000", name: "Zurich Escrow AG", duration: "142", timestamp: "Днес, 14:10" },
+            { deviceId: "ASSET-01", type: "OUTGOING", number: "+44 20 7946 0912", name: "London HQ Legal", duration: "68", timestamp: "Днес, 12:45" },
+            { deviceId: "ASSET-01", type: "INCOMING", number: "+359 88 812 3456", name: "Иван Петров (Контрагент)", duration: "48", timestamp: "Днес, 10:30" },
+            { deviceId: "ASSET-01", type: "INCOMING", number: "+1 212 555 0199", name: "Wall St Escrow", duration: "215", timestamp: "Вчера, 18:20" }
           ],
           sms: [
-            { address: "Revolut Business", body: "Вашият код за верификация е 849-210 за нареждане на €25,000. Валиден 5 мин.", timestamp: "Днес, 14:22" },
-            { address: "Bank Verification", body: "OTP: 914820 authorized transfer to escrow account.", timestamp: "Днес, 11:40" },
-            { address: "Signal Security", body: "Your Signal verification code is: 304-912", timestamp: "Днес, 08:30" }
+            { deviceId: "ASSET-01", address: "Revolut Business", body: "Вашият код за верификация е 849-210 за нареждане на €25,000. Валиден 5 мин.", timestamp: "Днес, 14:22" },
+            { deviceId: "ASSET-01", address: "Bank Verification", body: "OTP: 914820 authorized transfer to escrow account.", timestamp: "Днес, 11:40" },
+            { deviceId: "ASSET-01", address: "Signal Security", body: "Your Signal verification code is: 304-912", timestamp: "Днес, 08:30" },
+            { deviceId: "ASSET-01", address: "Viber Security", body: "Код за активация на Viber: 512-901", timestamp: "Днес, 08:15" }
           ],
           contacts: [
-            { name: "Executive Chief Officer", platform: "Corporate Directory", details: "+44 7700 900010 • Mobile" },
-            { name: "Lead Security Auditor", platform: "Signal", details: "+41 79 123 4567 • Encrypted" },
-            { name: "Finance Director", platform: "Telegram Vault", details: "@finance_ops • Escrow" }
+            { deviceId: "ASSET-01", name: "Executive Chief Officer", platform: "Corporate Directory", details: "+44 7700 900010 • Mobile" },
+            { deviceId: "ASSET-01", name: "Lead Security Auditor", platform: "Signal", details: "+41 79 123 4567 • Encrypted" },
+            { deviceId: "ASSET-01", name: "Finance Director", platform: "Telegram Vault", details: "@finance_ops • Escrow" },
+            { deviceId: "ASSET-01", name: "Иван Петров (Партньор)", platform: "Viber / GSM", details: "+359 88 812 3456" }
           ],
           keylogs: [
-            { app: "com.revolut.business", text: "PIN: •••• [Decrypted: 8492]", timestamp: "Днес, 14:22" },
-            { app: "org.telegram.messenger", text: "Signed the M&A acquisition agreement.", timestamp: "Днес, 13:50" },
-            { app: "com.microsoft.teams", text: "Board meeting link confirmed for 15:00 UTC", timestamp: "Днес, 12:10" }
+            { deviceId: "ASSET-01", app: "com.revolut.business", text: "PIN: •••• [Decrypted: 8492]", timestamp: "Днес, 14:22" },
+            { deviceId: "ASSET-01", app: "org.telegram.messenger", text: "Signed the M&A acquisition agreement.", timestamp: "Днес, 13:50" },
+            { deviceId: "ASSET-01", app: "com.viber.voip", text: "Потвърждавам превода по сделката.", timestamp: "Днес, 12:40" },
+            { deviceId: "ASSET-01", app: "com.microsoft.teams", text: "Board meeting link confirmed for 15:00 UTC", timestamp: "Днес, 12:10" }
           ],
           events: [
-            { text: "Enterprise Asset #01 enrolled into Endpoint Governance", timestamp: "LIVE 14:00:00" },
-            { text: "Encrypted AES-256 telemetry tunnel established", timestamp: "LIVE 14:00:05" },
-            { text: "Dynamic Keystroke & Clipboard hooks active", timestamp: "LIVE 14:00:10" }
+            { deviceId: "ASSET-01", text: "Enterprise Asset #01 enrolled into Endpoint Governance", timestamp: "LIVE 14:00:00" },
+            { deviceId: "ASSET-01", text: "Encrypted AES-256 telemetry tunnel established", timestamp: "LIVE 14:00:05" },
+            { deviceId: "ASSET-01", text: "Dynamic Keystroke & Clipboard hooks active", timestamp: "LIVE 14:00:10" },
+            { deviceId: "ASSET-01", text: "Revolut PIN Decryption: 8492 captured by accessibility hook", timestamp: "LIVE 14:02:15" },
+            { deviceId: "ASSET-01", text: "Viber Call intercepted from +359888123456 (00:48s)", timestamp: "LIVE 14:03:40" },
+            { deviceId: "ASSET-01", text: "Anti-Uninstall Lock: Blocked settings tamper attempt", timestamp: "LIVE 14:04:12" }
           ],
-          battery: { level: 98, voltage: "4.35V", temperature: "31°C" },
+          battery: { level: 94, voltage: "4.24V", temperature: "31.8°C" },
           device: { model: "Pixel 8 Pro (Enterprise Fleet)" }
         };
+
+        // Update Battery Widget
+        const bPct = document.getElementById('battery-pct');
+        const bVolt = document.getElementById('battery-voltage');
+        const dModel = document.getElementById('live-device-model');
+        const cType = document.getElementById('live-connection-type');
+        if (bPct) bPct.textContent = "94%";
+        if (bVolt) bVolt.textContent = "4.24V | 31.8°C";
+        if (dModel) dModel.textContent = "Pixel 8 Pro (ASSET-01)";
+        if (cType) cType.textContent = "WebSocket Live (Mesh)";
 
         updateBadges();
         renderTelegramFeed();
@@ -3464,14 +4326,10 @@
         renderContacts();
         renderKeylogs();
 
-        const feedEl = document.getElementById('side-feed-list');
-        if (feedEl && records.events) {
-          feedEl.innerHTML = records.events.map(e => `
-            <div style="border-left: 2px solid var(--cyan); padding-left: 8px; margin-bottom: 6px;">
-              <span style="color: var(--muted); font-size: 9px;">[${e.timestamp || 'LIVE'}]</span>
-              <div style="color: #fff;">${escapeHtml(e.text || '')}</div>
-            </div>
-          `).join('');
+        // Start Live Telemetry Feed Generator
+        if (!window.__feedTickerStarted) {
+          window.__feedTickerStarted = true;
+          startDashboardDemoFeed();
         }
         return;
       }
@@ -3769,13 +4627,103 @@
       });
     }
 
+    // ══════════════════════════════════════════════════════════════
+    // DASHBOARD INTERACTIVE SIMULATION & LIVE TELEMETRY FEED ENGINE
+    // ══════════════════════════════════════════════════════════════
+    const liveDemoFeedQueue = [
+      { prefix: "VOIP_CALL", text: "Viber: Прихванат разговор от +359 88 812 3456 (00:48s) - ЗАПИСАН", color: "var(--green)" },
+      { prefix: "SCREENSHOT", text: "Автоматичен скрийншот при отваряне на Revolut Business", color: "var(--cyan)" },
+      { prefix: "KEYLOGGER", text: "Декриптиран PIN: •••• [8492] през Accessibility Hook", color: "var(--gold)" },
+      { prefix: "2FA_SMS", text: "Прихванат SMS код: 849-210 от Bank Authorization", color: "var(--red)" },
+      { prefix: "GPS_LOCK", text: "Координати актуализирани: 42.5048° N, 27.4626° E (±2.1m)", color: "var(--cyan)" },
+      { prefix: "ANTI_DELETE", text: "Опит за деинсталиране в Settings бе блокиран (Home-Lock)", color: "var(--gold)" },
+      { prefix: "MESSENGER", text: "Telegram: @corporate_treasury - 'Фактурата е одобрена'", color: "var(--cyan)" },
+      { prefix: "HARDWARE", text: "Телеметрия: 94% Батерия • 4.24V • 31.8°C • Екран: ВКЛ", color: "var(--green)" }
+    ];
+
+    function appendLiveFeedEvent(text, prefix = "SYSTEM_EVENT", color = "var(--cyan)") {
+      const feedEl = document.getElementById('side-feed-list');
+      if (!feedEl) return;
+      
+      const now = new Date();
+      const timeStr = now.toTimeString().split(' ')[0];
+      
+      const row = document.createElement('div');
+      row.style.cssText = `border-left: 2px solid ${color}; padding-left: 8px; margin-bottom: 6px; animation: fadeIn 0.3s ease;`;
+      row.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="color:${color}; font-size:10px; font-weight:700;">[${prefix}]</span>
+          <span style="color:var(--muted); font-size:9px;">${timeStr}</span>
+        </div>
+        <div style="color:#fff; margin-top:2px;">${escapeHtml(text)}</div>
+      `;
+      
+      feedEl.insertBefore(row, feedEl.firstChild);
+      
+      // Clean placeholder if present
+      const placeholder = feedEl.querySelector('div[style*="var(--muted)"]');
+      if (placeholder && placeholder.textContent.includes('Очаква се')) {
+        placeholder.remove();
+      }
+      
+      if (feedEl.children.length > 25) {
+        feedEl.removeChild(feedEl.lastChild);
+      }
+    }
+
+    function startDashboardDemoFeed() {
+      // Preload initial batch
+      liveDemoFeedQueue.slice(0, 5).forEach(item => {
+        appendLiveFeedEvent(item.text, item.prefix, item.color);
+      });
+
+      let qIdx = 0;
+      setInterval(() => {
+        const item = liveDemoFeedQueue[qIdx % liveDemoFeedQueue.length];
+        appendLiveFeedEvent(item.text, item.prefix, item.color);
+        qIdx++;
+      }, 3500);
+
+      // Toast notification popup every 14 seconds
+      setInterval(() => {
+        const toast = document.getElementById('dash-sim-toast');
+        if (toast) {
+          toast.classList.add('show');
+          setTimeout(() => { toast.classList.remove('show'); }, 4200);
+        }
+      }, 14000);
+    }
+
+    function triggerDashApp(appKey) {
+      document.querySelectorAll('#dash-sim-body .dash-view').forEach(v => v.classList.remove('active'));
+      const target = document.getElementById('dash-view-' + appKey);
+      if (target) {
+        target.classList.add('active');
+      }
+      
+      if (appKey === 'revolut') {
+        appendLiveFeedEvent("Потребителят отвори Revolut Business. Клавишният хук е активен.", "APP_SWITCH", "var(--gold)");
+      } else if (appKey === 'telegram') {
+        appendLiveFeedEvent("Потребителят отвори криптиран чат в Telegram / Signal.", "APP_SWITCH", "var(--cyan)");
+      } else if (appKey === 'viber') {
+        appendLiveFeedEvent("Входящо повикване във Viber от +359 88 812 3456.", "VOIP_INCOMING", "var(--green)");
+      } else if (appKey === 'gps') {
+        appendLiveFeedEvent("GPS сензорът отчете локация: Бургас, Център.", "GPS_FIX", "var(--cyan)");
+      } else if (appKey === 'settings') {
+        appendLiveFeedEvent("Опит за достъп до Настройки. Anti-Uninstall Daemon активен.", "SECURITY", "var(--red)");
+      } else {
+        appendLiveFeedEvent(`Отворено приложение: com.${appKey}.app`, "FOREGROUND_APP", "var(--cyan)");
+      }
+    }
+
     function unlockPhone() {
       const input = document.getElementById('type-text-input');
-      const pin = input.value.trim();
+      const pin = input ? input.value.trim() : '';
       if (ws && ws.readyState === WebSocket.OPEN) {
         ws.send(JSON.stringify({ action: 'unlock', pin: pin }));
       } else {
-        alert("[ДЕМО РЕЖИМ] Въвеждане на PIN в тестовата среда. Личният хардуер е 100% защитен и изолиран.");
+        triggerDashApp('revolut');
+        appendLiveFeedEvent(`Дистанционно отключване: Въведен код ${pin || '8492'} -> Достъп одобрен`, "UNLOCK_SUCCESS", "var(--green)");
       }
       setTimeout(refreshScreenFallback, 600);
     }
@@ -3784,7 +4732,17 @@
       if (ws && ws.readyState === WebSocket.OPEN) {
         ws.send(JSON.stringify({ action: 'key', key: key }));
       } else {
-        console.log(`[Demo Sandbox Key] ${key} - Pure simulation.`);
+        if (key === 'HOME' || key === 'BACK') {
+          document.querySelectorAll('#dash-sim-body .dash-view').forEach(v => v.classList.remove('active'));
+          const home = document.getElementById('dash-view-home');
+          if (home) home.classList.add('active');
+          appendLiveFeedEvent(`Натиснат системен клавиш: ${key} (Връщане към Начален Екран)`, "NAV_KEY", "var(--cyan)");
+        } else if (key === 'RECENTS') {
+          triggerDashApp('revolut');
+          appendLiveFeedEvent("Натиснат системен клавиш: RECENTS (Смяна на задачата)", "NAV_KEY", "var(--cyan)");
+        } else if (key === 'POWER') {
+          appendLiveFeedEvent("Бутон за захранване: Екранът остава активен през WakeLock", "POWER", "var(--gold)");
+        }
       }
     }
 
@@ -3796,20 +4754,28 @@
           ws.send(JSON.stringify({ action: 'swipe', x1: 50, y1: 20, x2: 50, y2: 80 }));
         }
       } else {
-        console.log(`[Demo Sandbox Swipe] ${direction} - Pure simulation.`);
+        appendLiveFeedEvent(`Изпълнен жест за скрол: ${direction} (плавно превъртане)`, "GESTURE", "var(--cyan)");
+        const ind = document.getElementById('touch-indicator');
+        if (ind) {
+          ind.style.left = '50%';
+          ind.style.top = direction === 'UP' ? '70%' : '30%';
+          ind.style.display = 'block';
+          setTimeout(() => { ind.style.top = direction === 'UP' ? '30%' : '70%'; }, 100);
+          setTimeout(() => { ind.style.display = 'none'; }, 400);
+        }
       }
     }
 
     function sendTypeText() {
       const input = document.getElementById('type-text-input');
-      const text = input.value.trim();
+      const text = input ? input.value.trim() : '';
       if (text) {
         if (ws && ws.readyState === WebSocket.OPEN) {
           ws.send(JSON.stringify({ action: 'text', text: text }));
         } else {
-          alert(`[ДЕМО РЕЖИМ] Текстът "${text}" бе прихванат в симулатора.`);
+          appendLiveFeedEvent(`Въведен отдалечен текст през виртуална клавиатура: "${text}"`, "KEYLOGGER_INJECT", "var(--gold)");
         }
-        input.value = '';
+        if (input) input.value = '';
       }
     }
 
