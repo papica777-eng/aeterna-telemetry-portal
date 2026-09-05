@@ -2372,10 +2372,16 @@
     }
 
     /* ══════════════════════════════════════════════════════════════ */
-    /* 3. GLOBAL TELEMETRY NODE MAP */
+    /* 3. GLOBAL TELEMETRY NODE MAP & CONTAINER CENTERING */
     /* ══════════════════════════════════════════════════════════════ */
+    .map-viewport-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
     .world-map-card {
-      max-width: 1260px;
+      max-width: 1200px;
       margin: 0 auto 60px;
       padding: 0 20px;
       box-sizing: border-box;
@@ -2385,7 +2391,7 @@
       background: rgba(8, 14, 26, 0.85);
       border: 1px solid var(--border-strong);
       border-radius: 18px;
-      padding: 30px;
+      padding: 24px;
       backdrop-filter: blur(20px);
       box-shadow: 0 16px 40px rgba(0,0,0,0.6);
       position: relative;
@@ -2395,38 +2401,156 @@
     .world-map-svg-wrap {
       position: relative;
       width: 100%;
-      height: 420px;
+      height: 480px;
       border-radius: 14px;
-      background: radial-gradient(circle at 50% 50%, #0a1529 0%, #030712 100%);
-      border: 1px solid var(--border);
+      background: radial-gradient(circle at 50% 45%, #081326 0%, #020610 100%);
+      border: 1px solid var(--border-strong);
       overflow: hidden;
       margin: 0 auto;
       box-sizing: border-box;
+      box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
     }
-    .map-canvas-layer {
-      width: 100%;
-      height: 100%;
+
+    /* Node Positioning & Animation */
+    .network-node {
       position: absolute;
-      top: 0;
-      left: 0;
-    }
-    .map-log-feed {
-      position: absolute;
-      bottom: 14px;
-      left: 14px;
-      background: rgba(2, 6, 14, 0.85);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--green);
-      max-width: 520px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      width: 14px;
+      height: 14px;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      z-index: 10;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+    }
+    .node-core {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      position: relative;
+      z-index: 2;
+      transition: transform 0.2s ease;
+    }
+    .network-node:hover .node-core {
+      transform: scale(1.35);
+    }
+    .node-pulse {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cyan);
+      animation: nodePulse 2s infinite ease-out;
+      pointer-events: none;
+    }
+    @keyframes nodePulse {
+      0% { transform: scale(0.35); opacity: 1; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    /* Base Node Label with Crisp Backdrop */
+    .node-label {
+      position: absolute;
+      top: -26px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(4, 8, 20, 0.94);
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .node-ping {
+      font-size: 9px;
+      font-weight: 600;
+    }
+
+    /* 1. Exact New York Position: North America Atlantic Coast (Left of London) */
+    #node-new-york {
+      left: 20% !important;
+      top: 40% !important;
+    }
+    #node-new-york .node-label {
+      transform: translate(-100%, -50%) !important;
+      left: -8px !important;
+      top: 50% !important;
+    }
+
+    /* 2. Dispersing the European Cluster (Anti-Collision Offsets) */
+    #node-london {
+      left: 47% !important;
+      top: 27% !important;
+    }
+    #node-london .node-label {
+      transform: translateY(-20px) !important;
+    }
+
+    #node-frankfurt {
+      left: 51.5% !important;
+      top: 29% !important;
+    }
+    #node-frankfurt .node-label {
+      transform: translateY(20px) !important;
+      top: 14px !important;
+    }
+
+    #node-geneva {
+      left: 49% !important;
+      top: 34% !important;
+    }
+    #node-geneva .node-label {
+      transform: translateX(-35px) !important;
+      left: -15px !important;
+      top: -22px !important;
+    }
+
+    #node-zurich {
+      left: 51.2% !important;
+      top: 33.5% !important;
+    }
+    #node-zurich .node-label {
+      transform: translateY(-22px) !important;
+      top: -26px !important;
+    }
+
+    #node-sofia {
+      left: 56.5% !important;
+      top: 36.5% !important;
+    }
+    #node-sofia .node-label {
+      transform: translateX(35px) !important;
+      left: 15px !important;
+      top: -20px !important;
+    }
+
+    /* 3. Asia & Pacific Nodes */
+    #node-singapore {
+      left: 78% !important;
+      top: 62% !important;
+    }
+    #node-singapore .node-label {
+      transform: translateY(20px) !important;
+      top: 12px !important;
+    }
+
+    #node-tokyo {
+      left: 88% !important;
+      top: 38% !important;
+    }
+    #node-tokyo .node-label {
+      transform: translateX(25px) !important;
+      left: 15px !important;
     }
 
     /* Leaflet Cybernetic Stealth Theme */
@@ -3215,11 +3339,198 @@
           </div>
         </div>
 
-        <div class="world-map-svg-wrap" id="world-map-container" style="height: 480px; position: relative;">
-          <div id="world-leaflet-map" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1;"></div>
-          <div class="map-log-feed" style="z-index: 1000;">
-            <span class="pulse-dot" style="width: 6px; height: 6px; background: var(--green); flex-shrink: 0;"></span>
-            <span id="map-live-ticker">[09:24:11] Node #4092 secure tunnel stabilized (Zurich Server)</span>
+        <div class="map-viewport-container">
+          <div class="world-map-svg-wrap" id="world-map-container">
+            <!-- Vector Cybernetic World Map with Real Continent Outlines -->
+            <svg class="world-continents-svg" viewBox="0 0 1000 500" preserveAspectRatio="none" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; pointer-events: none;">
+              <defs>
+                <linearGradient id="grid-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(0,240,255,0.06)"/>
+                  <stop offset="100%" stop-color="rgba(16,185,129,0.02)"/>
+                </linearGradient>
+                <filter id="cyan-glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                </filter>
+              </defs>
+
+              <!-- Radial Background Glow -->
+              <rect width="1000" height="500" fill="url(#grid-glow)"/>
+
+              <!-- Coordinate Matrix Grid -->
+              <g stroke="rgba(0, 240, 255, 0.05)" stroke-width="1">
+                <!-- Latitudes -->
+                <line x1="0" y1="100" x2="1000" y2="100"/>
+                <line x1="0" y1="200" x2="1000" y2="200"/>
+                <line x1="0" y1="250" x2="1000" y2="250" stroke="rgba(0, 240, 255, 0.12)" stroke-dasharray="6,6"/> <!-- Equator -->
+                <line x1="0" y1="300" x2="1000" y2="300"/>
+                <line x1="0" y1="400" x2="1000" y2="400"/>
+                <!-- Longitudes -->
+                <line x1="200" y1="0" x2="200" y2="500"/>
+                <line x1="350" y1="0" x2="350" y2="500"/>
+                <line x1="470" y1="0" x2="470" y2="500" stroke="rgba(0, 240, 255, 0.12)" stroke-dasharray="6,6"/> <!-- Prime Meridian -->
+                <line x1="600" y1="0" x2="600" y2="500"/>
+                <line x1="750" y1="0" x2="750" y2="500"/>
+                <line x1="880" y1="0" x2="880" y2="500"/>
+              </g>
+
+              <!-- Authentic Cybernetic Continent Vectors -->
+              <g fill="rgba(0, 240, 255, 0.035)" stroke="rgba(0, 240, 255, 0.22)" stroke-width="1.2">
+                <!-- North America -->
+                <path d="M 60,65 L 140,45 L 230,50 L 280,85 L 260,110 L 220,135 L 245,190 L 210,215 L 180,245 L 160,235 L 135,195 L 105,150 L 55,100 Z"/>
+                <!-- Greenland -->
+                <path d="M 270,30 L 325,25 L 340,60 L 305,75 Z"/>
+                <!-- South America -->
+                <path d="M 195,260 L 260,270 L 285,310 L 250,420 L 210,440 L 195,350 L 180,290 Z"/>
+                <!-- Europe & Scandinavia -->
+                <path d="M 445,105 L 485,100 L 525,115 L 555,155 L 575,185 L 530,225 L 475,220 L 440,190 L 435,145 Z"/>
+                <path d="M 458,115 L 478,110 L 476,145 L 458,150 Z"/> <!-- UK -->
+                <path d="M 495,50 L 535,55 L 525,110 L 495,105 Z"/> <!-- Scandinavia -->
+                <!-- Africa -->
+                <path d="M 445,200 L 540,210 L 565,260 L 550,345 L 490,415 L 455,340 L 420,265 L 435,220 Z"/>
+                <!-- Madagascar -->
+                <path d="M 570,340 L 585,345 L 575,385 L 565,375 Z"/>
+                <!-- Asia -->
+                <path d="M 550,110 L 670,75 L 800,80 L 895,115 L 850,185 L 880,240 L 820,270 L 760,250 L 715,295 L 640,250 L 575,195 L 550,150 Z"/>
+                <!-- India Subcontinent -->
+                <path d="M 645,205 L 690,210 L 675,280 L 640,235 Z"/>
+                <!-- Japan Archipelago -->
+                <path d="M 870,165 L 890,175 L 885,215 L 865,210 Z"/>
+                <!-- Australia & NZ -->
+                <path d="M 770,340 L 860,335 L 870,390 L 820,430 L 760,400 L 755,360 Z"/>
+                <path d="M 890,400 L 905,405 L 895,445 L 885,435 Z"/>
+              </g>
+
+              <!-- Geodesic Fiber Backbone Connection Curves with SVG animation -->
+              <g fill="none" stroke="#00f0ff" stroke-width="1.6" opacity="0.45" stroke-dasharray="6,8">
+                <!-- New York (200, 200) -> London (470, 135) [Transatlantic] -->
+                <path d="M 200,200 Q 330,130 470,135" stroke="#f59e0b" stroke-width="1.8"/>
+                <!-- New York (200, 200) -> Zurich (512, 168) [Direct Swiss Tunnel] -->
+                <path d="M 200,200 Q 350,150 512,168" stroke="#f59e0b" stroke-width="1.5"/>
+                <!-- London (470, 135) -> Frankfurt (515, 145) -->
+                <path d="M 470,135 Q 492,130 515,145"/>
+                <!-- London (470, 135) -> Geneva (490, 170) -->
+                <path d="M 470,135 Q 475,155 490,170"/>
+                <!-- Frankfurt (515, 145) -> Zurich (512, 168) -->
+                <path d="M 515,145 Q 520,156 512,168"/>
+                <!-- Zurich (512, 168) -> Geneva (490, 170) -->
+                <path d="M 512,168 Q 501,165 490,170"/>
+                <!-- Frankfurt (515, 145) -> Sofia (565, 182) -->
+                <path d="M 515,145 Q 545,155 565,182"/>
+                <!-- Zurich (512, 168) -> Sofia (565, 182) -->
+                <path d="M 512,168 Q 540,170 565,182"/>
+                <!-- Sofia (565, 182) -> Singapore (780, 310) [Eurasian Backbone] -->
+                <path d="M 565,182 Q 670,230 780,310"/>
+                <!-- Zurich (512, 168) -> Singapore (780, 310) -->
+                <path d="M 512,168 Q 650,210 780,310"/>
+                <!-- Singapore (780, 310) -> Tokyo (880, 190) [Pacific Link] -->
+                <path d="M 780,310 Q 840,260 880,190"/>
+              </g>
+
+              <!-- Animated Data Pulse Packets Moving Across Fiber -->
+              <circle r="3" fill="#00f0ff" filter="url(#cyan-glow)">
+                <animateMotion path="M 200,200 Q 330,130 470,135" dur="3.2s" repeatCount="indefinite"/>
+              </circle>
+              <circle r="3" fill="#10b981" filter="url(#cyan-glow)">
+                <animateMotion path="M 470,135 Q 492,130 515,145" dur="1.8s" repeatCount="indefinite"/>
+              </circle>
+              <circle r="3" fill="#10b981" filter="url(#cyan-glow)">
+                <animateMotion path="M 512,168 Q 540,170 565,182" dur="2.1s" repeatCount="indefinite"/>
+              </circle>
+              <circle r="3" fill="#f59e0b" filter="url(#cyan-glow)">
+                <animateMotion path="M 565,182 Q 670,230 780,310" dur="4.2s" repeatCount="indefinite"/>
+              </circle>
+              <circle r="3" fill="#00f0ff" filter="url(#cyan-glow)">
+                <animateMotion path="M 780,310 Q 840,260 880,190" dur="2.6s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+
+            <!-- HTML Topology Nodes with User's Exact IDs & Anti-Collision Offsets -->
+            <!-- 1. New York Node (North America East Coast, left of London) -->
+            <div class="network-node" id="node-new-york">
+              <div class="node-pulse" style="border-color: #f59e0b;"></div>
+              <div class="node-core" style="background: #f59e0b; box-shadow: 0 0 10px #f59e0b;"></div>
+              <div class="node-label">
+                <span class="node-name">New York Hub</span>
+                <span class="node-ping" style="color: #f59e0b;">31.4ms</span>
+              </div>
+            </div>
+
+            <!-- 2. London Relay (UK) -->
+            <div class="network-node" id="node-london">
+              <div class="node-pulse" style="border-color: #00f0ff;"></div>
+              <div class="node-core" style="background: #00f0ff; box-shadow: 0 0 10px #00f0ff;"></div>
+              <div class="node-label">
+                <span class="node-name">London Relay</span>
+                <span class="node-ping" style="color: #00f0ff;">14.1ms</span>
+              </div>
+            </div>
+
+            <!-- 3. Frankfurt Mesh (Germany) -->
+            <div class="network-node" id="node-frankfurt">
+              <div class="node-pulse" style="border-color: #00f0ff;"></div>
+              <div class="node-core" style="background: #00f0ff; box-shadow: 0 0 10px #00f0ff;"></div>
+              <div class="node-label">
+                <span class="node-name">Frankfurt Mesh</span>
+                <span class="node-ping" style="color: #00f0ff;">8.2ms</span>
+              </div>
+            </div>
+
+            <!-- 4. Geneva HQ Core (Switzerland West) -->
+            <div class="network-node" id="node-geneva">
+              <div class="node-pulse" style="border-color: #10b981;"></div>
+              <div class="node-core" style="background: #10b981; box-shadow: 0 0 10px #10b981;"></div>
+              <div class="node-label">
+                <span class="node-name">Geneva HQ</span>
+                <span class="node-ping" style="color: #10b981;">1.28ms</span>
+              </div>
+            </div>
+
+            <!-- 5. Zurich Core (Switzerland North) -->
+            <div class="network-node" id="node-zurich">
+              <div class="node-pulse" style="border-color: #10b981;"></div>
+              <div class="node-core" style="background: #10b981; box-shadow: 0 0 10px #10b981;"></div>
+              <div class="node-label">
+                <span class="node-name">Zurich Core</span>
+                <span class="node-ping" style="color: #10b981;">1.14ms</span>
+              </div>
+            </div>
+
+            <!-- 6. Sofia Edge (Bulgaria / Balkans) -->
+            <div class="network-node" id="node-sofia">
+              <div class="node-pulse" style="border-color: #10b981;"></div>
+              <div class="node-core" style="background: #10b981; box-shadow: 0 0 10px #10b981;"></div>
+              <div class="node-label">
+                <span class="node-name">Sofia Edge</span>
+                <span class="node-ping" style="color: #10b981;">1.14ms</span>
+              </div>
+            </div>
+
+            <!-- 7. Singapore Gateway (Southeast Asia) -->
+            <div class="network-node" id="node-singapore">
+              <div class="node-pulse" style="border-color: #f59e0b;"></div>
+              <div class="node-core" style="background: #f59e0b; box-shadow: 0 0 10px #f59e0b;"></div>
+              <div class="node-label">
+                <span class="node-name">Singapore Gateway</span>
+                <span class="node-ping" style="color: #f59e0b;">38.7ms</span>
+              </div>
+            </div>
+
+            <!-- 8. Tokyo Enclave (Japan) -->
+            <div class="network-node" id="node-tokyo">
+              <div class="node-pulse" style="border-color: #f59e0b;"></div>
+              <div class="node-core" style="background: #f59e0b; box-shadow: 0 0 10px #f59e0b;"></div>
+              <div class="node-label">
+                <span class="node-name">Tokyo Enclave</span>
+                <span class="node-ping" style="color: #f59e0b;">42.0ms</span>
+              </div>
+            </div>
+
+            <!-- Live Telemetry Ticker -->
+            <div class="map-log-feed" style="z-index: 1000;">
+              <span class="pulse-dot" style="width: 6px; height: 6px; background: var(--green); flex-shrink: 0;"></span>
+              <span id="map-live-ticker">[09:24:11] Node #4092 secure tunnel stabilized (Zurich Server)</span>
+            </div>
           </div>
         </div>
 
