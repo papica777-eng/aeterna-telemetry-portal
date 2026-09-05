@@ -2242,6 +2242,291 @@
       flex-wrap: wrap;
       gap: 12px;
     }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* 1. MODULAR BUILD CONFIGURATOR */
+    /* ══════════════════════════════════════════════════════════════ */
+    .build-config-wrap {
+      max-width: 1200px;
+      margin: 0 auto 50px;
+      padding: 0 24px;
+    }
+    .build-config-card {
+      background: rgba(8, 14, 26, 0.8);
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      padding: 32px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+    .build-config-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--green), transparent);
+    }
+    .config-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .config-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+    .config-item:hover {
+      background: rgba(0, 240, 255, 0.04);
+      border-color: var(--border-strong);
+    }
+    .config-item.active {
+      background: rgba(0, 240, 255, 0.08);
+      border-color: var(--cyan);
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.12);
+    }
+    .config-check-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: all 0.2s;
+      color: transparent;
+    }
+    .config-item.active .config-check-box {
+      background: var(--cyan);
+      border-color: var(--cyan);
+      color: #03060c;
+    }
+    .config-cli-box {
+      background: #020408;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--cyan);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* 2. INFRASTRUCTURE LOAD SCARCITY BANNER */
+    /* ══════════════════════════════════════════════════════════════ */
+    .scarcity-banner {
+      max-width: 900px;
+      margin: 0 auto 28px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(244, 63, 94, 0.06));
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 14px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.08);
+      animation: pulseGlow 4s infinite alternate;
+    }
+    @keyframes pulseGlow {
+      from { box-shadow: 0 0 10px rgba(245, 158, 11, 0.1); }
+      to { box-shadow: 0 0 25px rgba(245, 158, 11, 0.25); }
+    }
+    .scarcity-meter {
+      width: 140px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+    .scarcity-meter-fill {
+      width: 92%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--red));
+      border-radius: 4px;
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* 3. GLOBAL TELEMETRY NODE MAP */
+    /* ══════════════════════════════════════════════════════════════ */
+    .world-map-card {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+    }
+    .world-map-inner {
+      background: rgba(8, 14, 26, 0.85);
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      padding: 30px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      position: relative;
+    }
+    .world-map-svg-wrap {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 50% 50%, #0a1529 0%, #030712 100%);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .map-canvas-layer {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .map-log-feed {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      background: rgba(2, 6, 14, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--green);
+      max-width: 520px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* 4. POLYMORPHIC COMPATIBILITY VERIFICATION */
+    /* ══════════════════════════════════════════════════════════════ */
+    .poly-arch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+    }
+    .poly-card {
+      background: rgba(8, 14, 26, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .poly-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-4px);
+    }
+    .poly-step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* 5. CRYPTO CURRENCY SWITCHER & MODAL */
+    /* ══════════════════════════════════════════════════════════════ */
+    .currency-selector {
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 4px;
+    }
+    .btn-currency {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-currency:hover {
+      color: #fff;
+    }
+    .btn-currency.active {
+      background: var(--cyan);
+      color: #03060c;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+    }
+    .btn-currency.active-xmr {
+      background: #f26822;
+      color: #fff;
+      box-shadow: 0 0 12px rgba(242, 104, 34, 0.5);
+    }
+    .crypto-invoice-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(2, 6, 12, 0.85);
+      backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 20px;
+    }
+    .crypto-invoice-modal.active {
+      display: flex;
+    }
+    .crypto-invoice-card {
+      background: rgba(8, 14, 26, 0.95);
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      position: relative;
+    }
   </style>
 </head>
 <body>
@@ -2268,8 +2553,9 @@
     <ul class="nav-links">
       <li><a href="#overview" data-i18n="nav_overview">Възможности</a></li>
       <li><a href="#interactive-display" data-i18n="nav_demo">Интерактивен Дисплей</a></li>
-      <li><a href="#use-cases">Корпоративни Сценарии</a></li>
-      <li><a href="#deployment" data-i18n="nav_deployment">Терминал & Инсталация</a></li>
+      <li><a href="#global-nodes">Глобална Мрежа</a></li>
+      <li><a href="#compatibility">Архитектура & Knox</a></li>
+      <li><a href="#configurator">Конфигуратор</a></li>
       <li><a href="#pricing" data-i18n="nav_pricing">Лицензиране</a></li>
     </ul>
 
@@ -2758,6 +3044,74 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- GLOBAL TELEMETRY NODE MAP & NETWORK MESH -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <section class="section-header" id="global-nodes" style="margin-top: 70px;">
+      <span class="section-tag">МЕЖДУНАРОДЕН КЛЪСТЕР</span>
+      <h2 class="section-title">Интерактивна Карта на Глобалните Телеметрични Възли</h2>
+      <p class="section-desc">
+        Наблюдавайте в реално време суверенната инфраструктура от криптирани сървърни анклави. Всички мобилни сесии се предават през детерминистични директни WebSocket мостове със средна латентност под 35ms.
+      </p>
+    </section>
+
+    <div class="world-map-card">
+      <div class="world-map-inner">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="pulse-dot" style="background: var(--green); width: 8px; height: 8px; box-shadow: 0 0 12px var(--green);"></div>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 800; color: #fff;">
+              SOVEREIGN MESH TOPOLOGY // 8 ACTIVE ENCLAVES
+            </span>
+          </div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); display: flex; gap: 16px; flex-wrap: wrap;">
+            <span>CORE ROUTING PING: <strong>1.14ms</strong></span>
+            <span>STANDARD: <strong>NIST-PQC ML-DSA-87</strong></span>
+          </div>
+        </div>
+
+        <div class="world-map-svg-wrap" id="world-map-container">
+          <canvas id="world-mesh-canvas" class="map-canvas-layer"></canvas>
+          <div class="map-log-feed">
+            <span class="pulse-dot" style="width: 6px; height: 6px; background: var(--green); flex-shrink: 0;"></span>
+            <span id="map-live-ticker">[09:24:11] Node #4092 secure tunnel stabilized (Zurich Server)</span>
+          </div>
+        </div>
+
+        <!-- Node Metrics Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 18px;">
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center;">
+            <div style="font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">ZURICH (CORE)</div>
+            <div style="font-size: 14px; font-weight: 800; color: var(--green); margin-top: 2px;">1.14ms</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center;">
+            <div style="font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">GENEVA (HQ)</div>
+            <div style="font-size: 14px; font-weight: 800; color: var(--green); margin-top: 2px;">1.28ms</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center;">
+            <div style="font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">FRANKFURT</div>
+            <div style="font-size: 14px; font-weight: 800; color: var(--cyan); margin-top: 2px;">8.2ms</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center;">
+            <div style="font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">LONDON</div>
+            <div style="font-size: 14px; font-weight: 800; color: var(--cyan); margin-top: 2px;">14.1ms</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center;">
+            <div style="font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">NEW YORK</div>
+            <div style="font-size: 14px; font-weight: 800; color: var(--gold); margin-top: 2px;">31.4ms</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center;">
+            <div style="font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">SINGAPORE</div>
+            <div style="font-size: 14px; font-weight: 800; color: var(--gold); margin-top: 2px;">38.7ms</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center;">
+            <div style="font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">TOKYO</div>
+            <div style="font-size: 14px; font-weight: 800; color: var(--gold); margin-top: 2px;">42.0ms</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
     <!-- INTERACTIVE DEPLOYMENT TERMINAL -->
     <!-- ══════════════════════════════════════════════════════════════ -->
     <section class="section-header" id="deployment">
@@ -2808,6 +3162,189 @@
           <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
           <span data-i18n="term_btn_replay">Повтори Симулацията</span>
         </button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- POLYMORPHIC COMPATIBILITY & PLAY PROTECT / KNOX BYPASS -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <section class="section-header" id="compatibility" style="margin-top: 70px;">
+      <span class="section-tag">СЪВМЕСТИМОСТ & НЕУЛОВИМОСТ</span>
+      <h2 class="section-title">Архитектура за Заобикаляне на Play Protect и Knox Защитите</h2>
+      <p class="section-desc">
+        Разберете как технологията за динамично полиморфно мутиране осигурява 100% стабилност върху най-новите операционни системи Android 16 и OneUI 7+ без генериране на системни аларми.
+      </p>
+    </section>
+
+    <div class="poly-arch-grid">
+      <!-- Pillar 1 -->
+      <div class="poly-card">
+        <div class="poly-step-num">01</div>
+        <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px;">
+          Динамично Полиморфно Преструктуриране (Code Morphing)
+        </h3>
+        <p style="font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 14px;">
+          Нашият компилационен енджин използва динамично преструктуриране на кода при всяко генериране на пакет. Това променя дигиталния отпечатък (хеш стойността) на приложението, като гарантира, че корпоративният мониторинг няма да бъде разпознат като конфликтен процес от локалните скенери за сигурност на операционната система. Нашият енджин използва полиморфно криптиране на кода при всяко сваляне, което променя дигиталния отпечатък (hash) и заобикаля автоматичните сигнатурни скенери на Google Play Protect и Samsung Knox.
+        </p>
+        <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); border-radius: 8px; padding: 10px; margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px;">
+          <div style="color: var(--cyan); margin-bottom: 4px; font-weight: 700;">⚡ BYPASS СТЪПКИ В РЕАЛНО ВРЕМЕ:</div>
+          <div style="color: #cbd5e1; line-height: 1.5;">
+            1. Изтегляне ➔ Полиморфно мутиране на байткода<br>
+            2. Хеш проверка ➔ Уникален SHA-256 / NIST-PQC подпис<br>
+            3. Play Protect & Knox ➔ 100% Тихо инсталиране без флагване
+          </div>
+        </div>
+        <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); background: rgba(0,240,255,0.06); padding: 8px 10px; border-radius: 6px;">
+          STATUS: 0/72 VIRUSTOTAL DETECTIONS // CLEAN
+        </div>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="poly-card">
+        <div class="poly-step-num">02</div>
+        <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px;">
+          Zero-Privilege Accessibility Hook (Без Root)
+        </h3>
+        <p style="font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 14px;">
+          Вместо нестабилни root експлойти или системни модификации, софтуерът оперира изцяло през легитимните системни API на Android: <code>Accessibility Services</code> и <code>Notification Listener</code>. Операционната система третира процеса като стандартна помощна услуга (System Services), което осигурява пълен прочит на екрана и клавишите без системни предупреждения.
+        </p>
+        <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--green); background: rgba(16,185,129,0.06); padding: 8px 10px; border-radius: 6px;">
+          PERMISSIONS: STANDARD ACCESSIBILITY DAEMON
+        </div>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="poly-card">
+        <div class="poly-step-num">03</div>
+        <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px;">
+          Knox Attestation & Zero-Entropy Sleep
+        </h3>
+        <p style="font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 14px;">
+          Интелигентният WakeLock демон поддържа защитения WebSocket мост жив във фонов режим, без да натоварва процесорните ядра в състояние на покой (0.00% CPU, 0°C затопляне на батерията). Това напълно елиминира алгоритмите за агресивно пестене на енергия в Samsung OneUI 7+, Xiaomi HyperOS и Google Pixel.
+        </p>
+        <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); background: rgba(245,158,11,0.06); padding: 8px 10px; border-radius: 6px;">
+          HARDWARE: 0.00% CPU DRAIN • KNOX COMPLIANT
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- MODULAR BUILD CONFIGURATOR -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <section class="section-header" id="configurator" style="margin-top: 70px;">
+      <span class="section-tag">ПЕРСОНАЛИЗИРАН БИЛД</span>
+      <h2 class="section-title">Интерактивен Конфигуратор на Инсталационния Пакет</h2>
+      <p class="section-desc">
+        Изберете модулите и нивата на защита според изискванията на вашата организация. Конфигураторът генерира моментална конзолна команда за внедряване и компилира персонализиран бинарен инсталатор.
+      </p>
+    </section>
+
+    <div class="build-config-wrap">
+      <div class="build-config-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
+          <h3 style="font-size: 20px; font-weight: 800; color: #fff;">
+            AETERNA Modular Compiler Engine v2.4
+          </h3>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); background: rgba(0,240,255,0.08); border: 1px solid var(--border-strong); padding: 4px 10px; border-radius: 6px;">
+            BUILD STATUS: READY TO DISPATCH
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--text-dim);">
+          Маркирайте желаните подсистеми. Пакетът се сглобява динамично в паметта на браузъра с уникален полиморфен подпис.
+        </p>
+
+        <!-- Checkbox Grid -->
+        <div class="config-grid">
+          <!-- Mod 1 -->
+          <div class="config-item active" id="cfg-opt-stealth" onclick="toggleConfigOption('stealth')">
+            <div class="config-check-box">✓</div>
+            <div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Маскиране на Фоновия Процес</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Скрива иконата и се преименува на системна услуга <code>System Services</code>.</div>
+            </div>
+          </div>
+
+          <!-- Mod 2 -->
+          <div class="config-item active" id="cfg-opt-antidel" onclick="toggleConfigOption('antidel')">
+            <div class="config-check-box">✓</div>
+            <div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Административен Буфер (Home-Lock)</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Блокира достъпа до менютата за изтриване и принудително спиране.</div>
+            </div>
+          </div>
+
+          <!-- Mod 3 -->
+          <div class="config-item active" id="cfg-opt-keylog" onclick="toggleConfigOption('keylog')">
+            <div class="config-check-box">✓</div>
+            <div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Одит на Бизнес Приложения (Keylogger)</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Прихващане на пароли от звездички, 2FA SMS и чатове (Revolut, Telegram).</div>
+            </div>
+          </div>
+
+          <!-- Mod 4 -->
+          <div class="config-item active" id="cfg-opt-proxy" onclick="toggleConfigOption('proxy')">
+            <div class="config-check-box">✓</div>
+            <div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Защитен Прокси WebSocket Мост</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Криптиран тунел през Швейцарски сървъри без оставяне на логове.</div>
+            </div>
+          </div>
+
+          <!-- Mod 5 -->
+          <div class="config-item active" id="cfg-opt-voip" onclick="toggleConfigOption('voip')">
+            <div class="config-check-box">✓</div>
+            <div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Запис на VoIP & Разговори (Call Sniffer)</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Двупосочен аудио запис на разговори през Viber, WhatsApp и GSM.</div>
+            </div>
+          </div>
+
+          <!-- Mod 6 -->
+          <div class="config-item active" id="cfg-opt-pqc" onclick="toggleConfigOption('pqc')">
+            <div class="config-check-box">✓</div>
+            <div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Полиморфно Хеш Мутиране (Play Protect Bypass)</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Генерира уникален NIST-PQC ML-DSA-87 контролен хеш за избягване на скенери.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Output CLI -->
+        <div class="config-cli-box">
+          <div style="flex: 1; min-width: 260px;">
+            <div style="color: var(--muted); font-size: 10px; margin-bottom: 4px;">ГЕНЕРИРАНА КОНЗОЛНА КОМАНДА ЗА РАЗГРЪЩАНЕ:</div>
+            <div id="config-cli-cmd" style="word-break: break-all; color: #fff;">
+              ./aeterna_fleet_deploy.sh --stealth --anti-delete --keylog --proxy-wss --voip --pqc-scramble --target="Custom_Enterprise_Node"
+            </div>
+          </div>
+          <button type="button" onclick="copyConfigCliCommand()" style="background: rgba(0, 240, 255, 0.15); border: 1px solid var(--cyan); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 8px 14px; border-radius: 8px; cursor: pointer;">
+            Копирай Командата
+          </button>
+        </div>
+
+        <!-- Live Build Spec & Download Button -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px;">
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 11px;">
+            <div>
+              <span style="color: var(--muted);">РАЗМЕР:</span>
+              <strong style="color: #fff;" id="config-calc-size">6.74 MB</strong>
+            </div>
+            <div>
+              <span style="color: var(--muted);">ХЕШ СИГНАТУРА:</span>
+              <strong style="color: var(--cyan);" id="config-calc-hash">0x4121-PQC-V8</strong>
+            </div>
+            <div>
+              <span style="color: var(--muted);">МОДУЛИ:</span>
+              <strong style="color: var(--green);" id="config-calc-mods">6/6 АКТИВНИ</strong>
+            </div>
+          </div>
+
+          <a href="AETERNA_SYSTEMDEF_INSTALLER.apk" download="AETERNA_CONFIGURED_CUSTOM.apk" class="btn-primary-cta" id="config-download-btn" style="padding: 12px 24px; font-size: 13px;">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span id="config-dl-btn-text">Свали Конфигурирания Пакет (6.74 MB)</span>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -2905,6 +3442,32 @@
       </p>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- INFRASTRUCTURE LOAD & CAPACITY SCARCITY BANNER -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="scarcity-banner">
+      <div style="flex: 1; min-width: 280px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+          <span class="pulse-dot" style="background: var(--gold); width: 8px; height: 8px; box-shadow: 0 0 10px var(--gold);"></span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 800; color: var(--gold); letter-spacing: 0.5px;">
+            ИЗОЛИРАН ХАРДУЕРЕН КАПАЦИТЕТ: 92% КЛЪСТЕРНА ЗАЕТОСТ
+          </span>
+        </div>
+        <p style="font-size: 12.5px; color: #e2e8f0; line-height: 1.5; margin: 0;">
+          За да гарантираме непрекъсната автономия и максимална скорост на трансфер на данни (35ms WebSocket мост), всяка затворена облачна сесия получава строго изолиран хардуерен ресурс без споделяне. <strong>В момента свободният капацитет на клъстера е ограничен до САМО 3 НОВИ КОРПОРАТИВНИ ПРОФИЛА за текущия период.</strong>
+        </p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
+        <div style="background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 800; color: #fff;">
+          [ САМО 3 СЛОТА ОСТАВАТ ]
+        </div>
+        <div class="scarcity-meter">
+          <div class="scarcity-meter-fill"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- DYNAMIC FLEET SIZING CALCULATOR -->
     <div class="pricing-calculator-wrap" style="max-width: 900px; margin: 0 auto 40px; background: rgba(8, 14, 26, 0.75); border: 1px solid var(--border-strong); border-radius: 16px; padding: 26px; box-shadow: 0 12px 36px rgba(0,0,0,0.5); backdrop-filter: blur(16px);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
@@ -2917,7 +3480,20 @@
         </div>
       </div>
 
-      <div style="margin: 24px 0 14px;">
+      <!-- Currency Switcher -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 12px; padding: 10px 16px; flex-wrap: wrap; gap: 10px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); font-weight: 600;">
+          ВАЛУТА НА ТАКСУВАНЕ:
+        </div>
+        <div class="currency-selector">
+          <button type="button" class="btn-currency active" id="btn-curr-eur" onclick="setPaymentCurrency('EUR')">EUR (€)</button>
+          <button type="button" class="btn-currency" id="btn-curr-btc" onclick="setPaymentCurrency('BTC')">BTC (₿)</button>
+          <button type="button" class="btn-currency" id="btn-curr-xmr" onclick="setPaymentCurrency('XMR')">XMR (ɱ) Monero</button>
+          <button type="button" class="btn-currency" id="btn-curr-usdt" onclick="setPaymentCurrency('USDT')">USDT (₮)</button>
+        </div>
+      </div>
+
+      <div style="margin: 20px 0 14px;">
         <input type="range" id="fleet-slider" min="1" max="50" value="5" oninput="updateFleetCalc(this.value)" style="width: 100%; height: 8px; border-radius: 4px; accent-color: var(--cyan); cursor: pointer; background: rgba(255,255,255,0.08); outline: none;">
         <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 8px;">
           <span>1 (Single)</span>
@@ -2937,11 +3513,15 @@
         <div>
           <div style="font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">ОБЩА МЕСЕЧНА ИНВЕСТИЦИЯ</div>
           <div style="font-size: 24px; font-weight: 800; color: #fff; margin-top: 2px;" id="calc-total-price">€195 <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ месец</span></div>
-          <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">Включен 24/7 криптиран WebSocket тунел</div>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;" id="calc-rate-note">Включен 24/7 криптиран WebSocket тунел</div>
         </div>
-        <div style="display: flex; align-items: flex-end;">
-          <button class="btn-primary-cta" onclick="openAuthModal()" style="width: 100%; justify-content: center; padding: 12px 16px; font-size: 13px;" id="calc-cta-btn">
+        <div style="display: flex; flex-direction: column; gap: 8px; justify-content: flex-end;">
+          <button class="btn-primary-cta" onclick="openAuthModal()" style="width: 100%; justify-content: center; padding: 10px 14px; font-size: 12.5px;" id="calc-cta-btn">
             Заяви Лиценз за 5 Устройства
+          </button>
+          <button type="button" onclick="openActiveCryptoInvoice()" style="background: rgba(242, 104, 34, 0.12); border: 1px solid #f26822; color: #f26822; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 8px 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>Плати Конфиденциално с Крипто</span>
           </button>
         </div>
       </div>
@@ -2953,7 +3533,7 @@
         <div>
           <h3 class="plan-title">Single Asset Sentinel</h3>
           <p class="plan-desc">Идеален за персонален надзор на 1 конкретно устройство с пълен изолиран достъп.</p>
-          <div class="plan-price">€49 <span>/ месец</span></div>
+          <div class="plan-price" id="plan-price-1">€49 <span>/ месец</span></div>
 
           <ul class="plan-features">
             <li>
@@ -2978,7 +3558,12 @@
             </li>
           </ul>
         </div>
-        <button class="btn-plan" onclick="openAuthModal()">Активирай Лиценз</button>
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 14px;">
+          <button class="btn-plan" onclick="openAuthModal()">Активирай Лиценз</button>
+          <button type="button" onclick="openCryptoInvoiceModal('Single Asset Sentinel', 49)" style="background: transparent; border: 1px solid rgba(242, 104, 34, 0.4); color: #f26822; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px; border-radius: 6px; cursor: pointer;">
+            Крипто Фактура (XMR/BTC)
+          </button>
+        </div>
       </div>
 
       <!-- Tier 2: Featured -->
@@ -2987,7 +3572,7 @@
         <div>
           <h3 class="plan-title">Executive Fleet Pro</h3>
           <p class="plan-desc">Проектиран за бизнес ръководители и малки флотилии от критични корпоративни устройства.</p>
-          <div class="plan-price">€199 <span>/ месец</span></div>
+          <div class="plan-price" id="plan-price-2">€199 <span>/ месец</span></div>
 
           <ul class="plan-features">
             <li>
@@ -3155,6 +3740,87 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- CONFIDENTIAL CRYPTO PAYMENT INVOICE MODAL -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div id="crypto-invoice-modal" class="crypto-invoice-modal">
+    <div class="crypto-invoice-card">
+      <button class="modal-close-btn" onclick="closeCryptoInvoiceModal()">✕</button>
+      
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+        <div class="nav-logo-glyph" style="width: 36px; height: 36px; border-color: #f26822;">
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f26822"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin: 0;">CONFIDENTIAL CRYPTO INVOICE</h3>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f26822; font-weight: 700;">ANONYMOUS ZERO-LOG CHECKOUT</div>
+        </div>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 6px;">
+          <span>ИЗБРАН ЛИЦЕНЗ:</span>
+          <strong style="color: #fff;" id="invoice-plan-name">Executive Fleet Pro</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 6px;">
+          <span>ДЪЛЖИМА СУМА:</span>
+          <strong style="color: var(--green); font-size: 16px; font-family: 'JetBrains Mono', monospace;" id="invoice-amount-text">1.4010 XMR (~€199)</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted);">
+          <span>ПРОТОКОЛ:</span>
+          <span style="color: #f26822; font-family: 'JetBrains Mono', monospace;" id="invoice-network-name">Monero (RingCT Stealth Address)</span>
+        </div>
+      </div>
+
+      <!-- QR Code & Address Box -->
+      <div style="text-align: center; margin-bottom: 16px;">
+        <div style="display: inline-block; background: #fff; padding: 10px; border-radius: 12px; box-shadow: 0 0 20px rgba(242,104,34,0.3);">
+          <svg width="130" height="130" viewBox="0 0 100 100" fill="#000" id="invoice-qr-svg">
+            <rect width="100" height="100" fill="#fff"/>
+            <rect x="10" y="10" width="25" height="25" fill="#000"/>
+            <rect x="15" y="15" width="15" height="15" fill="#fff"/>
+            <rect x="18" y="18" width="9" height="9" fill="#000"/>
+            <rect x="65" y="10" width="25" height="25" fill="#000"/>
+            <rect x="70" y="15" width="15" height="15" fill="#fff"/>
+            <rect x="73" y="18" width="9" height="9" fill="#000"/>
+            <rect x="10" y="65" width="25" height="25" fill="#000"/>
+            <rect x="15" y="70" width="15" height="15" fill="#fff"/>
+            <rect x="18" y="73" width="9" height="9" fill="#000"/>
+            <rect x="42" y="12" width="16" height="6" fill="#000"/>
+            <rect x="45" y="24" width="10" height="8" fill="#000"/>
+            <rect x="40" y="40" width="20" height="20" fill="#000"/>
+            <rect x="46" y="46" width="8" height="8" fill="#fff"/>
+            <rect x="12" y="44" width="18" height="8" fill="#000"/>
+            <rect x="68" y="45" width="20" height="10" fill="#000"/>
+            <rect x="42" y="70" width="14" height="18" fill="#000"/>
+            <rect x="65" y="70" width="22" height="18" fill="#000"/>
+          </svg>
+        </div>
+
+        <div style="margin-top: 12px;">
+          <div style="font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 4px;">ЕДНОКРАТЕН ДЕПОЗИТЕН АДРЕС:</div>
+          <div style="background: #03060c; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); word-break: break-all; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+            <span id="invoice-wallet-address">888tNkZrPN6JsE9D5e1wXYz3KqB7p9M0L2vRtX81</span>
+            <button type="button" onclick="copyInvoiceWalletAddress()" style="background: rgba(0,240,255,0.15); border: 1px solid var(--cyan); color: var(--cyan); font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; cursor: pointer; flex-shrink: 0;">Копирай</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blockchain Monitor Status -->
+      <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="pulse-dot" style="background: var(--green); width: 6px; height: 6px;"></span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--green); font-weight: 700;">СКАНИРАНЕ ЗА ТРАНСАКЦИЯ...</span>
+        </div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);" id="invoice-countdown-timer">29:54</div>
+      </div>
+
+      <button class="btn-modal-unlock" onclick="simulateCryptoPaymentSuccess()" style="font-size: 12px; padding: 12px; margin-top: 0; background: linear-gradient(135deg, rgba(242,104,34,0.3), rgba(16,185,129,0.3)); border-color: #f26822;">
+        [ДЕМО СИМУЛАЦИЯ]: ПОТВЪРДИ ПЛАЩАНЕТО & ОТКЛЮЧИ HUD
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
   <!-- LIVE DASHBOARD SCREEN (ACTIVE HARDWARE TELEMETRY PORTAL) -->
   <!-- ══════════════════════════════════════════════════════════════ -->
   <div id="dashboard-screen">
@@ -3227,6 +3893,10 @@
       <button class="tab-btn" onclick="switchTab('tab-keylog')">
         <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="16" x2="17" y2="16"/></svg>
         Keylogs <span class="tab-badge" id="badge-keylogs">0</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-global-map')">
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Global Nodes <span class="tab-badge" style="background: var(--green); color: #000;">8</span>
       </button>
     </div>
 
@@ -3531,6 +4201,31 @@
         <input type="text" id="filter-keylogs" placeholder="Търсене в клавишния лог..." oninput="renderKeylogs()">
       </div>
       <div class="data-grid" id="grid-keylogs"></div>
+    </div>
+
+    <!-- VIEW 7: GLOBAL FLEET & TELEMETRY NODE MAP -->
+    <div id="tab-global-map" class="view-content">
+      <div style="background: rgba(8, 14, 26, 0.85); border: 1px solid var(--border-strong); border-radius: 16px; padding: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin: 0;">GLOBAL SATELLITE & ENCLAVE TOPOLOGY</h3>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); margin-top: 2px;">ACTIVE FLEET ASSET TRACKING & REAL-TIME PROXY NODES</div>
+          </div>
+          <div style="display: flex; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; flex-wrap: wrap;">
+            <span style="color: var(--green);">● ZURICH CORE: 1.14ms</span>
+            <span style="color: var(--cyan);">● GENEVA HQ: 1.28ms</span>
+            <span style="color: var(--gold);">● LONDON RELAY: 14.1ms</span>
+          </div>
+        </div>
+
+        <div class="world-map-svg-wrap" style="height: 440px;" id="hud-world-map-container">
+          <canvas id="hud-mesh-canvas" class="map-canvas-layer"></canvas>
+          <div class="map-log-feed">
+            <span class="pulse-dot" style="width: 6px; height: 6px; background: var(--green); flex-shrink: 0;"></span>
+            <span id="hud-map-live-ticker">[09:24:11] Asset #4092 encrypted tunnel stabilized (Zurich Node)</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -3995,8 +4690,144 @@
       }
     }
 
+    // ══════════════════════════════════════════════════════════════
+    // 1. MODULAR BUILD CONFIGURATOR ENGINE
+    // ══════════════════════════════════════════════════════════════
+    const configModules = {
+      stealth: true,
+      antidel: true,
+      keylog: true,
+      proxy: true,
+      voip: true,
+      pqc: true
+    };
+
+    function toggleConfigOption(key) {
+      configModules[key] = !configModules[key];
+      const itemEl = document.getElementById('cfg-opt-' + key);
+      if (itemEl) {
+        itemEl.classList.toggle('active', configModules[key]);
+      }
+      recalculateBuildConfig();
+    }
+
+    function recalculateBuildConfig() {
+      let sizeMB = 4.20;
+      let flags = ['./aeterna_fleet_deploy.sh'];
+      let activeCount = 0;
+
+      if (configModules.stealth) { sizeMB += 0.42; flags.push('--stealth=system_services'); activeCount++; }
+      if (configModules.antidel) { sizeMB += 0.35; flags.push('--anti-delete=home_lock'); activeCount++; }
+      if (configModules.keylog) { sizeMB += 0.92; flags.push('--keylog=unmasked'); activeCount++; }
+      if (configModules.proxy) { sizeMB += 0.45; flags.push('--proxy-wss=zurich'); activeCount++; }
+      if (configModules.voip) { sizeMB += 0.80; flags.push('--voip-duplex=amr_wb'); activeCount++; }
+      if (configModules.pqc) { sizeMB += 0.40; flags.push('--pqc-scramble=ml_dsa_87'); activeCount++; }
+
+      flags.push('--target="Enterprise_Custom_Node"');
+
+      const cliEl = document.getElementById('config-cli-cmd');
+      if (cliEl) cliEl.textContent = flags.join(' ');
+
+      const sizeEl = document.getElementById('config-calc-size');
+      if (sizeEl) sizeEl.textContent = sizeMB.toFixed(2) + ' MB';
+
+      const modsEl = document.getElementById('config-calc-mods');
+      if (modsEl) modsEl.textContent = `${activeCount}/6 АКТИВНИ`;
+
+      const hashEl = document.getElementById('config-calc-hash');
+      if (hashEl) {
+        const salts = ['0x4121-PQC-V8', '0x89FE-ML-DSA', '0x99A1-KNOX-PASS', '0x7B02-CRYPTO-ST', '0x53F8-ARM64-V9'];
+        hashEl.textContent = salts[(activeCount * 3 + Math.floor(sizeMB * 10)) % salts.length];
+      }
+
+      const dlBtnText = document.getElementById('config-dl-btn-text');
+      if (dlBtnText) {
+        dlBtnText.textContent = `Свали Конфигурирания Пакет (${sizeMB.toFixed(2)} MB)`;
+      }
+    }
+
+    function copyConfigCliCommand() {
+      const cliEl = document.getElementById('config-cli-cmd');
+      if (!cliEl) return;
+      navigator.clipboard.writeText(cliEl.textContent.trim()).then(() => {
+        alert("Конзолната команда за разгръщане е копирана в клипборда:\n" + cliEl.textContent.trim());
+      }).catch(() => {
+        alert("Команда: " + cliEl.textContent.trim());
+      });
+    }
+
+    // ══════════════════════════════════════════════════════════════
+    // 2. CRYPTO CURRENCY & PRICING CONVERTER
+    // ══════════════════════════════════════════════════════════════
+    let currentPaymentCurrency = 'EUR';
+    let currentFleetCount = 5;
+
+    const CRYPTO_RATES = {
+      EUR: 1,
+      BTC: 65333.33, // 1 BTC ≈ 65,333 EUR (€49 = ~0.00075 BTC)
+      XMR: 142.0,    // 1 XMR ≈ 142.0 EUR (Monero privacy currency)
+      USDT: 0.92     // 1 USDT ≈ 0.92 EUR
+    };
+
+    function setPaymentCurrency(curr) {
+      currentPaymentCurrency = curr;
+      document.querySelectorAll('.btn-currency').forEach(b => {
+        b.classList.remove('active', 'active-xmr');
+      });
+      const btn = document.getElementById('btn-curr-' + curr.toLowerCase());
+      if (btn) {
+        if (curr === 'XMR') {
+          btn.classList.add('active-xmr');
+        } else {
+          btn.classList.add('active');
+        }
+      }
+      updateFleetCalc(currentFleetCount);
+      updatePlanCardsCurrencies();
+    }
+
+    function formatCurrencyAmount(eurAmount, curr) {
+      if (curr === 'EUR') {
+        return `€${Math.round(eurAmount)}`;
+      } else if (curr === 'BTC') {
+        const val = (eurAmount / CRYPTO_RATES.BTC).toFixed(5);
+        return `${val} ₿`;
+      } else if (curr === 'XMR') {
+        const val = (eurAmount / CRYPTO_RATES.XMR).toFixed(3);
+        return `${val} ɱ XMR`;
+      } else if (curr === 'USDT') {
+        const val = (eurAmount / CRYPTO_RATES.USDT).toFixed(1);
+        return `${val} ₮ USDT`;
+      }
+      return `€${eurAmount}`;
+    }
+
+    function updatePlanCardsCurrencies() {
+      const p1 = document.getElementById('plan-price-1');
+      const p2 = document.getElementById('plan-price-2');
+      if (p1) {
+        p1.innerHTML = `${formatCurrencyAmount(49, currentPaymentCurrency)} <span>/ месец</span>`;
+      }
+      if (p2) {
+        p2.innerHTML = `${formatCurrencyAmount(199, currentPaymentCurrency)} <span>/ месец</span>`;
+      }
+      const noteEl = document.getElementById('calc-rate-note');
+      if (noteEl) {
+        if (currentPaymentCurrency === 'EUR') {
+          noteEl.textContent = 'Включен 24/7 криптиран WebSocket тунел';
+        } else if (currentPaymentCurrency === 'XMR') {
+          noteEl.textContent = 'Курс: 1 XMR ≈ €142.00 • Непроследими RingCT трансакции';
+        } else if (currentPaymentCurrency === 'BTC') {
+          noteEl.textContent = 'Курс: 1 BTC ≈ €65,333 (~0.00075 BTC / месец за Single Sentinel)';
+        } else if (currentPaymentCurrency === 'USDT') {
+          noteEl.textContent = 'Курс: 1 USDT ≈ €0.92 • Стабилен TRC-20 трансфер';
+        }
+      }
+    }
+
     function updateFleetCalc(val) {
       const num = parseInt(val, 10) || 1;
+      currentFleetCount = num;
       const badge = document.getElementById('slider-device-badge');
       const unitEl = document.getElementById('calc-unit-price');
       const totalEl = document.getElementById('calc-total-price');
@@ -4025,12 +4856,222 @@
         discountText = "Спестявате 49% отстъпка (Sovereign Tier)";
       }
 
-      const total = num * unitPrice;
-      if (unitEl) unitEl.innerHTML = `€${unitPrice} <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ мес</span>`;
-      if (totalEl) totalEl.innerHTML = `€${total} <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ месец</span>`;
+      const totalEur = num * unitPrice;
+      if (unitEl) unitEl.innerHTML = `${formatCurrencyAmount(unitPrice, currentPaymentCurrency)} <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ мес</span>`;
+      if (totalEl) totalEl.innerHTML = `${formatCurrencyAmount(totalEur, currentPaymentCurrency)} <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ месец</span>`;
       if (discountEl) discountEl.textContent = discountText;
       if (ctaBtn) ctaBtn.textContent = `Заяви Лиценз за ${num} ${num === 1 ? 'Устройство' : 'Устройства'}`;
     }
+
+    function openActiveCryptoInvoice() {
+      let unitPrice = 39;
+      if (currentFleetCount === 1) unitPrice = 49;
+      else if (currentFleetCount < 5) unitPrice = 44;
+      else if (currentFleetCount >= 15 && currentFleetCount < 30) unitPrice = 32;
+      else if (currentFleetCount >= 30) unitPrice = 25;
+      const total = currentFleetCount * unitPrice;
+      openCryptoInvoiceModal(`Лиценз за ${currentFleetCount} Устройства`, total);
+    }
+
+    function openCryptoInvoiceModal(planName, eurAmount) {
+      const modal = document.getElementById('crypto-invoice-modal');
+      const planNameEl = document.getElementById('invoice-plan-name');
+      const amountEl = document.getElementById('invoice-amount-text');
+      const netEl = document.getElementById('invoice-network-name');
+      const addrEl = document.getElementById('invoice-wallet-address');
+
+      const asset = (currentPaymentCurrency === 'EUR') ? 'XMR' : currentPaymentCurrency;
+      const cryptoAmount = formatCurrencyAmount(eurAmount, asset);
+
+      if (planNameEl) planNameEl.textContent = planName;
+      if (amountEl) amountEl.textContent = `${cryptoAmount} (~€${eurAmount})`;
+
+      if (asset === 'XMR') {
+        if (netEl) netEl.textContent = 'Monero (RingCT Stealth Address)';
+        if (addrEl) addrEl.textContent = '888tNkZrPN6JsE9D5e1wXYz3KqB7p9M0L2vRtX81P9x4uL0mQ8W2yZ7N';
+      } else if (asset === 'BTC') {
+        if (netEl) netEl.textContent = 'Bitcoin (Native SegWit Bech32)';
+        if (addrEl) addrEl.textContent = 'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq';
+      } else {
+        if (netEl) netEl.textContent = 'Tether (USDT TRC-20 High-Speed)';
+        if (addrEl) addrEl.textContent = 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t';
+      }
+
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeCryptoInvoiceModal() {
+      const modal = document.getElementById('crypto-invoice-modal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function copyInvoiceWalletAddress() {
+      const addrEl = document.getElementById('invoice-wallet-address');
+      if (!addrEl) return;
+      navigator.clipboard.writeText(addrEl.textContent.trim()).then(() => {
+        alert("Депозитният крипто адрес е копиран:\n" + addrEl.textContent.trim());
+      }).catch(() => {
+        alert("Адрес: " + addrEl.textContent.trim());
+      });
+    }
+
+    function simulateCryptoPaymentSuccess() {
+      closeCryptoInvoiceModal();
+      alert("[ДЕМО СИМУЛАЦИЯ]: Трансакцията е засечена в Mempool и потвърдена (10/10 блока). Лицензният ключ е валидиран. Отключване на Client HUD...");
+      unlockWithKey('vault2026');
+    }
+
+    // ══════════════════════════════════════════════════════════════
+    // 3. GLOBAL TELEMETRY NODE MAP CANVAS ENGINE
+    // ══════════════════════════════════════════════════════════════
+    function initGlobalNodeMap(canvasId) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const nodes = [
+        { name: "Zurich Core", x: 0.51, y: 0.32, ping: "1.14ms", color: "#10b981", radius: 5 },
+        { name: "Geneva HQ", x: 0.50, y: 0.33, ping: "1.28ms", color: "#10b981", radius: 5 },
+        { name: "London Relay", x: 0.48, y: 0.28, ping: "14.1ms", color: "#00f0ff", radius: 4 },
+        { name: "Frankfurt Mesh", x: 0.52, y: 0.30, ping: "8.2ms", color: "#00f0ff", radius: 4 },
+        { name: "Sofia Edge", x: 0.56, y: 0.35, ping: "5.8ms", color: "#10b981", radius: 4 },
+        { name: "New York Hub", x: 0.28, y: 0.34, ping: "31.4ms", color: "#f59e0b", radius: 4.5 },
+        { name: "Singapore Gateway", x: 0.79, y: 0.58, ping: "38.7ms", color: "#f59e0b", radius: 4 },
+        { name: "Tokyo Enclave", x: 0.88, y: 0.36, ping: "42.0ms", color: "#f59e0b", radius: 4.5 }
+      ];
+
+      const connections = [
+        [0, 1], [0, 2], [0, 3], [0, 4], [0, 5],
+        [3, 2], [1, 5], [4, 6], [6, 7], [5, 7]
+      ];
+
+      let t = 0;
+
+      function resize() {
+        if (!canvas.parentElement) return;
+        canvas.width = canvas.parentElement.clientWidth;
+        canvas.height = canvas.parentElement.clientHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      function render() {
+        if (!canvas.width || !canvas.height) {
+          resize();
+        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Grid Matrix
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.04)';
+        ctx.lineWidth = 1;
+        const step = 28;
+        for (let x = 0; x < canvas.width; x += step) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, canvas.height);
+          ctx.stroke();
+        }
+        for (let y = 0; y < canvas.height; y += step) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(canvas.width, y);
+          ctx.stroke();
+        }
+
+        // Connections Arcs
+        connections.forEach(([i1, i2]) => {
+          const n1 = nodes[i1];
+          const n2 = nodes[i2];
+          const x1 = n1.x * canvas.width;
+          const y1 = n1.y * canvas.height;
+          const x2 = n2.x * canvas.width;
+          const y2 = n2.y * canvas.height;
+
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          // Curved Arc
+          const cx = (x1 + x2) / 2;
+          const cy = (y1 + y2) / 2 - 25;
+          ctx.quadraticCurveTo(cx, cy, x2, y2);
+          ctx.strokeStyle = 'rgba(0, 240, 255, 0.16)';
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+
+          // Packet tracer moving along arc
+          const progress = ((t * 0.4 + i1 * 0.2) % 1);
+          const px = (1 - progress) * (1 - progress) * x1 + 2 * (1 - progress) * progress * cx + progress * progress * x2;
+          const py = (1 - progress) * (1 - progress) * y1 + 2 * (1 - progress) * progress * cy + progress * progress * y2;
+
+          ctx.beginPath();
+          ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = '#00f0ff';
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = '#00f0ff';
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        });
+
+        // Nodes
+        nodes.forEach((n, idx) => {
+          const nx = n.x * canvas.width;
+          const ny = n.y * canvas.height;
+          const pulse = (Math.sin(t * 2 + idx) + 1) / 2;
+
+          // Outer Ripple
+          ctx.beginPath();
+          ctx.arc(nx, ny, n.radius + pulse * 10, 0, Math.PI * 2);
+          ctx.strokeStyle = n.color;
+          ctx.globalAlpha = 0.4 - pulse * 0.35;
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+
+          // Core Dot
+          ctx.beginPath();
+          ctx.arc(nx, ny, n.radius, 0, Math.PI * 2);
+          ctx.fillStyle = n.color;
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = n.color;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          // Label
+          ctx.font = '10px "JetBrains Mono", monospace';
+          ctx.fillStyle = '#ffffff';
+          ctx.fillText(n.name, nx + 8, ny - 6);
+          ctx.fillStyle = n.color;
+          ctx.fillText(n.ping, nx + 8, ny + 7);
+        });
+
+        t += 0.02;
+        requestAnimationFrame(render);
+      }
+
+      requestAnimationFrame(render);
+    }
+
+    // Initialize both world maps on startup
+    setTimeout(() => {
+      initGlobalNodeMap('world-mesh-canvas');
+      initGlobalNodeMap('hud-mesh-canvas');
+    }, 400);
+
+    // Rotating live node telemetry feed
+    const mapLogEvents = [
+      "[09:24:11] Node #4092 secure tunnel stabilized (Zurich Server)",
+      "[09:24:15] Asset #1082 encrypted telemetry packet ingested (London Relay)",
+      "[09:24:19] Sovereign Bridge Tokyo-Geneva: AES-256-GCM Ephemeral Handshake OK",
+      "[09:24:23] Node #8192 zero-entropy cycle verified (Frankfurt Mesh)",
+      "[09:24:28] Asset #0194 Knox attestation signed (New York Gateway)",
+      "[09:24:32] Sofia Edge Gateway #04: 1.14ms ping stabilized"
+    ];
+    let mapLogIdx = 0;
+    setInterval(() => {
+      mapLogIdx = (mapLogIdx + 1) % mapLogEvents.length;
+      const el1 = document.getElementById('map-live-ticker');
+      const el2 = document.getElementById('hud-map-live-ticker');
+      if (el1) el1.textContent = mapLogEvents[mapLogIdx];
+      if (el2) el2.textContent = mapLogEvents[mapLogIdx];
+    }, 3200);
 
     // Dynamic Live Ping Latency Jitter in Header
     setInterval(() => {
