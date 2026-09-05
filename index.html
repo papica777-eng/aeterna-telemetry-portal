@@ -6095,10 +6095,20 @@
         scrollWheelZoom: false
       });
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd',
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap'
+      // Public Sovereign Dark Basemap (Zero watermark, No API key required)
+      const cartoKey = window.CARTO_API_KEY || (new URLSearchParams(window.location.search)).get('carto_key') || localStorage.getItem('carto_key');
+      const worldTileUrl = cartoKey 
+        ? `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=${cartoKey}`
+        : 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+      
+      const worldTileAttrib = cartoKey 
+        ? '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap'
+        : '&copy; Esri &mdash; Esri, DeLorme, NAVTEQ &copy; OpenStreetMap';
+
+      L.tileLayer(worldTileUrl, {
+        subdomains: cartoKey ? 'abcd' : '',
+        maxZoom: 16,
+        attribution: worldTileAttrib
       }).addTo(worldMap);
 
       const serverNodes = [
@@ -6146,13 +6156,26 @@
         }).addTo(worldMap);
       });
 
+      // Directional label offsets to eliminate collision across Europe & Transatlantic routes
+      const labelOffsets = {
+        "Sofia Edge": "transform: translate(24px, -12px);",
+        "Zurich Core": "transform: translate(-50%, -32px);",
+        "Geneva HQ": "transform: translate(-100%, -4px); left: -10px;",
+        "Frankfurt Mesh": "transform: translate(-50%, 18px); top: 14px;",
+        "London Relay": "transform: translate(-50%, -32px);",
+        "New York Hub": "transform: translate(-100%, -50%); left: -10px; top: 50%;",
+        "Singapore Gateway": "transform: translate(16px, 0);",
+        "Tokyo Enclave": "transform: translate(16px, -10px);"
+      };
+
       serverNodes.forEach(node => {
+        const offsetStyle = labelOffsets[node.name] || "";
         const icon = L.divIcon({
           className: 'cyber-marker-wrapper',
           html: `
             <div class="cyber-marker-pulse" style="border-color: ${node.color}"></div>
             <div class="cyber-marker-dot" style="background: ${node.color}; box-shadow: 0 0 10px ${node.color}"></div>
-            <div class="cyber-marker-label">
+            <div class="cyber-marker-label" style="${offsetStyle}">
               <span>${node.name}</span>
               <span class="cyber-marker-ping" style="color: ${node.color}">${node.ping}</span>
             </div>
@@ -6192,10 +6215,20 @@
         scrollWheelZoom: true
       });
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd',
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap'
+      // Public Sovereign Dark Basemap (Zero watermark, No API key required)
+      const gpsCartoKey = window.CARTO_API_KEY || (new URLSearchParams(window.location.search)).get('carto_key') || localStorage.getItem('carto_key');
+      const gpsTileUrl = gpsCartoKey 
+        ? `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=${gpsCartoKey}`
+        : 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+      
+      const gpsTileAttrib = gpsCartoKey 
+        ? '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap'
+        : '&copy; Esri &mdash; Esri, DeLorme, NAVTEQ &copy; OpenStreetMap';
+
+      L.tileLayer(gpsTileUrl, {
+        subdomains: gpsCartoKey ? 'abcd' : '',
+        maxZoom: 16,
+        attribution: gpsTileAttrib
       }).addTo(gpsMap);
 
       // Accuracy radius circle (±4.2m)
