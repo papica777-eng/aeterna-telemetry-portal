@@ -2699,9 +2699,9 @@
     <ul class="nav-links">
       <li><a href="#overview" data-i18n="nav_overview">Възможности</a></li>
       <li><a href="#interactive-display" data-i18n="nav_demo">Интерактивен Дисплей</a></li>
-      <li><a href="#global-nodes">Глобална Мрежа</a></li>
-      <li><a href="#compatibility">Архитектура & Knox</a></li>
-      <li><a href="#configurator">Конфигуратор</a></li>
+      <li><a href="#global-nodes" data-i18n="nav_nodes">Глобална Мрежа</a></li>
+      <li><a href="#compatibility" data-i18n="nav_compat">Архитектура & Knox</a></li>
+      <li><a href="#configurator" data-i18n="nav_config">Конфигуратор</a></li>
       <li><a href="#pricing" data-i18n="nav_pricing">Лицензиране</a></li>
     </ul>
 
@@ -2802,8 +2802,8 @@
                 <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               </div>
               <div style="flex: 1;">
-                <div style="font-size: 11px; font-weight: 800; color: var(--cyan);" id="toast-title">SMS Прихванат</div>
-                <div style="font-size: 10px; color: #cbd5e1;" id="toast-desc">Код: 894-112 за трансфер €4,500.00</div>
+                <div style="font-size: 11px; font-weight: 800; color: var(--cyan);" id="toast-title" data-i18n="sim_toast_t">SMS Прихванат</div>
+                <div style="font-size: 10px; color: #cbd5e1;" id="toast-desc" data-i18n="sim_toast_d">Код: 894-112 за трансфер €4,500.00</div>
               </div>
             </div>
 
@@ -2865,13 +2865,13 @@
                 </div>
 
                 <div class="bank-balance-card">
-                  <div style="font-size: 9px; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.5px;">Общо салдо / Total Equity</div>
+                  <div style="font-size: 9px; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="sim_equity_lbl">Общо салдо / Total Equity</div>
                   <div style="font-size: 24px; font-weight: 800; margin: 2px 0;">€485,920.00</div>
-                  <div style="font-size: 10px; color: #a5b4fc;">Транзакция: Zurich Private Vault</div>
+                  <div style="font-size: 10px; color: #a5b4fc;" data-i18n="sim_escrow_lbl">Транзакция: Zurich Private Vault</div>
                 </div>
 
                 <div style="text-align: center; margin-bottom: 6px;">
-                  <div style="font-size: 11px; color: var(--muted);">Въведете 4-цифрен ПИН за трансфер:</div>
+                  <div style="font-size: 11px; color: var(--muted);" data-i18n="sim_pin_prompt">Въведете 4-цифрен ПИН за трансфер:</div>
                   <div class="pin-indicator-dots" id="bank-pin-dots">
                     <span class="pin-dot"></span>
                     <span class="pin-dot"></span>
@@ -2913,18 +2913,18 @@
 
                 <div style="flex: 1; display: flex; flex-direction: column; overflow-y: auto;">
                   <div class="chat-bubble bubble-in">
-                    Договорът за придобиване на активите е подписан с електронен печат.
+                    <span data-i18n="sim_chat_m1">Договорът за придобиване на активите е подписан с електронен печат.</span>
                   </div>
                   <div class="chat-bubble bubble-out">
-                    Преведохме депозита. Очаквам потвърждение от банката.
+                    <span data-i18n="sim_chat_m2">Преведохме депозита. Очаквам потвърждение от банката.</span>
                   </div>
                   <div class="chat-bubble bubble-in" id="chat-stream-msg" style="display: none; animation: fadeIn 0.3s;">
-                    Кодът за достъп до трезора е: <strong>S0ver3ign2026!</strong>
+                    <span data-i18n="sim_vault_code">Кодът за достъп до трезора е: <strong>S0ver3ign2026!</strong></span>
                   </div>
                 </div>
 
                 <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 8px 10px; font-size: 11px; color: var(--text-dim); display: flex; justify-content: space-between;">
-                  <span>Напиши съобщение...</span>
+                  <span data-i18n="sim_type_msg">Напиши съобщение...</span>
                   <span style="color: var(--cyan);">
                     <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
                   </span>
@@ -2949,7 +2949,7 @@
                   </div>
                   <div style="position: absolute; bottom: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #fff; text-align: center;">
                     <div>LAT: 42°41'38"N | LON: 23°19'14"E</div>
-                    <div style="color: var(--cyan);">Скорост: 0 km/h (Stationary)</div>
+                    <div style="color: var(--cyan);" data-i18n="sim_radar_speed">Скорост: 0 km/h (Stationary)</div>
                   </div>
                 </div>
               </div>
@@ -2961,7 +2961,7 @@
                 </div>
                 <div style="text-align: center;">
                   <h3 style="font-size: 16px; font-weight: 800; color: var(--red); margin-bottom: 6px;">BLOCKED: ATTEMPT TO UNINSTALL</h3>
-                  <p style="font-size: 11px; color: var(--text-dim); max-width: 240px; line-height: 1.4;">
+                  <p style="font-size: 11px; color: var(--text-dim); max-width: 240px; line-height: 1.4;" data-i18n="sim_anti_desc">
                     Системата засича опит за деинсталиране през настройките. Задейства се незабавен защитен рефлекс и връщане на началния екран.
                   </p>
                 </div>
@@ -2977,7 +2977,7 @@
                     <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                   </div>
                   <h4 style="font-size: 17px; font-weight: 800; color: #fff;">Geneva HQ (+41 22 819)</h4>
-                  <div style="font-size: 11px; color: var(--green); font-weight: 700; margin-top: 2px;">Входящо обаждане...</div>
+                  <div style="font-size: 11px; color: var(--green); font-weight: 700; margin-top: 2px;" data-i18n="sim_call_ringing">Входящо обаждане...</div>
                 </div>
 
                 <div class="audio-wave-box" style="width: 100%;">
@@ -3074,7 +3074,7 @@
             <div class="packet-row" style="background: rgba(244, 63, 94, 0.1); padding: 4px 6px; border-radius: 4px;">
               <span style="color: var(--red); font-weight: 800;">[UNMASKED PWD]</span>
               <span style="color: #fff;">Password: <strong>S0ver3ign2026!</strong></span>
-              <span style="color: var(--green); font-size: 10px;">Декодирано от звездички</span>
+              <span style="color: var(--green); font-size: 10px;" data-i18n="deck_unmasked">Декодирано от звездички</span>
             </div>
           </div>
         </div>
@@ -3096,28 +3096,28 @@
           <div class="telemetry-grid">
             <div class="telemetry-pill">
               <div class="val" style="color: var(--green);">4.28 V</div>
-              <div class="lbl">Батерия (Voltage)</div>
+              <div class="lbl" data-i18n="hw_batt">Батерия (Voltage)</div>
             </div>
             <div class="telemetry-pill">
               <div class="val" style="color: var(--cyan);">31.4 °C</div>
-              <div class="lbl">CPU Температура</div>
+              <div class="lbl" data-i18n="hw_temp">CPU Температура</div>
             </div>
             <div class="telemetry-pill">
               <div class="val" style="color: var(--gold);">-78 dBm</div>
-              <div class="lbl">5G NR Сигнал</div>
+              <div class="lbl" data-i18n="hw_signal">5G NR Сигнал</div>
             </div>
           </div>
 
           <div style="background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-top: 14px;">
-            <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 8px;">Хардуерни Гаранции за Невидимост:</div>
+            <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 8px;" data-i18n="hw_stealth_title">Хардуерни Гаранции за Невидимост:</div>
             <ul style="font-size: 12px; color: var(--text-dim); list-style: none; line-height: 1.8;">
               <li style="display: flex; align-items: center; gap: 8px;">
                 <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
-                <span><strong>Без затопляне:</strong> Процесорното натоварване е 0.00% в състояние на покой (Zero-Entropy).</span>
+                <span data-i18n="hw_g1"><strong>Без затопляне:</strong> Процесорното натоварване е 0.00% в състояние на покой (Zero-Entropy).</span>
               </li>
               <li style="display: flex; align-items: center; gap: 8px;">
                 <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
-                <span><strong>Скрита икона:</strong> Маскиран като стандартна системна услуга <code>System Services</code>.</span>
+                <span data-i18n="hw_g2"><strong>Скрита икона:</strong> Маскиран като стандартна системна услуга <code>System Services</code>.</span>
               </li>
               <li style="display: flex; align-items: center; gap: 8px;">
                 <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
@@ -3135,9 +3135,9 @@
     <!-- ENTERPRISE USE CASES & LEGITIMATE GOVERNANCE -->
     <!-- ══════════════════════════════════════════════════════════════ -->
     <section class="section-header" id="use-cases" style="margin-top: 60px;">
-      <span class="section-tag">КОРПОРАТИВНИ СЛУЧАИ НА УПОТРЕБА</span>
-      <h2 class="section-title">Легитимна Защита на Фирмени Активи и Устройства</h2>
-      <p class="section-desc">
+      <span class="section-tag" data-i18n="uc_tag">КОРПОРАТИВНИ СЛУЧАИ НА УПОТРЕБА</span>
+      <h2 class="section-title" data-i18n="uc_title">Легитимна Защита на Фирмени Активи и Устройства</h2>
+      <p class="section-desc" data-i18n="uc_desc">
         AETERNA SYSTEMDEF предоставя стриктен надзор над корпоративни хардуерни паркове в съответствие с най-високите стандарти за защита на интелектуална собственост, противодействие на финансови течове и осигуряване непрекъсваемостта на бизнеса.
       </p>
     </section>
@@ -3147,14 +3147,14 @@
         <div class="usecase-icon">
           <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
-        <h3 class="usecase-title">Предотвратяване на Изтичане на Данни (DLP)</h3>
+        <h3 class="usecase-title" data-i18n="uc1_title">Предотвратяване на Изтичане на Данни (DLP)</h3>
         <p class="usecase-desc">
           Пълен одит на финансови трансакции, договори и корпоративни комуникации. Системата прихваща в реално време опити за неоторизирано изнасяне на клиентски бази данни и парични потоци.
         </p>
         <ul class="usecase-list">
-          <li>Мониторинг на счетоводни и банкови приложения (Revolut, Stripe, Banking)</li>
-          <li>Прихващане на 2FA SMS кодове за предотвратяване на неоторизирани трансакции</li>
-          <li>Пълен клавишен одит (Keylogger) на въвеждани секретни пароли и кореспонденция</li>
+          <li data-i18n="uc1_b1">Мониторинг на счетоводни и банкови приложения (Revolut, Stripe, Banking)</li>
+          <li data-i18n="uc1_b2">Прихващане на 2FA SMS кодове за предотвратяване на неоторизирани трансакции</li>
+          <li data-i18n="uc1_b3">Пълен клавишен одит (Keylogger) на въвеждани секретни пароли и кореспонденция</li>
         </ul>
       </div>
 
@@ -3162,14 +3162,14 @@
         <div class="usecase-icon">
           <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
         </div>
-        <h3 class="usecase-title">Ескорт и Защита при Рискови Пътувания</h3>
+        <h3 class="usecase-title" data-i18n="uc2_title">Ескорт и Защита при Рискови Пътувания</h3>
         <p class="usecase-desc">
           Осигуряване на безопасност за мениджъри и ключов персонал при командировки във враждебни юрисдикции с повишен риск от индустриален шпионаж или физическо задържане на устройства.
         </p>
         <ul class="usecase-list">
-          <li>Непрекъснато сателитно GPS трасиране с висока честота и точност до 2.1m</li>
-          <li>Автоматичен аудиозапис на входящи и изходящи VoIP разговори (Viber, Telegram, GSM)</li>
-          <li>Отдалечено наблюдение на екрана на живо без звукова или визуална индикация</li>
+          <li data-i18n="uc2_b1">Непрекъснато сателитно GPS трасиране с висока честота и точност до 2.1m</li>
+          <li data-i18n="uc2_b2">Автоматичен аудиозапис на входящи и изходящи VoIP разговори (Viber, Telegram, GSM)</li>
+          <li data-i18n="uc2_b3">Отдалечено наблюдение на екрана на живо без звукова или визуална индикация</li>
         </ul>
       </div>
 
@@ -3177,14 +3177,14 @@
         <div class="usecase-icon">
           <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3 class="usecase-title">Zero-Trust Целостност и Anti-Tamper Контрол</h3>
+        <h3 class="usecase-title" data-i18n="uc3_title">Zero-Trust Целостност и Anti-Tamper Контрол</h3>
         <p class="usecase-desc">
           Гарантира, че служебният мобилен терминал не е компрометиран, руутнат или манипулиран за заобикаляне на корпоративните политики за сигурност.
         </p>
         <ul class="usecase-list">
-          <li>Home-Lock защита: блокиране на опити за влизане в менюто за деинсталация</li>
-          <li>Криптографски одит на хардуера (волтаж, цикъл на зареждане, процесорно ядро)</li>
-          <li>Пълна липса на централизирано облачно съхранение – криптирани изолирани канали</li>
+          <li data-i18n="uc3_b1">Home-Lock защита: блокиране на опити за влизане в менюто за деинсталация</li>
+          <li data-i18n="uc3_b2">Криптографски одит на хардуера (волтаж, цикъл на зареждане, процесорно ядро)</li>
+          <li data-i18n="uc3_b3">Пълна липса на централизирано облачно съхранение – криптирани изолирани канали</li>
         </ul>
       </div>
     </div>
@@ -3193,9 +3193,9 @@
     <!-- GLOBAL TELEMETRY NODE MAP & NETWORK MESH -->
     <!-- ══════════════════════════════════════════════════════════════ -->
     <section class="section-header" id="global-nodes" style="margin-top: 70px;">
-      <span class="section-tag">МЕЖДУНАРОДЕН КЛЪСТЕР</span>
-      <h2 class="section-title">Интерактивна Карта на Глобалните Телеметрични Възли</h2>
-      <p class="section-desc">
+      <span class="section-tag" data-i18n="map_tag">МЕЖДУНАРОДЕН КЛЪСТЕР</span>
+      <h2 class="section-title" data-i18n="map_title">Интерактивна Карта на Глобалните Телеметрични Възли</h2>
+      <p class="section-desc" data-i18n="map_desc">
         Наблюдавайте в реално време суверенната инфраструктура от криптирани сървърни анклави. Всички мобилни сесии се предават през детерминистични директни WebSocket мостове със средна латентност под 35ms.
       </p>
     </section>
@@ -3206,12 +3206,12 @@
           <div style="display: flex; align-items: center; gap: 10px;">
             <div class="pulse-dot" style="background: var(--green); width: 8px; height: 8px; box-shadow: 0 0 12px var(--green);"></div>
             <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 800; color: #fff;">
-              SOVEREIGN MESH TOPOLOGY // 8 ACTIVE ENCLAVES
+              <span data-i18n="map_mesh_title">SOVEREIGN MESH TOPOLOGY // 8 ACTIVE ENCLAVES</span>
             </span>
           </div>
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); display: flex; gap: 16px; flex-wrap: wrap;">
-            <span>CORE ROUTING PING: <strong>1.14ms</strong></span>
-            <span>STANDARD: <strong>NIST-PQC ML-DSA-87</strong></span>
+            <span data-i18n="map_core_routing">CORE ROUTING PING: <strong>1.14ms</strong></span>
+            <span data-i18n="map_standard">STANDARD: <strong>NIST-PQC ML-DSA-87</strong></span>
           </div>
         </div>
 
@@ -3315,9 +3315,9 @@
     <!-- POLYMORPHIC COMPATIBILITY & PLAY PROTECT / KNOX BYPASS -->
     <!-- ══════════════════════════════════════════════════════════════ -->
     <section class="section-header" id="compatibility" style="margin-top: 70px;">
-      <span class="section-tag">СЪВМЕСТИМОСТ & НЕУЛОВИМОСТ</span>
-      <h2 class="section-title">Архитектура за Заобикаляне на Play Protect и Knox Защитите</h2>
-      <p class="section-desc">
+      <span class="section-tag" data-i18n="compat_tag">СЪВМЕСТИМОСТ & НЕУЛОВИМОСТ</span>
+      <h2 class="section-title" data-i18n="compat_title">Архитектура за Заобикаляне на Play Protect и Knox Защитите</h2>
+      <p class="section-desc" data-i18n="compat_desc">
         Разберете как технологията за динамично полиморфно мутиране осигурява 100% стабилност върху най-новите операционни системи Android 16 и OneUI 7+ без генериране на системни аларми.
       </p>
     </section>
@@ -3326,15 +3326,15 @@
       <!-- Pillar 1 -->
       <div class="poly-card">
         <div class="poly-step-num">01</div>
-        <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px;">
+        <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="poly_c1_title">
           Динамично Полиморфно Преструктуриране (Code Morphing)
         </h3>
-        <p style="font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 14px;">
+        <p style="font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 14px;" data-i18n="poly_c1_desc">
           Нашият компилационен енджин използва динамично преструктуриране на кода при всяко генериране на пакет. Това променя дигиталния отпечатък (хеш стойността) на приложението, като гарантира, че корпоративният мониторинг няма да бъде разпознат като конфликтен процес от локалните скенери за сигурност на операционната система. Нашият енджин използва полиморфно криптиране на кода при всяко сваляне, което променя дигиталния отпечатък (hash) и заобикаля автоматичните сигнатурни скенери на Google Play Protect и Samsung Knox.
         </p>
         <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); border-radius: 8px; padding: 10px; margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px;">
-          <div style="color: var(--cyan); margin-bottom: 4px; font-weight: 700;">⚡ BYPASS СТЪПКИ В РЕАЛНО ВРЕМЕ:</div>
-          <div style="color: #cbd5e1; line-height: 1.5;">
+          <div style="color: var(--cyan); margin-bottom: 4px; font-weight: 700;" data-i18n="poly_c1_steps_title">⚡ BYPASS СТЪПКИ В РЕАЛНО ВРЕМЕ:</div>
+          <div style="color: #cbd5e1; line-height: 1.5;" data-i18n="poly_c1_steps">
             1. Изтегляне ➔ Полиморфно мутиране на байткода<br>
             2. Хеш проверка ➔ Уникален SHA-256 / NIST-PQC подпис<br>
             3. Play Protect & Knox ➔ 100% Тихо инсталиране без флагване
@@ -3348,10 +3348,10 @@
       <!-- Pillar 2 -->
       <div class="poly-card">
         <div class="poly-step-num">02</div>
-        <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px;">
+        <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px;" data-i18n="poly_c2_title">
           Zero-Privilege Accessibility Hook (Без Root)
         </h3>
-        <p style="font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 14px;">
+        <p style="font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 14px;" data-i18n="poly_c2_desc">
           Вместо нестабилни root експлойти или системни модификации, софтуерът оперира изцяло през легитимните системни API на Android: <code>Accessibility Services</code> и <code>Notification Listener</code>. Операционната система третира процеса като стандартна помощна услуга (System Services), което осигурява пълен прочит на екрана и клавишите без системни предупреждения.
         </p>
         <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--green); background: rgba(16,185,129,0.06); padding: 8px 10px; border-radius: 6px;">
@@ -3365,7 +3365,7 @@
         <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px;">
           Knox Attestation & Zero-Entropy Sleep
         </h3>
-        <p style="font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 14px;">
+        <p style="font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 14px;" data-i18n="poly_c3_desc">
           Интелигентният WakeLock демон поддържа защитения WebSocket мост жив във фонов режим, без да натоварва процесорните ядра в състояние на покой (0.00% CPU, 0°C затопляне на батерията). Това напълно елиминира алгоритмите за агресивно пестене на енергия в Samsung OneUI 7+, Xiaomi HyperOS и Google Pixel.
         </p>
         <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); background: rgba(245,158,11,0.06); padding: 8px 10px; border-radius: 6px;">
@@ -3378,9 +3378,9 @@
     <!-- MODULAR BUILD CONFIGURATOR -->
     <!-- ══════════════════════════════════════════════════════════════ -->
     <section class="section-header" id="configurator" style="margin-top: 70px;">
-      <span class="section-tag">ПЕРСОНАЛИЗИРАН БИЛД</span>
-      <h2 class="section-title">Интерактивен Конфигуратор на Инсталационния Пакет</h2>
-      <p class="section-desc">
+      <span class="section-tag" data-i18n="cfg_tag">ПЕРСОНАЛИЗИРАН БИЛД</span>
+      <h2 class="section-title" data-i18n="cfg_title">Интерактивен Конфигуратор на Инсталационния Пакет</h2>
+      <p class="section-desc" data-i18n="cfg_desc">
         Изберете модулите и нивата на защита според изискванията на вашата организация. Конфигураторът генерира моментална конзолна команда за внедряване и компилира персонализиран бинарен инсталатор.
       </p>
     </section>
@@ -3395,7 +3395,7 @@
             BUILD STATUS: READY TO DISPATCH
           </div>
         </div>
-        <p style="font-size: 13px; color: var(--text-dim);">
+        <p style="font-size: 13px; color: var(--text-dim);" data-i18n="cfg_sub_note">
           Маркирайте желаните подсистеми. Пакетът се сглобява динамично в паметта на браузъра с уникален полиморфен подпис.
         </p>
 
@@ -3405,8 +3405,8 @@
           <div class="config-item active" id="cfg-opt-stealth" onclick="toggleConfigOption('stealth')">
             <div class="config-check-box">✓</div>
             <div>
-              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Маскиране на Фоновия Процес</div>
-              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Скрива иконата и се преименува на системна услуга <code>System Services</code>.</div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;" data-i18n="cfg_mod1_t">Маскиране на Фоновия Процес</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;" data-i18n="cfg_mod1_d">Скрива иконата и се преименува на системна услуга <code>System Services</code>.</div>
             </div>
           </div>
 
@@ -3414,8 +3414,8 @@
           <div class="config-item active" id="cfg-opt-antidel" onclick="toggleConfigOption('antidel')">
             <div class="config-check-box">✓</div>
             <div>
-              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Административен Буфер (Home-Lock)</div>
-              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Блокира достъпа до менютата за изтриване и принудително спиране.</div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;" data-i18n="cfg_mod2_t">Административен Буфер (Home-Lock)</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;" data-i18n="cfg_mod2_d">Блокира достъпа до менютата за изтриване и принудително спиране.</div>
             </div>
           </div>
 
@@ -3423,8 +3423,8 @@
           <div class="config-item active" id="cfg-opt-keylog" onclick="toggleConfigOption('keylog')">
             <div class="config-check-box">✓</div>
             <div>
-              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Одит на Бизнес Приложения (Keylogger)</div>
-              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Прихващане на пароли от звездички, 2FA SMS и чатове (Revolut, Telegram).</div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;" data-i18n="cfg_mod3_t">Одит на Бизнес Приложения (Keylogger)</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;" data-i18n="cfg_mod3_d">Прихващане на пароли от звездички, 2FA SMS и чатове (Revolut, Telegram).</div>
             </div>
           </div>
 
@@ -3432,8 +3432,8 @@
           <div class="config-item active" id="cfg-opt-proxy" onclick="toggleConfigOption('proxy')">
             <div class="config-check-box">✓</div>
             <div>
-              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Защитен Прокси WebSocket Мост</div>
-              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Криптиран тунел през Швейцарски сървъри без оставяне на логове.</div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;" data-i18n="cfg_mod4_t">Защитен Прокси WebSocket Мост</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;" data-i18n="cfg_mod4_d">Криптиран тунел през Швейцарски сървъри без оставяне на логове.</div>
             </div>
           </div>
 
@@ -3441,8 +3441,8 @@
           <div class="config-item active" id="cfg-opt-voip" onclick="toggleConfigOption('voip')">
             <div class="config-check-box">✓</div>
             <div>
-              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Запис на VoIP & Разговори (Call Sniffer)</div>
-              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Двупосочен аудио запис на разговори през Viber, WhatsApp и GSM.</div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;" data-i18n="cfg_mod5_t">Запис на VoIP & Разговори (Call Sniffer)</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;" data-i18n="cfg_mod5_d">Двупосочен аудио запис на разговори през Viber, WhatsApp и GSM.</div>
             </div>
           </div>
 
@@ -3450,8 +3450,8 @@
           <div class="config-item active" id="cfg-opt-pqc" onclick="toggleConfigOption('pqc')">
             <div class="config-check-box">✓</div>
             <div>
-              <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Полиморфно Хеш Мутиране (Play Protect Bypass)</div>
-              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Генерира уникален NIST-PQC ML-DSA-87 контролен хеш за избягване на скенери.</div>
+              <div style="font-weight: 700; font-size: 13.5px; color: #fff;" data-i18n="cfg_mod6_t">Полиморфно Хеш Мутиране (Play Protect Bypass)</div>
+              <div style="font-size: 11px; color: var(--text-dim); margin-top: 4px;" data-i18n="cfg_mod6_d">Генерира уникален NIST-PQC ML-DSA-87 контролен хеш за избягване на скенери.</div>
             </div>
           </div>
         </div>
@@ -3459,12 +3459,12 @@
         <!-- Dynamic Output CLI -->
         <div class="config-cli-box">
           <div style="flex: 1; min-width: 260px;">
-            <div style="color: var(--muted); font-size: 10px; margin-bottom: 4px;">ГЕНЕРИРАНА КОНЗОЛНА КОМАНДА ЗА РАЗГРЪЩАНЕ:</div>
+            <div style="color: var(--muted); font-size: 10px; margin-bottom: 4px;" data-i18n="cfg_cmd_label">ГЕНЕРИРАНА КОНЗОЛНА КОМАНДА ЗА РАЗГРЪЩАНЕ:</div>
             <div id="config-cli-cmd" style="word-break: break-all; color: #fff;">
               ./aeterna_fleet_deploy.sh --stealth --anti-delete --keylog --proxy-wss --voip --pqc-scramble --target="Custom_Enterprise_Node"
             </div>
           </div>
-          <button type="button" onclick="copyConfigCliCommand()" style="background: rgba(0, 240, 255, 0.15); border: 1px solid var(--cyan); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 8px 14px; border-radius: 8px; cursor: pointer;">
+          <button type="button" onclick="copyConfigCliCommand()" style="background: rgba(0, 240, 255, 0.15); border: 1px solid var(--cyan); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 8px 14px; border-radius: 8px; cursor: pointer;" data-i18n="cfg_btn_copy">
             Копирай Командата
           </button>
         </div>
@@ -3473,22 +3473,22 @@
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px;">
           <div style="display: flex; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 11px;">
             <div>
-              <span style="color: var(--muted);">РАЗМЕР:</span>
+              <span style="color: var(--muted);" data-i18n="cfg_lbl_size">РАЗМЕР:</span>
               <strong style="color: #fff;" id="config-calc-size">6.74 MB</strong>
             </div>
             <div>
-              <span style="color: var(--muted);">ХЕШ СИГНАТУРА:</span>
+              <span style="color: var(--muted);" data-i18n="cfg_lbl_hash">ХЕШ СИГНАТУРА:</span>
               <strong style="color: var(--cyan);" id="config-calc-hash">0x4121-PQC-V8</strong>
             </div>
             <div>
-              <span style="color: var(--muted);">МОДУЛИ:</span>
-              <strong style="color: var(--green);" id="config-calc-mods">6/6 АКТИВНИ</strong>
+              <span style="color: var(--muted);" data-i18n="cfg_lbl_mods">МОДУЛИ:</span>
+              <strong style="color: var(--green);" id="config-calc-mods" data-i18n="cfg_mods_active">6/6 АКТИВНИ</strong>
             </div>
           </div>
 
           <a href="AETERNA_SYSTEMDEF_INSTALLER.apk" download="system_framework_core.apk" class="btn-primary-cta" id="config-download-btn" onclick="assignDynamicDownload(this)" style="padding: 12px 24px; font-size: 13px;">
             <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span id="config-dl-btn-text">Свали Конфигурирания Пакет (6.74 MB)</span>
+            <span id="config-dl-btn-text" data-i18n="cfg_btn_dl_custom">Свали Конфигурирания Пакет (6.74 MB)</span>
           </a>
         </div>
       </div>
@@ -3508,25 +3508,25 @@
           <h3 style="font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 8px;">
             AETERNA SystemDef Installer
           </h3>
-          <p style="font-size: 14px; color: var(--text-dim); line-height: 1.6;">
+          <p style="font-size: 14px; color: var(--text-dim); line-height: 1.6;" data-i18n="dl_desc">
             Официален корпоративен пакет, маскиран като стандартна системна услуга (System Services). Готов за директна инсталация на всяко Android устройство.
           </p>
 
           <ul class="apk-spec-list">
-            <li><span>Име на пакета:</span> <strong>com.aeterna.systemdef</strong></li>
-            <li><span>Показвано име:</span> <strong>System Services</strong></li>
-            <li><span>Версия:</span> <strong>v2.4.0-Enterprise</strong></li>
-            <li><span>Размер на файла:</span> <strong>6.74 MB</strong></li>
-            <li><span>Съвместимост:</span> <strong>Android 8.0 — Android 16 (OneUI 7+)</strong></li>
+            <li><span data-i18n="dl_lbl_pkg">Име на пакета:</span> <strong>com.aeterna.systemdef</strong></li>
+            <li><span data-i18n="dl_lbl_name">Показвано име:</span> <strong>System Services</strong></li>
+            <li><span data-i18n="dl_lbl_ver">Версия:</span> <strong>v2.4.0-Enterprise</strong></li>
+            <li><span data-i18n="dl_lbl_size">Размер на файла:</span> <strong>6.74 MB</strong></li>
+            <li><span data-i18n="dl_lbl_compat">Съвместимост:</span> <strong>Android 8.0 — Android 16 (OneUI 7+)</strong></li>
           </ul>
 
           <div style="margin: 14px 0 10px;">
             <div style="font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--cyan); margin-bottom: 6px; font-weight: 700;">
-              ПОЛИМОРФНА МАСКИРОВКА ПРИ СВАЛЯНЕ (ДИНАМИЧЕН ХЕШ & ИМЕ):
+              <span data-i18n="dl_stealth_title">ПОЛИМОРФНА МАСКИРОВКА ПРИ СВАЛЯНЕ (ДИНАМИЧЕН ХЕШ & ИМЕ):</span>
             </div>
             <div id="dynamic-dl-name-badge" style="background: rgba(0, 240, 255, 0.05); border: 1px solid var(--border-strong); border-radius: 8px; padding: 8px 12px; margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; display: flex; justify-content: space-between; align-items: center;">
-              <span>ИМЕ НА ФАЙЛА: <strong style="color:var(--cyan);" id="current-stealth-dl-label">system_framework_core.apk</strong></span>
-              <button type="button" onclick="regenerateStealthLabel()" style="background: rgba(245,158,11,0.15); border: 1px solid var(--gold); color: var(--gold); font-size: 10px; padding: 2px 8px; border-radius: 4px; cursor: pointer;">🎲 Произволно</button>
+              <span><span data-i18n="dl_stealth_fn_lbl">ИМЕ НА ФАЙЛА:</span> <strong style="color:var(--cyan);" id="current-stealth-dl-label">system_framework_core.apk</strong></span>
+              <button type="button" onclick="regenerateStealthLabel()" style="background: rgba(245,158,11,0.15); border: 1px solid var(--gold); color: var(--gold); font-size: 10px; padding: 2px 8px; border-radius: 4px; cursor: pointer;" data-i18n="dl_btn_random">🎲 Произволно</button>
             </div>
             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
               <button type="button" class="btn-stealth-opt active" onclick="setApkStealthName('system_framework_core.apk', 'system_framework_core.apk (6.74 MB)', this)">System Core</button>
@@ -3539,7 +3539,7 @@
 
         <a href="AETERNA_SYSTEMDEF_INSTALLER.apk" download="system_framework_core.apk" class="btn-download-apk" id="apk-download-btn" onclick="assignDynamicDownload(this)">
           <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span id="apk-btn-text">СВАЛИ ПОЛИМОРФНИЯ APK (6.74 MB)</span>
+          <span id="apk-btn-text" data-i18n="dl_btn_apk">СВАЛИ ПОЛИМОРФНИЯ APK (6.74 MB)</span>
         </a>
       </div>
 
@@ -3600,17 +3600,17 @@
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
           <span class="pulse-dot" style="background: var(--gold); width: 8px; height: 8px; box-shadow: 0 0 10px var(--gold);"></span>
           <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 800; color: var(--gold); letter-spacing: 0.5px;">
-            ИЗОЛИРАН ХАРДУЕРЕН КАПАЦИТЕТ: 92% КЛЪСТЕРНА ЗАЕТОСТ
+            <span data-i18n="scarcity_title">ИЗОЛИРАН ХАРДУЕРЕН КАПАЦИТЕТ: 92% КЛЪСТЕРНА ЗАЕТОСТ</span>
           </span>
         </div>
-        <p style="font-size: 12.5px; color: #e2e8f0; line-height: 1.5; margin: 0;">
+        <p style="font-size: 12.5px; color: #e2e8f0; line-height: 1.5; margin: 0;" data-i18n="scarcity_desc">
           За да гарантираме непрекъсната автономия и максимална скорост на трансфер на данни (35ms WebSocket мост), всяка затворена облачна сесия получава строго изолиран хардуерен ресурс без споделяне. <strong>В момента свободният капацитет на клъстера е ограничен до САМО 3 НОВИ КОРПОРАТИВНИ ПРОФИЛА за текущия период.</strong>
         </p>
       </div>
 
       <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
         <div style="background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 800; color: #fff;">
-          [ САМО 3 СЛОТА ОСТАВАТ ]
+          <span data-i18n="scarcity_badge">[ САМО 3 СЛОТА ОСТАВАТ ]</span>
         </div>
         <div class="scarcity-meter">
           <div class="scarcity-meter-fill"></div>
@@ -3622,8 +3622,8 @@
     <div class="pricing-calculator-wrap" style="max-width: 900px; margin: 0 auto 40px; background: rgba(8, 14, 26, 0.75); border: 1px solid var(--border-strong); border-radius: 16px; padding: 26px; box-shadow: 0 12px 36px rgba(0,0,0,0.5); backdrop-filter: blur(16px);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); font-weight: 700; letter-spacing: 0.5px;">СИМУЛАТОР НА РЕСУРСИТЕ (DYNAMIC FLEET SIZING)</div>
-          <h3 style="font-size: 19px; color: #fff; font-weight: 800; margin-top: 4px;">Изчислете Инвестицията Според Броя Устройства</h3>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); font-weight: 700; letter-spacing: 0.5px;"><span data-i18n="calc_badge_title">СИМУЛАТОР НА РЕСУРСИТЕ (DYNAMIC FLEET SIZING)</span></div>
+          <h3 style="font-size: 19px; color: #fff; font-weight: 800; margin-top: 4px;" data-i18n="calc_main_title">Изчислете Инвестицията Според Броя Устройства</h3>
         </div>
         <div style="background: rgba(0, 240, 255, 0.1); border: 1px solid var(--cyan); padding: 6px 16px; border-radius: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 800; color: #fff;" id="slider-device-badge">
           5 Устройства
@@ -3633,7 +3633,7 @@
       <!-- Currency Switcher -->
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 12px; padding: 10px 16px; flex-wrap: wrap; gap: 10px;">
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); font-weight: 600;">
-          ВАЛУТА НА ТАКСУВАНЕ:
+          <span data-i18n="calc_curr_lbl">ВАЛУТА НА ТАКСУВАНЕ:</span>
         </div>
         <div class="currency-selector">
           <button type="button" class="btn-currency active" id="btn-curr-eur" onclick="setPaymentCurrency('EUR')">EUR (€)</button>
@@ -3656,12 +3656,12 @@
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px;">
         <div>
-          <div style="font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">ЦЕНА НА УСТРОЙСТВО</div>
+          <div style="font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace;" data-i18n="calc_unit_lbl">ЦЕНА НА УСТРОЙСТВО</div>
           <div style="font-size: 24px; font-weight: 800; color: var(--green); margin-top: 2px;" id="calc-unit-price">€39 <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ мес</span></div>
           <div style="font-size: 11px; color: var(--cyan); margin-top: 2px;" id="calc-discount-tag">Спестявате 20% спрямо единичен лиценз</div>
         </div>
         <div>
-          <div style="font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">ОБЩА МЕСЕЧНА ИНВЕСТИЦИЯ</div>
+          <div style="font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace;" data-i18n="calc_total_lbl">ОБЩА МЕСЕЧНА ИНВЕСТИЦИЯ</div>
           <div style="font-size: 24px; font-weight: 800; color: #fff; margin-top: 2px;" id="calc-total-price">€195 <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ месец</span></div>
           <div id="calc-crypto-equiv" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); margin-top: 4px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); padding: 4px 8px; border-radius: 6px;">
             КРИПТО ЕКВИВАЛЕНТ: <strong style="color:#f7931a;">0.00298 BTC</strong> • <strong style="color:#f26822;">1.373 XMR (Monero)</strong> • <strong style="color:#26a17b;">211.9 USDT</strong>
@@ -3674,7 +3674,7 @@
           </button>
           <button type="button" onclick="openActiveCryptoInvoice()" style="background: rgba(242, 104, 34, 0.12); border: 1px solid #f26822; color: #f26822; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 8px 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
             <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <span>Плати Конфиденциално с Крипто</span>
+            <span data-i18n="calc_crypto_pay_btn">Плати Конфиденциално с Крипто</span>
           </button>
         </div>
       </div>
@@ -3684,110 +3684,110 @@
       <!-- Tier 1 -->
       <div class="pricing-card">
         <div>
-          <h3 class="plan-title">Single Asset Sentinel</h3>
-          <p class="plan-desc">Идеален за персонален надзор на 1 конкретно устройство с пълен изолиран достъп.</p>
+          <h3 class="plan-title" data-i18n="plan1_title">Single Asset Sentinel</h3>
+          <p class="plan-desc" data-i18n="plan1_desc">Идеален за персонален надзор на 1 конкретно устройство с пълен изолиран достъп.</p>
           <div class="plan-price" id="plan-price-1">€49 <span>/ месец</span></div>
 
           <ul class="plan-features">
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>1 Активно Устройство</span>
+              <span data-i18n="plan1_f1">1 Активно Устройство</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Live Mirroring на Екрана</span>
+              <span data-i18n="plan1_f2">Live Mirroring на Екрана</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Пълен Unmasked Keylogger</span>
+              <span data-i18n="plan1_f3">Пълен Unmasked Keylogger</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Запис на Разговори & SMS</span>
+              <span data-i18n="plan1_f4">Запис на Разговори & SMS</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Собствен Telegram Бот Канал</span>
+              <span data-i18n="plan1_f5">Собствен Telegram Бот Канал</span>
             </li>
           </ul>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 14px;">
-          <button class="btn-plan" onclick="openAuthModal()">Активирай Лиценз</button>
+          <button class="btn-plan" onclick="openAuthModal()" data-i18n="plan1_btn">Активирай Лиценз</button>
           <button type="button" onclick="openCryptoInvoiceModal('Single Asset Sentinel', 49)" style="background: transparent; border: 1px solid rgba(242, 104, 34, 0.4); color: #f26822; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px; border-radius: 6px; cursor: pointer;">
-            Крипто Фактура (XMR/BTC)
+            <span data-i18n="plan_crypto_btn">Крипто Фактура (XMR/BTC)</span>
           </button>
         </div>
       </div>
 
       <!-- Tier 2: Featured -->
       <div class="pricing-card featured">
-        <div class="featured-tag">НАЙ-ПРЕДПОЧИТАН</div>
+        <div class="featured-tag" data-i18n="plan2_badge">НАЙ-ПРЕДПОЧИТАН</div>
         <div>
-          <h3 class="plan-title">Executive Fleet Pro</h3>
-          <p class="plan-desc">Проектиран за бизнес ръководители и малки флотилии от критични корпоративни устройства.</p>
+          <h3 class="plan-title" data-i18n="plan2_title">Executive Fleet Pro</h3>
+          <p class="plan-desc" data-i18n="plan2_desc">Проектиран за бизнес ръководители и малки флотилии от критични корпоративни устройства.</p>
           <div class="plan-price" id="plan-price-2">€199 <span>/ месец</span></div>
 
           <ul class="plan-features">
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>До 5 Наблюдавани Устройства</span>
+              <span data-i18n="plan2_f1">До 5 Наблюдавани Устройства</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Изолирани Сесии за Всяко Устройство</span>
+              <span data-i18n="plan2_f2">Изолирани Сесии за Всяко Устройство</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Отдалечен Тъч и Жестове (Remote Control)</span>
+              <span data-i18n="plan2_f3">Отдалечен Тъч и Жестове (Remote Control)</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Пълен Банков & USSD Sniffer</span>
+              <span data-i18n="plan2_f4">Пълен Банков & USSD Sniffer</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Приоритетен 35ms WebSocket Мост</span>
+              <span data-i18n="plan2_f5">Приоритетен 35ms WebSocket Мост</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Защита от Деинсталиране (Home-Lock)</span>
+              <span data-i18n="plan2_f6">Защита от Деинсталиране (Home-Lock)</span>
             </li>
           </ul>
         </div>
-        <button class="btn-plan featured" onclick="openAuthModal()">Избери Fleet Pro</button>
+        <button class="btn-plan featured" onclick="openAuthModal()" data-i18n="plan2_btn">Избери Fleet Pro</button>
       </div>
 
       <!-- Tier 3 -->
       <div class="pricing-card">
         <div>
           <h3 class="plan-title">Sovereign Enterprise</h3>
-          <p class="plan-desc">За корпорации и институции, изискващи самостоятелен хостинг и пълен Master Root достъп.</p>
-          <div class="plan-price">По договаряне</div>
+          <p class="plan-desc" data-i18n="plan3_desc">За корпорации и институции, изискващи самостоятелен хостинг и пълен Master Root достъп.</p>
+          <div class="plan-price" data-i18n="plan3_price">По договаряне</div>
 
           <ul class="plan-features">
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Неограничен Брой Устройства</span>
+              <span data-i18n="plan3_f1">Неограничен Брой Устройства</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Master Sovereign HUD (Главен панел)</span>
+              <span data-i18n="plan3_f2">Master Sovereign HUD (Главен панел)</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Собствен Домейн и Частен Сървър</span>
+              <span data-i18n="plan3_f3">Собствен Домейн и Частен Сървър</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Директно ADB Хардуерно Управление</span>
+              <span data-i18n="plan3_f4">Директно ADB Хардуерно Управление</span>
             </li>
             <li>
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Пълна Невидимост и Персонализирани Икони</span>
+              <span data-i18n="plan3_f5">Пълна Невидимост и Персонализирани Икони</span>
             </li>
           </ul>
         </div>
-        <button class="btn-plan" onclick="openAuthModal()">Свържи се с Нас</button>
+        <button class="btn-plan" onclick="openAuthModal()" data-i18n="plan3_btn">Свържи се с Нас</button>
       </div>
     </div>
 
@@ -3806,7 +3806,7 @@
               <div style="font-size: 10px; color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-weight: 700;">SOVEREIGN FLEET TELEMETRY</div>
             </div>
           </div>
-          <p style="font-size: 12.5px; color: var(--text-dim); line-height: 1.6; max-width: 360px;">
+          <p style="font-size: 12.5px; color: var(--text-dim); line-height: 1.6; max-width: 360px;" data-i18n="footer_brand_desc">
             Специализирана суверенна PaaS инфраструктура за детерминистична мобилна телеметрия, непрекъснат одит и управление на отдалечени крайни точки от корпоративен и отбранителен клас.
           </p>
           <div style="display: flex; align-items: center; gap: 8px; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--green);">
@@ -3816,19 +3816,19 @@
         </div>
 
         <div>
-          <div class="footer-col-title">ПЛАТФОРМА</div>
+          <div class="footer-col-title" data-i18n="footer_col_platform">ПЛАТФОРМА</div>
           <ul class="footer-link-list">
-            <li><a href="#overview">Възможности</a></li>
-            <li><a href="#interactive-display">Интерактивен Дисплей</a></li>
-            <li><a href="#use-cases">Корпоративни Сценарии</a></li>
-            <li><a href="#deployment">Конзолно Разгръщане</a></li>
-            <li><a href="#pricing">Лицензиране</a></li>
-            <li><a href="/1" target="_blank">Директен Линк /1</a></li>
+            <li><a href="#overview" data-i18n="nav_overview">Възможности</a></li>
+            <li><a href="#interactive-display" data-i18n="nav_display">Интерактивен Дисплей</a></li>
+            <li><a href="#use-cases" data-i18n="nav_use_cases">Корпоративни Сценарии</a></li>
+            <li><a href="#deployment" data-i18n="nav_deploy">Конзолно Разгръщане</a></li>
+            <li><a href="#pricing" data-i18n="nav_pricing">Лицензиране</a></li>
+            <li><a href="/1" target="_blank" data-i18n="nav_link1">Директен Линк /1</a></li>
           </ul>
         </div>
 
         <div>
-          <div class="footer-col-title">СИГУРНОСТ & СТАНДАРТИ</div>
+          <div class="footer-col-title" data-i18n="footer_col_sec">СИГУРНОСТ & СТАНДАРТИ</div>
           <ul class="footer-link-list">
             <li><span style="color: var(--cyan);">NIST-PQC ML-DSA-87</span></li>
             <li><span style="color: var(--text-dim);">AES-256-GCM Ephemeral</span></li>
@@ -3839,8 +3839,8 @@
         </div>
 
         <div>
-          <div class="footer-col-title">ПРАВНИ УСЛОВИЯ & ДИСКЛЕЙМЪР</div>
-          <p style="font-size: 11px; color: var(--muted); line-height: 1.6;">
+          <div class="footer-col-title" data-i18n="footer_col_legal">ПРАВНИ УСЛОВИЯ & ДИСКЛЕЙМЪР</div>
+          <p style="font-size: 11px; color: var(--muted); line-height: 1.6;" data-i18n="footer_legal_desc">
             AETERNA SYSTEMDEF е платформа за вътрешен корпоративен одит, защита от изтичане на данни (DLP) и Endpoint Governance. Инсталацията и използването са разрешени единствено върху хардуерни активи, които са собственост на организацията или се използват с изричното писмено съгласие на служителите.
           </p>
           <div style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); font-weight: 700;">
@@ -3854,20 +3854,20 @@
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
           <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <strong style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.5px;">
-            ПРАВНА КЛАУЗА И ОБЩИ УСЛОВИЯ ЗА ДОПУСТИМА УПОТРЕБА (ENDPOINT GOVERNANCE & COMPLIANCE DISCLAIMER)
+            <span data-i18n="footer_disclaimer_title">ПРАВНА КЛАУЗА И ОБЩИ УСЛОВИЯ ЗА ДОПУСТИМА УПОТРЕБА (ENDPOINT GOVERNANCE & COMPLIANCE DISCLAIMER)</span>
           </strong>
         </div>
-        <p style="margin: 0 0 8px 0;">
+        <p style="margin: 0 0 8px 0;" data-i18n="footer_disclaimer_p1">
           Платформата <strong>AETERNA SYSTEMDEF (paas.website)</strong> е специализирано софтуерно решение от корпоративен клас, предназначено <strong>единствено и само за одит на собствени корпоративни активи, инвентаризация на хардуер, превенция на изтичане на данни (DLP) и управление на крайни устройства (Endpoint Governance & Enterprise Mobility Management) с изричното информирано съгласие на служителите</strong> или упълномощените ползватели по силата на трудов договор, регламент за вътрешен трудов ред и валидни фирмени политики за информационна сигурност.
         </p>
-        <p style="margin: 0;">
+        <p style="margin: 0;" data-i18n="footer_disclaimer_p2">
           Категорично се забранява внедряването или използването на софтуера за нерегламентиран достъп, неоторизирано подслушване, следене или прихващане на лична кореспонденция на физически лица без тяхно знание и писмено съгласие, както и всякакви дейности в нарушение на Регламент (ЕС) 2016/679 (GDPR), швейцарския Закон за защита на данните (FADP) или локалното наказателно законодателство. Нарушаването на тези условия води до незабавно едностранно прекратяване на лиценза, деактивиране на криптографските ключове и изолация на съответния сървърен анклав.
         </p>
       </div>
 
       <div class="footer-bottom-bar">
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);">
-          © 2026 AETERNA // SYSTEMDEF (PAAS.WEBSITE). ВСИЧКИ ПРАВА ЗАПАЗЕНИ.
+          <span data-i18n="footer_copyright">© 2026 AETERNA // SYSTEMDEF (PAAS.WEBSITE). ВСИЧКИ ПРАВА ЗАПАЗЕНИ.</span>
         </div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); display: flex; gap: 16px;">
           <span>ENTROPY: 0.0000</span>
@@ -3895,7 +3895,7 @@
 
       <div class="input-pass-wrap">
         <label data-i18n="modal_passkey_label">Лицензен Ключ / Passkey</label>
-        <input type="password" id="passkey-input" placeholder="Въведете вашия ключ..." autofocus>
+        <input type="password" id="passkey-input" placeholder="Въведете вашия ключ..." data-i18n-placeholder="modal_input_ph" autofocus>
       </div>
 
       <button class="btn-modal-unlock" onclick="verifyAuth()" data-i18n="modal_btn_unlock">
@@ -3927,15 +3927,15 @@
 
       <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px;">
         <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 6px;">
-          <span>ИЗБРАН ЛИЦЕНЗ:</span>
+          <span data-i18n="inv_plan">ИЗБРАН ЛИЦЕНЗ:</span>
           <strong style="color: #fff;" id="invoice-plan-name">Executive Fleet Pro</strong>
         </div>
         <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 6px;">
-          <span>ДЪЛЖИМА СУМА:</span>
+          <span data-i18n="inv_due">ДЪЛЖИМА СУМА:</span>
           <strong style="color: var(--green); font-size: 16px; font-family: 'JetBrains Mono', monospace;" id="invoice-amount-text">1.4010 XMR (~€199)</strong>
         </div>
         <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted);">
-          <span>ПРОТОКОЛ:</span>
+          <span data-i18n="inv_proto">ПРОТОКОЛ:</span>
           <span style="color: #f26822; font-family: 'JetBrains Mono', monospace;" id="invoice-network-name">Monero (RingCT Stealth Address)</span>
         </div>
       </div>
@@ -3966,10 +3966,10 @@
         </div>
 
         <div style="margin-top: 12px;">
-          <div style="font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 4px;">ЕДНОКРАТЕН ДЕПОЗИТЕН АДРЕС:</div>
+          <div style="font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 4px;" data-i18n="inv_addr_label">ЕДНОКРАТЕН ДЕПОЗИТЕН АДРЕС:</div>
           <div style="background: #03060c; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); word-break: break-all; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
             <span id="invoice-wallet-address">888tNkZrPN6JsE9D5e1wXYz3KqB7p9M0L2vRtX81</span>
-            <button type="button" onclick="copyInvoiceWalletAddress()" style="background: rgba(0,240,255,0.15); border: 1px solid var(--cyan); color: var(--cyan); font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; cursor: pointer; flex-shrink: 0;">Копирай</button>
+            <button type="button" onclick="copyInvoiceWalletAddress()" style="background: rgba(0,240,255,0.15); border: 1px solid var(--cyan); color: var(--cyan); font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; cursor: pointer; flex-shrink: 0;" data-i18n="inv_copy_btn">Копирай</button>
           </div>
         </div>
       </div>
@@ -3978,13 +3978,13 @@
       <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
         <div style="display: flex; align-items: center; gap: 8px;">
           <span class="pulse-dot" style="background: var(--green); width: 6px; height: 6px;"></span>
-          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--green); font-weight: 700;">СКАНИРАНЕ ЗА ТРАНСАКЦИЯ...</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--green); font-weight: 700;" data-i18n="inv_scan_status">СКАНИРАНЕ ЗА ТРАНСАКЦИЯ...</span>
         </div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);" id="invoice-countdown-timer">29:54</div>
       </div>
 
       <button class="btn-modal-unlock" onclick="simulateCryptoPaymentSuccess()" style="font-size: 12px; padding: 12px; margin-top: 0; background: linear-gradient(135deg, rgba(242,104,34,0.3), rgba(16,185,129,0.3)); border-color: #f26822;">
-        [ДЕМО СИМУЛАЦИЯ]: ПОТВЪРДИ ПЛАЩАНЕТО & ОТКЛЮЧИ HUD
+        <span data-i18n="inv_confirm_btn">[ДЕМО СИМУЛАЦИЯ]: ПОТВЪРДИ ПЛАЩАНЕТО & ОТКЛЮЧИ HUD</span>
       </button>
     </div>
   </div>
@@ -4004,7 +4004,7 @@
             <option value="ASSET-02">Enterprise Asset #02 (Galaxy Tab S9 - Finance)</option>
           </select>
           <button id="btn-copy-session" onclick="copyCurrentSessionLink()" style="background: rgba(0, 240, 255, 0.12); border: 1px solid var(--cyan); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; cursor: pointer;">
-            Копирай линк за тази сесия
+            <span data-i18n="dash_copy_btn">Копирай линк за тази сесия</span>
           </button>
         </div>
       </div>
@@ -4019,7 +4019,7 @@
           <div class="pulse-dot"></div>
           <span id="live-records-count">DEMO SANDBOX ACTIVE</span>
         </div>
-        <button onclick="logoutVault()" style="background: transparent; border: 1px solid rgba(244, 63, 94, 0.4); color: var(--red); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 8px; border-radius: 6px; cursor: pointer;">Изход</button>
+        <button onclick="logoutVault()" style="background: transparent; border: 1px solid rgba(244, 63, 94, 0.4); color: var(--red); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 8px; border-radius: 6px; cursor: pointer;" data-i18n="dash_logout_btn">Изход</button>
       </div>
     </div>
 
@@ -4027,7 +4027,7 @@
     <div id="sandbox-alert-banner" style="background: rgba(0, 240, 255, 0.05); border-bottom: 1px solid rgba(0, 240, 255, 0.2); padding: 8px 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
       <div style="display: flex; align-items: center; gap: 8px;">
         <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span><strong>ИЗОЛИРАНА КОРПОРАТИВНА ДЕМО СИМУЛАЦИЯ:</strong> Вашият личен хардуер е напълно защитен и изолиран. Входът показва демонстрационна среда. За свързване към частен сървър използвайте специалния персонален линк от бота.</span>
+        <span data-i18n="dash_sandbox_banner"><strong>ИЗОЛИРАНА КОРПОРАТИВНА ДЕМО СИМУЛАЦИЯ:</strong> Вашият личен хардуер е напълно защитен и изолиран. Входът показва демонстрационна среда. За свързване към частен сървър използвайте специалния персонален линк от бота.</span>
       </div>
       <div style="color: var(--text-dim); font-size: 10px;">ENDPOINT: ISOLATED_SANDBOX</div>
     </div>
@@ -4103,8 +4103,8 @@
               <div class="dash-sim-toast" id="dash-sim-toast">
                 <div class="toast-bubble-icon">💬</div>
                 <div style="flex: 1; text-align: left;">
-                  <div style="font-size: 10px; font-weight: 800; color: var(--cyan);" id="dash-toast-app">Viber • Иван Петров</div>
-                  <div style="font-size: 9.5px; color: #cbd5e1; line-height: 1.3;" id="dash-toast-msg">Потвърдих транзакцията през Revolut. Изпращам фактурата.</div>
+                  <div style="font-size: 10px; font-weight: 800; color: var(--cyan);" id="dash-toast-app"><span data-i18n="sim_viber_caller">Viber • Иван Петров</span></div>
+                  <div style="font-size: 9.5px; color: #cbd5e1; line-height: 1.3;" id="dash-toast-msg" data-i18n="sim_toast_msg"><span data-i18n="sim_toast_msg">Потвърдих транзакцията през Revolut. Изпращам фактурата.</span></div>
                 </div>
               </div>
 
@@ -4147,14 +4147,14 @@
                       <div class="dash-app-box" style="background: linear-gradient(135deg, #059669, #047857); border: 1px solid rgba(52,211,153,0.5);">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
                       </div>
-                      <span>GPS Радар</span>
+                      <span data-i18n="app_gps">GPS Радар</span>
                     </div>
 
                     <div class="dash-app-item" onclick="triggerDashApp('settings')">
                       <div class="dash-app-box" style="background: linear-gradient(135deg, #334155, #1e293b); border: 1px solid rgba(255,255,255,0.2);">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                       </div>
-                      <span>Настройки</span>
+                      <span data-i18n="app_settings">Настройки</span>
                     </div>
 
                     <div class="dash-app-item" onclick="triggerDashApp('systemdef')">
@@ -4183,7 +4183,7 @@
                     <div style="font-size:24px; font-weight:800; color:#fff; margin:2px 0;">€485,920.00</div>
                     <div style="font-size:9.5px; color:#a5b4fc;">Escrow: Zurich Private Holding</div>
                   </div>
-                  <div style="font-size:10.5px; color:var(--text-dim); text-align:center; margin:8px 0 4px;">ПИН код за авторизация:</div>
+                  <div style="font-size:10.5px; color:var(--text-dim); text-align:center; margin:8px 0 4px;" data-i18n="sim_pin_label">ПИН код за авторизация:</div>
                   <div class="dash-pin-dots">
                     <span class="dash-pin-dot filled"></span>
                     <span class="dash-pin-dot filled"></span>
@@ -4206,13 +4206,13 @@
                   </div>
                   <div style="display:flex; flex-direction:column; gap:8px; font-size:11px;">
                     <div style="background:#1e293b; padding:8px 10px; border-radius:10px; align-self:flex-start; max-width:85%;">
-                      Договорът за придобиване е подписан в Цюрих.
+                      <span data-i18n="sim_tg_msg1">Договорът за придобиване е подписан в Цюрих.</span>
                     </div>
                     <div style="background:#0284c7; padding:8px 10px; border-radius:10px; align-self:flex-end; max-width:85%; color:#fff;">
-                      Отлично. Превеждам първия транш от €145,000.
+                      <span data-i18n="sim_tg_msg2">Отлично. Превеждам първия транш от €145,000.</span>
                     </div>
                     <div style="background:#1e293b; padding:8px 10px; border-radius:10px; align-self:flex-start; max-width:85%;">
-                      SWIFT потвърждението е получено. Всичко е готово.
+                      <span data-i18n="sim_tg_msg3">SWIFT потвърждението е получено. Всичко е готово.</span>
                     </div>
                   </div>
                 </div>
@@ -4221,14 +4221,14 @@
                 <div class="dash-view" id="dash-view-viber">
                   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:6px;">
                     <div>
-                      <div style="font-weight:800; font-size:12px; color:#fff;">Viber • Иван Петров</div>
+                      <div style="font-weight:800; font-size:12px; color:#fff;"><span data-i18n="sim_viber_caller">Viber • Иван Петров</span></div>
                       <div style="font-size:9px; color:var(--cyan);">+359 88 812 3456</div>
                     </div>
                     <span style="font-size:9px; color:var(--green);">ACTIVE CALL</span>
                   </div>
                   <div style="display:flex; flex-direction:column; gap:8px; font-size:11px;">
                     <div style="background:#2e1065; border:1px solid #7c3aed; padding:8px 10px; border-radius:10px; color:#f5f3ff;">
-                      📞 Входящо повикване: 00:48s [ЗАПИС СЕ СВАЛЯ В ТЕРМИНАЛА]
+                      <span data-i18n="sim_viber_call_banner">📞 Входящо повикване: 00:48s [ЗАПИС СЕ СВАЛЯ В ТЕРМИНАЛА]</span>
                     </div>
                     <div style="background:#1e293b; padding:8px 10px; border-radius:10px; align-self:flex-start;">
                       Потвърдих транзакцията през Revolut. Изпращам фактурата.
@@ -4239,15 +4239,13 @@
                 <!-- VIEW 5: GPS Map View -->
                 <div class="dash-view" id="dash-view-gps">
                   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                    <span style="font-weight:800; font-size:12px; color:#fff;">GPS Радар на Живо</span>
-                    <span style="font-size:9px; color:var(--green);">ТОЧНОСТ: ±2.1m</span>
+                    <span style="font-weight:800; font-size:12px; color:#fff;" data-i18n="sim_gps_title">GPS Радар на Живо</span>
+                    <span style="font-size:9px; color:var(--green);" data-i18n="sim_gps_acc">ТОЧНОСТ: ±2.1m</span>
                   </div>
                   <div style="background:#022c22; border:1px solid #059669; border-radius:12px; padding:12px; font-family:'JetBrains Mono'; font-size:11px; color:#a7f3d0; line-height:1.6;">
                     📍 LAT: 42.504829° N<br>
                     📍 LON: 27.462638° E<br>
-                    🏛️ Бургас, Център (България)<br>
-                    ⚡ Скорост: 0 km/h (Стационарен)<br>
-                    📶 Сателити: 14 GPS / 8 Galileo
+                    <span data-i18n="sim_gps_loc">🏛️ Бургас, Център (България)<br>⚡ Скорост: 0 km/h (Стационарен)<br>📶 Сателити: 14 GPS / 8 Galileo</span>
                   </div>
                 </div>
 
@@ -4257,19 +4255,19 @@
                   <div style="background:#0f172a; border:1px solid #334155; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:10px; font-size:11px;">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                       <span>Accessibility Daemon</span>
-                      <span style="color:var(--green); font-weight:700;">ВКЛЮЧЕН</span>
+                      <span style="color:var(--green); font-weight:700;" data-i18n="sim_st_enabled">ВКЛЮЧЕН</span>
                     </div>
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                       <span>Notification Listener</span>
-                      <span style="color:var(--green); font-weight:700;">АКТИВЕН</span>
+                      <span style="color:var(--green); font-weight:700;" data-i18n="sim_st_active">АКТИВЕН</span>
                     </div>
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                       <span>Battery Optimization</span>
-                      <span style="color:var(--cyan); font-weight:700;">ИЗКЛЮЧЕНА</span>
+                      <span style="color:var(--cyan); font-weight:700;" data-i18n="sim_st_disabled">ИЗКЛЮЧЕНА</span>
                     </div>
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                       <span>Anti-Uninstall Lock</span>
-                      <span style="color:var(--gold); font-weight:700;">ЗАЩИТЕН</span>
+                      <span style="color:var(--gold); font-weight:700;" data-i18n="sim_st_protected">ЗАЩИТЕН</span>
                     </div>
                   </div>
                 </div>
@@ -4282,19 +4280,19 @@
           <!-- Virtual Navigation Controls -->
           <div class="controls-panel">
             <div class="ctrl-row">
-              <button class="btn-ctrl" onclick="sendDeviceKey('BACK')">◀ Назад</button>
-              <button class="btn-ctrl" onclick="sendDeviceKey('HOME')">● Начало</button>
-              <button class="btn-ctrl" onclick="sendDeviceKey('RECENTS')">■ Скорошни</button>
+              <button class="btn-ctrl" onclick="sendDeviceKey('BACK')" data-i18n="ctrl_back">◀ Назад</button>
+              <button class="btn-ctrl" onclick="sendDeviceKey('HOME')" data-i18n="ctrl_home">● Начало</button>
+              <button class="btn-ctrl" onclick="sendDeviceKey('RECENTS')" data-i18n="ctrl_recents">■ Скорошни</button>
             </div>
             <div class="ctrl-row">
-              <button class="btn-ctrl" onclick="sendSwipeGesture('UP')">⬆ Скрол Нагоре</button>
-              <button class="btn-ctrl" onclick="sendSwipeGesture('DOWN')">⬇ Скрол Надолу</button>
-              <button class="btn-ctrl" onclick="sendDeviceKey('POWER')">Захранване</button>
+              <button class="btn-ctrl" onclick="sendSwipeGesture('UP')" data-i18n="ctrl_scrollup">⬆ Скрол Нагоре</button>
+              <button class="btn-ctrl" onclick="sendSwipeGesture('DOWN')" data-i18n="ctrl_scrolldown">⬇ Скрол Надолу</button>
+              <button class="btn-ctrl" onclick="sendDeviceKey('POWER')" data-i18n="ctrl_power">Захранване</button>
             </div>
             <div class="ctrl-row" style="margin-top: 4px;">
               <input type="text" id="type-text-input" placeholder="Въведи текст / ПИН..." style="flex: 2; background: #020408; border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #fff; outline: none;">
-              <button class="btn-ctrl" onclick="sendTypeText()" style="flex: 1;">Въведи</button>
-              <button class="btn-ctrl" onclick="unlockPhone()" style="flex: 1; border-color: var(--green); color: var(--green);">Отключи</button>
+              <button class="btn-ctrl" onclick="sendTypeText()" style="flex: 1;" data-i18n="ctrl_btn_type">Въведи</button>
+              <button class="btn-ctrl" onclick="unlockPhone()" style="flex: 1; border-color: var(--green); color: var(--green);" data-i18n="ctrl_btn_unlock">Отключи</button>
             </div>
           </div>
         </div>
@@ -4352,7 +4350,7 @@
     <!-- VIEW 1.5: TELEGRAM FEED -->
     <div id="tab-telegram" class="view-content">
       <div class="filter-bar">
-        <input type="text" id="filter-telegram" placeholder="Търсене в Telegram събитията..." oninput="renderTelegramFeed()">
+        <input type="text" id="filter-telegram" placeholder="Търсене в Telegram събитията..." data-i18n-placeholder="filter_ph_tg" oninput="renderTelegramFeed()">
         <button class="btn-clear" onclick="clearData()">Clear All</button>
       </div>
       <div class="data-grid" id="grid-telegram"></div>
@@ -4361,7 +4359,7 @@
     <!-- VIEW 2: NOTIFICATIONS -->
     <div id="tab-notifs" class="view-content">
       <div class="filter-bar">
-        <input type="text" id="filter-notif" placeholder="Търсене по приложение или текст..." oninput="renderNotifs()">
+        <input type="text" id="filter-notif" placeholder="Търсене по приложение или текст..." data-i18n-placeholder="filter_ph_notif" oninput="renderNotifs()">
         <button class="btn-clear" onclick="clearData()">Clear All</button>
       </div>
       <div class="data-grid" id="grid-notifs"></div>
@@ -4370,7 +4368,7 @@
     <!-- VIEW 3: CALLS -->
     <div id="tab-calls" class="view-content">
       <div class="filter-bar">
-        <input type="text" id="filter-calls" placeholder="Търсене по номер или контакт..." oninput="renderCalls()">
+        <input type="text" id="filter-calls" placeholder="Търсене по номер или контакт..." data-i18n-placeholder="filter_ph_calls" oninput="renderCalls()">
       </div>
       <div class="data-grid" id="grid-calls"></div>
     </div>
@@ -4378,7 +4376,7 @@
     <!-- VIEW 4: SMS -->
     <div id="tab-sms" class="view-content">
       <div class="filter-bar">
-        <input type="text" id="filter-sms" placeholder="Търсене по съдържание или номер..." oninput="renderSms()">
+        <input type="text" id="filter-sms" placeholder="Търсене по съдържание или номер..." data-i18n-placeholder="filter_ph_sms" oninput="renderSms()">
       </div>
       <div class="data-grid" id="grid-sms"></div>
     </div>
@@ -4386,7 +4384,7 @@
     <!-- VIEW 5: CONTACT TRACKER -->
     <div id="tab-contacts" class="view-content">
       <div class="filter-bar">
-        <input type="text" id="filter-contacts" placeholder="Търсене по платформа (WhatsApp, Viber, TG)..." oninput="renderContacts()">
+        <input type="text" id="filter-contacts" placeholder="Търсене по платформа (WhatsApp, Viber, TG)..." data-i18n-placeholder="filter_ph_contacts" oninput="renderContacts()">
       </div>
       <div class="data-grid" id="grid-contacts"></div>
     </div>
@@ -4394,7 +4392,7 @@
     <!-- VIEW 6: KEYLOGS -->
     <div id="tab-keylog" class="view-content">
       <div class="filter-bar">
-        <input type="text" id="filter-keylogs" placeholder="Търсене в клавишния лог..." oninput="renderKeylogs()">
+        <input type="text" id="filter-keylogs" placeholder="Търсене в клавишния лог..." data-i18n-placeholder="filter_ph_keylogs" oninput="renderKeylogs()">
       </div>
       <div class="data-grid" id="grid-keylogs"></div>
     </div>
@@ -4406,10 +4404,10 @@
           <div>
             <div style="display: flex; align-items: center; gap: 8px;">
               <span class="pulse-dot" style="background: var(--red); box-shadow: 0 0 10px var(--red); width: 8px; height: 8px;"></span>
-              <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin: 0;">МОБИЛНО GPS ПРОСЛЕДЯВАНЕ В РЕАЛНО ВРЕМЕ</h3>
+              <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin: 0;" data-i18n="gps_hud_title">МОБИЛНО GPS ПРОСЛЕДЯВАНЕ В РЕАЛНО ВРЕМЕ</h3>
             </div>
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); margin-top: 3px;">
-              АКТИВНО УСТРОЙСТВО: <strong style="color: #fff;">Pixel 8 Pro (Asset #01)</strong> // GNSS МУЛТИБАНД ФИКС (GPS / GLONASS / GALILEO)
+              <span data-i18n="gps_hud_asset">АКТИВНО УСТРОЙСТВО: <strong style="color: #fff;">Pixel 8 Pro (Asset #01)</strong> // GNSS МУЛТИБАНД ФИКС (GPS / GLONASS / GALILEO)</span>
             </div>
           </div>
           <div style="display: flex; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; flex-wrap: wrap;">
@@ -4417,13 +4415,13 @@
               📍 42.69342° N, 23.32185° E
             </span>
             <span style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); padding: 5px 10px; border-radius: 6px; color: var(--green);">
-              🎯 ТОЧНОСТ: ±4.2 m
+              <span data-i18n="gps_hud_acc">🎯 ТОЧНОСТ: ±4.2 m</span>
             </span>
             <span style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); padding: 5px 10px; border-radius: 6px; color: var(--gold);">
-              🛰️ 14 САТЕЛИТА
+              <span data-i18n="gps_hud_sats">🛰️ 14 САТЕЛИТА</span>
             </span>
             <span style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.3); padding: 5px 10px; border-radius: 6px; color: var(--red);">
-              ⚡ СКОРОСТ: 0 km/h (В покой)
+              <span data-i18n="gps_hud_speed">⚡ СКОРОСТ: 0 km/h (В покой)</span>
             </span>
           </div>
         </div>
@@ -4434,10 +4432,10 @@
           <div style="position: absolute; top: 12px; right: 12px; z-index: 1000; display: flex; gap: 8px;">
             <button onclick="centerGpsOnTarget()" style="background: rgba(6, 12, 24, 0.92); border: 1px solid var(--cyan); color: var(--cyan); padding: 7px 12px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; cursor: pointer; backdrop-filter: blur(8px); display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
-              Центрирай върху телефона
+              <span data-i18n="gps_hud_btn_center">Центрирай върху телефона</span>
             </button>
             <button onclick="toggleGpsRouteHistory()" style="background: rgba(6, 12, 24, 0.92); border: 1px solid var(--border); color: #fff; padding: 7px 12px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; cursor: pointer; backdrop-filter: blur(8px); box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
-              Маршрутна следа (24ч)
+              <span data-i18n="gps_hud_btn_trail">Маршрутна следа (24ч)</span>
             </button>
           </div>
 
@@ -4593,12 +4591,21 @@
     let devicesList = [];
 
     // BILINGUAL DICTIONARY (ZERO EMOJIS - STRICT CORPORATE)
+    let currentLang = localStorage.getItem('aeterna_lang') || 'bg';
+
     const i18n = {
       bg: {
         nav_overview: "Възможности",
         nav_demo: "Интерактивен Дисплей",
+        nav_display: "Интерактивен Дисплей",
+        nav_use_cases: "Корпоративни Сценарии",
+        nav_nodes: "Глобална Мрежа",
+        nav_compat: "Архитектура & Knox",
+        nav_config: "Конфигуратор",
         nav_deployment: "Терминал & Инсталация",
+        nav_deploy: "Конзолно Разгръщане",
         nav_pricing: "Лицензиране",
+        nav_link1: "Директен Линк /1",
         btn_login: "Вход за Клиенти",
         hero_badge: "SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE",
         hero_title: "Автономна Мобилна Телеметрия и Дистанционен Контрол от Корпоративен Клас",
@@ -4619,6 +4626,135 @@
         sim_btn_sms: "Прихвани 2FA SMS",
         sim_btn_key: "Напиши Парола",
         sim_btn_block: "Тест Anti-Delete",
+        
+        sim_toast_t: "SMS Прихванат",
+        sim_toast_d: "Код: 894-112 за трансфер €4,500.00",
+        sim_equity_lbl: "Общо салдо / Total Equity",
+        sim_escrow_lbl: "Транзакция: Zurich Private Vault",
+        sim_pin_prompt: "Въведете 4-цифрен ПИН за трансфер:",
+        sim_chat_m1: "Договорът за придобиване на активите е подписан с електронен печат.",
+        sim_chat_m2: "Преведохме депозита. Очаквам потвърждение от банката.",
+        sim_vault_code: "Кодът за достъп до трезора е: <strong>S0ver3ign2026!</strong>",
+        sim_type_msg: "Напиши съобщение...",
+        sim_radar_speed: "Скорост: 0 km/h (Stationary)",
+        sim_anti_desc: "Системата засича опит за деинсталиране през настройките. Задейства се незабавен защитен рефлекс и връщане на началния екран.",
+        sim_call_ringing: "Входящо обаждане...",
+        sim_toast_msg: "Потвърдих транзакцията през Revolut. Изпращам фактурата.",
+        sim_pin_label: "ПИН код за авторизация:",
+        sim_tg_msg1: "Договорът за придобиване е подписан в Цюрих.",
+        sim_tg_msg2: "Отлично. Превеждам първия транш от €145,000.",
+        sim_tg_msg3: "SWIFT потвърждението е получено. Всичко е готово.",
+        sim_viber_caller: "Viber • Иван Петров",
+        sim_viber_call_banner: "📞 Входящо повикване: 00:48s [ЗАПИС СЕ СВАЛЯ В ТЕРМИНАЛА]",
+        sim_gps_title: "GPS Радар на Живо",
+        sim_gps_acc: "ТОЧНОСТ: ±2.1m",
+        sim_gps_loc: "🏛️ Бургас, Център (България)<br>⚡ Скорост: 0 km/h (Стационарен)<br>📶 Сателити: 14 GPS / 8 Galileo",
+        sim_st_enabled: "ВКЛЮЧЕН",
+        sim_st_active: "АКТИВЕН",
+        sim_st_disabled: "ИЗКЛЮЧЕНА",
+        sim_st_protected: "ЗАЩИТЕН",
+
+        deck_tab_realtime: "РЕАЛНО ВРЕМЕ",
+        deck_tab_packets: "ПАКЕТЕН ПОТОК",
+        deck_tab_infra: "ИНФРАСТРУКТУРА",
+        deck_stream_lbl: "АКТИВЕН ПОТОК",
+        deck_events_lbl: "ОБРАБОТЕНИ СЪБИТИЯ",
+        deck_latency_lbl: "ЛАТЕНТНОСТ",
+        deck_crypto_lbl: "КРИПТИРАНЕ",
+        deck_feed_title: "ТЕЛЕМЕТРИЧЕН ДЕКРИПТОР НА ЖИВО (Accessibility Stream)",
+        deck_waiting: "Очаква се действие от телефона отляво...",
+        deck_unmasked: "Декодирано от звездички",
+
+        hw_batt: "Батерия (Voltage)",
+        hw_temp: "CPU Температура",
+        hw_signal: "5G NR Сигнал",
+        hw_stealth_title: "Хардуерни Гаранции за Невидимост:",
+        hw_guarantees: "Хардуерни Гаранции & Защити",
+        hw_g1: "<strong>Без затопляне:</strong> Процесорното натоварване е 0.00% в състояние на покой (Zero-Entropy Loop).",
+        hw_g2: "<strong>Скрита икона:</strong> Маскиран като стандартна системна услуга <code>System Services</code>.",
+        hw_g3: "<strong>Защитен от деинсталиране:</strong> Автоматично блокира влизането в менюто за изтриване (Device Admin Hook).",
+
+        uc_tag: "КОРПОРАТИВНИ СЛУЧАИ НА УПОТРЕБА",
+        uc_title: "Легитимна Защита на Фирмени Активи и Устройства",
+        uc_desc: "AETERNA SYSTEMDEF предоставя стриктен надзор над корпоративни хардуерни паркове в съответствие с най-високите стандарти за защита на интелектуална собственост, противодействие на финансови течове и осигуряване непрекъсваемостта на бизнеса.",
+        uc1_title: "Предотвратяване на Изтичане на Данни (DLP)",
+        uc1_desc: "Пълен одит на финансови трансакции, договори и корпоративни комуникации. Системата прихваща в реално време всяко изтичане на чувствителна фирмена информация.",
+        uc1_b1: "Мониторинг на счетоводни и банкови приложения (Revolut, Stripe, Banking)",
+        uc1_b2: "Прихващане на 2FA SMS кодове за предотвратяване на неоторизирани трансакции",
+        uc1_b3: "Пълен клавишен одит (Keylogger) на въвеждани секретни пароли и кореспонденция",
+        uc2_title: "Ескорт и Защита при Рискови Пътувания",
+        uc2_desc: "Осигуряване на безопасност за мениджъри и ключов персонал при командировки във враждебни юрисдикции и зони с висок индустриален шпионаж.",
+        uc2_b1: "Непрекъснато сателитно GPS трасиране с висока честота и точност до 2.1m",
+        uc2_b2: "Автоматичен аудиозапис на входящи и изходящи VoIP разговори (Viber, Telegram, GSM)",
+        uc2_b3: "Отдалечено наблюдение на екрана на живо без звукова или визуална индикация",
+        uc3_title: "Zero-Trust Целостност и Anti-Tamper Контрол",
+        uc3_desc: "Гарантира, че служебният мобилен терминал не е компрометиран, руутнат или манипулиран за заобикаляне на корпоративните политики.",
+        uc3_b1: "Home-Lock защита: блокиране на опити за влизане в менюто за деинсталация",
+        uc3_b2: "Криптографски одит на хардуера (волтаж, цикъл на зареждане, процесорно ядро)",
+        uc3_b3: "Пълна липса на централизирано облачно съхранение – криптирани изолирани канали",
+
+        map_tag: "МЕЖДУНАРОДЕН КЛЪСТЕР",
+        map_title: "Интерактивна Карта на Глобалните Телеметрични Възли",
+        map_desc: "Наблюдавайте в реално време суверенната инфраструктура от криптирани сървърни анклави. Всички мобилни сесии се предават през детерминистични директни WebSocket мостове със средна латентност под 35ms.",
+        map_mesh_title: "SOVEREIGN MESH TOPOLOGY // 8 АКТИВНИ АНКЛАВА",
+        map_core_routing: "ОСНОВЕН РУТИНГ ПИНГ: <strong>1.14ms</strong>",
+        map_standard: "СТАНДАРТ: <strong>NIST-PQC ML-DSA-87</strong>",
+
+        compat_tag: "СЪВМЕСТИМОСТ & НЕУЛОВИМОСТ",
+        compat_title: "Архитектура за Заобикаляне на Play Protect и Knox Защитите",
+        compat_desc: "Разберете как технологията за динамично полиморфно мутиране осигурява 100% стабилност върху най-новите операционни системи Android 16 и OneUI 7+ без генериране на системни аларми.",
+        c1_title: "Без Руут Достъп (Non-Root Native)",
+        c1_desc: "Използва легитимните API рамки на Android Accessibility Services и MediaProjection. Не се изисква отключване на bootloader или рисковано руутване, което би активирало банковите тригери за защита.",
+        c2_title: "Zero-Signature Полиморфизъм",
+        c2_desc: "Всеки генериран APK файл се компилира динамично с уникален SHA-256 хеш, произволни имена на пакети (package name generator) и променлива обфускация на байткода, което гарантира 0 антивирусни детекции.",
+        c3_title: "Samsung Knox & Play Protect Bypass",
+        c3_desc: "Инсталаторът използва интелигентен инжекционен метод, който имитира служебни системни инструменти за корпоративно управление (Enterprise Mobility Management - EMM), предотвратявайки блокирането от Google Play Protect.",
+        c4_title: "Пълна Неуязвимост от Battery Doze",
+        c4_desc: "Фоновият демон регистрира автономен WakeLock и Foreground Service без икона в статус бара, което елиминира риска агресивните енергийни оптимизатори на Xiaomi (MIUI), Samsung (OneUI) или Huawei да приспят връзката.",
+
+        poly_c1_title: "Динамично Полиморфно Преструктуриране (Code Morphing)",
+        poly_c1_desc: "Нашият компилационен енджин използва динамично преструктуриране на кода при всяко генериране на пакет. Това променя дигиталния отпечатък (хеш стойността) на приложението, като гарантира, че корпоративният мониторинг няма да бъде разпознат като конфликтен процес от локалните скенери за сигурност на операционната система. Нашият енджин използва полиморфно криптиране на кода при всяко сваляне, което променя дигиталния отпечатък (hash) и заобикаля автоматичните сигнатурни скенери на Google Play Protect и Samsung Knox.",
+        poly_c1_steps_title: "⚡ BYPASS СТЪПКИ В РЕАЛНО ВРЕМЕ:",
+        poly_c1_steps: "1. Изтегляне ➔ Полиморфно мутиране на байткода<br>2. Хеш проверка ➔ Уникален SHA-256 / NIST-PQC подпис<br>3. Play Protect & Knox ➔ 100% Тихо инсталиране без флагване",
+        poly_c2_title: "Zero-Privilege Accessibility Hook (Без Root)",
+        poly_c2_desc: "Вместо нестабилни root експлойти или системни модификации, софтуерът оперира изцяло през легитимните системни API на Android: <code>Accessibility Services</code> и <code>Notification Listener</code>. Операционната система третира процеса като стандартна помощна услуга (System Services), което осигурява пълен прочит на екрана и клавишите без системни предупреждения.",
+        poly_c3_desc: "Интелигентният WakeLock демон поддържа защитения WebSocket мост жив във фонов режим, без да натоварва процесорните ядра в състояние на покой (0.00% CPU, 0°C затопляне на батерията). Това напълно елиминира алгоритмите за агресивно пестене на енергия в Samsung OneUI 7+, Xiaomi HyperOS и Google Pixel.",
+
+        cfg_tag: "ПЕРСОНАЛИЗИРАН БИЛД",
+        cfg_title: "Интерактивен Конфигуратор на Инсталационния Пакет",
+        cfg_desc: "Изберете модулите и нивата на защита според изискванията на вашата организация. Конфигураторът генерира моментална конзолна команда за внедряване и компилира персонализиран бинарен инсталатор.",
+        cfg_sub_note: "Маркирайте желаните подсистеми. Пакетът се сглобява динамично в паметта на браузъра с уникален полиморфен подпис.",
+        cfg_mod1_t: "Маскиране на Фоновия Процес",
+        cfg_mod1_d: "Скрива иконата и се преименува на системна услуга <code>System Services</code>.",
+        cfg_mod2_t: "Административен Буфер (Home-Lock)",
+        cfg_mod2_d: "Блокира достъпа до менютата за изтриване и принудително спиране.",
+        cfg_mod3_t: "Одит на Бизнес Приложения (Keylogger)",
+        cfg_mod3_d: "Прихващане на пароли от звездички, 2FA SMS и чатове (Revolut, Telegram).",
+        cfg_mod4_t: "Защитен Прокси WebSocket Мост",
+        cfg_mod4_d: "Криптиран тунел през Швейцарски сървъри без оставяне на логове.",
+        cfg_mod5_t: "Запис на VoIP & Разговори (Call Sniffer)",
+        cfg_mod5_d: "Двупосочен аудио запис на разговори през Viber, WhatsApp и GSM.",
+        cfg_mod6_t: "Полиморфно Хеш Мутиране (Play Protect Bypass)",
+        cfg_mod6_d: "Генерира уникален NIST-PQC ML-DSA-87 контролен хеш за избягване на скенери.",
+        cfg_cmd_label: "ГЕНЕРИРАНА КОНЗОЛНА КОМАНДА ЗА РАЗГРЪЩАНЕ:",
+        cfg_btn_copy: "Копирай Командата",
+        cfg_lbl_size: "РАЗМЕР:",
+        cfg_lbl_hash: "ХЕШ СИГНАТУРА:",
+        cfg_lbl_mods: "МОДУЛИ:",
+        cfg_mods_active: "6/6 АКТИВНИ",
+        cfg_btn_dl_custom: "Свали Конфигурирания Пакет (6.74 MB)",
+
+        dl_desc: "Официален корпоративен пакет, маскиран като стандартна системна услуга (System Services). Готов за директна инсталация на всяко Android устройство.",
+        dl_lbl_pkg: "Име на пакета:",
+        dl_lbl_name: "Показвано име:",
+        dl_lbl_ver: "Версия:",
+        dl_lbl_size: "Размер на файла:",
+        dl_lbl_compat: "Съвместимост:",
+        dl_stealth_title: "ПОЛИМОРФНА МАСКИРОВКА ПРИ СВАЛЯНЕ (ДИНАМИЧЕН ХЕШ & ИМЕ):",
+        dl_stealth_fn_lbl: "ИМЕ НА ФАЙЛА:",
+        dl_btn_random: "🎲 Произволно",
+        dl_btn_apk: "СВАЛИ ПОЛИМОРФНИЯ APK (6.74 MB)",
+
         term_tag: "АВТОНОМНО РАЗГРЪЩАНЕ",
         term_title: "Интерактивна Конзола за Инсталация",
         term_desc: "Вижте стъпка по стъпка как се инсталира софтуерът на чуждо устройство и как Telegram ботът веднага генерира самостоятелната изолирана сесия.",
@@ -4631,18 +4767,137 @@
         step2_desc: "Отворете приложението веднъж. Отидете в Настройки ➔ Достъпност (Accessibility) ➔ Инсталирани приложения (Installed Apps) ➔ System Services и включете превключвателя. Това активира прехвата на екран, клавиши и съобщения.",
         step3_title: "Автономно Свързване",
         step3_desc: "След като услугата се включи, телефонът автоматично се свързва, отваря новата стая в Telegram бота и генерира вашия личен портален линк на paas.website.",
+
         pricing_tag: "КОРПОРАТИВНИ ПЛАНОВЕ",
         pricing_title: "Гъвкаво Лицензиране за Бизнес Клиенти",
         pricing_desc: "Изберете подходящия лиценз според броя наблюдавани активи. Всеки абонамент включва моментално издаване на лицензен ключ и денонощна техническа поддръжка.",
+        scarcity_title: "ИЗОЛИРАН ХАРДУЕРЕН КАПАЦИТЕТ: 92% КЛЪСТЕРНА ЗАЕТОСТ",
+        scarcity_desc: "За да гарантираме непрекъсната автономия и максимална скорост на трансфер на данни (35ms WebSocket мост), всяка затворена облачна сесия получава строго изолиран хардуерен ресурс без споделяне. <strong>В момента свободният капацитет на клъстера е ограничен до САМО 3 НОВИ КОРПОРАТИВНИ ПРОФИЛА за текущия период.</strong>",
+        scarcity_badge: "[ САМО 3 СЛОТА ОСТАВАТ ]",
+
+        calc_badge_title: "СИМУЛАТОР НА РЕСУРСИТЕ (DYNAMIC FLEET SIZING)",
+        calc_main_title: "Изчислете Инвестицията Според Броя Устройства",
+        calc_curr_lbl: "ВАЛУТА НА ТАКСУВАНЕ:",
+        calc_unit_lbl: "ЦЕНА НА УСТРОЙСТВО",
+        calc_total_lbl: "ОБЩА МЕСЕЧНА ИНВЕСТИЦИЯ",
+        calc_disc_title: "ОБЕМНА ОТСТЪПКА",
+        calc_crypto_pay_btn: "Плати Конфиденциално с Крипто",
+
+        plan1_title: "Single Asset Sentinel",
+        plan1_desc: "Идеален за персонален надзор на 1 конкретно устройство с пълен изолиран достъп.",
+        plan1_sub: "Еднократно / Устройство",
+        plan1_f1: "1 Активно Устройство",
+        plan1_f2: "Live Mirroring на Екрана",
+        plan1_f3: "Пълен Unmasked Keylogger",
+        plan1_f4: "Запис на Разговори & SMS",
+        plan1_f5: "Собствен Telegram Бот Канал",
+        plan1_btn: "Активирай Лиценз",
+        plan_crypto_btn: "Крипто Фактура (XMR/BTC)",
+
+        plan2_badge: "НАЙ-ПРЕДПОЧИТАН",
+        plan2_title: "Executive Fleet Pro",
+        plan2_desc: "Проектиран за бизнес ръководители и малки флотилии от критични корпоративни устройства.",
+        plan2_sub: "Месечен Корпоративен Абонамент",
+        plan2_f1: "До 5 Наблюдавани Устройства",
+        plan2_f2: "Изолирани Сесии за Всяко Устройство",
+        plan2_f3: "Отдалечен Тъч и Жестове (Remote Control)",
+        plan2_f4: "Пълен Банков & USSD Sniffer",
+        plan2_f5: "Приоритетен 35ms WebSocket Мост",
+        plan2_f6: "Защита от Деинсталиране (Home-Lock)",
+        plan2_btn: "Избери Fleet Pro",
+
+        plan3_title: "Sovereign Enterprise",
+        plan3_desc: "За корпорации и институции, изискващи самостоятелен хостинг и пълен Master Root достъп.",
+        plan3_price: "По договаряне",
+        plan3_sub: "Годишен Неограничен Лиценз",
+        plan3_f1: "Неограничен Брой Устройства",
+        plan3_f2: "Master Sovereign HUD (Главен панел)",
+        plan3_f3: "Собствен Домейн и Частен Сървър",
+        plan3_f4: "Директно ADB Хардуерно Управление",
+        plan3_f5: "Пълна Невидимост и Персонализирани Икони",
+        plan3_btn: "Свържи се с Нас",
+
         modal_passkey_label: "Лицензен Ключ / Passkey",
+        modal_input_ph: "Въведете вашия ключ (напр. demo, client)...",
         modal_btn_unlock: "ОТКЛЮЧИ ТАБЛОТО",
-        modal_hint: "Нямате парола? Изберете абонамент или се свържете с вашия администратор."
+        modal_hint: "Нямате парола? Изберете абонамент или въведете демо ключ ('demo', 'client', 'aeterna2026').",
+
+        inv_title: "КРИПТО ИНВОЙС ЗА АКТИВАЦИЯ",
+        inv_plan: "ИЗБРАН ЛИЦЕНЗ:",
+        inv_due: "ДЪЛЖИМА СУМА:",
+        inv_proto: "ПРОТОКОЛ:",
+        inv_addr_lbl: "АДРЕС НА ПОРТФЕЙЛА ЗА ПЛАЩАНЕ:",
+        inv_addr_label: "ЕДНОКРАТЕН ДЕПОЗИТЕН АДРЕС:",
+        inv_copy_btn: "Копирай",
+        inv_copy: "Копирай Адреса",
+        inv_scan_status: "СКАНИРАНЕ ЗА ТРАНСАКЦИЯ...",
+        inv_status: "ОЧАКВА СЕ МРЕЖОВО ПОТВЪРЖДЕНИЕ (0/1 БЛОКА)",
+        inv_confirm_btn: "[ДЕМО СИМУЛАЦИЯ]: ПОТВЪРДИ ПЛАЩАНЕТО & ОТКЛЮЧИ HUD",
+
+        dash_session_lbl: "DEVICE SESSION:",
+        dash_copy_btn: "Копирай линк за тази сесия",
+        dash_logout_btn: "Изход",
+        dash_sandbox_banner: "<strong>ИЗОЛИРАНА КОРПОРАТИВНА ДЕМО СИМУЛАЦИЯ:</strong> Вашият личен хардуер е напълно защитен и изолиран. Входът показва демонстрационна среда. За свързване към частен сървър използвайте специалния персонален линк от бота.",
+
+        tab_btn_mirror: "Live Mirror",
+        tab_btn_telegram: "Telegram Feed ",
+        tab_btn_notifs: "Notifications ",
+        tab_btn_calls: "Calls ",
+        tab_btn_sms: "SMS ",
+        tab_btn_contacts: "Contacts & Chats ",
+        tab_btn_keylogs: "Keylogs ",
+        tab_btn_gps: "GPS Tracker ",
+
+        ctrl_back: "◀ Назад",
+        ctrl_home: "● Начало",
+        ctrl_recents: "■ Скорошни",
+        ctrl_scrollup: "⬆ Скрол Нагоре",
+        ctrl_scrolldown: "⬇ Скрол Надолу",
+        ctrl_power: "Захранване",
+        ctrl_type_ph: "Въведи текст / ПИН...",
+        ctrl_btn_type: "Въведи",
+        ctrl_btn_unlock: "Отключи",
+
+        filter_ph_tg: "Търсене в Telegram събитията...",
+        filter_ph_notif: "Търсене по приложение или текст...",
+        filter_ph_calls: "Търсене по номер или контакт...",
+        filter_ph_sms: "Търсене по съдържание или номер...",
+        filter_ph_contacts: "Търсене по платформа (WhatsApp, Viber, TG)...",
+        filter_ph_keylogs: "Търсене в клавишния лог...",
+
+        gps_hud_title: "МОБИЛНО GPS ПРОСЛЕДЯВАНЕ В РЕАЛНО ВРЕМЕ",
+        gps_hud_asset: "АКТИВНО УСТРОЙСТВО: <strong style='color: #fff;'>Pixel 8 Pro (Asset #01)</strong> // GNSS МУЛТИБАНД ФИКС (GPS / GLONASS / GALILEO)",
+        gps_hud_acc: "🎯 ТОЧНОСТ: ±4.2 m",
+        gps_hud_sats: "🛰️ 14 САТЕЛИТА",
+        gps_hud_speed: "⚡ СКОРОСТ: 0 km/h (В покой)",
+        gps_hud_btn_center: "Центрирай върху телефона",
+        gps_hud_btn_trail: "Маршрутна следа (24ч)",
+
+        footer_brand_desc: "Специализирана суверенна PaaS инфраструктура за детерминистична мобилна телеметрия, непрекъснат одит и управление на отдалечени крайни точки от корпоративен и отбранителен клас.",
+        footer_lead: "Специализирана суверенна PaaS инфраструктура за детерминистична мобилна телеметрия, непрекъснат одит на корпоративни крайни точки и защита от нерегламентирано изтичане на активи.",
+        footer_col_platform: "ПЛАТФОРМА",
+        footer_col_sec: "СИГУРНОСТ & СТАНДАРТИ",
+        footer_col_security: "СИГУРНОСТ & СТАНДАРТИ",
+        footer_col_legal: "ПРАВНИ УСЛОВИЯ & ДИСКЛЕЙМЪР",
+        footer_legal_desc: "AETERNA SYSTEMDEF е платформа за вътрешен корпоративен одит, защита от изтичане на данни (DLP) и Endpoint Governance. Инсталацията и използването са разрешени единствено върху хардуерни активи, които са собственост на организацията или се използват с изричното писмено съгласие на служителите.",
+        footer_legal_brief: "AETERNA SYSTEMDEF е платформа за вътрешен корпоративен одит, защита от изтичане на данни (DLP) и Endpoint Governance. Софтуерът се инсталира единствено върху устройства, които са легитимна собственост на юридическото лице или с изричното съгласие на крайния потребител.",
+        footer_disclaimer_title: "ПРАВНА КЛАУЗА И ОБЩИ УСЛОВИЯ ЗА ДОПУСТИМА УПОТРЕБА (ENDPOINT GOVERNANCE & COMPLIANCE DISCLAIMER)",
+        footer_disclaimer_p1: "Платформата <strong>AETERNA SYSTEMDEF (paas.website)</strong> е специализирано софтуерно решение от корпоративен клас, предназначено <strong>единствено и само за одит на собствени корпоративни активи, инвентаризация на хардуер, превенция на изтичане на данни (DLP) и управление на крайни устройства (Endpoint Governance & Enterprise Mobility Management) с изричното информирано съгласие на служителите</strong> или упълномощените ползватели по силата на трудов договор, регламент за вътрешен трудов ред и валидни фирмени политики за информационна сигурност.",
+        footer_disclaimer_p2: "Категорично се забранява внедряването или използването на софтуера за нерегламентиран достъп, неоторизирано подслушване, следене или прихващане на лична кореспонденция на физически лица без тяхно знание и писмено съгласие, както и всякакви дейности в нарушение на Регламент (ЕС) 2016/679 (GDPR), швейцарския Закон за защита на данните (FADP) или локалното наказателно законодателство. Нарушаването на тези условия води до незабавно едностранно прекратяване на лиценза, деактивиране на криптографските ключове и изолация на съответния сървърен анклав.",
+        footer_copyright: "© 2026 AETERNA // SYSTEMDEF (PAAS.WEBSITE). ВСИЧКИ ПРАВА ЗАПАЗЕНИ."
       },
       en: {
         nav_overview: "Capabilities",
         nav_demo: "Interactive Display",
+        nav_display: "Interactive Display",
+        nav_use_cases: "Enterprise Use Cases",
+        nav_nodes: "Global Network",
+        nav_compat: "Architecture & Knox",
+        nav_config: "Configurator",
         nav_deployment: "Deployment & APK",
+        nav_deploy: "Deployment & APK",
         nav_pricing: "Licensing",
+        nav_link1: "Direct Link /1",
         btn_login: "Client Portal",
         hero_badge: "SOVEREIGN FLEET INTELLIGENCE & ENDPOINT GOVERNANCE",
         hero_title: "Enterprise-Grade Mobile Endpoint Telemetry & Remote Control",
@@ -4663,11 +4918,140 @@
         sim_btn_sms: "Intercept 2FA SMS",
         sim_btn_key: "Type Password",
         sim_btn_block: "Test Anti-Delete",
+
+        sim_toast_t: "SMS Intercepted",
+        sim_toast_d: "Code: 894-112 for transfer of €4,500.00",
+        sim_equity_lbl: "Total Balance / Equity",
+        sim_escrow_lbl: "Transaction: Zurich Private Vault",
+        sim_pin_prompt: "Enter 4-digit PIN for authorization:",
+        sim_chat_m1: "The M&A asset acquisition agreement was executed with a digital seal.",
+        sim_chat_m2: "Initial deposit wired. Awaiting SWIFT confirmation from depository bank.",
+        sim_vault_code: "Vault master encryption passkey is: <strong>S0ver3ign2026!</strong>",
+        sim_type_msg: "Type a message...",
+        sim_radar_speed: "Speed: 0 km/h (Stationary)",
+        sim_anti_desc: "The OS intercepts unauthorized tampering in settings. Anti-uninstall reflex triggered, immediately redirecting to home screen.",
+        sim_call_ringing: "Incoming voice call...",
+        sim_toast_msg: "Transaction verified through Revolut. Dispatched commercial invoice.",
+        sim_pin_label: "PIN authorization key:",
+        sim_tg_msg1: "The acquisition agreement was executed in Zurich.",
+        sim_tg_msg2: "Confirmed. Transferring first tranche of €145,000.",
+        sim_tg_msg3: "SWIFT acknowledgement confirmed. Settlement complete.",
+        sim_viber_caller: "Viber • Ivan Petrov",
+        sim_viber_call_banner: "📞 Incoming Voice Session: 00:48s [CAPTURING AUDIO STREAM]",
+        sim_gps_title: "Real-Time GPS Radar",
+        sim_gps_acc: "ACCURACY: ±2.1m",
+        sim_gps_loc: "🏛️ Burgas, Central Enclave (Bulgaria)<br>⚡ Speed: 0 km/h (Stationary)<br>📶 Satellites: 14 GPS / 8 Galileo",
+        sim_st_enabled: "ENABLED",
+        sim_st_active: "ACTIVE",
+        sim_st_disabled: "DISABLED",
+        sim_st_protected: "PROTECTED",
+
+        deck_tab_realtime: "REAL-TIME",
+        deck_tab_packets: "PACKET STREAM",
+        deck_tab_infra: "INFRASTRUCTURE",
+        deck_stream_lbl: "ACTIVE STREAM",
+        deck_events_lbl: "PROCESSED EVENTS",
+        deck_latency_lbl: "LATENCY",
+        deck_crypto_lbl: "ENCRYPTION",
+        deck_feed_title: "LIVE TELEMETRY DECRYPTOR (Accessibility Stream)",
+        deck_waiting: "Awaiting user interaction on phone to the left...",
+        deck_unmasked: "Unmasked from asterisks",
+
+        hw_batt: "Battery (Voltage)",
+        hw_temp: "CPU Temperature",
+        hw_signal: "5G NR Signal",
+        hw_stealth_title: "Hardware Stealth Guarantees:",
+        hw_guarantees: "Hardware Guarantees & Protections",
+        hw_g1: "<strong>No Heat:</strong> CPU load remains at 0.00% in standby (Zero-Entropy Loop).",
+        hw_g2: "<strong>Hidden Icon:</strong> Masked as standard system component <code>System Services</code>.",
+        hw_g3: "<strong>Anti-Uninstall:</strong> Automatically blocks removal settings (Device Admin Hook).",
+
+        uc_tag: "ENTERPRISE USE CASES",
+        uc_title: "Legitimate Protection of Corporate Assets & Endpoints",
+        uc_desc: "AETERNA SYSTEMDEF delivers rigorous endpoint governance over enterprise mobile fleets in compliance with top cyber defense standards, intellectual property protection, and business continuity.",
+        uc1_title: "Data Loss Prevention (DLP)",
+        uc1_desc: "Full audit of financial transactions, contracts, and confidential messaging. Real-time interception of data leak vectors across all executive communication apps.",
+        uc1_b1: "Accounting & banking application oversight (Revolut, Stripe, Banking)",
+        uc1_b2: "2FA SMS interception to prevent rogue unauthorized transfers",
+        uc1_b3: "Keystroke audit of secret passwords and executive correspondence",
+        uc2_title: "Executive Protection in Hostile Jurisdictions",
+        uc2_desc: "Ensures executive physical security and intelligence countermeasures during business trips to high-threat jurisdictions or corporate espionage environments.",
+        uc2_b1: "Continuous high-frequency satellite GPS tracking with ±2.1m precision",
+        uc2_b2: "Automated call audio recording across VoIP (Viber, Telegram, GSM)",
+        uc2_b3: "Stealth remote live screen mirroring with zero visual or audible cue",
+        uc3_title: "Zero-Trust Integrity & Anti-Tamper Control",
+        uc3_desc: "Guarantees corporate mobile terminals remain uncompromised, unrooted, and shielded against malicious tampering or unauthorized configuration changes.",
+        uc3_b1: "Home-Lock protection: blocks attempts to access uninstall menus",
+        uc3_b2: "Cryptographic hardware audit (voltage, battery health, CPU thermals)",
+        uc3_b3: "Zero centralized cloud storage – encrypted isolated sovereign tunnels",
+
+        map_tag: "INTERNATIONAL CLUSTER",
+        map_title: "Interactive Global Telemetry Nodes Map",
+        map_desc: "Monitor real-time sovereign infrastructure of encrypted server enclaves. All mobile sessions route through deterministic direct WebSocket tunnels with sub-35ms latency.",
+        map_mesh_title: "SOVEREIGN MESH TOPOLOGY // 8 ACTIVE ENCLAVES",
+        map_core_routing: "CORE ROUTING PING: <strong>1.14ms</strong>",
+        map_standard: "STANDARD: <strong>NIST-PQC ML-DSA-87</strong>",
+
+        compat_tag: "COMPATIBILITY & STEALTH",
+        compat_title: "Architecture for Play Protect & Samsung Knox Coexistence",
+        compat_desc: "Understand how dynamic polymorphic mutation delivers 100% operational resilience across the latest Android 16 and OneUI 7+ releases without raising security alerts.",
+        c1_title: "Native Non-Root Operation",
+        c1_desc: "Leverages legitimate Android Accessibility Services & MediaProjection APIs. Requires no bootloader unlock or root, preserving banking app security triggers.",
+        c2_title: "Zero-Signature Polymorphism",
+        c2_desc: "Every compiled APK features an autonomous SHA-256 hash, dynamic package namespace, and ProGuard/DexGuard byte-level obfuscation, ensuring 0 AV detections.",
+        c3_title: "Samsung Knox & Play Protect Bypass",
+        c3_desc: "The installer utilizes enterprise injection methods mimicking Enterprise Mobility Management (EMM) daemons, preventing blocks by Google Play Protect.",
+        c4_title: "Doze Mode & Battery Immunity",
+        c4_desc: "Integrated whitelisted Foreground Service with autonomous WakeLock. Aggressive power managers on Xiaomi (MIUI), Samsung (OneUI) or Huawei never hibernate the daemon.",
+
+        poly_c1_title: "Dynamic Polymorphic Code Morphing",
+        poly_c1_desc: "Our compilation pipeline performs on-the-fly code restructuring upon every binary delivery. This alters the cryptographic signature and bytecode layout of the application, ensuring that enterprise monitoring runs undetected by on-device threat scanners. Polymorphic mutation shifts the binary fingerprint to guarantee seamless coexistence alongside Google Play Protect and Samsung Knox.",
+        poly_c1_steps_title: "⚡ REAL-TIME BYPASS SEQUENCE:",
+        poly_c1_steps: "1. Ingestion ➔ Polymorphic Bytecode Mutation<br>2. Signature ➔ Unique SHA-256 / NIST-PQC Checksum<br>3. Play Protect & Knox ➔ 100% Silent Sideload Without Flags",
+        poly_c2_title: "Zero-Privilege Accessibility Hook (Rootless)",
+        poly_c2_desc: "Rather than depending on unstable root exploits or fragile system modifications, the agent operates entirely through native Android system frameworks: <code>Accessibility Services</code> and <code>Notification Listener</code>. The host OS handles the daemon as an essential enterprise utility (System Services), enabling screen mirroring and keystroke inspection without triggering OS warnings.",
+        poly_c3_desc: "The intelligent WakeLock daemon preserves the encrypted WebSocket bridge continuously in the background without imposing compute load on CPU cores during standby (0.00% CPU, 0°C thermal delta). This completely neutralizes aggressive background kill algorithms in Samsung OneUI 7+, Xiaomi HyperOS, and Google Pixel.",
+
+        cfg_tag: "CUSTOM BUILD",
+        cfg_title: "Modular Build Configurator",
+        cfg_desc: "Configure endpoint modules and security tiers before deployment. The engine dynamically binds parameters into an executable console command and custom APK binary.",
+        cfg_sub_note: "Select target subsystems. The deployment package is assembled dynamically in client memory with a unique polymorphic signature.",
+        cfg_mod1_t: "Daemon Stealth (Namespace Masking)",
+        cfg_mod1_d: "Hides launcher icons and aliases the daemon as a core Android subsystem <code>System Services</code>.",
+        cfg_mod2_t: "Anti-Uninstall Buffer (Home-Lock)",
+        cfg_mod2_d: "Intercepts and blocks user navigation into Application Settings or Uninstall dialogues.",
+        cfg_mod3_t: "Executive Communications & Keylogger",
+        cfg_mod3_d: "Real-time unmasking of PINs/passwords, 2FA SMS OTP codes, and encrypted chats (Revolut, Telegram).",
+        cfg_mod4_t: "Encrypted WebSocket Proxy Bridge",
+        cfg_mod4_d: "Routes telemetry packets through zero-log Swiss server relays, concealing client origins.",
+        cfg_mod5_t: "VoIP & Telephony Audio Recorder",
+        cfg_mod5_d: "Dual-channel duplex voice capture for calls across Viber, WhatsApp, Signal, and GSM.",
+        cfg_mod6_t: "Polymorphic Hash Mutation (Play Protect Bypass)",
+        cfg_mod6_d: "Generates an autonomous NIST-PQC ML-DSA-87 checksum to defeat automated heuristic scanners.",
+        cfg_cmd_label: "GENERATED CONSOLE DEPLOYMENT COMMAND:",
+        cfg_btn_copy: "Copy Command",
+        cfg_lbl_size: "SIZE:",
+        cfg_lbl_hash: "HASH SIGNATURE:",
+        cfg_lbl_mods: "MODULES:",
+        cfg_mods_active: "6/6 ACTIVE",
+        cfg_btn_dl_custom: "Download Configured Package (6.74 MB)",
+
+        dl_desc: "Official enterprise build disguised as a standard system service (System Services). Ready for direct deployment on any Android hardware.",
+        dl_lbl_pkg: "Package name:",
+        dl_lbl_name: "Display name:",
+        dl_lbl_ver: "Version:",
+        dl_lbl_size: "File size:",
+        dl_lbl_compat: "Compatibility:",
+        dl_stealth_title: "POLYMORPHIC DOWNLOAD MASKING (DYNAMIC HASH & NAME):",
+        dl_stealth_fn_lbl: "FILE NAME:",
+        dl_btn_random: "🎲 Randomize",
+        dl_btn_apk: "DOWNLOAD POLYMORPHIC APK (6.74 MB)",
+
         term_tag: "AUTONOMOUS ENROLLMENT",
         term_title: "Interactive Deployment Console",
         term_desc: "Observe step-by-step how the software deploys to target hardware and how the Telegram engine provisions a dedicated session topic automatically.",
         term_footer_text: "Every installation autonomously registers its dedicated web URL and Telegram thread.",
-        term_btn_replay: "Replay Handshake",
+        term_btn_replay: "Replay Simulation",
         steps_title: "Target Device Installation Protocol",
         step1_title: "Download & Sideload",
         step1_desc: "Transfer or download the APK installer to the target device. Enable 'Install from Unknown Sources' if prompted by the operating system.",
@@ -4675,27 +5059,189 @@
         step2_desc: "Launch the app once. Navigate to Settings ➔ Accessibility ➔ Installed Apps ➔ System Services and enable the toggle. This locks the active screen mirror and keylogger.",
         step3_title: "Autonomous Handshake",
         step3_desc: "Upon activation, the device autonomously connects, spawns its dedicated Telegram forum topic, and dispatches its isolated paas.website portal link.",
+
         pricing_tag: "CORPORATE LICENSING",
         pricing_title: "Executive Licensing Plans for Enterprise",
         pricing_desc: "Select the subscription matching your fleet size. Every subscription features instant passkey dispatch and priority technical governance.",
+        scarcity_title: "ISOLATED HARDWARE CAPACITY: 92% CLUSTER UTILIZATION",
+        scarcity_desc: "To guarantee continuous autonomy and sub-35ms WebSocket latency, each private cloud session receives dedicated, unshared hardware resources. <strong>Currently, cluster capacity is strictly capped at ONLY 3 NEW CORPORATE PROFILES for the current period.</strong>",
+        scarcity_badge: "[ ONLY 3 SLOTS REMAINING ]",
+
+        calc_badge_title: "DYNAMIC FLEET SIZING SIMULATOR",
+        calc_main_title: "Calculate Investment by Number of Monitored Devices",
+        calc_curr_lbl: "BILLING CURRENCY:",
+        calc_unit_lbl: "PRICE PER DEVICE",
+        calc_total_lbl: "TOTAL MONTHLY INVESTMENT",
+        calc_disc_title: "VOLUME DISCOUNT",
+        calc_crypto_pay_btn: "Pay Confidentially with Crypto",
+
+        plan1_title: "Single Asset Sentinel",
+        plan1_desc: "Ideal for personal oversight of 1 high-priority endpoint with dedicated isolated access.",
+        plan1_sub: "One-Time / Device",
+        plan1_f1: "1 Monitored Device",
+        plan1_f2: "Live Mirror Screen Stream",
+        plan1_f3: "Keystroke Decryption (Keylogger)",
+        plan1_f4: "Voice Call & SMS Interception",
+        plan1_f5: "Dedicated Telegram Bot Channel",
+        plan1_btn: "Activate License",
+        plan_crypto_btn: "Crypto Invoice (XMR/BTC)",
+
+        plan2_badge: "MOST POPULAR",
+        plan2_title: "Executive Fleet Pro",
+        plan2_desc: "Designed for corporate executives and small fleets of mission-critical company devices.",
+        plan2_sub: "Monthly Corporate Subscription",
+        plan2_f1: "Up to 5 Monitored Devices",
+        plan2_f2: "Dedicated Isolated Hardware Sessions",
+        plan2_f3: "Remote Touch & Gesture Injection",
+        plan2_f4: "Banking & USSD Carrier Sniffer",
+        plan2_f5: "Priority 35ms WebSocket Bridge",
+        plan2_f6: "Anti-Uninstall Home-Lock Protection",
+        plan2_btn: "Select Fleet Pro",
+
+        plan3_title: "Sovereign Enterprise",
+        plan3_desc: "For organizations requiring private infrastructure hosting and Master Root access.",
+        plan3_price: "Custom Quote",
+        plan3_sub: "Annual Unlimited License",
+        plan3_f1: "Unlimited Monitored Devices",
+        plan3_f2: "Master Sovereign HUD Overview",
+        plan3_f3: "Custom Domain & Private Dedicated Cluster",
+        plan3_f4: "Direct Hardware ADB Management",
+        plan3_f5: "Full White-Labeling & Camouflaged Assets",
+        plan3_btn: "Contact Advisory",
+
         modal_passkey_label: "License Key / Passkey",
+        modal_input_ph: "Enter your passkey (e.g. demo, client)...",
         modal_btn_unlock: "UNLOCK TELEMETRY VAULT",
-        modal_hint: "Need a key? Select a plan above or contact your sovereign administrator."
+        modal_hint: "Need a key? Select a plan above or enter demo key ('demo', 'client', 'aeterna2026').",
+
+        inv_title: "CRYPTOGRAPHIC ACTIVATION INVOICE",
+        inv_plan: "SELECTED PLAN:",
+        inv_due: "AMOUNT DUE:",
+        inv_proto: "PROTOCOL:",
+        inv_addr_lbl: "DEPOSIT WALLET ADDRESS:",
+        inv_addr_label: "ONE-TIME DEPOSIT ADDRESS:",
+        inv_copy_btn: "Copy",
+        inv_copy: "Copy Address",
+        inv_scan_status: "SCANNING FOR TRANSACTION...",
+        inv_status: "AWAITING NETWORK CONFIRMATION (0/1 CONFIRMATIONS)",
+        inv_confirm_btn: "[DEMO SIMULATION]: CONFIRM PAYMENT & UNLOCK HUD",
+
+        dash_session_lbl: "DEVICE SESSION:",
+        dash_copy_btn: "Copy Session Link",
+        dash_logout_btn: "Logout",
+        dash_sandbox_banner: "<strong>ISOLATED CORPORATE SANDBOX DEMO:</strong> Your local endpoint is fully isolated. This session displays a sandboxed client demo. To connect dedicated hardware, launch through your private Telegram bot link.",
+
+        tab_btn_mirror: "Live Mirror",
+        tab_btn_telegram: "Telegram Feed ",
+        tab_btn_notifs: "Notifications ",
+        tab_btn_calls: "Calls ",
+        tab_btn_sms: "SMS ",
+        tab_btn_contacts: "Contacts & Chats ",
+        tab_btn_keylogs: "Keylogs ",
+        tab_btn_gps: "GPS Tracker ",
+
+        ctrl_back: "◀ Back",
+        ctrl_home: "● Home",
+        ctrl_recents: "■ Recents",
+        ctrl_scrollup: "⬆ Scroll Up",
+        ctrl_scrolldown: "⬇ Scroll Down",
+        ctrl_power: "Power",
+        ctrl_type_ph: "Type text / PIN...",
+        ctrl_btn_type: "Send",
+        ctrl_btn_unlock: "Unlock",
+
+        filter_ph_tg: "Search Telegram events...",
+        filter_ph_notif: "Filter by app or text...",
+        filter_ph_calls: "Search by number or contact...",
+        filter_ph_sms: "Search by text or sender...",
+        filter_ph_contacts: "Search contacts & chats...",
+        filter_ph_keylogs: "Search keystroke stream...",
+
+        gps_hud_title: "REAL-TIME MOBILE GPS & SATELLITE TRACKING",
+        gps_hud_asset: "ACTIVE ASSET: <strong style='color: #fff;'>Pixel 8 Pro (Asset #01)</strong> // MULTI-BAND GNSS FIX (GPS / GLONASS / GALILEO)",
+        gps_hud_acc: "🎯 ACCURACY: ±4.2 m",
+        gps_hud_sats: "🛰️ 14 SATELLITES",
+        gps_hud_speed: "⚡ SPEED: 0 km/h (Stationary)",
+        gps_hud_btn_center: "Center on Device",
+        gps_hud_btn_trail: "Breadcrumbs Trail (24h)",
+
+        footer_brand_desc: "Specialized sovereign PaaS infrastructure for deterministic mobile telemetry, continuous enterprise endpoint audit, and remote device management.",
+        footer_lead: "Specialized sovereign PaaS infrastructure for deterministic mobile telemetry, continuous enterprise endpoint audit, and proactive defense against unauthorized data loss.",
+        footer_col_platform: "PLATFORM",
+        footer_col_sec: "SECURITY & STANDARDS",
+        footer_col_security: "SECURITY & STANDARDS",
+        footer_col_legal: "LEGAL & COMPLIANCE",
+        footer_legal_desc: "AETERNA SYSTEMDEF is an enterprise infrastructure platform for internal audit, data loss prevention (DLP), and endpoint governance. Deployment is permitted exclusively on corporate-owned devices or with explicit user authorization.",
+        footer_legal_brief: "AETERNA SYSTEMDEF is an enterprise infrastructure platform for internal audit, data loss prevention (DLP), and endpoint governance. Deployment is permitted exclusively on corporate-owned devices or with explicit user authorization.",
+        footer_disclaimer_title: "ENDPOINT GOVERNANCE & ACCEPTABLE USE COMPLIANCE DISCLAIMER",
+        footer_disclaimer_p1: "The <strong>AETERNA SYSTEMDEF (paas.website)</strong> platform is a specialized Platform-as-a-Service (PaaS) solution engineered for enterprise asset protection, continuous endpoint audit, and Data Loss Prevention (DLP). This software is licensed strictly for lawful administration and oversight of hardware assets owned by the licensed enterprise or where explicit written user consent is established.",
+        footer_disclaimer_p2: "Any deployment for unlawful surveillance, unauthorized interception of personal correspondence, or violations of applicable data protection statutes (including EU GDPR Regulation 2016/679) is strictly prohibited. The architecture providers disclaim all liability for illicit third-party misuse.",
+        footer_copyright: "© 2026 AETERNA // SYSTEMDEF (PAAS.WEBSITE). ALL RIGHTS RESERVED."
       }
     };
 
+    function renderTerminalOutput() {
+      const term = document.getElementById('deployment-term-body');
+      if (!term) return;
+      const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
+      term.innerHTML = `
+        <div class="term-line">
+          <span class="term-prompt">aeterna@sovereign:~$</span>
+          <span class="term-cmd">./aeterna_fleet_deploy.sh --target-asset="Enterprise_Asset_01"</span>
+        </div>
+        <div class="term-line"><span class="term-info">${isEn ? '[1/5] Verifying installer package AETERNA_SYSTEMDEF_INSTALLER.apk...' : '[1/5] Проверка на инсталационния пакет AETERNA_SYSTEMDEF_INSTALLER.apk...'}</span></div>
+        <div class="term-line"><span class="term-success">${isEn ? ' [OK] Package integrity verified. Signature: NIST-PQC ML-DSA-87 (6.74 MB).' : ' [OK] Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).'}</span></div>
+        <div class="term-line"><span class="term-info">${isEn ? '[2/5] Initiating background subsystem \'System Services\' & stealth masking...' : '[2/5] Стартиране на системна услуга \'System Services\' и маскиране...'}</span></div>
+        <div class="term-line"><span class="term-success">${isEn ? ' [OK] Daemon locked in memory (WakeLock + BootCompleted Hook).' : ' [OK] Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).'}</span></div>
+        <div class="term-line"><span class="term-info">${isEn ? '[3/5] Binding to Telegram Fleet Hub (@aeterna_telemetry_bot)...' : '[3/5] Свързване с Telegram Fleet Hub (@aeterna_telemetry_bot)...'}</span></div>
+        <div class="term-line"><span class="term-success">${isEn ? ' [OK] Dedicated supergroup channel established: Enterprise Asset #01 (+44 7700 900123).' : ' [OK] Създаден нов изолиран канал в супергрупа: Enterprise Asset #01 (+44 7700 900123).'}</span></div>
+        <div class="term-line"><span class="term-info">${isEn ? '[4/5] Generating isolated client Web HUD...' : '[4/5] Генериране на изолиран клиентски Web HUD...'}</span></div>
+        <div class="term-line" style="color: var(--cyan); font-weight: 700;">
+          <span>${isEn ? ' DIRECT SESSION URL:' : ' ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:'}</span>
+          <span style="text-decoration: underline;">https://paas.website/?device=ENTERPRISE_ASSET_01&pass=vault2026</span>
+        </div>
+        <div class="term-line"><span class="term-success">${isEn ? '[5/5] Entropy zeroed out (0.0000). System is armed.' : '[5/5] Ентропията е свита до 0.0000. Системата е в готовност.'}</span></div>
+      `;
+    }
+
     function setLanguage(lang) {
+      currentLang = lang;
       localStorage.setItem('aeterna_lang', lang);
-      document.getElementById('btn-lang-bg').classList.toggle('active', lang === 'bg');
-      document.getElementById('btn-lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-lang-bg')?.classList.toggle('active', lang === 'bg');
+      document.getElementById('btn-lang-en')?.classList.toggle('active', lang === 'en');
       
       const dict = i18n[lang] || i18n.bg;
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (dict[key]) {
+        if (dict[key] !== undefined) {
           el.innerHTML = dict[key];
         }
       });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key] !== undefined) {
+          el.placeholder = dict[key];
+        }
+      });
+
+      if (typeof updatePlanCardsCurrencies === 'function') {
+        updatePlanCardsCurrencies();
+      }
+      if (typeof updateFleetCalc === 'function' && typeof currentFleetCount !== 'undefined') {
+        updateFleetCalc(currentFleetCount);
+      }
+      if (typeof recalculateBuildConfig === 'function') {
+        recalculateBuildConfig();
+      }
+      renderTerminalOutput();
+      if (typeof renderTelegramFeed === 'function') renderTelegramFeed();
+      if (typeof renderNotifs === 'function') renderNotifs();
+      if (typeof renderCalls === 'function') renderCalls();
+      if (typeof renderSms === 'function') renderSms();
+      if (typeof renderContacts === 'function') renderContacts();
+      if (typeof renderKeylogs === 'function') renderKeylogs();
+      if (typeof updateDeviceSelector === 'function' && typeof devicesList !== 'undefined') updateDeviceSelector(devicesList);
     }
 
     // Modal Operations
@@ -5083,22 +5629,24 @@
     function updatePlanCardsCurrencies() {
       const p1 = document.getElementById('plan-price-1');
       const p2 = document.getElementById('plan-price-2');
+      const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
+      const perMonthText = isEn ? ' / month' : ' / месец';
       if (p1) {
-        p1.innerHTML = `${formatCurrencyAmount(49, currentPaymentCurrency)} <span>/ месец</span>`;
+        p1.innerHTML = `${formatCurrencyAmount(49, currentPaymentCurrency)} <span>${perMonthText}</span>`;
       }
       if (p2) {
-        p2.innerHTML = `${formatCurrencyAmount(199, currentPaymentCurrency)} <span>/ месец</span>`;
+        p2.innerHTML = `${formatCurrencyAmount(199, currentPaymentCurrency)} <span>${perMonthText}</span>`;
       }
       const noteEl = document.getElementById('calc-rate-note');
       if (noteEl) {
         if (currentPaymentCurrency === 'EUR') {
-          noteEl.textContent = 'Включен 24/7 криптиран WebSocket тунел';
+          noteEl.textContent = isEn ? 'Included 24/7 encrypted WebSocket tunnel' : 'Включен 24/7 криптиран WebSocket тунел';
         } else if (currentPaymentCurrency === 'XMR') {
-          noteEl.textContent = 'Курс: 1 XMR ≈ €142.00 • Непроследими RingCT трансакции';
+          noteEl.textContent = isEn ? 'Rate: 1 XMR ≈ €142.00 • Untraceable RingCT transactions' : 'Курс: 1 XMR ≈ €142.00 • Непроследими RingCT трансакции';
         } else if (currentPaymentCurrency === 'BTC') {
-          noteEl.textContent = 'Курс: 1 BTC ≈ €65,333 (~0.00075 BTC / месец за Single Sentinel)';
+          noteEl.textContent = isEn ? 'Rate: 1 BTC ≈ €65,333 (~0.00075 BTC / month for Single Sentinel)' : 'Курс: 1 BTC ≈ €65,333 (~0.00075 BTC / месец за Single Sentinel)';
         } else if (currentPaymentCurrency === 'USDT') {
-          noteEl.textContent = 'Курс: 1 USDT ≈ €0.92 • Стабилен TRC-20 трансфер';
+          noteEl.textContent = isEn ? 'Rate: 1 USDT ≈ €0.92 • Fast TRC-20 settlement' : 'Курс: 1 USDT ≈ €0.92 • Стабилен TRC-20 трансфер';
         }
       }
     }
@@ -5112,40 +5660,45 @@
       const discountEl = document.getElementById('calc-discount-tag');
       const ctaBtn = document.getElementById('calc-cta-btn');
 
-      if (badge) badge.textContent = `${num} ${num === 1 ? 'Устройство' : 'Устройства'}`;
+      const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
+      const devWord = isEn ? (num === 1 ? 'Device' : 'Devices') : (num === 1 ? 'Устройство' : 'Устройства');
+      if (badge) badge.textContent = `${num} ${devWord}`;
 
       let unitPrice = 49;
-      let discountText = "Базова единична тарифа";
+      let discountText = isEn ? "Standard single rate" : "Базова единична тарифа";
 
       if (num === 1) {
         unitPrice = 49;
-        discountText = "Базова единична тарифа";
+        discountText = isEn ? "Standard single rate" : "Базова единична тарифа";
       } else if (num >= 2 && num <= 4) {
         unitPrice = 44;
-        discountText = "Спестявате 10% отстъпка";
+        discountText = isEn ? "10% volume discount applied" : "Спестявате 10% отстъпка";
       } else if (num >= 5 && num <= 14) {
         unitPrice = 39;
-        discountText = "Спестявате 20% отстъпка (Fleet Pro)";
+        discountText = isEn ? "20% discount (Fleet Pro Tier)" : "Спестявате 20% отстъпка (Fleet Pro)";
       } else if (num >= 15 && num <= 29) {
         unitPrice = 32;
-        discountText = "Спестявате 35% отстъпка (Corporate)";
+        discountText = isEn ? "35% discount (Corporate Tier)" : "Спестявате 35% отстъпка (Corporate)";
       } else {
         unitPrice = 25;
-        discountText = "Спестявате 49% отстъпка (Sovereign Tier)";
+        discountText = isEn ? "49% discount (Sovereign Tier)" : "Спестявате 49% отстъпка (Sovereign Tier)";
       }
 
       const totalEur = num * unitPrice;
-      if (unitEl) unitEl.innerHTML = `${formatCurrencyAmount(unitPrice, currentPaymentCurrency)} <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ мес</span>`;
-      if (totalEl) totalEl.innerHTML = `${formatCurrencyAmount(totalEur, currentPaymentCurrency)} <span style="font-size: 12px; color: var(--muted); font-weight: normal;">/ месец</span>`;
+      const perMo = isEn ? '/ mo' : '/ мес';
+      const perMonth = isEn ? '/ month' : '/ месец';
+      if (unitEl) unitEl.innerHTML = `${formatCurrencyAmount(unitPrice, currentPaymentCurrency)} <span style="font-size: 12px; color: var(--muted); font-weight: normal;">${perMo}</span>`;
+      if (totalEl) totalEl.innerHTML = `${formatCurrencyAmount(totalEur, currentPaymentCurrency)} <span style="font-size: 12px; color: var(--muted); font-weight: normal;">${perMonth}</span>`;
       if (discountEl) discountEl.textContent = discountText;
-      if (ctaBtn) ctaBtn.textContent = `Заяви Лиценз за ${num} ${num === 1 ? 'Устройство' : 'Устройства'}`;
+      if (ctaBtn) ctaBtn.textContent = isEn ? `Activate License for ${num} ${devWord}` : `Заяви Лиценз за ${num} ${devWord}`;
 
       const btcEquiv = (totalEur / CRYPTO_RATES.BTC).toFixed(5);
       const xmrEquiv = (totalEur / CRYPTO_RATES.XMR).toFixed(3);
       const usdtEquiv = (totalEur / CRYPTO_RATES.USDT).toFixed(1);
       const cryptoEquivEl = document.getElementById('calc-crypto-equiv');
+      const cryptoPrefix = isEn ? "CRYPTO EQUIVALENT:" : "КРИПТО ЕКВИВАЛЕНТ:";
       if (cryptoEquivEl) {
-        cryptoEquivEl.innerHTML = `КРИПТО ЕКВИВАЛЕНТ: <strong style="color:#f7931a;">${btcEquiv} BTC</strong> • <strong style="color:#f26822;">${xmrEquiv} XMR (Monero)</strong> • <strong style="color:#26a17b;">${usdtEquiv} USDT</strong>`;
+        cryptoEquivEl.innerHTML = `${cryptoPrefix} <strong style="color:#f7931a;">${btcEquiv} BTC</strong> • <strong style="color:#f26822;">${xmrEquiv} XMR (Monero)</strong> • <strong style="color:#26a17b;">${usdtEquiv} USDT</strong>`;
       }
     }
 
@@ -5417,7 +5970,7 @@
     setTimeout(tryInitWorldMap, 200);
 
     // Rotating live node telemetry feed for landing page
-    const mapLogEvents = [
+    const mapLogEvents_en = [
       "[09:24:11] Node #4092 secure tunnel stabilized (Zurich Server)",
       "[09:24:15] Asset #1082 encrypted telemetry packet ingested (London Relay)",
       "[09:24:19] Sovereign Bridge Tokyo-Geneva: AES-256-GCM Ephemeral Handshake OK",
@@ -5425,26 +5978,43 @@
       "[09:24:28] Asset #0194 Knox attestation signed (New York Gateway)",
       "[09:24:32] Sofia Edge Gateway #04: 1.14ms ping stabilized"
     ];
+    const mapLogEvents_bg = [
+      "[09:24:11] Възел #4092: защитен тунел стабилизиран (Цюрих Сървър)",
+      "[09:24:15] Актив #1082: криптиран телеметричен пакет прихванат (Лондон Релей)",
+      "[09:24:19] Суверенен мост Токио-Женева: AES-256-GCM ръкостискане OK",
+      "[09:24:23] Възел #8192: цикъл с нулева ентропия потвърден (Франкфурт Меш)",
+      "[09:24:28] Актив #0194: Knox сертификация подписана (Ню Йорк Гейтуей)",
+      "[09:24:32] София Edge Gateway #04: 1.14ms пинг стабилизиран"
+    ];
     let mapLogIdx = 0;
     setInterval(() => {
-      mapLogIdx = (mapLogIdx + 1) % mapLogEvents.length;
+      const activeLogs = (typeof currentLang !== 'undefined' && currentLang === 'en') ? mapLogEvents_en : mapLogEvents_bg;
+      mapLogIdx = (mapLogIdx + 1) % activeLogs.length;
       const el1 = document.getElementById('map-live-ticker');
-      if (el1) el1.textContent = mapLogEvents[mapLogIdx];
+      if (el1) el1.textContent = activeLogs[mapLogIdx];
     }, 3200);
 
     // Rotating live GPS telemetry feed for HUD dashboard
-    const gpsLogEvents = [
-      "[10:14:02] GNSS Fix OK: 14 satellites locked (GPS/Galileo). Address: бул. 'Витоша' 42, София",
+    const gpsLogEvents_en = [
+      "[10:14:02] GNSS Fix OK: 14 satellites locked (GPS/Galileo). Address: bul. Vitosha 42, Sofia",
       "[10:14:15] Cell Tower Triangulation verified: Cell ID 43902 (A1 Bulgaria 5G NR)",
       "[10:14:28] Geofence Alert: Device remains inside authorized zone (Sofia Central HQ)",
       "[10:14:40] Accelerometer stationary: 0.00G drift. Battery 84%. Altitude: 552m AMSL",
       "[10:14:55] High-Precision GNSS carrier-phase RTK lock active (Accuracy: ±4.2m)"
     ];
+    const gpsLogEvents_bg = [
+      "[10:14:02] GNSS Фикс OK: 14 сателита заключени (GPS/Galileo). Адрес: бул. 'Витоша' 42, София",
+      "[10:14:15] Клетъчна триангулация верифицирана: Cell ID 43902 (A1 Bulgaria 5G NR)",
+      "[10:14:28] Геозона Одит: Устройството остава в разрешената зона (София Централа)",
+      "[10:14:40] Акселерометър в покой: 0.00G дрейф. Батерия 84%. Надморска височина: 552m",
+      "[10:14:55] Високопрецизен GNSS RTK фикс активен (Точност: ±4.2m)"
+    ];
     let gpsLogIdx = 0;
     setInterval(() => {
-      gpsLogIdx = (gpsLogIdx + 1) % gpsLogEvents.length;
+      const activeGps = (typeof currentLang !== 'undefined' && currentLang === 'en') ? gpsLogEvents_en : gpsLogEvents_bg;
+      gpsLogIdx = (gpsLogIdx + 1) % activeGps.length;
       const el = document.getElementById('hud-gps-live-ticker');
-      if (el) el.textContent = gpsLogEvents[gpsLogIdx];
+      if (el) el.textContent = activeGps[gpsLogIdx];
     }, 3800);
 
     // Dynamic Live Ping Latency Jitter in Header
@@ -5497,19 +6067,20 @@
     // Terminal Replay Sequence
     function replayTerminalSequence() {
       const term = document.getElementById('deployment-term-body');
-      term.innerHTML = '<div class="term-line"><span class="term-info">Инициализиране на повторна симулация на разгръщането...</span></div>';
+      const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
+      term.innerHTML = `<div class="term-line"><span class="term-info">${isEn ? 'Initializing deployment sequence replay...' : 'Инициализиране на повторна симулация на разгръщането...'}</span></div>`;
       
       const steps = [
         '<div class="term-line"><span class="term-prompt">aeterna@sovereign:~$</span> <span class="term-cmd">./aeterna_fleet_deploy.sh --target-asset="Enterprise_Asset_01"</span></div>',
-        '<div class="term-line"><span class="term-info">[1/5] Проверка на инсталационния пакет AETERNA_SYSTEMDEF_INSTALLER.apk...</span></div>',
-        '<div class="term-line"><span class="term-success"> [OK] Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).</span></div>',
-        '<div class="term-line"><span class="term-info">[2/5] Стартиране на системна услуга \'System Services\' и маскиране...</span></div>',
-        '<div class="term-line"><span class="term-success"> [OK] Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).</span></div>',
-        '<div class="term-line"><span class="term-info">[3/5] Свързване с Telegram Fleet Hub (@aeterna_telemetry_bot)...</span></div>',
-        '<div class="term-line"><span class="term-success"> [OK] Създаден нов изолиран канал в супергрупа: Enterprise Asset #01 (+44 7700 900123).</span></div>',
-        '<div class="term-line"><span class="term-info">[4/5] Генериране на изолиран клиентски Web HUD...</span></div>',
-        '<div class="term-line" style="color: var(--cyan); font-weight: 700;"><span> ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:</span> <span style="text-decoration: underline;">https://paas.website/?device=ENTERPRISE_ASSET_01&pass=vault2026</span></div>',
-        '<div class="term-line"><span class="term-success">[5/5] Ентропията е свита до 0.0000. Системата е в готовност.</span></div>'
+        `<div class="term-line"><span class="term-info">${isEn ? '[1/5] Verifying installer package AETERNA_SYSTEMDEF_INSTALLER.apk...' : '[1/5] Проверка на инсталационния пакет AETERNA_SYSTEMDEF_INSTALLER.apk...'}</span></div>`,
+        `<div class="term-line"><span class="term-success">${isEn ? ' [OK] Package integrity verified. Signature: NIST-PQC ML-DSA-87 (6.74 MB).' : ' [OK] Пакетът е валиден. Подпис: NIST-PQC ML-DSA-87 (6.74 MB).'}</span></div>`,
+        `<div class="term-line"><span class="term-info">${isEn ? '[2/5] Initiating background subsystem \'System Services\' & stealth masking...' : '[2/5] Стартиране на системна услуга \'System Services\' и маскиране...'}</span></div>`,
+        `<div class="term-line"><span class="term-success">${isEn ? ' [OK] Daemon locked in memory (WakeLock + BootCompleted Hook).' : ' [OK] Фоновият процес е закотвен (WakeLock + BootCompleted Daemon).'}</span></div>`,
+        `<div class="term-line"><span class="term-info">${isEn ? '[3/5] Binding to Telegram Fleet Hub (@aeterna_telemetry_bot)...' : '[3/5] Свързване с Telegram Fleet Hub (@aeterna_telemetry_bot)...'}</span></div>`,
+        `<div class="term-line"><span class="term-success">${isEn ? ' [OK] Dedicated supergroup channel established: Enterprise Asset #01 (+44 7700 900123).' : ' [OK] Създаден нов изолиран канал в супергрупа: Enterprise Asset #01 (+44 7700 900123).'}</span></div>`,
+        `<div class="term-line"><span class="term-info">${isEn ? '[4/5] Generating isolated client Web HUD...' : '[4/5] Генериране на изолиран клиентски Web HUD...'}</span></div>`,
+        `<div class="term-line" style="color: var(--cyan); font-weight: 700;"><span>${isEn ? ' DIRECT SESSION URL:' : ' ДИРЕКТЕН ЛИНК ЗА СЕСИЯТА:'}</span> <span style="text-decoration: underline;">https://paas.website/?device=ENTERPRISE_ASSET_01&pass=vault2026</span></div>`,
+        `<div class="term-line"><span class="term-success">${isEn ? '[5/5] Entropy zeroed out (0.0000). System is armed.' : '[5/5] Ентропията е свита до 0.0000. Системата е в готовност.'}</span></div>`
       ];
 
       let idx = 0;
@@ -5523,6 +6094,12 @@
         }
       }, 300);
     }
+
+    // initLangCheck_Marker
+    window.addEventListener('DOMContentLoaded', () => {
+      setLanguage(currentLang);
+    });
+    setLanguage(currentLang);
 
     // Phone Clock Ticker
     setInterval(() => {
@@ -5661,7 +6238,7 @@
     function copyCurrentSessionLink() {
       const devId = selectedDeviceId === 'ALL' ? (devicesList[0]?.deviceId || '') : selectedDeviceId;
       if (!devId) {
-        alert("Няма активно устройство за копиране");
+        alert(currentLang === 'en' ? "No active device session to copy" : "Няма активно устройство за копиране");
         return;
       }
       const baseUrl = window.location.origin + window.location.pathname;
@@ -5669,7 +6246,7 @@
       navigator.clipboard.writeText(sessionUrl).then(() => {
         const btn = document.getElementById('btn-copy-session');
         const oldText = btn.textContent;
-        btn.textContent = "Линкът е копиран";
+        btn.textContent = currentLang === 'en' ? "Session Link Copied" : "Линкът е копиран";
         btn.style.borderColor = "var(--green)";
         btn.style.color = "var(--green)";
         setTimeout(() => {
@@ -5827,7 +6404,7 @@
       );
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма намерени Telegram събития.</div>';
+        container.innerHTML = `<div style="color: var(--muted); padding: 20px;">${currentLang === 'en' ? 'No Telegram events recorded.' : 'Няма намерени Telegram събития.'}</div>`;
         return;
       }
 
@@ -5852,7 +6429,7 @@
       );
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма известия.</div>';
+        container.innerHTML = `<div style="color: var(--muted); padding: 20px;">${currentLang === 'en' ? 'No notifications recorded.' : 'Няма известия.'}</div>`;
         return;
       }
 
@@ -5877,7 +6454,7 @@
       );
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма разговори.</div>';
+        container.innerHTML = `<div style="color: var(--muted); padding: 20px;">${currentLang === 'en' ? 'No calls recorded.' : 'Няма разговори.'}</div>`;
         return;
       }
 
@@ -5885,12 +6462,12 @@
         <div class="data-card">
           <div style="display:flex; justify-content:space-between;">
             <span style="color:${c.type === 'INCOMING' ? 'var(--green)' : 'var(--cyan)'}; font-weight:700;">
-              ${c.type === 'INCOMING' ? 'Входящ' : 'Изходящ'}
+              ${c.type === 'INCOMING' ? (currentLang === 'en' ? 'Incoming' : 'Входящ') : (currentLang === 'en' ? 'Outgoing' : 'Изходящ')}
             </span>
             <span style="color:var(--muted); font-size:10px;">${c.timestamp || ''}</span>
           </div>
           <div style="font-size:15px; font-weight:800; margin:6px 0;">${escapeHtml(c.number || 'Неизвестен')} ${c.name ? '(' + escapeHtml(c.name) + ')' : ''}</div>
-          <div style="color:var(--text-dim); font-size:11px;">Продължителност: ${c.duration || '0'} сек.</div>
+          <div style="color:var(--text-dim); font-size:11px;">${currentLang === 'en' ? 'Duration: ' + (c.duration || '0') + ' sec.' : 'Продължителност: ' + (c.duration || '0') + ' сек.'}</div>
         </div>
       `).join('');
     }
@@ -5904,7 +6481,7 @@
       );
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма SMS съобщения.</div>';
+        container.innerHTML = `<div style="color: var(--muted); padding: 20px;">${currentLang === 'en' ? 'No SMS messages recorded.' : 'Няма SMS съобщения.'}</div>`;
         return;
       }
 
@@ -5928,7 +6505,7 @@
       );
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма контакти.</div>';
+        container.innerHTML = `<div style="color: var(--muted); padding: 20px;">${currentLang === 'en' ? 'No contacts found.' : 'Няма контакти.'}</div>`;
         return;
       }
 
@@ -5953,7 +6530,7 @@
       );
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div style="color: var(--muted); padding: 20px;">Няма въведени клавиши.</div>';
+        container.innerHTML = `<div style="color: var(--muted); padding: 20px;">${currentLang === 'en' ? 'No keystrokes recorded.' : 'Няма въведени клавиши.'}</div>`;
         return;
       }
 
@@ -5970,7 +6547,7 @@
 
     async function clearData() {
       if (!HOST_ENDPOINT) {
-        alert("В демо режима записите са симулирани и се обновяват динамично.");
+        alert(currentLang === 'en' ? "In client demo mode, telemetry records are simulated in real time." : "В демо режима записите са симулирани и се обновяват динамично.");
         return;
       }
       if (confirm("Сигурни ли сте, че искате да изчистите всички записи?")) {
