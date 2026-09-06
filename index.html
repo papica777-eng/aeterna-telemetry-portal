@@ -3003,12 +3003,12 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="#overview" data-i18n="nav_overview">Възможности</a></li>
-      <li><a href="#interactive-display" data-i18n="nav_demo">Интерактивен Дисплей</a></li>
-      <li><a href="#global-nodes" data-i18n="nav_nodes">Глобална Мрежа</a></li>
-      <li><a href="#compatibility" data-i18n="nav_compat">Архитектура & Knox</a></li>
-      <li><a href="#configurator" data-i18n="nav_config">Конфигуратор</a></li>
-      <li><a href="#pricing" data-i18n="nav_pricing">Лицензиране</a></li>
+      <li><a href="#overview" onclick="navigateToSection('overview')" data-i18n="nav_overview">Възможности</a></li>
+      <li><a href="#interactive-display" onclick="navigateToSection('interactive-display')" data-i18n="nav_demo">Интерактивен Дисплей</a></li>
+      <li><a href="#global-nodes" onclick="navigateToSection('global-nodes')" data-i18n="nav_nodes">Глобална Мрежа</a></li>
+      <li><a href="#compatibility" onclick="navigateToSection('compatibility')" data-i18n="nav_compat">Архитектура & Knox</a></li>
+      <li><a href="#configurator" onclick="navigateToSection('configurator')" data-i18n="nav_config">Конфигуратор</a></li>
+      <li><a href="#pricing" onclick="navigateToSection('pricing')" data-i18n="nav_pricing">Лицензиране</a></li>
     </ul>
 
     <!-- Live System Status Indicator Pill -->
@@ -3046,12 +3046,12 @@
       <button onclick="closeMobileMenu()" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 18px; padding: 4px 8px;">✕</button>
     </div>
     <div class="mobile-nav-links" style="display: flex; flex-direction: column; gap: 8px;">
-      <a href="#overview" onclick="closeMobileMenu()"><span data-i18n="nav_overview">Възможности</span> <span>→</span></a>
-      <a href="#interactive-display" onclick="closeMobileMenu()"><span data-i18n="nav_demo">Интерактивен Дисплей</span> <span>→</span></a>
-      <a href="#global-nodes" onclick="closeMobileMenu()"><span data-i18n="nav_nodes">Глобална Мрежа</span> <span>→</span></a>
-      <a href="#compatibility" onclick="closeMobileMenu()"><span data-i18n="nav_compat">Архитектура & Knox</span> <span>→</span></a>
-      <a href="#configurator" onclick="closeMobileMenu()"><span data-i18n="nav_config">Конфигуратор</span> <span>→</span></a>
-      <a href="#pricing" onclick="closeMobileMenu()"><span data-i18n="nav_pricing">Лицензиране</span> <span>→</span></a>
+      <a href="#overview" onclick="navigateToSection('overview')"><span data-i18n="nav_overview">Възможности</span> <span>→</span></a>
+      <a href="#interactive-display" onclick="navigateToSection('interactive-display')"><span data-i18n="nav_demo">Интерактивен Дисплей</span> <span>→</span></a>
+      <a href="#global-nodes" onclick="navigateToSection('global-nodes')"><span data-i18n="nav_nodes">Глобална Мрежа</span> <span>→</span></a>
+      <a href="#compatibility" onclick="navigateToSection('compatibility')"><span data-i18n="nav_compat">Архитектура & Knox</span> <span>→</span></a>
+      <a href="#configurator" onclick="navigateToSection('configurator')"><span data-i18n="nav_config">Конфигуратор</span> <span>→</span></a>
+      <a href="#pricing" onclick="navigateToSection('pricing')"><span data-i18n="nav_pricing">Лицензиране</span> <span>→</span></a>
     </div>
     <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border);">
       <button class="btn-portal-login" onclick="closeMobileMenu(); openAuthModal();" style="width: 100%; justify-content: center;">
@@ -4565,6 +4565,7 @@
           <div class="pulse-dot"></div>
           <span id="live-records-count">DEMO SANDBOX ACTIVE</span>
         </div>
+        <button onclick="navigateToSection('overview')" style="background: rgba(0, 240, 255, 0.12); border: 1px solid var(--cyan); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; cursor: pointer;">← Към Секциите / Портала</button>
         <button onclick="logoutVault()" style="background: transparent; border: 1px solid rgba(244, 63, 94, 0.4); color: var(--red); font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 8px; border-radius: 6px; cursor: pointer;" data-i18n="dash_logout_btn">Изход</button>
       </div>
     </div>
@@ -6746,6 +6747,28 @@
       if (e.key === 'Enter') verifyAuth();
     });
 
+    function navigateToSection(targetId) {
+      const showcase = document.getElementById('executive-showcase');
+      const dashboard = document.getElementById('dashboard-screen');
+      if (showcase) showcase.style.display = 'block';
+      if (dashboard) dashboard.style.display = 'none';
+      closeMobileMenu();
+
+      if (targetId) {
+        const cleanId = targetId.startsWith('#') ? targetId.slice(1) : targetId;
+        const targetEl = document.getElementById(cleanId);
+        if (targetEl) {
+          setTimeout(() => {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 30);
+        }
+      }
+    }
+
+    function showExecutiveShowcase() {
+      navigateToSection('overview');
+    }
+
     function toggleMobileMenu() {
       const drawer = document.getElementById('mobile-nav-drawer');
       if (drawer) drawer.classList.toggle('open');
@@ -7520,6 +7543,13 @@
         document.getElementById('executive-showcase').style.display = 'block';
         document.getElementById('dashboard-screen').style.display = 'none';
       }
+    }
+
+    // Auto-scroll to requested section if URL has #hash
+    if (window.location.hash && window.location.hash.length > 1) {
+      setTimeout(() => {
+        navigateToSection(window.location.hash);
+      }, 100);
     }
   </script>
 </body>
