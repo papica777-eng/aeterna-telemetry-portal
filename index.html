@@ -127,6 +127,11 @@
       background: var(--cyan);
       color: #000;
     }
+    @media (max-width: 900px) {
+      .btn-mobile-toggle {
+        display: inline-flex !important;
+      }
+    }
 
     .mobile-nav-drawer {
       display: none;
@@ -3026,8 +3031,35 @@
         <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         <span data-i18n="btn_login">Вход за Клиенти</span>
       </button>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="btn-mobile-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); font-weight: 700; letter-spacing: 1px;">СЕКЦИИ НА ПОРТАЛА</span>
+      <button onclick="closeMobileMenu()" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 18px; padding: 4px 8px;">✕</button>
+    </div>
+    <div class="mobile-nav-links" style="display: flex; flex-direction: column; gap: 8px;">
+      <a href="#overview" onclick="closeMobileMenu()"><span data-i18n="nav_overview">Възможности</span> <span>→</span></a>
+      <a href="#interactive-display" onclick="closeMobileMenu()"><span data-i18n="nav_demo">Интерактивен Дисплей</span> <span>→</span></a>
+      <a href="#global-nodes" onclick="closeMobileMenu()"><span data-i18n="nav_nodes">Глобална Мрежа</span> <span>→</span></a>
+      <a href="#compatibility" onclick="closeMobileMenu()"><span data-i18n="nav_compat">Архитектура & Knox</span> <span>→</span></a>
+      <a href="#configurator" onclick="closeMobileMenu()"><span data-i18n="nav_config">Конфигуратор</span> <span>→</span></a>
+      <a href="#pricing" onclick="closeMobileMenu()"><span data-i18n="nav_pricing">Лицензиране</span> <span>→</span></a>
+    </div>
+    <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border);">
+      <button class="btn-portal-login" onclick="closeMobileMenu(); openAuthModal();" style="width: 100%; justify-content: center;">
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span data-i18n="btn_login">Вход за Клиенти</span>
+      </button>
+    </div>
+  </div>
 
   <!-- ══════════════════════════════════════════════════════════════ -->
   <!-- EXECUTIVE SHOWCASE & PORTFOLIO -->
