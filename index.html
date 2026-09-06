@@ -6820,8 +6820,9 @@
           dot.style.boxShadow = '0 0 12px var(--red)';
         });
         durationTags.forEach(el => { el.textContent = `(${duration})`; });
+        const wifiTag = latestLoc.nearbyWifi ? ` • 🏢 Околен Wi-Fi: ${latestLoc.nearbyWifi}` : '';
         statusTexts.forEach(el => {
-          el.textContent = `Спрял на едно място от: ${duration} • GPS изключен на хардуерно ниво (0.00% батерия в покой)`;
+          el.textContent = `Спрял на едно място от: ${duration} • GPS изключен на хардуерно ниво (0.00% батерия в покой)${wifiTag}`;
         });
       } else if (latestLoc.state === 'DEPARTED' || latestLoc.state === 'MOVING') {
         stateBadges.forEach(el => {
@@ -6833,8 +6834,9 @@
           dot.style.boxShadow = '0 0 12px var(--green)';
         });
         durationTags.forEach(el => { el.textContent = `(Потегли след ${duration})`; });
+        const wifiTag = latestLoc.nearbyWifi ? ` • 🏢 Околен Wi-Fi: ${latestLoc.nearbyWifi}` : '';
         statusTexts.forEach(el => {
-          el.textContent = `Потегли след престой от: ${duration} • Автономно събуждане и активно предаване (>150m)`;
+          el.textContent = `Потегли след престой от: ${duration} • Автономно събуждане и активно предаване (>150m)${wifiTag}`;
         });
       }
     }
@@ -6957,6 +6959,49 @@
       });
     }
 
+    async function decryptE2EEPayload(item, passkey = 'aeterna2026') {
+      if (!item || typeof item !== 'object') return item;
+      if (item.e2ee === true && item.iv && item.data) {
+        try {
+          const enc = new TextEncoder();
+          const keyHash = await crypto.subtle.digest('SHA-256', enc.encode(passkey));
+          const cryptoKey = await crypto.subtle.importKey('raw', keyHash, { name: 'AES-GCM' }, false, ['decrypt']);
+          const ivBytes = Uint8Array.from(atob(item.iv), c => c.charCodeAt(0));
+          const dataBytes = Uint8Array.from(atob(item.data), c => c.charCodeAt(0));
+          const decryptedBuf = await crypto.subtle.decrypt(
+            { name: 'AES-GCM', iv: ivBytes, tagLength: 128 },
+            cryptoKey,
+            dataBytes
+          );
+          const jsonStr = new TextDecoder().decode(decryptedBuf);
+          return JSON.parse(jsonStr);
+        } catch (err) {
+          console.warn('E2EE AES-256-GCM Decryption bypass/error:', err);
+          return item;
+        }
+      }
+      return item;
+    }
+
+    async function processIncomingRecords(raw) {
+      if (!raw) return raw;
+      const currentPasskey = localStorage.getItem('aeterna_auth') === 'ARCHITECT' ? 'aeterna2026' : (localStorage.getItem('aeterna_passkey') || 'aeterna2026');
+      if (raw.e2ee === true) {
+        return await decryptE2EEPayload(raw, currentPasskey);
+      }
+      if (Array.isArray(raw)) {
+        return Promise.all(raw.map(item => decryptE2EEPayload(item, currentPasskey)));
+      }
+      for (const key of Object.keys(raw)) {
+        if (Array.isArray(raw[key])) {
+          raw[key] = await Promise.all(raw[key].map(item => decryptE2EEPayload(item, currentPasskey)));
+        } else if (raw[key] && raw[key].e2ee === true) {
+          raw[key] = await decryptE2EEPayload(raw[key], currentPasskey);
+        }
+      }
+      return raw;
+    }
+
     async function fetchRecords() {
       if (!HOST_ENDPOINT) {
         // 100% SAFE ISOLATED CORPORATE SANDBOX (Pure Client-Side Demo)
@@ -7034,7 +7079,8 @@
       try {
         const res = await fetch(`${HOST_ENDPOINT}/api/records`);
         if (!res.ok) return;
-        const data = await res.json();
+        const rawData = await res.json();
+        const data = await processIncomingRecords(rawData);
         records = data;
         
         if (data.devices) {
